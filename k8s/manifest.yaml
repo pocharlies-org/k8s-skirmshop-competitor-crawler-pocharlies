@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skirmshop-competitor-crawler
+  labels:
+    app.kubernetes.io/name: skirmshop-competitor-crawler
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: skirmshop-competitor-crawler
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: skirmshop-competitor-crawler
+    spec:
+      automountServiceAccountToken: false
+      enableServiceLinks: false
+      imagePullSecrets:
+        - name: harbor-pull
+      nodeSelector:
+        role: edge
+        kubernetes.io/arch: amd64
+      tolerations:
+        - key: role
+          operator: Equal
+          value: edge
+          effect: NoSchedule
+      containers:
+        - name: crawler
+          image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler:pending
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: BRAIN_URL
+              value: http://skirmshop-brain.skirmshop-brain-prod.svc.cluster.local
+            - name: BRAIN_INSTANCE
+              value: skirmshop
+            - name: FIRECRAWL_URL
+              value: http://firecrawl-api.skirmshop.svc.cluster.local:3002
+            - name: PUSH_BATCH_SIZE
+              value: "20"
+            - name: LOG_LEVEL
+              value: INFO
+          envFrom:
+            - secretRef:
+                name: competitor-crawler-secrets
+                optional: true
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              memory: 1Gi
