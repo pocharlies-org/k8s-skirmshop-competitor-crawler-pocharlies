@@ -19,9 +19,9 @@
 
 ## Acceptance Criteria
 - [x] **Topology research completo.** Repos/servicios afectados identificados (`skirmshop-brain-v2`, posible `skirmshopshopifyapp`, este repo RSO), schema `PRODUCT_MATCH`, APIs consumidoras (`prices.py`, `intel.py`), fuente Shopify barcode/SKU y fuente `CompetitorProduct` verificados. Evidence: `rso/F5-product-match/researcher.report.md`; Brain branch `codex/product-recommendations-20260616`, Shopifyapp branch `codex/competitor-crawler-F0-bootstrap`; `PRODUCT_MATCH` en `ontology.py`, consumidores no lo expanden todavia.
-- [ ] **Contrato `PRODUCT_MATCH` definido.** Direccion del edge, claves idempotentes, propiedades (`match_confidence`, `match_method`, timestamps/source), umbrales auto-link/review/reject y enum de metodos documentados. Evidence:
+- [x] **Contrato `PRODUCT_MATCH` definido.** Direccion del edge, claves idempotentes, propiedades (`match_confidence`, `match_method`, timestamps/source), umbrales auto-link/review/reject y enum de metodos documentados. Evidence: `rso/F5-product-match/architect.report.md`; edge `(Product)-[:PRODUCT_MATCH]->(CompetitorProduct)`, idempotency key `(Product.id, CompetitorProduct.id)`, props `match_confidence/match_method/matched_at/matcher_version/source/status`.
 - [ ] **Matcher implementado con dry-run.** Comando dry-run produce candidatos con senales usadas, score, decision (`auto_link|review|reject`) sin escribir edges. Evidence:
-- [ ] **Cascada multi-senal.** EAN/GTIN exacto usa `Variant.barcode`; SKU exacto; marca+modelo normalizado NFKD/ASCII/hyphen->space; fallback embedding/reranker implementado o bloqueado explicitamente si infraestructura no existe. Evidence:
+- [ ] **Cascada multi-senal.** EAN/GTIN exacto usa `Variant.barcode`; SKU exacto; marca+modelo normalizado NFKD/ASCII/hyphen->space; fallback embedding/reranker implementado o bloqueado explicitamente si infraestructura no existe. Evidence: Arquitectura marca `[BLOCKED-EAN]` porque `CompetitorProduct` no tiene `ean/barcode`; F5 dry-run debe empezar en SKU y documentar `blocked_ean`.
 - [ ] **`MatchReview` para dudosos.** Tramo medio se persiste/serializa a cola de revision humana o artifact equivalente; no se crea `PRODUCT_MATCH` para dudosos. Evidence:
 - [ ] **Precision en muestra revisada.** Muestra manual revisada con positivos/negativos, matriz de confusion, precision >= umbral definido; falsos positivos explicados. Evidence:
 - [ ] **Edges `PRODUCT_MATCH` auditables.** En target permitido, count before/after de edges y muestra de edges con `match_confidence/match_method`; re-run idempotente no duplica. Evidence:
@@ -31,7 +31,7 @@
 
 ## Specialist Checks
 - [x] **rho-researcher** - topologia, datos existentes, targets y riesgos de escritura. Evidence: `rso/F5-product-match/researcher.report.md`; safe write target `[blocked]` porque solo FalkorDB prod es visible; `MatchReview` no existe; `CompetitorProduct` no tiene barcode/ean.
-- [ ] **rho-architect** - contrato de edge, umbrales, idempotencia, frontera F5 vs F6. Evidence:
+- [x] **rho-architect** - contrato de edge, umbrales, idempotencia, frontera F5 vs F6. Evidence: `rso/F5-product-match/architect.report.md`; F5 = dry-run/matcher/new edge contract, F6 = `prices.py`/`intel.py` comparacion viva; apply bloqueado hasta `APPLY APPROVED`.
 - [ ] **rho-backend** - matcher, dry-run/apply controlado, tests, artefactos. Evidence:
 - [ ] **rho-security** - secretos, writes, datos, target, re-run seguro. Evidence:
 - [ ] **rho-verifier** - re-ejecuta comandos, matriz, counts, no scope creep. Evidence:
@@ -40,3 +40,4 @@
 ## Status (log datado, append-only)
 - 2026-06-24T16:31:35+02:00 - OPEN: F5 abierta tras F2 PASS (`134036e`). Pendiente research Claude CLI antes de cualquier write.
 - 2026-06-24T16:36:00+02:00 - RESEARCH PASS/BLOCKED: topologia documentada; implementacion debe empezar por dry-run sin writes. Apply/live edges bloqueado hasta target seguro o aprobacion RSO explicita.
+- 2026-06-24T16:41:00+02:00 - ARCHITECT PASS/BLOCKED: contrato y umbrales definidos; `[BLOCKED-EAN]` por ausencia de `CompetitorProduct.ean/barcode`; `[BLOCKED-APPLY]` hasta precision gate y `APPLY APPROVED`.
