@@ -1,0 +1,343 @@
+{
+  "generated_at": "2026-06-24T11:59:52.744752+00:00",
+  "method": "autopilot_public_similarweb_plus_legacy_seed",
+  "warning": "SimilarWeb MCP unavailable; user delegated autopilot PMO curation; public Similarweb pages and legacy seeds used; ranking remains provisional until user/business validation",
+  "spain_top10": [
+    {
+      "domain": "airsoftpro.es",
+      "url": "https://www.airsoftpro.es/",
+      "country_or_region": "Spain",
+      "rank_bucket": "ES-autopilot-01",
+      "source_urls": [
+        "https://www.similarweb.com/website/foromusculo.com/"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "aceros-de-hispania.com",
+      "url": "https://www.aceros-de-hispania.com/",
+      "country_or_region": "Spain",
+      "rank_bucket": "ES-autopilot-02",
+      "source_urls": [
+        "https://www.similarweb.com/website/aceros-de-hispania.com/"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "arminse.es",
+      "url": "https://www.arminse.es/",
+      "country_or_region": "Spain",
+      "rank_bucket": "ES-autopilot-03",
+      "source_urls": [
+        "https://www.similarweb.com/website/aceros-de-hispania.com/"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "mildot.es",
+      "url": "https://www.mildot.es/",
+      "country_or_region": "Spain",
+      "rank_bucket": "ES-autopilot-04",
+      "source_urls": [
+        "https://www.similarweb.com/website/aceros-de-hispania.com/"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "blackrecon.com",
+      "url": "https://www.blackrecon.com/",
+      "country_or_region": "Spain",
+      "rank_bucket": "ES-autopilot-05",
+      "source_urls": [
+        "https://www.similarweb.com/website/aceros-de-hispania.com/"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "vsgun.com",
+      "url": "https://www.vsgun.com/",
+      "country_or_region": "Spain",
+      "rank_bucket": "ES-autopilot-06",
+      "source_urls": [
+        "https://www.similarweb.com/website/adeportes.es/vs/armicaza.com/"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "hobbyexpert.es",
+      "url": "https://www.hobbyexpert.es/",
+      "country_or_region": "Spain",
+      "rank_bucket": "ES-autopilot-07",
+      "source_urls": [
+        "https://www.similarweb.com/website/adeportes.es/vs/armicaza.com/"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "adeportes.es",
+      "url": "https://www.adeportes.es/",
+      "country_or_region": "Spain",
+      "rank_bucket": "ES-autopilot-08",
+      "source_urls": [
+        "https://www.similarweb.com/website/adeportes.es/vs/armicaza.com/"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "leopard.es",
+      "url": "https://www.leopard.es/",
+      "country_or_region": "Spain",
+      "rank_bucket": "ES-autopilot-09",
+      "source_urls": [
+        "https://www.similarweb.com/website/aceros-de-hispania.com/"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "legionairsoft.es",
+      "url": "https://www.legionairsoft.es/",
+      "country_or_region": "Spain",
+      "rank_bucket": "ES-autopilot-10",
+      "source_urls": [
+        "https://www.similarweb.com/website/legionairsoft.es/vs/tacticalcenter.es/"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    }
+  ],
+  "europe_top20": [
+    {
+      "domain": "taiwangun.com",
+      "url": "https://www.taiwangun.com/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-01",
+      "source_urls": [
+        "https://www.similarweb.com/website/taiwangun.com/competitors/",
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "gunfire.com",
+      "url": "https://gunfire.com/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-02",
+      "source_urls": [
+        "https://www.similarweb.com/website/taiwangun.com/competitors/",
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "evike-europe.com",
+      "url": "https://evike-europe.com/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-03",
+      "source_urls": [
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "redwolfairsoft.com",
+      "url": "https://www.redwolfairsoft.com/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-04",
+      "source_urls": [
+        "https://www.similarweb.com/website/taiwangun.com/competitors/",
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "patrolbase.co.uk",
+      "url": "https://www.patrolbase.co.uk/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-05",
+      "source_urls": [
+        "https://www.similarweb.com/website/taiwangun.com/competitors/",
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "begadi.com",
+      "url": "https://www.begadi.com/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-06",
+      "source_urls": [
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "powair6.com",
+      "url": "https://www.powair6.com/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-07",
+      "source_urls": [
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "bunker501.nl",
+      "url": "https://www.bunker501.nl/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-08",
+      "source_urls": [
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "unit13shop.eu",
+      "url": "https://www.unit13shop.eu/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-09",
+      "source_urls": [
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "aa-store.at",
+      "url": "https://aa-store.at/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-10",
+      "source_urls": [
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "airsoft2go.de",
+      "url": "https://www.airsoft2go.de/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-11",
+      "source_urls": [
+        "https://www.similarweb.com/website/prozishop.com/"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "airsoftshop.cz",
+      "url": "https://www.airsoftshop.cz/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-12",
+      "source_urls": [
+        "https://www.similarweb.com/website/prozishop.com/"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "specnaarms.com",
+      "url": "https://www.specnaarms.com/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-13",
+      "source_urls": [
+        "https://www.similarweb.com/website/prozishop.com/"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "novritsch.com",
+      "url": "https://www.novritsch.com/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-14",
+      "source_urls": [
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "airsoft-legends.nl",
+      "url": "https://www.airsoft-legends.nl/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-15",
+      "source_urls": [
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "waffencenter-gotha.de",
+      "url": "https://www.waffencenter-gotha.de/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-16",
+      "source_urls": [
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "silverback-airsoft.com",
+      "url": "https://www.silverback-airsoft.com/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-17",
+      "source_urls": [
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "empireairsoft.co.uk",
+      "url": "https://www.empireairsoft.co.uk/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-18",
+      "source_urls": [
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "fire-support.co.uk",
+      "url": "https://www.fire-support.co.uk/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-19",
+      "source_urls": [
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    },
+    {
+      "domain": "101airsoftshop.com",
+      "url": "https://101airsoftshop.com/",
+      "country_or_region": "Europe",
+      "rank_bucket": "EU-autopilot-20",
+      "source_urls": [
+        "legacy-config:config.yaml"
+      ],
+      "notes": "autopilot PMO-curated from public Similarweb snippets and/or legacy seed; provisional until business validation",
+      "autopilot_curated": true
+    }
+  ]
+}

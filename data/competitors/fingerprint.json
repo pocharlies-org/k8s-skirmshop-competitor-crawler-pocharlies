@@ -1,0 +1,816 @@
+{
+  "generated_at": "2026-06-24T12:02:19.076265+00:00",
+  "count": 30,
+  "fingerprints": [
+    {
+      "domain": "101airsoftshop.com",
+      "url": "https://101airsoftshop.com/",
+      "platform": "unknown",
+      "tier": "yellow",
+      "has_structured_data": false,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "unknown",
+      "http_status": null,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": null,
+          "robots": null,
+          "shopify": null,
+          "woocommerce": null
+        },
+        "errors": {
+          "root": "URLError:<urlopen error [Errno -2] Name or service not known>",
+          "robots": "URLError:<urlopen error [Errno -2] Name or service not known>",
+          "shopify": "URLError:<urlopen error [Errno -2] Name or service not known>",
+          "woocommerce": "URLError:<urlopen error [Errno -2] Name or service not known>"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:16.153465+00:00"
+    },
+    {
+      "domain": "aa-store.at",
+      "url": "https://aa-store.at/",
+      "platform": "generic_html",
+      "tier": "red",
+      "has_structured_data": true,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "captcha",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:19.074960+00:00"
+    },
+    {
+      "domain": "aceros-de-hispania.com",
+      "url": "https://www.aceros-de-hispania.com/",
+      "platform": "generic_html",
+      "tier": "yellow",
+      "has_structured_data": false,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "none",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:09.387369+00:00"
+    },
+    {
+      "domain": "adeportes.es",
+      "url": "https://www.adeportes.es/",
+      "platform": "generic_html",
+      "tier": "yellow",
+      "has_structured_data": false,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "none",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:10.624951+00:00"
+    },
+    {
+      "domain": "airsoft-legends.nl",
+      "url": "https://www.airsoft-legends.nl/",
+      "platform": "generic_html",
+      "tier": "green",
+      "has_structured_data": true,
+      "has_visible_stock": true,
+      "robots_crawl_delay": 2.0,
+      "antibot": "none",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:15.750465+00:00"
+    },
+    {
+      "domain": "airsoft2go.de",
+      "url": "https://www.airsoft2go.de/",
+      "platform": "generic_html",
+      "tier": "green",
+      "has_structured_data": true,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "none",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:17.530440+00:00"
+    },
+    {
+      "domain": "airsoftpro.es",
+      "url": "https://www.airsoftpro.es/",
+      "platform": "unknown",
+      "tier": "yellow",
+      "has_structured_data": false,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "unknown",
+      "http_status": null,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": null,
+          "robots": null,
+          "shopify": null,
+          "woocommerce": null
+        },
+        "errors": {
+          "root": "URLError:<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1000)>",
+          "robots": "URLError:<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1000)>",
+          "shopify": "URLError:<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1000)>",
+          "woocommerce": "URLError:<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1000)>"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:09.018474+00:00"
+    },
+    {
+      "domain": "airsoftshop.cz",
+      "url": "https://www.airsoftshop.cz/",
+      "platform": "generic_html",
+      "tier": "red",
+      "has_structured_data": false,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "captcha",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:16.440672+00:00"
+    },
+    {
+      "domain": "arminse.es",
+      "url": "https://www.arminse.es/",
+      "platform": "generic_html",
+      "tier": "yellow",
+      "has_structured_data": false,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "none",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:13.010578+00:00"
+    },
+    {
+      "domain": "begadi.com",
+      "url": "https://www.begadi.com/",
+      "platform": "generic_html",
+      "tier": "red",
+      "has_structured_data": true,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "captcha",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:13.447299+00:00"
+    },
+    {
+      "domain": "blackrecon.com",
+      "url": "https://www.blackrecon.com/",
+      "platform": "generic_html",
+      "tier": "red",
+      "has_structured_data": true,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "captcha",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:10.336275+00:00"
+    },
+    {
+      "domain": "bunker501.nl",
+      "url": "https://www.bunker501.nl/",
+      "platform": "generic_html",
+      "tier": "red",
+      "has_structured_data": true,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "http_403",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 403
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:403"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:14.199011+00:00"
+    },
+    {
+      "domain": "empireairsoft.co.uk",
+      "url": "https://www.empireairsoft.co.uk/",
+      "platform": "generic_html",
+      "tier": "red",
+      "has_structured_data": true,
+      "has_visible_stock": true,
+      "robots_crawl_delay": 2.0,
+      "antibot": "cloudflare",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:16.932549+00:00"
+    },
+    {
+      "domain": "evike-europe.com",
+      "url": "https://evike-europe.com/",
+      "platform": "unknown",
+      "tier": "red",
+      "has_structured_data": false,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "http_403",
+      "http_status": 403,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 403,
+          "robots": 403,
+          "shopify": 403,
+          "woocommerce": 403
+        },
+        "errors": {
+          "root": "HTTPError:403",
+          "robots": "HTTPError:403",
+          "shopify": "HTTPError:403",
+          "woocommerce": "HTTPError:403"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:10.468197+00:00"
+    },
+    {
+      "domain": "fire-support.co.uk",
+      "url": "https://www.fire-support.co.uk/",
+      "platform": "unknown",
+      "tier": "red",
+      "has_structured_data": false,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "captcha",
+      "http_status": 403,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 403,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": "HTTPError:403",
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:16.315642+00:00"
+    },
+    {
+      "domain": "gunfire.com",
+      "url": "https://gunfire.com/",
+      "platform": "generic_html",
+      "tier": "red",
+      "has_structured_data": true,
+      "has_visible_stock": true,
+      "robots_crawl_delay": 1.0,
+      "antibot": "captcha",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:11.407061+00:00"
+    },
+    {
+      "domain": "hobbyexpert.es",
+      "url": "https://www.hobbyexpert.es/",
+      "platform": "generic_html",
+      "tier": "red",
+      "has_structured_data": false,
+      "has_visible_stock": false,
+      "robots_crawl_delay": 1.0,
+      "antibot": "captcha",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 429,
+          "woocommerce": 429
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:429",
+          "woocommerce": "HTTPError:429"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:09.059656+00:00"
+    },
+    {
+      "domain": "legionairsoft.es",
+      "url": "https://www.legionairsoft.es/",
+      "platform": "generic_html",
+      "tier": "yellow",
+      "has_structured_data": false,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "none",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:10.223894+00:00"
+    },
+    {
+      "domain": "leopard.es",
+      "url": "https://www.leopard.es/",
+      "platform": "generic_html",
+      "tier": "green",
+      "has_structured_data": true,
+      "has_visible_stock": true,
+      "robots_crawl_delay": null,
+      "antibot": "none",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:11.381200+00:00"
+    },
+    {
+      "domain": "mildot.es",
+      "url": "https://www.mildot.es/",
+      "platform": "generic_html",
+      "tier": "red",
+      "has_structured_data": true,
+      "has_visible_stock": true,
+      "robots_crawl_delay": 5.0,
+      "antibot": "captcha",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:11.544729+00:00"
+    },
+    {
+      "domain": "novritsch.com",
+      "url": "https://www.novritsch.com/",
+      "platform": "woocommerce",
+      "tier": "red",
+      "has_structured_data": true,
+      "has_visible_stock": true,
+      "robots_crawl_delay": null,
+      "antibot": "captcha",
+      "http_status": 403,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 403,
+          "robots": 404,
+          "shopify": 404,
+          "woocommerce": 200
+        },
+        "errors": {
+          "root": "HTTPError:403",
+          "robots": "HTTPError:404",
+          "shopify": "HTTPError:404",
+          "woocommerce": null
+        }
+      },
+      "observed_at": "2026-06-24T12:02:14.610284+00:00"
+    },
+    {
+      "domain": "patrolbase.co.uk",
+      "url": "https://www.patrolbase.co.uk/",
+      "platform": "generic_html",
+      "tier": "red",
+      "has_structured_data": true,
+      "has_visible_stock": true,
+      "robots_crawl_delay": null,
+      "antibot": "captcha",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 403,
+          "woocommerce": 403
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:403",
+          "woocommerce": "HTTPError:403"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:11.352500+00:00"
+    },
+    {
+      "domain": "powair6.com",
+      "url": "https://www.powair6.com/",
+      "platform": "generic_html",
+      "tier": "yellow",
+      "has_structured_data": false,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "none",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:12.588962+00:00"
+    },
+    {
+      "domain": "redwolfairsoft.com",
+      "url": "https://www.redwolfairsoft.com/",
+      "platform": "generic_html",
+      "tier": "red",
+      "has_structured_data": true,
+      "has_visible_stock": true,
+      "robots_crawl_delay": null,
+      "antibot": "captcha",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:16.070658+00:00"
+    },
+    {
+      "domain": "silverback-airsoft.com",
+      "url": "https://www.silverback-airsoft.com/",
+      "platform": "woocommerce",
+      "tier": "red",
+      "has_structured_data": true,
+      "has_visible_stock": true,
+      "robots_crawl_delay": null,
+      "antibot": "captcha",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 200
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": null
+        }
+      },
+      "observed_at": "2026-06-24T12:02:18.734248+00:00"
+    },
+    {
+      "domain": "specnaarms.com",
+      "url": "https://www.specnaarms.com/",
+      "platform": "generic_html",
+      "tier": "green",
+      "has_structured_data": true,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "none",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:17.638368+00:00"
+    },
+    {
+      "domain": "taiwangun.com",
+      "url": "https://www.taiwangun.com/",
+      "platform": "generic_html",
+      "tier": "red",
+      "has_structured_data": true,
+      "has_visible_stock": true,
+      "robots_crawl_delay": 15.0,
+      "antibot": "captcha",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:11.888834+00:00"
+    },
+    {
+      "domain": "unit13shop.eu",
+      "url": "https://www.unit13shop.eu/",
+      "platform": "generic_html",
+      "tier": "yellow",
+      "has_structured_data": false,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "none",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:15.374961+00:00"
+    },
+    {
+      "domain": "vsgun.com",
+      "url": "https://www.vsgun.com/",
+      "platform": "generic_html",
+      "tier": "yellow",
+      "has_structured_data": false,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "none",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:09.518574+00:00"
+    },
+    {
+      "domain": "waffencenter-gotha.de",
+      "url": "https://www.waffencenter-gotha.de/",
+      "platform": "generic_html",
+      "tier": "green",
+      "has_structured_data": true,
+      "has_visible_stock": false,
+      "robots_crawl_delay": null,
+      "antibot": "none",
+      "http_status": 200,
+      "evidence": {
+        "probe_method": "stdlib_urllib_get_only",
+        "statuses": {
+          "root": 200,
+          "robots": 200,
+          "shopify": 404,
+          "woocommerce": 404
+        },
+        "errors": {
+          "root": null,
+          "robots": null,
+          "shopify": "HTTPError:404",
+          "woocommerce": "HTTPError:404"
+        }
+      },
+      "observed_at": "2026-06-24T12:02:15.777701+00:00"
+    }
+  ]
+}

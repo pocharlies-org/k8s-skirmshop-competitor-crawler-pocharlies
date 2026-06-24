@@ -41,10 +41,14 @@ Partial progress is valid to commit:
 
 F0 remains blocked and F1 must not open:
 
-- SimilarWeb MCP is not exposed to Claude CLI, so top10 ES/top20 EU cannot be
-  traffic-derived or user-curated.
-- `fingerprint.json` was not generated and cannot cover 100% of target domains.
-- `silverback-airsoft.com = red` is not verified in a fingerprint artifact.
+- SimilarWeb MCP is not exposed to Claude CLI, so ranking remains provisional;
+  user delegated autopilot PMO curation and the list is recorded in
+  `data/competitors/target-domains.autopilot.json`.
+- `fingerprint.json` was generated for 30/30 target domains.
+- `silverback-airsoft.com = red` is verified in `data/competitors/fingerprint.json`
+  (`antibot=captcha`, `http_status=200`).
+- `CompetitorSource` has a prepared idempotent migration in `skirmshopshopifyapp`
+  commit `e275329`, but the migration has not been applied to a DB in this cycle.
 - Brain index code for `CompetitorProduct`/`CompetitorStore` is now implemented
   and pushed in `skirmshop-brain-v2` commit `f53b552` on branch
   `codex/product-recommendations-20260616`, but runtime/Cypher verification or a
@@ -60,8 +64,16 @@ F0 remains blocked and F1 must not open:
 - [x] F0 marked PARTIAL/BLOCKED, not PASS. Evidence: `CHECKLIST.md`.
 - [x] Independent `rho-verifier` report completed. Evidence:
   `rso/F0-bootstrap/verifier.report.md`.
-- [blocked: SimilarWeb unavailable] Target competitor list not derived.
-- [blocked: no fingerprint] Fingerprint gate not met.
+- [blocked: ranking provisional] Autopilot target list prepared but not a final
+  SimilarWeb MCP ranking. Evidence:
+  `data/competitors/target-domains.autopilot.json` and
+  public Similarweb URLs in `source_urls`.
+- [blocked: DB not applied] `CompetitorSource` migration prepared, not populated
+  in a verified DB. Evidence: `skirmshopshopifyapp` commit `e275329` migration
+  artifact.
+- [x] Fingerprint gate met for static read-only artifact. Evidence:
+  `data/competitors/fingerprint.json` count=30, required fields present,
+  `silverback-airsoft.com=red`.
 - [blocked: brain runtime verification] Competitor graph index code is
   implemented in `skirmshop-brain-v2` commit `f53b552`, but live index creation
   has not been verified with Cypher/rollout.
