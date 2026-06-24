@@ -22,7 +22,7 @@
 - [ ] Git: rama `codex/competitor-crawler-F4-cart-probe`; fetch+rebase antes de commit; push inmediato; nunca force-push ni tocar `deploy/prod` directamente. Evidence:
 
 ## Acceptance Criteria
-- [ ] **Research de plataforma completo.** Confirmar repo destino (`skirmshop-stock-prober` nuevo vs modulo en repo actual), patrones existentes de Playwright/HTTP, dominios green candidatos, robots/antibot/tier, y si existe egress aislado. Evidence:
+- [x] **Research de plataforma completo.** Confirmar repo destino (`skirmshop-stock-prober` nuevo vs modulo en repo actual), patrones existentes de Playwright/HTTP, dominios green candidatos, robots/antibot/tier, y si existe egress aislado. Evidence: `researcher.report.md`; branch/gates confirmed; recommendation is in-repo `src/prober/` + disabled deployment; all current green targets are `generic_html`; no green Shopify/Woo; no NetworkPolicy exists.
 - [ ] **Contrato de datos F4 definido.** `probe_stock(...)` o equivalente devuelve `domain`, `product_key`, `variant_id/url`, `stock_qty`, `stock_status`, `stock_method=cart_probe`, `probe_status`, `block_reason`, `cleanup_status`, `observed_at`, y errores explicitos. Evidence:
 - [ ] **Shopify probe mock PASS.** Busqueda binaria o parse de 422 para maxima cantidad disponible; tests cubren in-stock, unavailable, qty limite, 403/429, challenge y cleanup. Evidence:
 - [ ] **WooCommerce probe mock PASS.** Usa `quantity_limits.maximum` si disponible o respuesta add-to-cart; tests cubren mismas ramas de seguridad. Evidence:
@@ -36,7 +36,7 @@
 - [ ] **Verifier PASS.** Re-ejecuta tests, smoke kill-switch, diff scope, security scan y evidencia de cleanup/calibracion. Evidence:
 
 ## Specialist Checks
-- [ ] **rho-researcher** - repo destino, plataformas, dominios candidatos, robots/antibot, egress actual. Evidence:
+- [x] **rho-researcher** - repo destino, plataformas, dominios candidatos, robots/antibot, egress actual. Evidence: `researcher.report.md`; Claude CLI read-only PASS; live calibration target blocked for lack of green Shopify/Woo.
 - [ ] **rho-architect** - contrato probe, boundaries F4/F3/F6/F7, modelo de cooldown/metrics. Evidence:
 - [ ] **rho-backend** - probe core, transports mockables, integracion F3 writer, tests. Evidence:
 - [ ] **rho-devops** - microservicio/k8s/egress/dry-run/no Cron activo. Evidence:
@@ -46,3 +46,4 @@
 
 ## Status (log datado, append-only)
 - 2026-06-25T00:34:26+02:00 - OPEN: F4 abierta tras F3 PASS. Rama `codex/competitor-crawler-F4-cart-probe` creada y publicada. Pendiente research Claude CLI antes de implementar probe o tocar dominios reales.
+- 2026-06-25T00:52:00+02:00 - RESEARCH PASS / LIVE CALIBRATION BLOCKED: `rho-researcher` read-only confirma que no hay Shopify/Woo green; todos los green son `generic_html`, no hay NetworkPolicy/egress isolation, y F3 writer ya soporta `cart_probe`. RSO decide avanzar con mocks + modulo in-repo y mantener calibracion live bloqueada hasta aprobar target seguro.
