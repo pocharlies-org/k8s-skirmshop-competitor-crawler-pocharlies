@@ -1,0 +1,435 @@
+{
+  "domain": "leopard.es",
+  "source_url": "https://www.leopard.es/",
+  "adapter": "generic_html",
+  "limit": 50,
+  "counts": {
+    "candidates": 42,
+    "success": 42,
+    "discarded": 0,
+    "failures": 0,
+    "discard_ratio": 0.0
+  },
+  "products": [
+    {
+      "title": "Aitor Jungle king I Hoja AceroRef. 16015",
+      "price": 254.4,
+      "brand": "",
+      "url": "https://www.leopard.es/cuchillos-supervivencia/6403-cuchillo-aitor-jungle-king-i-hoja-acero.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/568418-home_default/cuchillo-aitor-jungle-king-i-hoja-acero.jpg",
+      "description": "La conocida y famosa marca de cuchillos española  Aitor  presenta el nuevo modelo...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/cuchillos-supervivencia/6403-cuchillo-aitor-jungle-king-i-hoja-acero.html"
+    },
+    {
+      "title": "Fallkniven GP Gentleman’s Pocket Micarta NegraRef. GPbm",
+      "price": 280.0,
+      "brand": "",
+      "url": "https://www.leopard.es/navajas-caza/28093-fallkniven-gp-gentlemans-pocket-micarta-negra.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/571579-home_default/fallkniven-gp-gentlemans-pocket-micarta-negra.jpg",
+      "description": "Fallkniven, fabricante sueco de cuchillería, lanza al mercado español la nueva navaja...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/navajas-caza/28093-fallkniven-gp-gentlemans-pocket-micarta-negra.html"
+    },
+    {
+      "title": "Ka-Bar Short USA Plain EdgeRef. KB1251",
+      "price": 159.95,
+      "brand": "",
+      "url": "https://www.leopard.es/cuchillos-tacticos-militares/3664-cuchillo-ka-bar-short-usa-plain-edge.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/517432-home_default/cuchillo-ka-bar-short-usa-plain-edge.jpg",
+      "description": "Versión compacta del célebre cuchillo Ka Bar de los marines estadounidenses Acero 1095...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/cuchillos-tacticos-militares/3664-cuchillo-ka-bar-short-usa-plain-edge.html"
+    },
+    {
+      "title": "Buck 110 Folding HunterRef. 0110BRS",
+      "price": 119.95,
+      "brand": "",
+      "url": "https://www.leopard.es/navajas-caza/6269-buck-110-folding-hunter.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/560703-home_default/buck-110-folding-hunter.jpg",
+      "description": "Navaja Buck cazador. Después de más de 50 años sigue siendo una de las navaja más...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/navajas-caza/6269-buck-110-folding-hunter.html"
+    },
+    {
+      "title": "Spyderco Manix 2 Azul CPM S110VRef. C101PDBL2",
+      "price": 254.0,
+      "brand": "",
+      "url": "https://www.leopard.es/navajas-tacticas-militares/17182-navaja-spyderco-manix-2-azul-cpm-s110v.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/523131-home_default/navaja-spyderco-manix-2-azul-cpm-s110v.jpg",
+      "description": "Navaja diseñada y fabricada en USA fabricada con acero CPM S110V y cachas en FRN azul,...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/navajas-tacticas-militares/17182-navaja-spyderco-manix-2-azul-cpm-s110v.html"
+    },
+    {
+      "title": "Aitor Oso Negro Funda NegraRef. 16010N",
+      "price": 146.74,
+      "brand": "",
+      "url": "https://www.leopard.es/cuchillos-supervivencia/17737-cuchillo-aitor-oso-negro-funda-negra.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/565752-home_default/cuchillo-aitor-oso-negro-funda-negra.jpg",
+      "description": "La marca española  Aitor  presenta en Leopard este modelo  Oso Negro,  fabricado en...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/cuchillos-supervivencia/17737-cuchillo-aitor-oso-negro-funda-negra.html"
+    },
+    {
+      "title": "Cold Steel Recon 1 DE Spear Point CPM-S35VNRef. CS27BSDEBK",
+      "price": 191.95,
+      "brand": "",
+      "url": "https://www.leopard.es/navajas-tacticas-militares/29565-cold-steel-recon-1-de-spear-point-cpm-s35vn.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/581528-home_default/cold-steel-recon-1-de-spear-point-cpm-s35vn.jpg",
+      "description": "Leopard  incorpora una nueva navaja fabricada por  Cold Steel . El modelo    Recon 1...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/navajas-tacticas-militares/29565-cold-steel-recon-1-de-spear-point-cpm-s35vn.html"
+    },
+    {
+      "title": "Gerber StrongArm Negro LisoRef. 1027846",
+      "price": 119.95,
+      "brand": "",
+      "url": "https://www.leopard.es/cuchillos-tacticos-militares/16749-cuchillo-gerber-strongarm-negro-liso.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/520905-home_default/cuchillo-gerber-strongarm-negro-liso.jpg",
+      "description": "El cuchillo  Gerber StrongArm  es un modelo táctico-militar de alta calidad fabricado...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/cuchillos-tacticos-militares/16749-cuchillo-gerber-strongarm-negro-liso.html"
+    },
+    {
+      "title": "Cuchillo Lanzador MuelaRef. PRO-80L-14",
+      "price": 30.75,
+      "brand": "",
+      "url": "https://www.leopard.es/cuchillos-para-lanzar/13434-cuchillo-lanzador-muela.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/559374-home_default/cuchillo-lanzador-muela.jpg",
+      "description": "Muela  ha diseñado este cuchillo diseñado para  lanzar , con una hoja de  acero 440...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/cuchillos-para-lanzar/13434-cuchillo-lanzador-muela.html"
+    },
+    {
+      "title": "Tops Spirit Hunter X3Ref. TPSHR03",
+      "price": 168.0,
+      "brand": "",
+      "url": "https://www.leopard.es/cuchillos-caza/30630-tops-spirit-hunter-x3.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/588802-home_default/tops-spirit-hunter-x3.jpg",
+      "description": "Tops  nos presenta el último  cuchillo de caza  que ha sacado al mercado, el  Spirit...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/cuchillos-caza/30630-tops-spirit-hunter-x3.html"
+    },
+    {
+      "title": "Hatsan PCP Factor 6,35 mm",
+      "price": 655.0,
+      "brand": "",
+      "url": "https://www.leopard.es/carabinas-de-aire-comprimido/27377-hatsan-pcp-factor-635-mm.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/566990-home_default/hatsan-pcp-factor-635-mm.jpg",
+      "description": "La  Hatsan PCP Factor  es uno de los últimos modelos PCP del 2020, con depósito externo...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/carabinas-de-aire-comprimido/27377-hatsan-pcp-factor-635-mm.html"
+    },
+    {
+      "title": "Gamo PT-85 Blowback Co2Ref. 6111376",
+      "price": 143.0,
+      "brand": "",
+      "url": "https://www.leopard.es/pistolas-de-aire-comprimido/11754-pistola-gamo-pt-85-blowback-co2.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/517261-home_default/pistola-gamo-pt-85-blowback-co2.jpg",
+      "description": "La  Gamo PT-85  es una pistola semi-automática, que cuenta con un cañón de acero...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/pistolas-de-aire-comprimido/11754-pistola-gamo-pt-85-blowback-co2.html"
+    },
+    {
+      "title": "Subfusil H&K MP5 K-PDW Co2 4,5 mm",
+      "price": 189.7,
+      "brand": "",
+      "url": "https://www.leopard.es/carabinas-de-aire-comprimido/11759-subfusil-hk-mp5-k-pdw-co2-45-mm.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/504942-home_default/subfusil-hk-mp5-k-pdw-co2-45-mm.jpg",
+      "description": "Heckler & Koch , fabricante de armas alemán, ha lanzado este  subfusil MP5 K-PDW...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/carabinas-de-aire-comprimido/11759-subfusil-hk-mp5-k-pdw-co2-45-mm.html"
+    },
+    {
+      "title": "Glock 17 Gen 4 Blowback Co2 Corredera MetálicaRef. 103-58364",
+      "price": 240.3,
+      "brand": "",
+      "url": "https://www.leopard.es/pistolas-de-aire-comprimido/25787-glock-17-gen-4-blowback-co2-corredera-metalica.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/551337-home_default/glock-17-gen-4-blowback-co2-corredera-metalica.jpg",
+      "description": "Glock  ha lanzado como novedad esta pistola de aire comprimido  Glock 17 Gen 4 , que...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/pistolas-de-aire-comprimido/25787-glock-17-gen-4-blowback-co2-corredera-metalica.html"
+    },
+    {
+      "title": "Hatsan Airtact ED",
+      "price": 109.0,
+      "brand": "",
+      "url": "https://www.leopard.es/carabinas-de-aire-comprimido/27207-hatsan-airtact-ed.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/565860-home_default/hatsan-airtact-ed.jpg",
+      "description": "La  Hatsan Airtact ED  es una carabina de aire comprimido con  24 Julios  de potencia y...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/carabinas-de-aire-comprimido/27207-hatsan-airtact-ed.html"
+    },
+    {
+      "title": "Stinger Ares Co2 cal. 5,5 mm",
+      "price": 139.0,
+      "brand": "",
+      "url": "https://www.leopard.es/pistolas-de-aire-comprimido/20032-pistola-stinger-ares-co2-cal-55-mm.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/536680-home_default/pistola-stinger-ares-co2-cal-55-mm.jpg",
+      "description": "La pistola  Stinger Ares  es un producto  revolucionario , ya que podrá ser convertida...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/pistolas-de-aire-comprimido/20032-pistola-stinger-ares-co2-cal-55-mm.html"
+    },
+    {
+      "title": "Winchester Daisy Adult Red Ryder 4,5 mm",
+      "price": 69.0,
+      "brand": "",
+      "url": "https://www.leopard.es/carabinas-de-aire-comprimido/30452-winchester-daisy-adult-red-ryder-45-mm.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/587630-home_default/winchester-daisy-adult-red-ryder-45-mm.jpg",
+      "description": "Ya tienes a la venta en  Leopard  otra réplica del mítico  Winchester del Oeste , el...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/carabinas-de-aire-comprimido/30452-winchester-daisy-adult-red-ryder-45-mm.html"
+    },
+    {
+      "title": "Beretta 92 ELITE II Co2Ref. U5.8090",
+      "price": 72.0,
+      "brand": "",
+      "url": "https://www.leopard.es/pistolas-de-aire-comprimido/6683-pistola-beretta-92-elite-ii-co2.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/514231-home_default/pistola-beretta-92-elite-ii-co2.jpg",
+      "description": "La  Beretta 92 Elite II  es una pistola semi-automática de Co2 que tiene un cañón de...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/pistolas-de-aire-comprimido/6683-pistola-beretta-92-elite-ii-co2.html"
+    },
+    {
+      "title": "Gamo HPA Mi Whisper Maxxim IGT + Visor 3-9X40WR",
+      "price": 294.0,
+      "brand": "",
+      "url": "https://www.leopard.es/carabinas-de-aire-comprimido/22738-gamo-hpa-mi-whisper-maxxim-igt-visor-3-9x40wr.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/541570-home_default/gamo-hpa-mi-whisper-maxxim-igt-visor-3-9x40wr.jpg",
+      "description": "Esta carabina de aire comprimido presenta el sistema  Whisper Maxxim IGT  con un nuevo...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/carabinas-de-aire-comprimido/22738-gamo-hpa-mi-whisper-maxxim-igt-visor-3-9x40wr.html"
+    },
+    {
+      "title": "Pistola Zasdar/Artemis Snowpeak SP500 4,5 mmRef. ZSP500",
+      "price": 53.7,
+      "brand": "",
+      "url": "https://www.leopard.es/pistolas-de-aire-comprimido/30588-pistola-zasdarartemis-snowpeak-sp500-45-mm.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/588553-home_default/pistola-zasdarartemis-snowpeak-sp500-45-mm.jpg",
+      "description": "La  Artemis SP500  es una pistola de  aire comprimido , accionada por  muelle , con...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/pistolas-de-aire-comprimido/30588-pistola-zasdarartemis-snowpeak-sp500-45-mm.html"
+    },
+    {
+      "title": "Glock 17-2 Blowback Co2 Corredera MetálicaRef. 103-58365",
+      "price": 192.6,
+      "brand": "",
+      "url": "https://www.leopard.es/pistolas-de-aire-comprimido/25790-glock-17-2-co2-blowback-corredera-metalica.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/551356-home_default/glock-17-2-co2-blowback-corredera-metalica.jpg",
+      "description": "La pistola  Glock 17-2  es una réplica de  alto nivel  de la mítica pistola utilizada...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/pistolas-de-aire-comprimido/25790-glock-17-2-co2-blowback-corredera-metalica.html"
+    },
+    {
+      "title": "Walther PPK/S Blowback Co2 Full MetalRef. U5.8315",
+      "price": 120.6,
+      "brand": "",
+      "url": "https://www.leopard.es/pistolas-de-aire-comprimido/18134-walther-ppks-blowback-co2-full-metal.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/528734-home_default/walther-ppks-blowback-co2-full-metal.jpg",
+      "description": "La pistola  Walther PPK/S  es un arma semi-automática con capacidad para  15 BBs , por...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/pistolas-de-aire-comprimido/18134-walther-ppks-blowback-co2-full-metal.html"
+    },
+    {
+      "title": "Gamo Elite Premium IGT + Visor 3-9x40 WR",
+      "price": 288.0,
+      "brand": "",
+      "url": "https://www.leopard.es/carabinas-de-aire-comprimido/16639-gamo-elite-premium-igt-visor-3-9x40-wr.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/523301-home_default/gamo-elite-premium-igt-visor-3-9x40-wr.jpg",
+      "description": "La  Elite Premium IGT  es una carabina de aire comprimido ambidiestra. Este modelo...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/carabinas-de-aire-comprimido/16639-gamo-elite-premium-igt-visor-3-9x40-wr.html"
+    },
+    {
+      "title": "Legends P08 Blowback Co2 Full MetalRef. U5.8142",
+      "price": 180.0,
+      "brand": "",
+      "url": "https://www.leopard.es/pistolas-de-aire-comprimido/16875-pistola-legends-p08-blowback-co2-full-metal.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/521457-home_default/pistola-legends-p08-blowback-co2-full-metal.jpg",
+      "description": "La    Legends P08    es una pistola semi-automática accionada por bombonas de  Co2 de...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/pistolas-de-aire-comprimido/16875-pistola-legends-p08-blowback-co2-full-metal.html"
+    },
+    {
+      "title": "Botas Crispi S.W.A.T Pro GTX",
+      "price": 253.94,
+      "brand": "",
+      "url": "https://www.leopard.es/botas-policiales/26798-botas-crispi-swat-pro-gtx.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/562641-home_default/botas-crispi-swat-pro-gtx.jpg",
+      "description": "El modelo  S.W.A.T Pro GTX  utiliza la tecnología CSF MARCO CRISPI® SKELETON FRAME,...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/botas-policiales/26798-botas-crispi-swat-pro-gtx.html"
+    },
+    {
+      "title": "Botas Crispi S.W.A.T GTX DesertRef. BM-7700-4800",
+      "price": 176.37,
+      "brand": "",
+      "url": "https://www.leopard.es/botas-impermeables/26804-botas-crispi-swat-gtx-desert.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/562642-home_default/botas-crispi-swat-gtx-desert.jpg",
+      "description": "La marca italiana saca al mercado el modelo  S.W.A.T Desert GTX , ideal para los...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/botas-impermeables/26804-botas-crispi-swat-gtx-desert.html"
+    },
+    {
+      "title": "Botas Magnum Mega Táctical HI MF Waterproof",
+      "price": 140.0,
+      "brand": "",
+      "url": "https://www.leopard.es/botas-policiales/30770-botas-magnum-mega-tactical-hi-mf-waterproof.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/589741-home_default/botas-magnum-mega-tactical-hi-mf-waterproof.jpg",
+      "description": "Ya tenemos a la venta en  Leopard  la  nueva colección  para el 2024 de  botas...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/botas-policiales/30770-botas-magnum-mega-tactical-hi-mf-waterproof.html"
+    },
+    {
+      "title": "Botas Crispi Futura CX GTX",
+      "price": 258.19,
+      "brand": "",
+      "url": "https://www.leopard.es/botas-de-caza/30787-botas-crispi-futura-cx-gtx.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/589549-home_default/botas-crispi-futura-cx-gtx.jpg",
+      "description": "Las nuevas  Crispi Futura CX GTX  es una auténtica revolución en el sector de las...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/botas-de-caza/30787-botas-crispi-futura-cx-gtx.html"
+    },
+    {
+      "title": "Botas Immortal Warrior Zeta Coyote",
+      "price": 65.95,
+      "brand": "",
+      "url": "https://www.leopard.es/botas-policiales/30448-botas-immortal-warrior-zeta-coyote.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/587609-home_default/botas-immortal-warrior-zeta-coyote.jpg",
+      "description": "Las  Zeta Coyot e son otro de los modelos que nos presenta  Leopard  como  novedad del...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/botas-policiales/30448-botas-immortal-warrior-zeta-coyote.html"
+    },
+    {
+      "title": "Botas Barbaric Táctica 8\" Cremallera Negra New Generation",
+      "price": 57.0,
+      "brand": "",
+      "url": "https://www.leopard.es/botas-policiales/31026-botas-barbaric-tactica-8-cremallera-negra-new-generation.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/591005-home_default/botas-barbaric-tactica-8-cremallera-negra-new-generation.jpg",
+      "description": "Barbaric  incorpora una  nueva línea de botas  diseñadas para uso   policial y militar...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/botas-policiales/31026-botas-barbaric-tactica-8-cremallera-negra-new-generation.html"
+    },
+    {
+      "title": "Botas Crispi S.W.A.T HTG GTX",
+      "price": 250.75,
+      "brand": "",
+      "url": "https://www.leopard.es/botas-policiales/26803-botas-crispi-swat-htg-gtx.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/571011-home_default/botas-crispi-swat-htg-gtx.jpg",
+      "description": "El modelo  S.W.A.T. HTG GTX  destaca por su versatilidad y comodidad. Cuenta con un...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/botas-policiales/26803-botas-crispi-swat-htg-gtx.html"
+    },
+    {
+      "title": "Botas Crispi Lapponia EVO GTX",
+      "price": 231.63,
+      "brand": "",
+      "url": "https://www.leopard.es/botas-de-montana/26850-botas-crispi-lapponia-evo-gtx.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/563052-home_default/botas-crispi-lapponia-evo-gtx.jpg",
+      "description": "El modelo  Lapponia GTX  son las botas de  caza/montaña  más ligeras de Crispi....",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/botas-de-montana/26850-botas-crispi-lapponia-evo-gtx.html"
+    },
+    {
+      "title": "Botas Immortal Warrior Alpha Black",
+      "price": 69.9,
+      "brand": "",
+      "url": "https://www.leopard.es/botas-policiales/30445-botas-immortal-warrior-alpha-black.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/587597-home_default/botas-immortal-warrior-alpha-black.jpg",
+      "description": "Immortal Warrior   lanza al mercado en 2023 otras  botas tácticas  de caña alta, el...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/botas-policiales/30445-botas-immortal-warrior-alpha-black.html"
+    },
+    {
+      "title": "Linterna Olight Warrior 3S Negra 2.300 Lumens RecargableRef. OL-5056",
+      "price": 143.95,
+      "brand": "",
+      "url": "https://www.leopard.es/linternas-recargables/29860-linterna-olight-warrior-3s-negra-2300-lumens-recargable.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/583562-home_default/linterna-olight-warrior-3s-negra-2300-lumens-recargable.jpg",
+      "description": "Warrior 3S  es una linterna de  2300 lúmenes , que proporcionan visibilidad hasta los...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/linternas-recargables/29860-linterna-olight-warrior-3s-negra-2300-lumens-recargable.html"
+    },
+    {
+      "title": "Linterna Olight de Mano Bidireccional Prowess 5.000 Lúmenes...Ref. OL-4073",
+      "price": 165.95,
+      "brand": "",
+      "url": "https://www.leopard.es/linternas-recargables/30998-linterna-olight-de-mano-bidireccional-prowess-5000-lumenes-recargable.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/590837-home_default/linterna-olight-de-mano-bidireccional-prowess-5000-lumenes-recargable.jpg",
+      "description": "Linterna de mano con luz bidireccional con luz frontal fría y luz trasera cálida....",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/linternas-recargables/30998-linterna-olight-de-mano-bidireccional-prowess-5000-lumenes-recargable.html"
+    },
+    {
+      "title": "Linterna Fenix E28R V2.0 1700 Lumens RecargableRef. E28R-V2.0",
+      "price": 64.9,
+      "brand": "",
+      "url": "https://www.leopard.es/linternas-recargables/30816-linterna-fenix-e28r-v20-1700-lumens-recargable.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/589694-home_default/linterna-fenix-e28r-v20-1700-lumens-recargable.jpg",
+      "description": "Fenix  ​​​​nos presenta la nueva  E28R V2.0  es una  linterna EDC  recargable...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/linternas-recargables/30816-linterna-fenix-e28r-v20-1700-lumens-recargable.html"
+    },
+    {
+      "title": "Linterna Fenix PD45R ACE 3.200 Lumens RecargableRef. PD45R-ACE",
+      "price": 129.9,
+      "brand": "",
+      "url": "https://www.leopard.es/linternas-para-armas/31441-linterna-fenix-pd45r-ace-3200-lumens-recargable.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/592747-home_default/linterna-fenix-pd45r-ace-3200-lumens-recargable.jpg",
+      "description": "La Fenix  PD45R ACE  es uno de los modelos nuevos que saca  Fenix  al mercado. Es una...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/linternas-para-armas/31441-linterna-fenix-pd45r-ace-3200-lumens-recargable.html"
+    },
+    {
+      "title": "Linterna Fenix E01-V2.0 100 LumensRef. E01-V2.0",
+      "price": 12.95,
+      "brand": "",
+      "url": "https://www.leopard.es/linternas-led/27706-linterna-fenix-e01-v20-100-lumens.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/569393-home_default/linterna-fenix-e01-v20-100-lumens.jpg",
+      "description": "Fenix , desarrollador de elementos ópticos y de iluminación, ha creado la nueva...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/linternas-led/27706-linterna-fenix-e01-v20-100-lumens.html"
+    },
+    {
+      "title": "Pack Linterna Fenix TK26R 1700 Lumens + Cono Blanco + Funda...Ref. PACKTK26R",
+      "price": 159.9,
+      "brand": "",
+      "url": "https://www.leopard.es/linternas-para-armas/31653-pack-linterna-fenix-tk26r-1700-lumens-cono-blanco-funda-cordura-recargable.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/594114-home_default/pack-linterna-fenix-tk26r-1700-lumens-cono-blanco-funda-cordura-recargable.jpg",
+      "description": "Pack linterna táctica  fabricado por  Fenix , modelo  TK26R . Tiene una potencia máxima...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/linternas-para-armas/31653-pack-linterna-fenix-tk26r-1700-lumens-cono-blanco-funda-cordura-recargable.html"
+    },
+    {
+      "title": "Linterna Fenix UC35V2 1000 Lumens RecargableRef. UC35V2",
+      "price": 89.9,
+      "brand": "",
+      "url": "https://www.leopard.es/linternas-recargables/20521-linterna-fenix-uc35v2-1000-lumens-recargable.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/558190-home_default/linterna-fenix-uc35v2-1000-lumens-recargable.jpg",
+      "description": "Esta linterna recargable tiene una potencia de  1000 Lúmens  y un alcance de  266 m ....",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/linternas-recargables/20521-linterna-fenix-uc35v2-1000-lumens-recargable.html"
+    },
+    {
+      "title": "Linterna Olight Llavero iMini Negra 50 Lúmenes RecargableRef. OL-8063",
+      "price": 23.95,
+      "brand": "",
+      "url": "https://www.leopard.es/linternas-recargables/31001-linterna-olight-llavero-imini-negra-50-lumenes-recargable.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/590856-home_default/linterna-olight-llavero-imini-negra-50-lumenes-recargable.jpg",
+      "description": "La linterna llavero  iMini 2  de  Olight  con alcance de  21 metros  y potencia de  50...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/linternas-recargables/31001-linterna-olight-llavero-imini-negra-50-lumenes-recargable.html"
+    },
+    {
+      "title": "Linterna Olight Valkyria Turbo LEP 250 LumensRef. OL-2033",
+      "price": 179.95,
+      "brand": "",
+      "url": "https://www.leopard.es/linternas-para-armas/29608-olight-valkyrie-turbo-lep-250-lumens.html",
+      "domain": "leopard.es",
+      "image": "https://www.leopard.es/581777-home_default/olight-valkyrie-turbo-lep-250-lumens.jpg",
+      "description": "Olight  lanza al mercado en 2022 la primera  linterna LEP  para arma corta de todo el...",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/linternas-para-armas/29608-olight-valkyrie-turbo-lep-250-lumens.html"
+    }
+  ]
+}

@@ -106,13 +106,21 @@ def extract_products(html: str, url: str, domain: str) -> list[dict]:
             t = item.find(itemprop="name")
             p = item.find(itemprop="price")
             b = item.find(itemprop="brand")
+            u = item.find(itemprop="url")
+            img = item.find(itemprop="image")
+            desc = item.find(itemprop="description")
             if t and p:
+                product_url = url
+                if u:
+                    product_url = u.get("href") or u.get("content") or u.get_text(strip=True) or url
                 products.append({
                     "title": t.get_text(strip=True),
-                    "price": parse_price(p.get("content", p.get_text())),
+                    "price": parse_price(p.get("content") or p.get_text()),
                     "brand": b.get_text(strip=True) if b else "",
-                    "url": url,
+                    "url": product_url,
                     "domain": domain,
+                    "image": (img.get("src") or img.get("content") or "") if img else "",
+                    "description": (desc.get_text(strip=True)[:200]) if desc else "",
                 })
 
     return [p for p in products if p.get("title")]
