@@ -1,0 +1,312 @@
+{
+  "apply_performed": false,
+  "counts": {
+    "competitor_count_with_match": 437,
+    "confidence_out_of_range_count": 0,
+    "distinct_pair_count": 510,
+    "edge_count": 510,
+    "missing_confidence_count": 0,
+    "missing_matched_at_count": 0,
+    "missing_method_count": 0,
+    "product_count_with_match": 510
+  },
+  "dry_run": true,
+  "duplicate_pairs_sample": [],
+  "falkordb_target_sanitized": "skirmshop_v2 via redis://10.43.157.14:6379 (ClusterIP aiops-falkordb, sanitized, read-only)",
+  "gate_observation": {
+    "all_edges_have_confidence": true,
+    "all_edges_have_matched_at": true,
+    "all_edges_have_method": true,
+    "confidence_in_range": true,
+    "duplicate_pair_count": 0,
+    "edge_count_matches_distinct_pairs": true
+  },
+  "generated_at": "2026-06-24T15:58:23+00:00",
+  "method_distribution": [
+    {
+      "count": 510,
+      "max_confidence": 1.0,
+      "method": "llm",
+      "min_confidence": 0.9
+    }
+  ],
+  "query_mode": "read_only_MATCH_RETURN_only",
+  "sample_edges": [
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/rifle-scope/10753-aim-o-1-4x24-tactical-scope-black.html",
+      "competitor_title": "AIM-O 1-4x24 Tactical Scope Black",
+      "confidence": 0.95,
+      "matched_at": "2026-06-24T14:33:57Z",
+      "method": "llm",
+      "product_id": "1-4x24se-tactical-scope",
+      "product_sku": "SP-AIM-AO3044-BK",
+      "product_title": "1-4x24SE Tactical Scope"
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-hammer/54864-cowcow-technology-120-hammer-spring-for-g17-gen5.html",
+      "competitor_title": "COWCOW Technology 120% Hammer Spring for G17 gen5",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:46:31Z",
+      "method": "llm",
+      "product_id": "120-hammer-springfor-tokyo-marui-g17-gen-5-gbb-series",
+      "product_sku": null,
+      "product_title": "120% Hammer Spring[For Tokyo Marui G17 GEN.5 GBB Series]"
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-spring/57727-cowcow-technology-nozzle-spring-145-for-tm-mp9.html",
+      "competitor_title": "COWCOW Technology Nozzle Spring 145% for TM M&amp;P9",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:46:31Z",
+      "method": "llm",
+      "product_id": "145-nozzle-spring",
+      "product_sku": null,
+      "product_title": "145% Nozzle Spring"
+    },
+    {
+      "competitor_domain": "patrolbase.co.uk",
+      "competitor_product_id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/5ku-10-3-aluminium-outer-barrel-for-m4-ar-15-aeg",
+      "competitor_title": "5KU 10.3\" Aluminium Outer Barrel for M4/AR-15 AEGs",
+      "confidence": 0.95,
+      "matched_at": "2026-06-24T14:29:12Z",
+      "method": "llm",
+      "product_id": "5ku-10-3-inch-m4-outer-barrel-aluminum",
+      "product_sku": "SP-5KU-5KU-123",
+      "product_title": "10.3\" Outer Barrel for M4"
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/aeg-outer-barrel/14390-5ku-115-inch-aluminum-outer-barrel-for-m4.html",
+      "competitor_title": "5KU 11.5 inch aluminum outer barrel for M4",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:29:12Z",
+      "method": "llm",
+      "product_id": "5ku-11-5-inch-m4-outer-barrel-aluminum",
+      "product_sku": "SP-5KU-5KU-125",
+      "product_title": "11.5\" Outer Barrel for M4"
+    },
+    {
+      "competitor_domain": "patrolbase.co.uk",
+      "competitor_product_id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/5ku-14-5-aluminium-outer-barrel-for-m4-ar15-aeg",
+      "competitor_title": "5KU 14.5\" Aluminium Outer Barrel for M4/AR-15 AEGs",
+      "confidence": 0.95,
+      "matched_at": "2026-06-24T14:29:12Z",
+      "method": "llm",
+      "product_id": "5ku-14-5-outer-barrel-aluminum-m4",
+      "product_sku": "SP-5KU-5KU-126",
+      "product_title": "14.5\" Outer Barrel for M4"
+    },
+    {
+      "competitor_domain": "aa-store.at",
+      "competitor_product_id": "competitor:aa-store.at:https://www.aa-store.at/5ku-rp-1-ak-extended-charging-handle-knob-black",
+      "competitor_title": "5KU RP-1 AK Extended Charging Handle Knob - Black",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:29:12Z",
+      "method": "llm",
+      "product_id": "5ku-ak-rp-1-extended-charging-handle",
+      "product_sku": "SP-5KU-5KU-300-BLK",
+      "product_title": "AK RP-1 Extended Charging Handle"
+    },
+    {
+      "competitor_domain": "patrolbase.co.uk",
+      "competitor_product_id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/5ku-kp-9-spitfire-tracer-unit-14mm-ccw",
+      "competitor_title": "5KU KP-9 Spitfire Tracer Unit; 14mm CCW",
+      "confidence": 0.95,
+      "matched_at": "2026-06-24T14:29:31Z",
+      "method": "llm",
+      "product_id": "5ku-sf-mpi-kp-9-tracer-suppressor-14mm-ccw",
+      "product_sku": "SP-5KU-BBP-334",
+      "product_title": "SF MPI KP-9 9x19 Tracer Muzzle Device (14mm CCW)"
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/27447.html",
+      "competitor_title": "CowCow Technology 150% Recoil Spring for Action Army AAP-01 Gas Blowback Airsoft Pistols",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:46:43Z",
+      "method": "llm",
+      "product_id": "aap-01-150-recoil-spring",
+      "product_sku": null,
+      "product_title": "AAP-01 150% Recoil Spring"
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/27446.html",
+      "competitor_title": "CowCow Technology 200% Nozzle Spring for Action Army AAP-01 Gas Blowback Airsoft Pistols",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:46:43Z",
+      "method": "llm",
+      "product_id": "aap-01-200-nozzle-spring",
+      "product_sku": null,
+      "product_title": "AAP-01 200% Nozzle Spring"
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/113291.html",
+      "competitor_title": "CowCow Technology Enhanced V2 Piston Head for Action Army AAP-01 Gas Blowback Airsoft Pistols",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:46:43Z",
+      "method": "llm",
+      "product_id": "aap-01-enhanced-piston-head-v2",
+      "product_sku": null,
+      "product_title": "AAP-01 Enhanced Piston Head V2"
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/35833.html",
+      "competitor_title": "CowCow Technology Enhanced Complete Nozzle Set For Action Army AAP-01 Gas Blowback Airsoft Pistols",
+      "confidence": 0.95,
+      "matched_at": "2026-06-24T14:46:43Z",
+      "method": "llm",
+      "product_id": "aap-01-enhanced-plastic-nozzle-set",
+      "product_sku": null,
+      "product_title": "AAP-01 Enhanced Plastic Nozzle Set"
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/102751.html",
+      "competitor_title": "CowCow Technology Stainless Steel Hammer Housing for Action Army AAP-01 Gas Blowback Airsoft Pistols",
+      "confidence": 0.95,
+      "matched_at": "2026-06-24T14:46:53Z",
+      "method": "llm",
+      "product_id": "aap-01-stainless-steel-hammer",
+      "product_sku": null,
+      "product_title": "AAP-01 Stainless Steel Hammer"
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/102751.html",
+      "competitor_title": "CowCow Technology Stainless Steel Hammer Housing for Action Army AAP-01 Gas Blowback Airsoft Pistols",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:46:53Z",
+      "method": "llm",
+      "product_id": "aap-01-stainless-steel-hammer-housing",
+      "product_sku": null,
+      "product_title": "AAP-01 Stainless Steel Hammer Housing"
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/113291.html",
+      "competitor_title": "CowCow Technology Enhanced V2 Piston Head for Action Army AAP-01 Gas Blowback Airsoft Pistols",
+      "confidence": 0.95,
+      "matched_at": "2026-06-24T14:47:00Z",
+      "method": "llm",
+      "product_id": "aap01-enhance-piston-head",
+      "product_sku": null,
+      "product_title": "AAP01 Enhance Piston Head"
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/pu18333.html",
+      "competitor_title": "Enhanced Nozzle for AAP01 GBB - Polymer - CowCow Technology",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:47:06Z",
+      "method": "llm",
+      "product_id": "aap01-enhance-plastic-nozzle",
+      "product_sku": null,
+      "product_title": "AAP01 Enhance Plastic Nozzle"
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/abdegrease.html",
+      "competitor_title": "Degreasing Spray Aerosol Spray 150ml - Abbey ",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:31:59Z",
+      "method": "llm",
+      "product_id": "abbey-150ml-degreaser-spray",
+      "product_sku": "SP-ABBEY-03",
+      "product_title": "150ml Degreaser Spray"
+    },
+    {
+      "competitor_domain": "patrolbase.co.uk",
+      "competitor_product_id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/abbey-gas-brass-nozzle-extension",
+      "competitor_title": "Abbey Gas Nozzle Extension",
+      "confidence": 0.95,
+      "matched_at": "2026-06-24T14:31:59Z",
+      "method": "llm",
+      "product_id": "abbey-extension-nozzle-valve",
+      "product_sku": "SP-ABBEY-08",
+      "product_title": "Abbey Extension Nozzle"
+    },
+    {
+      "competitor_domain": "patrolbase.co.uk",
+      "competitor_product_id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/abbey-silicone-gun-grease-20ml-pot",
+      "competitor_title": "Abbey Silicone Gun Grease 20ml Pot",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:32:06Z",
+      "method": "llm",
+      "product_id": "abbey-silicone-gun-grease",
+      "product_sku": "SP-ABBEY-01",
+      "product_title": "Silicone Gun Grease for Airsoft Pistol (Valve Seal) 20 ml"
+    },
+    {
+      "competitor_domain": "aa-store.at",
+      "competitor_product_id": "competitor:aa-store.at:https://www.aa-store.at/acetech-ac5000-chronograph",
+      "competitor_title": "ACETech AC5000 Chronograph",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:32:06Z",
+      "method": "llm",
+      "product_id": "acetech-ac5000-chronograph",
+      "product_sku": "SP-ACET-01",
+      "product_title": "AC5000 Chronograph"
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-inner-barrel/8460-action-army-aac-603-precision-barrel-for-vsr-10-500mm.html",
+      "competitor_title": "Action Army AAC 6.03 precision Barrel for VSR-10 500mm",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:32:13Z",
+      "method": "llm",
+      "product_id": "action-army-500mm-inner-barrel-vsr-10",
+      "product_sku": "SP-AAC-142",
+      "product_title": "500mm 6.03 VSR-10 Inner Barrel"
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/30888-az.html",
+      "competitor_title": "Nozzle for AAP01 GBB - Black - Action Army",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:33:17Z",
+      "method": "llm",
+      "product_id": "action-army-aap-01-nozzle",
+      "product_sku": "SP-AAC-59",
+      "product_title": "Nozzle for AAP01"
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/34135-az.html",
+      "competitor_title": "Extended Mag Release for AAP01 GBB - Black - Action Army",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:33:04Z",
+      "method": "llm",
+      "product_id": "action-army-aap01-extended-mag-release",
+      "product_sku": "SP-AAC-84",
+      "product_title": "Extended Mag Release for AAP-01 - Black"
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/34136-az.html",
+      "competitor_title": "Extended Mag Release for AAP01 GBB - Red - Action Army",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:33:04Z",
+      "method": "llm",
+      "product_id": "action-army-aap01-external-parts-mag-release-red",
+      "product_sku": "SP-AAC-93",
+      "product_title": "Extended Mag Release for AAP01 - Red"
+    },
+    {
+      "competitor_domain": "aa-store.at",
+      "competitor_product_id": "competitor:aa-store.at:https://www.aa-store.at/action-army-aap-01-wheel-adjusted-hop-up-chamber",
+      "competitor_title": "Action Army AAP-01 Wheel Adjusted Hop-Up Chamber",
+      "confidence": 1.0,
+      "matched_at": "2026-06-24T14:32:26Z",
+      "method": "llm",
+      "product_id": "action-army-aap01-hop-up-chamber-adjustable",
+      "product_sku": "SP-AAC-77",
+      "product_title": "AAP01 Adjustable Hop-Up Chamber"
+    }
+  ],
+  "source": "f5_existing_product_match_edge_audit_readonly"
+}
