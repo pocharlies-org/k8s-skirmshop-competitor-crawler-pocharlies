@@ -27,8 +27,8 @@
 - [x] **Shopify probe mock PASS.** Busqueda binaria o parse de 422 para maxima cantidad disponible; tests cubren in-stock, unavailable, qty limite, 403/429, challenge y cleanup. Evidence: `backend-shopify.report.md`; `tests/test_prober_shopify.py`; `pytest -q` -> `81 passed in 0.20s`.
 - [x] **WooCommerce probe mock PASS.** Usa `quantity_limits.maximum` si disponible o respuesta add-to-cart; tests cubren mismas ramas de seguridad. Evidence: `backend-woo.report.md`; `tests/test_prober_woo.py`; `pytest -q` -> `91 passed in 0.31s`.
 - [x] **Generic probe policy PASS.** GenericHtml solo probea si hay patron add-to-cart seguro y testeado; si no, `unknown/blocked` sin forzar. Evidence: `backend-generic.report.md`; `GenericProber` default-deny returns `SKIPPED/no_safe_pattern` without transport calls; `pytest -q` -> `70 passed in 0.24s`.
-- [ ] **Cleanup verificado.** Cada probe termina con clear cart o cleanup equivalente; tests prueban cleanup tambien cuando add-to-cart falla. Evidence:
-- [ ] **Kill-switch verificado.** Smoke mocked 403/429/challenge activa cooldown y bloquea probes posteriores del dominio; metrica/log estructurado presente. Evidence:
+- [x] **Cleanup verificado.** Cada probe termina con clear cart o cleanup equivalente; tests prueban cleanup tambien cuando add-to-cart falla. Evidence: `backend-shopify.report.md`, `backend-woo.report.md`; Shopify cleanup success/fail tests; Woo cleanup success/fail tests; `pytest -q` -> `98 passed in 0.27s`.
+- [x] **Kill-switch verificado.** Smoke mocked 403/429/challenge activa cooldown y bloquea probes posteriores del dominio; metrica/log estructurado presente. Evidence: `backend-foundation.report.md`, `backend-shopify.report.md`, `backend-woo.report.md`, `backend-service.report.md`; DomainGuard, Shopify, Woo and service cooldown tests; `pytest -q` -> `98 passed in 0.27s`.
 - [x] **Integracion F3 PASS.** Resultado cart-probe se puede escribir via F3 writer como observacion append-only con `stock_qty` numerico y `stock_method=cart_probe`; idempotencia se mantiene. Evidence: `backend-foundation.report.md`; `tests/test_prober_contract.py::test_probed_exact_qty_maps_and_writes_idempotently`; `pytest -q` -> `64 passed in 0.22s`.
 - [ ] **Calibracion muestra 10 PASS.** Tabla probe vs visible/ground-truth para dominio green aprobado; discrepancias clasificadas; cero checkout/login; cleanup log por producto. Evidence:
 - [ ] **Security PASS.** No secretos, no cookies persistentes, no PII, no CAPTCHA solving, no checkout, rate limits/cooldown, dominio red bloqueado. Evidence:
@@ -38,7 +38,7 @@
 ## Specialist Checks
 - [x] **rho-researcher** - repo destino, plataformas, dominios candidatos, robots/antibot, egress actual. Evidence: `researcher.report.md`; Claude CLI read-only PASS; live calibration target blocked for lack of green Shopify/Woo.
 - [x] **rho-architect** - contrato probe, boundaries F4/F3/F6/F7, modelo de cooldown/metrics. Evidence: `architect.report.md`; Claude CLI read-only PASS; live calibration remains blocked.
-- [ ] **rho-backend** - probe core, transports mockables, integracion F3 writer, tests. Evidence:
+- [x] **rho-backend** - probe core, transports mockables, integracion F3 writer, tests. Evidence: `backend-foundation.report.md`, `backend-generic.report.md`, `backend-shopify.report.md`, `backend-woo.report.md`, `backend-service.report.md`; `pytest -q` -> `98 passed in 0.27s`; `git diff --check` PASS; `python3 -m compileall src tests` PASS.
 - [ ] **rho-devops** - microservicio/k8s/egress/dry-run/no Cron activo. Evidence:
 - [ ] **rho-security** - anti-bot/legal/no checkout/no login/no CAPTCHA/no dirty carts. Evidence:
 - [ ] **rho-verifier** - re-ejecuta tests/smokes/diff/evidencia. Evidence:
@@ -52,3 +52,4 @@
 - 2026-06-25T01:18:00+02:00 - BACKEND GENERIC PASS: transporte mockable y `GenericProber` default-deny implementados; cero llamadas de red, metrica skipped y tests PASS. Pendiente Shopify/Woo/service.
 - 2026-06-25T01:31:00+02:00 - BACKEND SHOPIFY PASS: `ShopifyProber` mock-only implementado con 422 parse, binary search, uncapped, unavailable, 403/429/challenge kill-switch, cleanup y unexpected-status errors. Evidencia: `pytest -q` 81 passed. Pendiente Woo/service.
 - 2026-06-25T01:41:00+02:00 - BACKEND WOO PASS: `WooProber` mock-only implementado con `quantity_limits.maximum`, qty desconocida, out-of-stock, 403/429/challenge kill-switch, cleanup y errores. Evidencia: `pytest -q` 91 passed. Pendiente service facade y DevOps/Security/Verifier.
+- 2026-06-25T01:50:00+02:00 - BACKEND MOCK PASS: `probe_stock` service facade implementado. Backend F4 mock-only completo: contract, guard, metrics, Generic default-deny, Shopify, Woo, service y F3 mapper. Evidencia: `pytest -q` 98 passed. Pendiente DevOps/Security/Verifier y calibracion live bloqueada.

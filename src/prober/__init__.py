@@ -28,6 +28,7 @@ from .contract import (
 from .generic import NO_SAFE_PATTERN, GenericProber
 from .killswitch import DEFAULT_COOLDOWN, DomainBlocked, DomainGuard, DomainStatus
 from .metrics import CRAWL_BLOCK_TOTAL, PROBE_TOTAL, Metrics
+from .service import probe_stock
 from .shopify import ADD_PATH, CLEAR_PATH, ShopifyProber
 from .transport import ProbeResponse, ProbeTransport, TransportError
 from .woo import ADD_PATH as WOO_ADD_PATH
@@ -62,4 +63,5 @@ __all__ = [
     "WooProber",
     "WOO_ADD_PATH",
     "WOO_REMOVE_PATH",
+    "probe_stock",
 ]
