@@ -29,7 +29,7 @@
 ## Specialist Checks
 - [x] **rho-researcher** - preflight read-only de dominios `green`, selección de piloto, riesgos anti-bot y rutas públicas. Evidence: `rso/F1-catalog-price/researcher.report.md`; PMO exception because Claude researcher invocations hung without output.
 - [x] **rho-architect** - diseño adapter/data contract, source_id estable, frontera F1/F2/F4. Evidence: `rso/F1-catalog-price/architect.report.md`; PMO documentation exception because Claude architect invocations hung without output.
-- [ ] **rho-backend** - implementación, tests, dry-run, smoke artefacto.
+- [blocked: Claude CLI hangs before writing files] **rho-backend** - implementación, tests, dry-run, smoke artefacto. Evidence: `rso/F1-catalog-price/backend.blocker.report.md`; multiple backend invocations produced no stdout and no worktree changes.
 - [ ] **rho-security** - confirma cero cart/checkout/login/write y solo GET público.
 - [ ] **rho-verifier** - verificación independiente de comandos, artefactos, diff y no-F2/F4.
 - [ ] **Codex/RSO auditor** - re-ejecuta evidencia y marca PASS/BLOCKED.
@@ -38,3 +38,4 @@
 - 2026-06-24T14:30:00+02:00 - OPEN: F1 abierta tras F0 PASS. Pendiente ejecución Claude CLI.
 - 2026-06-24T14:48:00+02:00 - RESEARCH DONE: PMO read-only preflight selected `leopard.es` as pilot (`price_hits=357`, `product_hits=479`) after Claude researcher invocations hung without output. No product code touched. Backend implementation still pending Claude.
 - 2026-06-24T14:55:00+02:00 - ARCHITECT DONE: PMO documentation-only architecture report added after Claude architect invocation hung without output. No product code touched. Backend implementation still pending Claude.
+- 2026-06-24T15:08:00+02:00 - BLOCKED: F1 backend implementation delegated repeatedly to Claude CLI (`rho-backend` with agent, shorter prompt, and fallback without agent). All invocations hung silently with no stdout and no worktree changes; Codex did not implement product code. F1 remains OPEN/BLOCKED, no F2/F5 opened.
