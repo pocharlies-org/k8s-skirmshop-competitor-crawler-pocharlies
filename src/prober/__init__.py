@@ -25,8 +25,10 @@ from .contract import (
     StockStatus,
     probe_result_to_observation,
 )
+from .generic import NO_SAFE_PATTERN, GenericProber
 from .killswitch import DEFAULT_COOLDOWN, DomainBlocked, DomainGuard, DomainStatus
 from .metrics import CRAWL_BLOCK_TOTAL, PROBE_TOTAL, Metrics
+from .transport import ProbeResponse, ProbeTransport, TransportError
 
 __all__ = [
     "ANTIBOT_REASONS",
@@ -45,4 +47,9 @@ __all__ = [
     "CRAWL_BLOCK_TOTAL",
     "PROBE_TOTAL",
     "Metrics",
+    "ProbeResponse",
+    "ProbeTransport",
+    "TransportError",
+    "GenericProber",
+    "NO_SAFE_PATTERN",
 ]
