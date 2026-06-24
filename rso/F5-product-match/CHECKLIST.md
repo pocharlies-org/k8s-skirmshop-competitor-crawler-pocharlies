@@ -5,39 +5,41 @@
 > Marca `[x]` SOLO con `Evidence:` directa (comando/archivo/log/output). No abrir F3/F6/F7 sin PASS de Codex.
 
 ## Objective
-- [ ] Poblar/validar matching `PRODUCT_MATCH` entre nuestros productos Shopify y `CompetitorProduct` con `match_confidence` y `match_method`, usando cascada multi-senal (EAN/GTIN -> SKU -> marca+modelo normalizado -> embeddings BGE/reranker), enviando dudosos a `MatchReview` y demostrando precision en muestra revisada. Evidence:
+- [blocked] Poblar/validar matching `PRODUCT_MATCH` entre nuestros productos Shopify y `CompetitorProduct` con `match_confidence` y `match_method`, usando cascada multi-senal (EAN/GTIN -> SKU -> marca+modelo normalizado -> embeddings BGE/reranker), enviando dudosos a `MatchReview` y demostrando precision en muestra revisada. Evidence: dry-run implementado y verificado (`src/matchers/product_match.py`, `match-candidates.json`, 32 tests PASS), pero F5 completo queda bloqueado: no hay muestra manual real >=50 pares, no hay `APPLY APPROVED`, no hay write target seguro no-prod y `MatchReview` durable no existe.
 
 ## Directives
-- [ ] Claude CLI = EJECUTOR; Codex = RSO/PMO/auditor. Claude implementa/prueba; Codex re-ejecuta evidencia antes de abrir F3/F6/F7.
-- [ ] No tocar `deploy/prod`, k8s manifests, CronJobs ni produccion nocturna en F5.
-- [ ] F5 es **matching**. Prohibido historico append-only (F3), cart-probe/cantidad exacta/carrito (F4), comparacion viva/F6, scheduling/F7.
-- [ ] No usar matches dudosos para alimentar alertas/deltas/API. Tramo medio siempre a `MatchReview`.
-- [ ] Todo write debe ser idempotente y auditable: dry-run primero, target explicito, before/after counts, rollback o re-run seguro.
-- [ ] No escribir en produccion real sin evidencia de target y aprobacion RSO en el reporte de auditoria. Si el unico target disponible es prod, marcar `[blocked]`.
-- [ ] No exponer secretos/tokens ni datos personales. La muestra debe contener solo identificadores de producto publicos/necesarios.
-- [ ] Git: ramas `codex/*` por repo tocado; `fetch`+rebase antes de commit; push inmediato; nunca force-push.
+- [x] Claude CLI = EJECUTOR; Codex = RSO/PMO/auditor. Claude implementa/prueba; Codex re-ejecuta evidencia antes de abrir F3/F6/F7. Evidence: researcher/architect/backend/security/verifier reportes; Codex re-ejecuto compile, pytest, JSON validation y diff checks.
+- [x] No tocar `deploy/prod`, k8s manifests, CronJobs ni produccion nocturna en F5. Evidence: diffs limitados a Brain `src/matchers/**`, `tests/unit/test_product_matcher.py`, `src/stores/falkordb.py` index tuple; RSO `rso/F5-product-match/**`.
+- [x] F5 es **matching**. Prohibido historico append-only (F3), cart-probe/cantidad exacta/carrito (F4), comparacion viva/F6, scheduling/F7. Evidence: `prices.py`/`intel.py` no modificados; F3/F4/F6/F7 no abiertos.
+- [x] No usar matches dudosos para alimentar alertas/deltas/API. Tramo medio siempre a `MatchReview`. Evidence: review entries solo en `match-candidates.json["review"]`; `human_verdict=null`; no `PRODUCT_MATCH` writes.
+- [x] Todo write debe ser idempotente y auditable: dry-run primero, target explicito, before/after counts, rollback o re-run seguro. Evidence: no apply implementado; `APPLY APPROVED` requerido antes de Phase D; edges `[blocked]`.
+- [x] No escribir en produccion real sin evidencia de target y aprobacion RSO en el reporte de auditoria. Si el unico target disponible es prod, marcar `[blocked]`. Evidence: researcher/architect/verifier confirman unico target visible prod FalkorDB; apply `[blocked]`.
+- [x] No exponer secretos/tokens ni datos personales. La muestra debe contener solo identificadores de producto publicos/necesarios. Evidence: `security.report.md` PASS; artifact synthetic sin PII/secrets.
+- [x] Git: ramas `codex/*` por repo tocado; `fetch`+rebase antes de commit; push inmediato; nunca force-push. Evidence: RSO rama `codex/competitor-crawler-F5-product-match`; Brain repo usa rama existente `codex/product-recommendations-20260616`; commits pendientes con fetch+rebase inmediato antes de commit.
 
 ## Acceptance Criteria
 - [x] **Topology research completo.** Repos/servicios afectados identificados (`skirmshop-brain-v2`, posible `skirmshopshopifyapp`, este repo RSO), schema `PRODUCT_MATCH`, APIs consumidoras (`prices.py`, `intel.py`), fuente Shopify barcode/SKU y fuente `CompetitorProduct` verificados. Evidence: `rso/F5-product-match/researcher.report.md`; Brain branch `codex/product-recommendations-20260616`, Shopifyapp branch `codex/competitor-crawler-F0-bootstrap`; `PRODUCT_MATCH` en `ontology.py`, consumidores no lo expanden todavia.
 - [x] **Contrato `PRODUCT_MATCH` definido.** Direccion del edge, claves idempotentes, propiedades (`match_confidence`, `match_method`, timestamps/source), umbrales auto-link/review/reject y enum de metodos documentados. Evidence: `rso/F5-product-match/architect.report.md`; edge `(Product)-[:PRODUCT_MATCH]->(CompetitorProduct)`, idempotency key `(Product.id, CompetitorProduct.id)`, props `match_confidence/match_method/matched_at/matcher_version/source/status`.
-- [ ] **Matcher implementado con dry-run.** Comando dry-run produce candidatos con senales usadas, score, decision (`auto_link|review|reject`) sin escribir edges. Evidence:
-- [ ] **Cascada multi-senal.** EAN/GTIN exacto usa `Variant.barcode`; SKU exacto; marca+modelo normalizado NFKD/ASCII/hyphen->space; fallback embedding/reranker implementado o bloqueado explicitamente si infraestructura no existe. Evidence: Arquitectura marca `[BLOCKED-EAN]` porque `CompetitorProduct` no tiene `ean/barcode`; F5 dry-run debe empezar en SKU y documentar `blocked_ean`.
-- [ ] **`MatchReview` para dudosos.** Tramo medio se persiste/serializa a cola de revision humana o artifact equivalente; no se crea `PRODUCT_MATCH` para dudosos. Evidence:
-- [ ] **Precision en muestra revisada.** Muestra manual revisada con positivos/negativos, matriz de confusion, precision >= umbral definido; falsos positivos explicados. Evidence:
-- [ ] **Edges `PRODUCT_MATCH` auditables.** En target permitido, count before/after de edges y muestra de edges con `match_confidence/match_method`; re-run idempotente no duplica. Evidence:
-- [ ] **Consumidores desbloqueables.** `prices.py`/`intel.py` pueden leer `PRODUCT_MATCH` sin usar matches dudosos; tests o smoke lo demuestran. Evidence:
-- [ ] **Security/data PASS.** Sin secretos en logs, sin writes no aprobados, sin datos personales, target de escritura claro, rollback/re-run seguro. Evidence:
-- [ ] **Tests locales pasan.** Unit/integration tests del matcher, schema/ontology y consumidores relevantes; `git diff --check` pasa. Evidence:
+- [x] **Matcher implementado con dry-run.** Comando dry-run produce candidatos con senales usadas, score, decision (`auto_link|review|reject`) sin escribir edges. Evidence: `src/matchers/product_match.py` + `run_dry_run()` → `match-candidates.json` (synthetic); `pytest tests/unit/test_product_matcher.py` → 32 passed; `py_compile` OK.
+- [x] **Cascada multi-senal.** EAN/GTIN exacto usa `Variant.barcode`; SKU exacto; marca+modelo normalizado NFKD/ASCII/hyphen->space; fallback embedding/reranker implementado o bloqueado explicitamente si infraestructura no existe. Evidence: Arquitectura marca `[BLOCKED-EAN]` porque `CompetitorProduct` no tiene `ean/barcode`; dry-run empieza en SKU, `blocked_ean==total_pairs_evaluated`, `TestEANBlocked` 2/2 PASS. `TestBrandModel` 4/4 PASS. `TestEmbeddingSkipped` 2/2 PASS. Ver `backend.report.md`.
+- [x] **`MatchReview` para dudosos.** Tramo medio se persiste/serializa a cola de revision humana o artifact equivalente; no se crea `PRODUCT_MATCH` para dudosos. Evidence: Decision `review` emitida en `match-candidates.json["review"]` (1 entrada en fixture). `human_verdict=null`. Ningún edge creado. `MatchReview` durable (Prisma) fuera de scope F5; propuesta en `architect.report.md §4.3`.
+- [blocked] **Precision en muestra revisada.** Muestra manual revisada con positivos/negativos, matriz de confusion, precision >= umbral definido; falsos positivos explicados. Evidence: `confusion-matrix.md` existe pero esta marcado `synthetic_fixture`; precision real >=50 pares `[blocked]` hasta dry-run live read-only + revision humana/RSO.
+- [blocked] **Edges `PRODUCT_MATCH` auditables.** En target permitido, count before/after de edges y muestra de edges con `match_confidence/match_method`; re-run idempotente no duplica. Evidence: no apply implementado; target seguro no-prod inexistente; `APPLY APPROVED` no emitido; count before/after no procede.
+- [blocked] **Consumidores desbloqueables.** `prices.py`/`intel.py` pueden leer `PRODUCT_MATCH` sin usar matches dudosos; tests o smoke lo demuestran. Evidence: F6 boundary; `prices.py`/`intel.py` no tocados; requiere edges reales primero.
+- [x] **Security/data PASS.** Sin secretos en logs, sin writes no aprobados, sin datos personales, target de escritura claro, rollback/re-run seguro. Evidence: `rso/F5-product-match/security.report.md` PASS; Codex grep/JSON validation sin secrets/PII; no graph writes.
+- [x] **Tests locales pasan.** Unit/integration tests del matcher, schema/ontology y consumidores relevantes; `git diff --check` pasa. Evidence: `pytest tests/unit/test_product_matcher.py` → `32 passed, 1 warning in 0.07s`; `git diff --check` PASS en Brain y RSO repos.
 
 ## Specialist Checks
 - [x] **rho-researcher** - topologia, datos existentes, targets y riesgos de escritura. Evidence: `rso/F5-product-match/researcher.report.md`; safe write target `[blocked]` porque solo FalkorDB prod es visible; `MatchReview` no existe; `CompetitorProduct` no tiene barcode/ean.
 - [x] **rho-architect** - contrato de edge, umbrales, idempotencia, frontera F5 vs F6. Evidence: `rso/F5-product-match/architect.report.md`; F5 = dry-run/matcher/new edge contract, F6 = `prices.py`/`intel.py` comparacion viva; apply bloqueado hasta `APPLY APPROVED`.
-- [ ] **rho-backend** - matcher, dry-run/apply controlado, tests, artefactos. Evidence:
-- [ ] **rho-security** - secretos, writes, datos, target, re-run seguro. Evidence:
-- [ ] **rho-verifier** - re-ejecuta comandos, matriz, counts, no scope creep. Evidence:
-- [ ] **Codex/RSO auditor** - re-ejecuta evidencia y marca PASS/BLOCKED. Evidence:
+- [x] **rho-backend** - matcher, dry-run/apply controlado, tests, artefactos. Evidence: `backend.report.md`; 32 tests PASS; `match-candidates.json` + `confusion-matrix.md` generados; `Variant.barcode` index añadido; apply BLOCKED hasta RSO gate.
+- [x] **rho-security** - secretos, writes, datos, target, re-run seguro. Evidence: `rso/F5-product-match/security.report.md`; 10/10 criteria PASS, no blockers.
+- [x] **rho-verifier** - re-ejecuta comandos, matriz, counts, no scope creep. Evidence: `rso/F5-product-match/verifier.report.md`; implemented scope PASS, blockers confirmed.
+- [x] **Codex/RSO auditor** - re-ejecuta evidencia y marca PASS/BLOCKED. Evidence: `rso/F5-product-match/codex-audit.report.md`; dry-run PASS, F5 gate BLOCKED.
 
 ## Status (log datado, append-only)
 - 2026-06-24T16:31:35+02:00 - OPEN: F5 abierta tras F2 PASS (`134036e`). Pendiente research Claude CLI antes de cualquier write.
 - 2026-06-24T16:36:00+02:00 - RESEARCH PASS/BLOCKED: topologia documentada; implementacion debe empezar por dry-run sin writes. Apply/live edges bloqueado hasta target seguro o aprobacion RSO explicita.
 - 2026-06-24T16:41:00+02:00 - ARCHITECT PASS/BLOCKED: contrato y umbrales definidos; `[BLOCKED-EAN]` por ausencia de `CompetitorProduct.ean/barcode`; `[BLOCKED-APPLY]` hasta precision gate y `APPLY APPROVED`.
+- 2026-06-24T16:46:00+02:00 - BACKEND PASS/BLOCKED: matcher implementado (`src/matchers/`), 32 tests PASS, artifacts generados (`match-candidates.json`, `confusion-matrix.md` synthetic_fixture), `Variant.barcode` index pre-emptivo añadido. Precision gate `[blocked]` — requiere muestra manual ≥50 pares reales. Apply `[blocked]` — RSO gate pendiente.
+- 2026-06-24T16:56:29+02:00 - CODEX AUDIT PASS/BLOCKED: implemented dry-run scope PASS; F5 completo BLOCKED por precision real/manual, apply/edges, MatchReview durable y consumidores F6. No abrir F3/F6 hasta resolver.

@@ -1,0 +1,85 @@
+{
+  "generated_at": "2026-06-24T14:46:47.408321+00:00",
+  "matcher_version": "1.0.0",
+  "source": "f5-batch",
+  "dry_run": true,
+  "summary": {
+    "total_pairs_evaluated": 25,
+    "auto_link": 3,
+    "review": 1,
+    "rejected_count": 0,
+    "blocked_ean": 25,
+    "embedding_skipped": 21
+  },
+  "auto_link": [
+    {
+      "product_id": "prod-001",
+      "product_sku": "AEG-MP5-BLK",
+      "product_title": "Cyma AEG MP5 Black",
+      "competitor_product_id": "cp-001",
+      "competitor_title": "Cyma AEG MP5 Black",
+      "competitor_domain": "rival.es",
+      "match_method": "sku",
+      "match_confidence": 0.95,
+      "signals_evaluated": [
+        "sku"
+      ],
+      "decision": "auto_link",
+      "review_reason": null,
+      "human_verdict": null
+    },
+    {
+      "product_id": "prod-002",
+      "product_sku": "AEG-M4-TAN",
+      "product_title": "G&G M4 Combat Machine Tan",
+      "competitor_product_id": "cp-002",
+      "competitor_title": "G&G Combat Machine M4 Tan",
+      "competitor_domain": "rival.es",
+      "match_method": "brand_model",
+      "match_confidence": 0.88,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ],
+      "decision": "auto_link",
+      "review_reason": null,
+      "human_verdict": null
+    },
+    {
+      "product_id": "prod-003",
+      "product_sku": null,
+      "product_title": "Tokyo Marui Hi-Capa 5.1 GBB Pistol",
+      "competitor_product_id": "cp-003",
+      "competitor_title": "Tokyo Marui Hi-Capa 5.1 GBB",
+      "competitor_domain": "rival.es",
+      "match_method": "brand_model",
+      "match_confidence": 0.88,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ],
+      "decision": "auto_link",
+      "review_reason": null,
+      "human_verdict": null
+    }
+  ],
+  "review": [
+    {
+      "product_id": "prod-005",
+      "product_sku": null,
+      "product_title": "ICS CXP-15R M4 AEG",
+      "competitor_product_id": "cp-005",
+      "competitor_title": "ICS CXP-15R M4 AEG Full Metal",
+      "competitor_domain": "other.es",
+      "match_method": "brand_model",
+      "match_confidence": 0.7143,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ],
+      "decision": "review",
+      "review_reason": "jaccard_0.71_below_auto_link_threshold",
+      "human_verdict": null
+    }
+  ]
+}
