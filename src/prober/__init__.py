@@ -30,6 +30,9 @@ from .killswitch import DEFAULT_COOLDOWN, DomainBlocked, DomainGuard, DomainStat
 from .metrics import CRAWL_BLOCK_TOTAL, PROBE_TOTAL, Metrics
 from .shopify import ADD_PATH, CLEAR_PATH, ShopifyProber
 from .transport import ProbeResponse, ProbeTransport, TransportError
+from .woo import ADD_PATH as WOO_ADD_PATH
+from .woo import REMOVE_PATH as WOO_REMOVE_PATH
+from .woo import WooProber
 
 __all__ = [
     "ANTIBOT_REASONS",
@@ -56,4 +59,7 @@ __all__ = [
     "ShopifyProber",
     "ADD_PATH",
     "CLEAR_PATH",
+    "WooProber",
+    "WOO_ADD_PATH",
+    "WOO_REMOVE_PATH",
 ]
