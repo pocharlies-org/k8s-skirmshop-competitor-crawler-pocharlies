@@ -45,8 +45,10 @@ F0 remains blocked and F1 must not open:
   traffic-derived or user-curated.
 - `fingerprint.json` was not generated and cannot cover 100% of target domains.
 - `silverback-airsoft.com = red` is not verified in a fingerprint artifact.
-- Brain indexes for `CompetitorProduct`/`CompetitorStore` are not implemented;
-  `skirmshop-brain-v2` is currently on another `codex/*` branch.
+- Brain index code for `CompetitorProduct`/`CompetitorStore` is now implemented
+  and pushed in `skirmshop-brain-v2` commit `f53b552` on branch
+  `codex/product-recommendations-20260616`, but runtime/Cypher verification or a
+  deployed Brain boot has not been performed.
 - The imported crawler does not yet honor `robots.txt`/`Crawl-delay` and still
   uses the legacy hardcoded 14-domain config instead of `CompetitorSource`.
 
@@ -60,4 +62,6 @@ F0 remains blocked and F1 must not open:
   `rso/F0-bootstrap/verifier.report.md`.
 - [blocked: SimilarWeb unavailable] Target competitor list not derived.
 - [blocked: no fingerprint] Fingerprint gate not met.
-- [blocked: brain branch/indexes] Competitor graph indexes not implemented.
+- [blocked: brain runtime verification] Competitor graph index code is
+  implemented in `skirmshop-brain-v2` commit `f53b552`, but live index creation
+  has not been verified with Cypher/rollout.
