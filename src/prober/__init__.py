@@ -28,6 +28,7 @@ from .contract import (
 from .generic import NO_SAFE_PATTERN, GenericProber
 from .killswitch import DEFAULT_COOLDOWN, DomainBlocked, DomainGuard, DomainStatus
 from .metrics import CRAWL_BLOCK_TOTAL, PROBE_TOTAL, Metrics
+from .shopify import ADD_PATH, CLEAR_PATH, ShopifyProber
 from .transport import ProbeResponse, ProbeTransport, TransportError
 
 __all__ = [
@@ -52,4 +53,7 @@ __all__ = [
     "TransportError",
     "GenericProber",
     "NO_SAFE_PATTERN",
+    "ShopifyProber",
+    "ADD_PATH",
+    "CLEAR_PATH",
 ]
