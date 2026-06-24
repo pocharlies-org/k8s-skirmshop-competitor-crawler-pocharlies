@@ -1,0 +1,3366 @@
+{
+  "apply_performed": false,
+  "auto_link": [
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-external-parts/28178-silverback-tac-41-receiver.html",
+      "competitor_title": "Silverback TAC 41, Receiver",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:29Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-receiver",
+      "product_sku": "SP-SBA-RCV-30",
+      "product_title": "TAC 41 Receiver",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "aa-store.at",
+      "competitor_product_id": "competitor:aa-store.at:https://www.aa-store.at/action-army-vsr-10-spring-guide",
+      "competitor_title": "Action Army VSR-10 Spring Guide",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:49Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "action-army-vsr-10-spring-guide",
+      "product_sku": "SP-AAC-97",
+      "product_title": "VSR-10 Spring Guide",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-sgs-01.html",
+      "competitor_title": "TAC-41 Spring Guide Stopper - Silverback",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:29Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-spring-guide-stopper",
+      "product_sku": "SP-SILV-139",
+      "product_title": "TAC 41 Spring Guide Stopper",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-upper/12622-silverback-carbon-bolt-knob.html",
+      "competitor_title": "Silverback Carbon Bolt Knob",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:29:20Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-carbon-bolt-knob-tac-41",
+      "product_sku": "SP-SBA-BKB-06",
+      "product_title": "Carbon Bolt Knob",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-flash-hider/25060-silverback-tac-41-fluted-outer-barrel-330mm.html",
+      "competitor_title": "Silverback TAC-41 Fluted outer barrel - 330mm",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:40Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-outer-barrel-330mm-fluted",
+      "product_sku": "SP-SILV-110",
+      "product_title": "TAC-41 330mm Fluted Barrel",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-hop-up-chamber/11115-maple-leaf-vsr-10-hop-up-chamber-block.html",
+      "competitor_title": "Maple Leaf VSR-10 Hop Up Chamber Block",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:05:49Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "maple-leaf-vsr-hop-up-chamber-block",
+      "product_sku": "SP-MAPL-215",
+      "product_title": "VSR Hop-Up Chamber Block",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-hop-up-rubber/26988-silverback-gbb-type-flat-hop-up-rubber-4-pack-80.html",
+      "competitor_title": "Silverback GBB type Flat Hop Up rubber (4 pack) - 80°",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:29:33Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-gbb-flat-hop-up-rubber-80-degree-4-pack",
+      "product_sku": "SP-SILV-174",
+      "product_title": "GBB Flat Hop-Up Rubber 80° (4 Pack)",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-upper/12624-silverback-light-bolt-knob.html",
+      "competitor_title": "Silverback Light Bolt Knob",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:29:42Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-light-bolt-knob-rail-system",
+      "product_sku": "SP-SBA-BKB-05",
+      "product_title": "Light Bolt Knob",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-flash-hider/25072-silverback-tac-41-triangular-outer-barrel-510mm.html",
+      "competitor_title": "Silverback TAC-41 Triangular outer barrel - 510mm",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:53Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-outer-barrel-510mm-triangular",
+      "product_sku": "SP-SBA-OBL-38",
+      "product_title": "TAC-41 510mm TriAngular Barrel",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-flash-hider/25067-silverback-tac-41-twisted-outer-barrel-330mm.html",
+      "competitor_title": "Silverback TAC-41 Twisted outer barrel - 330mm",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:40Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-outer-barrel-330mm-twisted",
+      "product_sku": "SP-SBA-OBL-30",
+      "product_title": "TAC-41 330mm Twisted Barrel",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-bth-30.html",
+      "competitor_title": "TAC-41 Bolt Handle - Silverback",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:09Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-bolt-handle-piston",
+      "product_sku": "SP-SBA-BTH-30",
+      "product_title": "TAC 41 Bolt Handle",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "aa-store.at",
+      "competitor_product_id": "competitor:aa-store.at:https://www.aa-store.at/asg-scorpion-evo-3-a1-hpa",
+      "competitor_title": "ASG Scorpion Evo 3 A1 HPA",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:31:50Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "asg-scorpion-evo-3-a1-hpa-black",
+      "product_sku": "SP-ASG-18671A",
+      "product_title": "Scorpion Evo 3 A1 - HPA - Black",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/aeg-spring/1308-prometheus-ms100-non-linear-spring.html",
+      "competitor_title": "Prometheus MS100 non-linear spring",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:17:17Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "prometheus-non-linear-spring-ms100",
+      "product_sku": "SP-PROM-05",
+      "product_title": "Non-Linear Spring MS100",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-external-parts/28013-silverback-srs-twisted-stainless-steel-cylinder.html",
+      "competitor_title": "Silverback SRS Twisted Stainless Steel Cylinder",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:31:40Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-srs-cylinder-stainless-steel",
+      "product_sku": "SP-SILV-87",
+      "product_title": "SRS Twisted Stainless Steel Cylinder",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-upper/12625-silverback-grip-bolt-knob.html",
+      "competitor_title": "Silverback Grip Bolt Knob",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:29:33Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-grip-bolt-knob-tac-41",
+      "product_sku": "SP-SBA-BKB-07",
+      "product_title": "Grip Bolt Knob",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "aa-store.at",
+      "competitor_product_id": "competitor:aa-store.at:https://www.aa-store.at/acetech-ac5000-chronograph",
+      "competitor_title": "ACETech AC5000 Chronograph",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:32:06Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "acetech-ac5000-chronograph",
+      "product_sku": "SP-ACET-01",
+      "product_title": "AC5000 Chronograph",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-hop-up-rubber/26985-silverback-gbb-type-flat-hop-up-rubber-4-pack-60.html",
+      "competitor_title": "Silverback GBB type Flat Hop Up rubber (4 pack) - 60°",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:29:33Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-gbb-flat-hop-up-rubber-60-degree-4-pack",
+      "product_sku": "SP-SILV-172",
+      "product_title": "GBB Flat Hop-Up Rubber 60° (4 Pack)",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/mounting-support/40920-aim-o-killflash-for-rmr-red-dot-sight.html",
+      "competitor_title": "AIM-O Killflash for RMR Red Dot Sight",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:34:36Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "aim-o-killflash-rmr-red-dot",
+      "product_sku": "SP-I-4, 23A-AO 5027-BK",
+      "product_title": "KillFlash for RMR Red Dot Sight",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/31697-az.html",
+      "competitor_title": "Stow Bottle 1000ml - Mammoth - Hydrapak",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:56:43Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "hydrapak-stow-bottle-hydration-mammoth",
+      "product_sku": "SP-HYDR-12",
+      "product_title": "Stow Bottle 1000ml Mammoth",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-trigger/50323-silverback-srs-hti-dual-stage-trigger-classic.html",
+      "competitor_title": "Silverback SRS/HTI Dual Stage Trigger “Classic”",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:31:11Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-srs-trigger-dual-stage-classic",
+      "product_sku": "SP-SILV-21",
+      "product_title": "SRS Dual Stage Trigger - Classic",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-piston/25045-silverback-tac-41-type-piston-end.html",
+      "competitor_title": "Silverback TAC-41 type piston end",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:33:18Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-type-piston-end",
+      "product_sku": "SP-SILV-123",
+      "product_title": "TAC-41 Type Piston End",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-cylinder/25050-silverback-tac-41-complete-bolt.html",
+      "competitor_title": "Silverback TAC-41 Complete bolt",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:09Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-complete-bolt-piston",
+      "product_sku": "SP-SILV-128",
+      "product_title": "TAC 41 Complete Bolt",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-bec-01.html",
+      "competitor_title": "TAC-41 Standard Bolt End Cap - Silverback ",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:29Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "tac-41-standard-bolt-end-cap",
+      "product_sku": "SP-SBA-BEC-01",
+      "product_title": "TAC 41 Standard Bolt End Cap",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/aeg-spring/1821-prometheus-ms135-non-linear-spring.html",
+      "competitor_title": "Prometheus MS135 non-linear spring",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:17:17Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "prometheus-non-linear-spring-ms135-aeg",
+      "product_sku": "SP-PROM-12",
+      "product_title": "Non-Linear Spring MS135",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-trg-30.html",
+      "competitor_title": "TAC-41 Complete Trigger Box - Silverback",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:20Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-trigger-box",
+      "product_sku": "SP-SILV-148",
+      "product_title": "TAC 41 Complete Trigger Box",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "bunker501.nl",
+      "competitor_product_id": "competitor:bunker501.nl:https://bunker501.nl/ACTION-ARMY-ADAPTER-FN-SPR-A5M-/-DT-M40",
+      "competitor_title": "ACTION ARMY ADAPTER FN SPR A5M / DT M40 ",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:04Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "action-army-fn-spr-adapter-vsr-10",
+      "product_sku": "SP-AAC-144",
+      "product_title": "FN SPR A5M/DT M40 Adapter",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-hop-up-rubber/26986-silverback-gbb-type-flat-hop-up-rubber-4-pack-70.html",
+      "competitor_title": "Silverback GBB type Flat Hop Up rubber (4 pack) - 70°",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:29:33Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-gbb-flat-hop-up-rubber-70-degree-4-pack",
+      "product_sku": "SP-SILV-173",
+      "product_title": "GBB Flat Hop-Up Rubber 70° (4 Pack)",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/mounting-support/15351-aim-o-f1-mount-for-t1-t2.html",
+      "competitor_title": "AIM-O F1 Mount for T1/T2",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:34:28Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "aim-o-f1-mount-t1-t2",
+      "product_sku": "SP-K5, 11-AO1780-BK",
+      "product_title": "F1 Mount for T1/T2",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/24787-az.html",
+      "competitor_title": "Stainless Steel VSR-10 Cylinder - Maple Leaf",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:06:08Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "maple-leaf-vsr-cylinder-stainless-steel",
+      "product_sku": "SP-MAPL-211",
+      "product_title": "VSR Stainless Steel Cylinder",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-flash-hider/12607-silverback-srs-a2-g-spec-barrel.html",
+      "competitor_title": "Silverback SRS A2 G-Spec Barrel",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:30:55Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-srs-a2-outer-barrel-g-spec",
+      "product_sku": "SP-SBA-OBL-28",
+      "product_title": "SRS A2 G-Spec Barrel",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-hop-30.html",
+      "competitor_title": "TAC-41 Hop-Up Unit - Silverback",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:20Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-hop-up-unit",
+      "product_sku": "SP-SILV-132",
+      "product_title": "TAC 41 Hop Up Unit",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-flash-hider/25069-silverback-tac-41-twisted-outer-barrel-510mm.html",
+      "competitor_title": "Silverback TAC-41 Twisted outer barrel - 510mm",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:53Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-outer-barrel-510mm",
+      "product_sku": "SP-SBA-OBL-35",
+      "product_title": "TAC-41 510mm Twisted Barrel",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "aa-store.at",
+      "competitor_product_id": "competitor:aa-store.at:https://www.aa-store.at/swisseye-clipadapter-raptor",
+      "competitor_title": "SwissEye Clipadapter Raptor",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:34:22Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "swisseye-raptor-clipadapter",
+      "product_sku": "SP-SWISS-02",
+      "product_title": "Raptor CliPadapter",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/mounting-support/40974-aim-o-killflash-for-g33-3x-magnifier.html",
+      "competitor_title": "AIM-O Killflash for G33 3X magnifier",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:34:36Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "aim-o-killflash-g33-3x-magnifier",
+      "product_sku": "SP-AIM-35",
+      "product_title": "KillFlash for G33 3X Magnifier",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/34136-az.html",
+      "competitor_title": "Extended Mag Release for AAP01 GBB - Red - Action Army",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:04Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "action-army-aap01-external-parts-mag-release-red",
+      "product_sku": "SP-AAC-93",
+      "product_title": "Extended Mag Release for AAP01 - Red",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/mounting-support/15359-aim-o-low-drag-mount-for-t1-t2.html",
+      "competitor_title": "AIM-O Low Drag Mount for T1/T2",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:34:45Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "aim-o-low-drag-mount-t1-t2",
+      "product_sku": "SP-K5, 11-AO1701-BK",
+      "product_title": "Low Drag Mount for T1 and T2",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-flash-hider/57877-silverback-tac-41-triangular-outer-barrel-330mm.html",
+      "competitor_title": "Silverback TAC-41 Triangular outer barrel - 330mm",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:40Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-330mm-triangular-barrel",
+      "product_sku": "SP-SBA-OBL-36",
+      "product_title": "TAC-41 330mm TriAngular Barrel",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/stock/75039-silverback-reversible-dual-picatinny-hinge.html",
+      "competitor_title": "Silverback Reversible Dual Picatinny Hinge",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:30:40Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-dual-picatinny-hinge",
+      "product_sku": "SP-SILV-SBA-STK-48",
+      "product_title": "Reversible Dual Picatinny Hinge",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "bunker501.nl",
+      "competitor_product_id": "competitor:bunker501.nl:https://bunker501.nl/MODIFY-Sora-R-hop-Mound-Rubber-for-VSR-10/-GBB-(60-DEG)",
+      "competitor_title": "MODIFY Sora R-hop Mound Rubber for VSR-10/ GBB (60 DEG)",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:14:13Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "modify-sora-rhop-bucking-60deg",
+      "product_sku": "SP-MODI-MOD533001",
+      "product_title": "Sora R-Hop Mound Rubber for VSR-10/ GBB (60 deG)",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/gb-05-12.html",
+      "competitor_title": "Tappet Plate for Gearbox V2 AEG - Modify",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:14:13Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "modify-tappet-plate-v2-gearbox",
+      "product_sku": "SP-MODI-12",
+      "product_title": "Modify Tappet Plate for V2 Gearbox",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-cyl-31.html",
+      "competitor_title": "Stainless Steel / PVD Cylinder for TAC-41 - Silverback",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:29Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-stainless-steel-pvd-cylinder",
+      "product_sku": "SP-SILV-129",
+      "product_title": "TAC 41 Stainless Steel PVD Cylinder",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-spring-guide/26908-silverback-hti-spring-guide.html",
+      "competitor_title": "Silverback HTI Spring Guide",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:29:42Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-hti-spring-spring-guide",
+      "product_sku": "SP-SILV-41",
+      "product_title": "HTI spring guide",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-cyl-32.html",
+      "competitor_title": "TAC-41 Cylinder Head - Silverback",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:20Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-cylinder-head",
+      "product_sku": "SP-SILV-130",
+      "product_title": "TAC 41 Cylinder Head",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-flash-hider/25068-silverback-tac-41-twisted-outer-barrel-420mm.html",
+      "competitor_title": "Silverback TAC-41 Twisted outer barrel - 420mm",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:40Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-outer-barrel-420mm",
+      "product_sku": "SP-SBA-OBL-34",
+      "product_title": "TAC-41 420mm Twisted Barrel",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-flash-hider/25061-silverback-tac-41-fluted-outer-barrel-420mm.html",
+      "competitor_title": "Silverback TAC-41 Fluted outer barrel - 420mm",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:40Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-outer-barrel-420mm-fluted",
+      "product_sku": "SP-SBA-OBL-31",
+      "product_title": "TAC-41 420mm Fluted Barrel",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-external-parts/27017-silverback-hti-replacement-o-ring-set.html",
+      "competitor_title": "Silverback HTI replacement O-ring set",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:29:42Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-hti-piston-o-ring-set",
+      "product_sku": "SP-SBA-ORG-02",
+      "product_title": "HTI Replacement O-Ring Set",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-external-parts/28175-silverback-srs-open-piston-sear.html",
+      "competitor_title": "Silverback SRS Open Piston Sear",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:31:26Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-srs-open-piston-sear",
+      "product_sku": "SP-SILV-102",
+      "product_title": "SRS Open Piston Sear",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/ris-type-m-lok/12614-silverback-srs-a2-short-handguard.html",
+      "competitor_title": "Silverback SRS A2 Short Handguard",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:30:55Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "silverback-srs-a2-short-handguard-aluminium",
+      "product_sku": "SP-SBA-HDG-06",
+      "product_title": "SRS A2 Short Handguard",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-magazine/8061-silverback-srs-30-rds-steel-magazine-black.html",
+      "competitor_title": "Silverback SRS 30 rds Steel Magazine - Black",
+      "decision": "auto_link",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:31:40Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.88,
+      "match_method": "brand_model",
+      "product_id": "srs-steel-magazine-30-rds",
+      "product_sku": "SP-SBA-MAG-03BK",
+      "product_title": "SRS Steel Magazine 30 rds",
+      "review_reason": null,
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    }
+  ],
+  "dry_run": true,
+  "falkordb_target_sanitized": "skirmshop_v2 via redis://10.43.157.14:6379 (ClusterIP aiops-falkordb, sanitized, read-only)",
+  "generated_at": "2026-06-24T15:38:44+00:00",
+  "live_counts": {
+    "competitor_product_count": 43497,
+    "competitor_sku_nonempty_count": 0,
+    "product_count": 21477,
+    "product_match_edge_count": 453,
+    "product_sku_nonempty_count": 17435,
+    "variant_barcode_nonempty_count": 16
+  },
+  "matcher_version": "1.0.0",
+  "no_candidate_sample": [
+    {
+      "competitor_product": {
+        "brand": "Silverback",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/sniper-springs/70160-silverback-aps-13mm-type-spring-60-newtons-for-srs-and-tac-41.html",
+        "price": 15.77,
+        "title": "Silverback APS 13mm type spring 60 Newtons (for SRS and TAC-41)",
+        "url": "https://www.powair6.com/en/sniper-springs/70160-silverback-aps-13mm-type-spring-60-newtons-for-srs-and-tac-41.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:29:13Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "silverback-aps-spring-60-newton",
+        "price": 12.25,
+        "sku": "SP-SILV-221",
+        "title": "APS 13mm Spring - 60 Newton (SRS & TAC-41)",
+        "url": "https://skirmshop.es/products/silverback-aps-spring-60-newton",
+        "vendor": "Silverback"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Ra-Tech",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/105535.html",
+        "price": 88.9,
+        "title": "RA-TECH Magnetic Locking NPAS Type 3 Loading Nozzle Set for Airsoft Gas Blowback Rifles (Model: GHK AR / Composite)",
+        "url": "https://evike-europe.com/105535.html"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T15:17:50Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "ra-tech-ghk-m4-nozzle-type-3",
+        "price": 84.95,
+        "sku": "SP-RATE-RAG-RAG-GHK-041",
+        "title": "GHK M4 GBB Adjustable NPAS Nozzle with Magnetic Lock - Type 3",
+        "url": "https://skirmshop.es/products/ra-tech-ghk-m4-nozzle-type-3",
+        "vendor": "Ra-tech"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "KRYTAC",
+        "domain": "patrolbase.co.uk",
+        "id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/krytac-60rnd-magazine-for-kriss-r-vector-gbb-triple-pack",
+        "price": 150.49,
+        "title": "KRYTAC 60rnd Magazine for KRISS® Vector GBB SMGs; 3 Pack",
+        "url": "https://www.patrolbase.co.uk/eu/krytac-60rnd-magazine-for-kriss-r-vector-gbb-triple-pack"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:56:58Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "krytac-kriss-vector-60rd-magazine-pack",
+        "price": 169.95,
+        "sku": "SP-KRYTAC-KRYTAC-002",
+        "title": "KRISS Vector Gas Blowback GBB SMG 3-Pack 60-Round Magazines",
+        "url": "https://skirmshop.es/products/krytac-kriss-vector-60rd-magazine-pack",
+        "vendor": "Krytac"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Maple Leaf",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/32788.html",
+        "price": 61.9,
+        "title": "Maple Leaf Crazy Jet 6.04 mm Inner Barrel for Tokyo Marui VSR-10 Sniper Rifles ( Length: 303 mm )",
+        "url": "https://evike-europe.com/32788.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:05:36Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "maple-leaf-vsr-10-inner-barrel-300mm",
+        "price": 44.95,
+        "sku": "SP-MAPL-203",
+        "title": "VSR 300mm 6.04 Crazy Jet Inner Barrel",
+        "url": "https://skirmshop.es/products/maple-leaf-vsr-10-inner-barrel-300mm",
+        "vendor": "Maple Leaf"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Angry Gun",
+        "domain": "aa-store.at",
+        "id": "competitor:aa-store.at:https://www.aa-store.at/angry-gun-aeg-mws-ngrs-gbbr-ptw-urx-6-m-lok-rail-10-5-inch-black",
+        "price": 187.95,
+        "title": "Angry Gun AEG / MWS / NGRS / GBBR / PTW URX 6 M-LOK Rail 10.5 Inch - Black",
+        "url": "https://www.aa-store.at/angry-gun-aeg-mws-ngrs-gbbr-ptw-urx-6-m-lok-rail-10-5-inch-black"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:41:07Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "angrygun-urx-6-10-5-m-lock-black",
+        "price": 159.95,
+        "sku": "SP-AGUN-URX6-10.5",
+        "title": "URX-6 M-LOK 10.5\" Rail - Black AEG, MWS, GBB & PTW",
+        "url": "https://skirmshop.es/products/angrygun-urx-6-10-5-m-lock-black",
+        "vendor": "AngryGun"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Silverback",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/107031.html",
+        "price": 15.9,
+        "title": "Silverback Airsoft Replacement Hop-Up Unit for MDRX Airsoft AEG Rifles",
+        "url": "https://evike-europe.com/107031.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:30:13Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "silverback-mdrx-hop-up-chamber",
+        "price": 12.15,
+        "sku": "SP-SILV-275",
+        "title": "MDRX Hop-Up Unit",
+        "url": "https://skirmshop.es/products/silverback-mdrx-hop-up-chamber",
+        "vendor": "Silverback"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Maple Leaf",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/108473.html",
+        "price": 11.9,
+        "title": "Maple Leaf Autobot 2023 Version Hop-Up Bucking for VSR-10 / GBB Airsoft Guns (Model: 50 Degree / Rubber)",
+        "url": "https://evike-europe.com/108473.html"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:59:44Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "maple-leaf-goma-hop-up-50-bucking",
+        "price": 7.95,
+        "sku": "SP-MAPL-103",
+        "title": "Autobot 50º Hop-Up Bucking (Green)",
+        "url": "https://skirmshop.es/products/maple-leaf-goma-hop-up-50-bucking",
+        "vendor": "Maple Leaf"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "ANGRY GUN",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/gbbr-external-part/55796-angry-gun-airborne-ambi-charging-handle-for-vfc-hk416-gbb-black.html",
+        "price": 59.4,
+        "title": "Angry Gun Airborne Ambi Charging Handle for VFC HK416 GBB - Black",
+        "url": "https://www.powair6.com/en/gbbr-external-part/55796-angry-gun-airborne-ambi-charging-handle-for-vfc-hk416-gbb-black.html"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:35:57Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "angrygun-airborne-ambi-charging-handle-original-black",
+        "price": 58.95,
+        "sku": "SP-AGUN-07",
+        "title": "AirBORNE Ambi Charging Handle AngryGun Original Black",
+        "url": "https://skirmshop.es/products/angrygun-airborne-ambi-charging-handle-original-black",
+        "vendor": "AngryGun"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Maple Leaf",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/gbb-hop-up-rubber/15813-maple-leaf-hot-shot-hop-up-rubber-for-ghk-ar-ak-60-degrees.html",
+        "price": 8.83,
+        "title": "Maple Leaf Hot shot Hop Up Rubber for GHK AR/ AK - 60 Degrees",
+        "url": "https://www.powair6.com/en/gbb-hop-up-rubber/15813-maple-leaf-hot-shot-hop-up-rubber-for-ghk-ar-ak-60-degrees.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:00:40Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "maple-leaf-ghk-bucking-hot-shot-60",
+        "price": 9.95,
+        "sku": "SP-MAPL-256",
+        "title": "Hot Shot 60° for GHK (Yellow)",
+        "url": "https://skirmshop.es/products/maple-leaf-ghk-bucking-hot-shot-60",
+        "vendor": "Maple Leaf"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Action Army",
+        "domain": "aa-store.at",
+        "id": "competitor:aa-store.at:https://www.aa-store.at/action-army-vsr-10-silencer-adapter",
+        "price": 8.95,
+        "title": "Action Army VSR-10 Silencer Adapter",
+        "url": "https://www.aa-store.at/action-army-vsr-10-silencer-adapter"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:32:42Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "action-army-vsr-10-muzzle-adapter",
+        "price": 11.95,
+        "sku": "SP-AAC-01",
+        "title": "Barrel/Suppressor Adapter for Marui VSR-10",
+        "url": "https://skirmshop.es/products/action-army-vsr-10-muzzle-adapter",
+        "vendor": "Action Army"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Silverback",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/sba-cyl-50.html",
+        "price": 47.9,
+        "title": "100% Cylinder for MDRX AEG - Silverback",
+        "url": "https://evike-europe.com/sba-cyl-50.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:29:56Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "silverback-mdrx-cylinder-closed-100",
+        "price": 42.35,
+        "sku": "SP-SBA-CYL-50",
+        "title": "MDRX 100% Closed Cylinder",
+        "url": "https://skirmshop.es/products/silverback-mdrx-cylinder-closed-100",
+        "vendor": "Silverback"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Maple Leaf",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/126275.html",
+        "price": 32.9,
+        "title": "Inner Barrel for Airsoft AEG - 6.02 x 290 mm - Maple Leaf",
+        "url": "https://evike-europe.com/126275.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:58:43Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "maple-leaf-290mm-inner-barrel-6-02",
+        "price": 15.99,
+        "sku": "SP-MAPL-160",
+        "title": "290mm 6.02 AEG Precision Inner Barrel",
+        "url": "https://skirmshop.es/products/maple-leaf-290mm-inner-barrel-6-02",
+        "vendor": "Maple Leaf"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Angry Gun",
+        "domain": "aa-store.at",
+        "id": "competitor:aa-store.at:https://www.aa-store.at/angry-gun-bc-raider-m-lok-rail-aeg-gbbr-ptw-10-inch-black",
+        "price": 196.95,
+        "title": "Angry Gun BC Raider M-LOK Rail AEG / GBBR / PTW 10 Inch - Black",
+        "url": "https://www.aa-store.at/angry-gun-bc-raider-m-lok-rail-aeg-gbbr-ptw-10-inch-black"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:35:36Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "angrygun-bc-mcmr-mlok-rail-10inch",
+        "price": 154.95,
+        "sku": "SP-AGUN-30",
+        "title": "10\" BC* MCMR M-LOK Rail",
+        "url": "https://skirmshop.es/products/angrygun-bc-mcmr-mlok-rail-10inch",
+        "vendor": "AngryGun"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Maple Leaf",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/24158.html",
+        "price": 9.9,
+        "title": "Maple Leaf Mr. Hop Silicone Hop-Up Bucking for Airsoft AEG Rifles (Type: 60° / Yellow)",
+        "url": "https://evike-europe.com/24158.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:04:07Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "maple-leaf-mr-hop-aeg-bucking-60-yellow",
+        "price": 8.95,
+        "sku": "SP-MAPL-38",
+        "title": "MR Hop AEG Bucking 60º (yellow)",
+        "url": "https://skirmshop.es/products/maple-leaf-mr-hop-aeg-bucking-60-yellow",
+        "vendor": "Maple Leaf"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "COW COW",
+        "domain": "bunker501.nl",
+        "id": "competitor:bunker501.nl:https://bunker501.nl/COW-COW-Enhanced-PinkMood-nozzle-for-Hi-Capa/1911-replicas-Full-Set",
+        "price": 25.5,
+        "title": "COW COW Enhanced PinkMood nozzle for Hi-Capa/1911 replicas-Full Set",
+        "url": "https://bunker501.nl/COW-COW-Enhanced-PinkMood-nozzle-for-Hi-Capa/1911-replicas-Full-Set"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:51:22Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "cow-cow-technology-pinkmood-loading-nozzle-set",
+        "price": 25.95,
+        "sku": "SP-COW-106",
+        "title": "PinkMood Enhanced Loading Nozzle Set",
+        "url": "https://skirmshop.es/products/cow-cow-technology-pinkmood-loading-nozzle-set",
+        "vendor": "Cow Cow Technology"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Maple Leaf",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/42686.html",
+        "price": 40.9,
+        "title": "Maple Leaf Hybrid 6.02mm Inner Barrel for Gas Blowback & AEG Airsoft Rifles (Size: 310mm)",
+        "url": "https://evike-europe.com/42686.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:58:43Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "maple-leaf-310mm-inner-barrel-6-02",
+        "price": 27.95,
+        "sku": "SP-MAPL-161",
+        "title": "310mm 6.02 AEG Precision Inner Barrel",
+        "url": "https://skirmshop.es/products/maple-leaf-310mm-inner-barrel-6-02",
+        "vendor": "Maple Leaf"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Angry Gun",
+        "domain": "aa-store.at",
+        "id": "competitor:aa-store.at:https://www.aa-store.at/angry-gun-mk16-handguard-gen2-m-lok-9-3-inch-sopmod-block-iii-black",
+        "price": 188.95,
+        "title": "Angry Gun MK16 Handguard Gen2 M-LOK 9.3 Inch SOPMOD Block III - Black",
+        "url": "https://www.aa-store.at/angry-gun-mk16-handguard-gen2-m-lok-9-3-inch-sopmod-block-iii-black"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:40:14Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "angrygun-mk16-m-lok-top-9-3-inch-blk",
+        "price": 147.95,
+        "sku": "SP-AGUN-42",
+        "title": "MK16 M-lok Top 9.3 Inch - BLK",
+        "url": "https://skirmshop.es/products/angrygun-mk16-m-lok-top-9-3-inch-blk",
+        "vendor": "AngryGun"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Silverback",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/sba-aph-01.html",
+        "price": 23.9,
+        "title": "Piston Head for MDRX AEG - Silverback",
+        "url": "https://evike-europe.com/sba-aph-01.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:30:30Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "silverback-piston-v3-mdrx",
+        "price": 19.9,
+        "sku": "SP-SBA-APH-03",
+        "title": "MDRX V3 Piston Head",
+        "url": "https://skirmshop.es/products/silverback-piston-v3-mdrx",
+        "vendor": "Silverback"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Maple Leaf",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/24156.html",
+        "price": 12.9,
+        "title": "Maple Leaf Mr. Hop Silicone Hop-Up Bucking for VSR-10 Airsoft Rifles & GBB Airsoft Pistols (Type: 85° / Black)",
+        "url": "https://evike-europe.com/24156.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:04:37Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "maple-leaf-mr-hop-bucking-85-black",
+        "price": 9.95,
+        "sku": "SP-MAPL-79",
+        "title": "MR Hop VSR/GBB Hop-Up Bucking 85º (Black)",
+        "url": "https://skirmshop.es/products/maple-leaf-mr-hop-bucking-85-black",
+        "vendor": "Maple Leaf"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "SHS",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/aeg-spring/1520-shs-m100-non-linear-spring-for-aeg.html",
+        "price": 3.87,
+        "title": "SHS M100 non linear spring for AEG",
+        "url": "https://www.powair6.com/en/aeg-spring/1520-shs-m100-non-linear-spring-for-aeg.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:19:09Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "shs-m100-spring",
+        "price": 4.95,
+        "sku": "SP-SHS-03",
+        "title": "M100 Spring",
+        "url": "https://skirmshop.es/products/shs-m100-spring",
+        "vendor": "SHS"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Silverback",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/aeg-hop-up-rubber/8064-silverback-srs-flat-hop-up-rubber-with-nub-for-srs-60-degree.html",
+        "price": 5.85,
+        "title": "Silverback SRS Flat Hop Up Rubber with nub for SRS - 60 degree",
+        "url": "https://www.powair6.com/en/aeg-hop-up-rubber/8064-silverback-srs-flat-hop-up-rubber-with-nub-for-srs-60-degree.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:31:18Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "silverback-srs-60-flat-hop-up-bucking",
+        "price": 4.85,
+        "sku": "SP-SILV-34",
+        "title": "SRS Flat Hop Up Goma 60º + Nub",
+        "url": "https://skirmshop.es/products/silverback-srs-60-flat-hop-up-bucking",
+        "vendor": "Silverback"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Maple Leaf",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/24159.html",
+        "price": 9.9,
+        "title": "Maple Leaf Mr. Hop Silicone Hop-Up Bucking for Airsoft AEG Rifles (Type: 80° / Red)",
+        "url": "https://evike-europe.com/24159.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:04:21Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "maple-leaf-mr-hop-bucking-80-aeg",
+        "price": 8.95,
+        "sku": "SP-MAPL-83",
+        "title": "MR Hop Silicone AEG 80º (Red)",
+        "url": "https://skirmshop.es/products/maple-leaf-mr-hop-bucking-80-aeg",
+        "vendor": "Maple Leaf"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "GUNS MODIFY",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/gbbr-nozzle/68507-guns-modify-reinforced-nozzle-v3-for-tokyo-marui-m4-mws-gbbr.html",
+        "price": 29.65,
+        "title": "Guns Modify Reinforced Nozzle V3 for Tokyo Marui M4 MWS GBBR",
+        "url": "https://www.powair6.com/en/gbbr-nozzle/68507-guns-modify-reinforced-nozzle-v3-for-tokyo-marui-m4-mws-gbbr.html"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:54:52Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "guns-modify-mws-v3-5-enhanced-nozzle",
+        "price": 29.95,
+        "sku": "SP-GM-GM0344",
+        "title": "Enhanced MWS v3.5 Nozzle for Tokyo Marui / GM / HA MWS M4",
+        "url": "https://skirmshop.es/products/guns-modify-mws-v3-5-enhanced-nozzle",
+        "vendor": "Guns Modify"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Ra-Tech",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/105552.html",
+        "price": 86.9,
+        "title": "RA-TECH Magnetic Locking NPAS Type 3 Loading Nozzle Set for Airsoft Gas Blowback Rifles (Model: VFC AR / Composite)",
+        "url": "https://evike-europe.com/105552.html"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T15:18:25Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "ra-tech-vfc-m4-nozzle-type-3",
+        "price": 84.95,
+        "sku": "SP-RATE-RAG-VFC-011",
+        "title": "VFC M4 GBB Adjustable NPAS Nozzle with Magnetic Lock - Type 3",
+        "url": "https://skirmshop.es/products/ra-tech-vfc-m4-nozzle-type-3",
+        "vendor": "Ra-tech"
+      }
+    },
+    {
+      "competitor_product": {
+        "brand": "Tokyo Marui",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/gas-co2-hpa-pistol/65487-tokyo-marui-compact-carry-lcp-fixed-slide.html",
+        "price": 84.19,
+        "title": "Tokyo Marui Compact Carry LCP (Fixed slide)",
+        "url": "https://www.powair6.com/en/gas-co2-hpa-pistol/65487-tokyo-marui-compact-carry-lcp-fixed-slide.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:14:31Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "product": {
+        "id": "tokyo-marui-lcp-nbb-compact-carry",
+        "price": 75.95,
+        "sku": "SP-TM-60",
+        "title": "LCP Compact Carry (NBB)",
+        "url": "https://skirmshop.es/products/tokyo-marui-lcp-nbb-compact-carry",
+        "vendor": "NEW Tokyo Marui"
+      }
+    }
+  ],
+  "queries_mode": "read_only_match_return_limit_only",
+  "review": [
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-rail/6011-maple-leaf-cnc-scope-rail-with-blue-bubble-level-for-vsr10.html",
+      "competitor_title": "Maple Leaf CNC scope rail with blue bubble level for VSR10",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T15:06:23Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "maple-leaf-vsr10-rail-system-blue",
+      "product_sku": "SP-MAPL-201",
+      "product_title": "VSR10 Rail with Bubble Level - Blue Model",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-nze-02.html",
+      "competitor_title": "Nozzle Assembly for MDRX AEG - Silverback",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:30:13Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "silverback-mdrx-nozzle-assembly",
+      "product_sku": "SP-SBA-NZE-02",
+      "product_title": "MDRX Nozzle Assembly",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-upper/26895-silverback-twisted-bolt-knob.html",
+      "competitor_title": "Silverback Twisted Bolt Knob",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:31:40Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.8,
+      "match_method": "brand_model",
+      "product_id": "silverback-srs-twisted-bolt-knob",
+      "product_sku": "SP-SBA-BKB-08",
+      "product_title": "SRS Twisted Bolt Knob",
+      "review_reason": "jaccard_0.80_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/30114-az.html",
+      "competitor_title": "Hot Shot 80° Hop-Up Rubber for AEG - Black - Maple Leaf",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:00:51Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7273,
+      "match_method": "brand_model",
+      "product_id": "maple-leaf-hot-shot-bucking-aeg-black",
+      "product_sku": "SP-MAPL-198",
+      "product_title": "Hot Shot 80° for AEG (Black)",
+      "review_reason": "jaccard_0.73_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "bunker501.nl",
+      "competitor_product_id": "competitor:bunker501.nl:https://bunker501.nl/action-army-vsr-10-hop-up-chamber-stopper",
+      "competitor_title": "ACTION ARMY Vsr-10 Hop Up Chamber Stopper",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:04Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7778,
+      "match_method": "brand_model",
+      "product_id": "action-army-vsr-10-hop-up-chamber",
+      "product_sku": "SP-AAC-04",
+      "product_title": "Cámara Stopper VSR-10 Hop-Up",
+      "review_reason": "jaccard_0.78_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "bunker501.nl",
+      "competitor_product_id": "competitor:bunker501.nl:https://bunker501.nl/ACTION-ARMY-VSR-10-M170-Spring",
+      "competitor_title": "ACTION ARMY VSR-10 M170 Spring",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:38Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.8333,
+      "match_method": "brand_model",
+      "product_id": "action-army-vsr-m170-spring",
+      "product_sku": "SP-AAC-133",
+      "product_title": "VSR M170 Spring",
+      "review_reason": "jaccard_0.83_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "patrolbase.co.uk",
+      "competitor_product_id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/abbey-gas-brass-nozzle-extension",
+      "competitor_title": "Abbey Gas Nozzle Extension",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:31:59Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.75,
+      "match_method": "brand_model",
+      "product_id": "abbey-extension-nozzle-valve",
+      "product_sku": "SP-ABBEY-08",
+      "product_title": "Abbey Extension Nozzle",
+      "review_reason": "jaccard_0.75_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-rail/46952-silverback-rail-for-srs-a2-m2-m2-long-canted.html",
+      "competitor_title": "Silverback Rail for SRS A2/M2, M2 long, canted",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:31:03Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "silverback-srs-a2-m2-top-rail-external-parts",
+      "product_sku": "SP-SBA-RAL-11",
+      "product_title": "SRS A2/M2, M2 Top Top, Long, Canted",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "aa-store.at",
+      "competitor_product_id": "competitor:aa-store.at:https://www.aa-store.at/silverback-mdrx-cylinder-head-key",
+      "competitor_title": "Silverback MDRX Cylinder Head Key",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T15:30:03Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "silverback-mdrx-cylinder-head-wrench",
+      "product_sku": "SP-SBA-TWS-50",
+      "product_title": "MDRX Cylinder Head Wrench",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "bunker501.nl",
+      "competitor_product_id": "competitor:bunker501.nl:https://bunker501.nl/MODIFY-MOD24-/-SSG24-Hop-Up-Bucking",
+      "competitor_title": "MODIFY MOD24 / SSG24 Hop Up Bucking",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:14:13Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.8333,
+      "match_method": "brand_model",
+      "product_id": "modify-mod24-bucking",
+      "product_sku": "SP-MODI-03",
+      "product_title": "MOD24 Hop Up Bucking",
+      "review_reason": "jaccard_0.83_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-inner-barrel/8460-action-army-aac-603-precision-barrel-for-vsr-10-500mm.html",
+      "competitor_title": "Action Army AAC 6.03 precision Barrel for VSR-10 500mm",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:32:13Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "action-army-500mm-inner-barrel-vsr-10",
+      "product_sku": "SP-AAC-142",
+      "product_title": "500mm 6.03 VSR-10 Inner Barrel",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-ral-31.html",
+      "competitor_title": "TAC-41 Long M-LOK Front Rail - Aluminum / Black - Silverback ",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:33:04Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7273,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-mlok-rail-system-long",
+      "product_sku": "SP-SBA-RAL-31",
+      "product_title": "TAC-41 Front Top M-LOK Rail (Long)",
+      "review_reason": "jaccard_0.73_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-hop-32.html",
+      "competitor_title": "TAC-41 Hop-Up Unit Replacement Parts Set - Silverback",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:20Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7778,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-hop-up-replacement-parts",
+      "product_sku": "SP-SILV-133",
+      "product_title": "TAC 41 Hop Up Replacement Parts",
+      "review_reason": "jaccard_0.78_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "bunker501.nl",
+      "competitor_product_id": "competitor:bunker501.nl:https://bunker501.nl/MODIFY-MOD24-/-SSG24-Hop-Up-Bucking",
+      "competitor_title": "MODIFY MOD24 / SSG24 Hop Up Bucking",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:14:13Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "modify-predator-bucking-mod24-70",
+      "product_sku": "SP-MODI-09",
+      "product_title": "Predator Hop-Up Bucking 70º for MOD24 / SSG24",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "aa-store.at",
+      "competitor_product_id": "competitor:aa-store.at:https://www.aa-store.at/laylax-battle-style-compact-leg-panel-black",
+      "competitor_title": "Laylax Battle Style Compact Leg Panel - Black",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:57:05Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7143,
+      "match_method": "brand_model",
+      "product_id": "laylax-compact-leg-panel-black",
+      "product_sku": "SP-LAYL-14",
+      "product_title": "Compact Leg Panel - Black",
+      "review_reason": "jaccard_0.71_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/aeg-spring/1310-prometheus-ms120-non-linear-spring-black.html",
+      "competitor_title": "Prometheus MS120 non-linear spring - Black",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:17:17Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.8333,
+      "match_method": "brand_model",
+      "product_id": "prometheus-non-linear-spring-ms120",
+      "product_sku": "SP-PROM-04",
+      "product_title": "Non-Linear Spring MS120",
+      "review_reason": "jaccard_0.83_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "aa-store.at",
+      "competitor_product_id": "competitor:aa-store.at:https://www.aa-store.at/maple-leaf-6.02mm-precision-inner-barrel-370mm",
+      "competitor_title": "Maple Leaf 6.02mm Precision Inner Barrel - 370mm",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:58:43Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7,
+      "match_method": "brand_model",
+      "product_id": "maple-leaf-370mm-inner-barrel-6-02",
+      "product_sku": "SP-MAPL-162",
+      "product_title": "370mm 6.02 AEG Precision Inner Barrel",
+      "review_reason": "jaccard_0.70_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/rifle-scope/56761-aim-o-3-9x40e-sf-tactical-scope-black.html",
+      "competitor_title": "AIM-O 3-9x40E-SF Tactical Scope Black",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:35:18Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7273,
+      "match_method": "brand_model",
+      "product_id": "aim-o-3-9x40e-sf-tactical-scope-black",
+      "product_sku": "SP-AIM-AO3062-BK",
+      "product_title": "Tactical Scope 3-9X40E-SF (Red/Green Reticle) - Black",
+      "review_reason": "jaccard_0.73_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/magnifier/11563-aim-o-fxd-4x-magnifier-black.html",
+      "competitor_title": "AIM-O FXD 4X Magnifier Black",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:34:04Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.75,
+      "match_method": "brand_model",
+      "product_id": "aim-o-magnifier-4x-et-fxd-black",
+      "product_sku": "SP-AIM-16",
+      "product_title": "4X Magnifier ET FXD Style - Black",
+      "review_reason": "jaccard_0.75_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-aps-01.html",
+      "competitor_title": "16 Teeth Piston for MDRX AEG - Silverback",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:30:21Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7143,
+      "match_method": "brand_model",
+      "product_id": "silverback-mdrx-piston-16-teeth",
+      "product_sku": "SP-SBA-APS-01",
+      "product_title": "MDRX Piston (16 Teeth)",
+      "review_reason": "jaccard_0.71_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/bbs/15850-bls-045g-bio-bbs-bag-of-1kg.html",
+      "competitor_title": "BLS 0.45g BIO BBS bag of 1kg",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:41:40Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "bls-0-45g-perfect-bio-bbs-1kg",
+      "product_sku": "SP-BLS-BLS042",
+      "product_title": "0.45g Perfect Bio BBs (1Kg)",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-external-parts/54784-cowcow-technology-fiber-optic-front-sight-for-tm-g-series.html",
+      "competitor_title": "COWCOW Technology Fiber Optic Front Sight for TM G series",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:51:57Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "cow-cow-technology-g-series-fiber-optic-front-sight",
+      "product_sku": "SP-COW-175",
+      "product_title": "TM G Series Front Sight with Fiber Optic",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-rail/46915-silverback-rail-for-srs-a2-m2-m2-long.html",
+      "competitor_title": "Silverback Rail for SRS A2/M2, M2 long",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:31:03Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.75,
+      "match_method": "brand_model",
+      "product_id": "silverback-srs-rail-system-a2-m2-long",
+      "product_sku": "SP-SBA-RAL-10",
+      "product_title": "SRS A2/M2, M2 Long Top Rail",
+      "review_reason": "jaccard_0.75_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-external-parts/54914-cowcow-technology-15mm-red-green-fiber-optic-rod-x-50mm.html",
+      "competitor_title": "COWCOW Technology 1.5mm Red &amp; Green Fiber Optic Rod x 50mm",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:46:24Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6923,
+      "match_method": "brand_model",
+      "product_id": "cow-cow-technology-1-5mm-fiber-optic-rod",
+      "product_sku": "SP-COW-27",
+      "product_title": "1.5mm Red & Green Fiber Optic Rod (50mm)",
+      "review_reason": "jaccard_0.69_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/silencer/50328-silverback-carbon-dummy-suppressor-short-16mm-cw.html",
+      "competitor_title": "Silverback Carbon dummy suppressor, Short, 16mm CW",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T15:31:53Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "silverback-short-carbon-suppressor-mk23-16mm-cw",
+      "product_sku": "SP-SILV-213",
+      "product_title": "Short Carbon Mock Suppressor, 16mm CW \"MK23\"",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/bbs/9111-bls-028g-bio-tracer-bb-1kg.html",
+      "competitor_title": "BLS 0.28g BIO Tracer BB (1kg)",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:41:29Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "bls-0-28g-tracer-bio-perfect-bb",
+      "product_sku": "SP-BLS-11",
+      "product_title": "0.28g 3570x Tracer Bio Perfect BB",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "aa-store.at",
+      "competitor_product_id": "competitor:aa-store.at:https://www.aa-store.at/action-army-34-hole-teflon-coated-cylinder",
+      "competitor_title": "Action Army 3/4 Hole Teflon Coated Cylinder",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:33:29Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7,
+      "match_method": "brand_model",
+      "product_id": "action-army-cylinder-v2-v3-teflon",
+      "product_sku": "SP-AAC-14",
+      "product_title": "Teflon-Coated V2+V3 Cylinder (3/4)",
+      "review_reason": "jaccard_0.70_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-lips-gas-route/13220-aac-gas-route-seal-for-aap-01.html",
+      "competitor_title": "AAC gas route seal for AAP-01",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:04Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "action-army-aap01-valve-gas-route-seal",
+      "product_sku": "SP-AAC-54",
+      "product_title": "Gas Route Seal for AAP-01",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-hammer/54854-cowcow-technology-stainless-steel-hammer-set-for-g18c.html",
+      "competitor_title": "COWCOW Technology Stainless Steel Hammer Set for G18c",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:51:42Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7,
+      "match_method": "brand_model",
+      "product_id": "cow-cow-technology-g18c-internal-parts-hammer-set",
+      "product_sku": "SP-COW-141",
+      "product_title": "Stainless Steel Hammer Set for Umarex G18C",
+      "review_reason": "jaccard_0.70_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/30888-az.html",
+      "competitor_title": "Nozzle for AAP01 GBB - Black - Action Army",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:17Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7143,
+      "match_method": "brand_model",
+      "product_id": "action-army-aap-01-nozzle",
+      "product_sku": "SP-AAC-59",
+      "product_title": "Nozzle for AAP01",
+      "review_reason": "jaccard_0.71_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/aeg-outer-barrel/14390-5ku-115-inch-aluminum-outer-barrel-for-m4.html",
+      "competitor_title": "5KU 11.5 inch aluminum outer barrel for M4",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:29:12Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7778,
+      "match_method": "brand_model",
+      "product_id": "5ku-11-5-inch-m4-outer-barrel-aluminum",
+      "product_sku": "SP-5KU-5KU-125",
+      "product_title": "11.5\" Outer Barrel for M4",
+      "review_reason": "jaccard_0.78_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gas/38497-asg-ultrair-power-gas-with-silicone-570ml-135-psi.html",
+      "competitor_title": "ASG Ultrair Power gas with silicone 570ml - 135 psi",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:31:59Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7,
+      "match_method": "brand_model",
+      "product_id": "asg-gas-ultrair-green-green-gas-135-psi",
+      "product_sku": "SP-ASG-GAS00010",
+      "product_title": "Ultrair Green Gas (135 PSI) with Silicone",
+      "review_reason": "jaccard_0.70_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/30112-az.html",
+      "competitor_title": "Hot Shot 70° Hop-Up Rubber for AEG - Blue - Maple Leaf",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:00:40Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7273,
+      "match_method": "brand_model",
+      "product_id": "maple-leaf-hot-shot-bucking-aeg-blue",
+      "product_sku": "SP-MAPL-196",
+      "product_title": "Hot Shot 70° for AEG (Blue)",
+      "review_reason": "jaccard_0.73_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-upper/12623-silverback-bakelite-ball-bolt-knob.html",
+      "competitor_title": "Silverback Bakelite Ball Bolt Knob",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T15:29:20Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.8,
+      "match_method": "brand_model",
+      "product_id": "silverback-bakelite-bolt-knob-rail-system",
+      "product_sku": "SP-SBA-BKB-04",
+      "product_title": "Bakelite Bolt Knob",
+      "review_reason": "jaccard_0.80_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-spring/54804-cowcow-technology-recoil-spring-150-for-tm-g19.html",
+      "competitor_title": "COWCOW Technology Recoil spring 150% for TM G19",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:52:28Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "cow-cow-technology-tm-g19-spring-150-percent",
+      "product_sku": "SP-COW-189",
+      "product_title": "TM G19 150% Recoil Spring",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "aa-store.at",
+      "competitor_product_id": "competitor:aa-store.at:https://www.aa-store.at/amomax-drop-leg-molle-platform-black",
+      "competitor_title": "Amomax Drop Leg MOLLE Platform - Black",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:35:36Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.8333,
+      "match_method": "brand_model",
+      "product_id": "amomax-drop-leg-platform-holster-universal",
+      "product_sku": "SP-AMO-AM-DLP",
+      "product_title": "Drop Leg Platform - Black",
+      "review_reason": "jaccard_0.83_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/pu18341.html",
+      "competitor_title": "200% Nozzle Spring for AAP01 GBB - Metal - CowCow",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:46:31Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7,
+      "match_method": "brand_model",
+      "product_id": "cow-cow-aap01-nozzle-spring-200",
+      "product_sku": "SP-COW-150",
+      "product_title": "200% Nozzle Spring for AAP01",
+      "review_reason": "jaccard_0.70_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-external-parts/31273-silverback-srs-spring-guide-pre-load-washers-x5.html",
+      "competitor_title": "Silverback SRS Spring Guide Pre-load Washers x5",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:31:40Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7,
+      "match_method": "brand_model",
+      "product_id": "silverback-srs-spring-guide-washers",
+      "product_sku": "SP-SILV-79",
+      "product_title": "SRS Spring Guide Pre-Load Washers (5 Pcs)",
+      "review_reason": "jaccard_0.70_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-hop-32.html",
+      "competitor_title": "TAC-41 Hop-Up Unit Replacement Parts Set - Silverback",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:33:04Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7273,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-hop-up-chamber-replacement",
+      "product_sku": "SP-SILV-164",
+      "product_title": "TAC-41 Hop-Up Replacement Parts Set (GBB Version)",
+      "review_reason": "jaccard_0.73_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-cyl-55.html",
+      "competitor_title": "Cylinder Head with Nozzle for MDRX AEG - Silverback",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:30:03Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.75,
+      "match_method": "brand_model",
+      "product_id": "silverback-mdrx-cylinder",
+      "product_sku": "SP-SBA-CYL-55",
+      "product_title": "MDRX Cylinder Head with Nozzle",
+      "review_reason": "jaccard_0.75_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-cyl-56.html",
+      "competitor_title": "Cylinder End for MDRX AEG - Silverback",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:30:03Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "silverback-mdrx-cylinder-final",
+      "product_sku": "SP-SBA-CYL-56",
+      "product_title": "MDRX Cylinder End",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/red-dot/5990-holosun-hs403c-solar-red-dot.html",
+      "competitor_title": "HOLOSUN HS403C Solar red dot",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:56:35Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.8333,
+      "match_method": "brand_model",
+      "product_id": "holosun-hs403c-optic-red-dot",
+      "product_sku": "SP-HOLO-01",
+      "product_title": "HS403C Solar Red Dot Sight",
+      "review_reason": "jaccard_0.83_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/bbs/11686-bls-030g-bio-tracer-bb-1kg.html",
+      "competitor_title": "BLS 0.30g BIO Tracer BB (1kg)",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:41:29Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "bls-0-30g-bio-bb-ammo",
+      "product_sku": "SP-BLS-16",
+      "product_title": "0.30g Bio Polished Tracer BBs (1Kg)",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "patrolbase.co.uk",
+      "competitor_product_id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/bls-0-23g-6mm-perfect-bio-bbs-1kg-bag",
+      "competitor_title": "BLS 0.23g 6mm Perfect BIO BBs; 1KG Bag",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:41:15Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7778,
+      "match_method": "brand_model",
+      "product_id": "bls-0-23g-bio-perfect-bb-ammo",
+      "product_sku": "SP-BLS-24",
+      "product_title": "0.23g Bio Perfect BBs 1Kg",
+      "review_reason": "jaccard_0.78_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/magnifier/3361-aim-o-g33-3x-magnifier-de.html",
+      "competitor_title": "AIM-O G33 3X Magnifier - DE",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:34:22Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.75,
+      "match_method": "brand_model",
+      "product_id": "aim-o-et-style-g33-3x-magnifier-de",
+      "product_sku": "SP-AIM-27",
+      "product_title": "ET Style G33 3X Magnifier - de",
+      "review_reason": "jaccard_0.75_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/633010.html",
+      "competitor_title": "PSS10 RE Kit : Zero Trigger Box with Zero High Pressure Piston for VSR-10 - Laylax",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:57:24Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6875,
+      "match_method": "brand_model",
+      "product_id": "laylax-vsr10-trigger-unit",
+      "product_sku": "SP-LAYL-47",
+      "product_title": "PSS10 90° Trigger with ZERO High-Pressure Piston for TM VSR-10",
+      "review_reason": "jaccard_0.69_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-rail/46916-silverback-rail-for-srs-a2-m2-m2-short.html",
+      "competitor_title": "Silverback Rail for SRS A2/M2, M2 short",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:31:03Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.75,
+      "match_method": "brand_model",
+      "product_id": "silverback-srs-a2-m2-top-rail-short",
+      "product_sku": "SP-SBA-RAL-08",
+      "product_title": "SRS A2/M2, M2 Top Rail, Short",
+      "review_reason": "jaccard_0.75_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/28371-az.html",
+      "competitor_title": "Monoblock Scope Mount 25.4 / 30mm - Black - Aim-O",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:33:57Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7273,
+      "match_method": "brand_model",
+      "product_id": "aim-o-qd-scope-mount-25-4-30mm-black",
+      "product_sku": "SP-AIM-42",
+      "product_title": "25.4-30mm Scope Mount with QD - Black",
+      "review_reason": "jaccard_0.73_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-hop-up-rubber/26983-silverback-gbb-type-flat-hop-up-rubber-4-pack-50.html",
+      "competitor_title": "Silverback GBB type Flat Hop Up rubber (4 pack) - 50°",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:29:33Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7273,
+      "match_method": "brand_model",
+      "product_id": "silverback-gbb-flat-hop-up-rubber-50-pack",
+      "product_sku": "SP-SILV-171",
+      "product_title": "GBB Flat Hop-Up Rubber 50º (4 Pack)",
+      "review_reason": "jaccard_0.73_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-hop-up-chamber/54860-cowcow-technology-hop-up-chamber-lightweight-for-g17-gen4.html",
+      "competitor_title": "COWCOW Technology Hop Up Chamber LightWeight for G17 Gen4",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:48:10Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7,
+      "match_method": "brand_model",
+      "product_id": "cow-cow-technology-g17-gen4-hop-up-chamber-aluminium",
+      "product_sku": "SP-COW-139",
+      "product_title": "Hop-Up Chamber for G17 Gen4 ()",
+      "review_reason": "jaccard_0.70_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/adapter/9240-action-army-aac-t10-sound-suppressor-connector-type-a.html",
+      "competitor_title": "Action Army AAC T10 Sound Suppressor Connector type A",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:29Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.8,
+      "match_method": "brand_model",
+      "product_id": "action-army-t10-sound-suppressor-connector-type-a",
+      "product_sku": "SP-AAC-46",
+      "product_title": "T10/SSG10 Sound Suppressor Connector Type A",
+      "review_reason": "jaccard_0.80_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-external-parts/54913-cowcow-technology-2mm-red-green-fiber-optic-rod-x-50mm.html",
+      "competitor_title": "COWCOW Technology 2mm Red &amp; Green Fiber Optic Rod x 50mm",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:46:31Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "cow-cow-technology-2mm-fiber-optic-rod",
+      "product_sku": "SP-COW-26",
+      "product_title": "2mm Red & Green Fiber Optic Rod (50mm)",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/sba-bsg-30.html",
+      "competitor_title": "TAC-41 Spring Guide - Silverback",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:33:18Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7143,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-spring-guide",
+      "product_sku": "SP-SILV-126",
+      "product_title": "TAC-41, Stainless steel Spring Guide",
+      "review_reason": "jaccard_0.71_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "bunker501.nl",
+      "competitor_product_id": "competitor:bunker501.nl:https://bunker501.nl/SILVERBACK-Piston-for-HTI",
+      "competitor_title": "SILVERBACK Piston for HTI ",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:30:40Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.75,
+      "match_method": "brand_model",
+      "product_id": "silverback-hti-internal-piston",
+      "product_sku": "SP-SILV-40",
+      "product_title": "Pistón HTI",
+      "review_reason": "jaccard_0.75_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/luggage-storage/13571-nimrod-gun-100cm-case-with-wave-foam.html",
+      "competitor_title": "Nimrod Gun 100cm Case with wave foam",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:14:58Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.75,
+      "match_method": "brand_model",
+      "product_id": "nimrod-100cm-case",
+      "product_sku": "SP-NIMROD-05",
+      "product_title": "100cm Hard Case with Wave Foam",
+      "review_reason": "jaccard_0.75_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/sniper-barrel-spacer/7613-action-army-vsr-10-g-spec-inner-barrel-spacer-set.html",
+      "competitor_title": "Action Army VSR-10 G-Spec Inner Barrel Spacer Set",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:33:38Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "action-army-vsr10-barrel-spacers",
+      "product_sku": "SP-AAC-103",
+      "product_title": "VSR-10 G-Spec Inner Barrel Spacers",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/30113-az.html",
+      "competitor_title": "Hot Shot 75° Hop-Up Rubber for AEG - Pink - Maple Leaf",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:00:51Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7273,
+      "match_method": "brand_model",
+      "product_id": "maple-leaf-hot-shot-bucking-aeg-pink",
+      "product_sku": "SP-MAPL-197",
+      "product_title": "Hot Shot 75° for AEG (Pink)",
+      "review_reason": "jaccard_0.73_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/red-dot/40922-aim-o-adjustable-led-rmr-red-dot-black.html",
+      "competitor_title": "AIM-O Adjustable LED RMR Red Dot - Black",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:34:14Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7778,
+      "match_method": "brand_model",
+      "product_id": "aim-o-adjustable-rmr-red-dot-de",
+      "product_sku": "SP-AIM-19",
+      "product_title": "Adjustable Led RMR Red Dot - de",
+      "review_reason": "jaccard_0.78_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-hammer/54775-cowcow-technology-hammer-spring-140-for-tm-g-series.html",
+      "competitor_title": "COWCOW Technology Hammer Spring 140% for TM G Series",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:51:49Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7,
+      "match_method": "brand_model",
+      "product_id": "cow-cow-technology-g-series-hammer-spring-140",
+      "product_sku": "SP-COW-171",
+      "product_title": "TM G Series 140% Hammer Spring",
+      "review_reason": "jaccard_0.70_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "bunker501.nl",
+      "competitor_product_id": "competitor:bunker501.nl:https://bunker501.nl/MODIFY-MOD24-/-SSG24-Hop-Up-Bucking",
+      "competitor_title": "MODIFY MOD24 / SSG24 Hop Up Bucking",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:14:13Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "modify-predator-bucking-mod24-60",
+      "product_sku": "SP-MODI-MOD614001",
+      "product_title": "Predator Hop-Up Bucking 60º for MOD24 / SSG24",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/30111-az.html",
+      "competitor_title": "Hot Shot 60° Hop-Up Rubber for AEG - Yellow - Maple Leaf",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:00:40Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7273,
+      "match_method": "brand_model",
+      "product_id": "maple-leaf-hot-shot-bucking-aeg-yellow",
+      "product_sku": "SP-MAPL-195",
+      "product_title": "Hot Shot 60° for AEG (Yellow)",
+      "review_reason": "jaccard_0.73_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/adapter/55180-ctm-tactical-cnc-silencer-adapter-11mm-cw-to-14mm-ccw.html",
+      "competitor_title": "CTM tactical CNC Silencer Adapter 11mm CW to 14mm CCW",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:41:55Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "ctm-11mm-cw-to-14mm-ccw-thread-adapter",
+      "product_sku": "SP-CTM-CTM-KIT-0020",
+      "product_title": "11mm CW to 14mm CCW CNC Steel Thread Adapter",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/31697-az.html",
+      "competitor_title": "Stow Bottle 1000ml - Mammoth - Hydrapak",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:56:43Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "hydrapak-stash-bottle-hydration-mammoth-1l",
+      "product_sku": "SP-HYDR-10",
+      "product_title": "Stash Bottle 1000ml Mammoth",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/mounting-support/15353-aim-o-qd-mount-for-t1-t2.html",
+      "competitor_title": "AIM-O QD Mount for T1/T2",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:34:45Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7778,
+      "match_method": "brand_model",
+      "product_id": "aim-o-qd-riser-mount-t1-t2",
+      "product_sku": "SP-AO1711-BK",
+      "product_title": "QD Riser Mount for T1 and T2",
+      "review_reason": "jaccard_0.78_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/bb-loader/64780-satellite-high-bullet-bb-speed-loader-smoke.html",
+      "competitor_title": "Satellite High Bullet BB speed loader - Smoke",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:57:33Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7273,
+      "match_method": "brand_model",
+      "product_id": "laylax-satellite-high-bullet-bb-speed-loader",
+      "product_sku": "SP-LAYL-15",
+      "product_title": "Satellite High Bullet BB Speed Loader (140 rds / 6mm BB) - Smoke",
+      "review_reason": "jaccard_0.73_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "bunker501.nl",
+      "competitor_product_id": "competitor:bunker501.nl:https://bunker501.nl/SILVERBACK-Piston-for-TAC-41",
+      "competitor_title": "SILVERBACK Piston for TAC-41",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:33:04Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.8,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-piston",
+      "product_sku": "SP-SILV-124",
+      "product_title": "TAC-41 Piston",
+      "review_reason": "jaccard_0.80_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "evike-europe.com",
+      "competitor_product_id": "competitor:evike-europe.com:https://evike-europe.com/pu18342.html",
+      "competitor_title": "150% Recoil Spring for AAP01 GBB - Metal - CowCow",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:46:31Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7,
+      "match_method": "brand_model",
+      "product_id": "cow-cow-aap01-recoil-spring-150",
+      "product_sku": "SP-COW-151",
+      "product_title": "150% Recoil Spring for AAP01",
+      "review_reason": "jaccard_0.70_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "aa-store.at",
+      "competitor_product_id": "competitor:aa-store.at:https://www.aa-store.at/5ku-rp-1-ak-extended-charging-handle-knob-black",
+      "competitor_title": "5KU RP-1 AK Extended Charging Handle Knob - Black",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:29:12Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7778,
+      "match_method": "brand_model",
+      "product_id": "5ku-ak-rp-1-extended-charging-handle",
+      "product_sku": "SP-5KU-5KU-300-BLK",
+      "product_title": "AK RP-1 Extended Charging Handle",
+      "review_reason": "jaccard_0.78_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "bunker501.nl",
+      "competitor_product_id": "competitor:bunker501.nl:https://bunker501.nl/SILVERBACK-Cylinder-head-VOOR-TAC-41",
+      "competitor_title": "SILVERBACK Cylinder head  VOOR  TAC-41 ",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:32:53Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7143,
+      "match_method": "brand_model",
+      "product_id": "silverback-tac-41-cylinder-head-cnc-aluminum",
+      "product_sku": "SP-SBA-CYL-36",
+      "product_title": "TAC-41 Aluminum Cylinder Head",
+      "review_reason": "jaccard_0.71_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "gunfire.com",
+      "competitor_product_id": "competitor:gunfire.com:https://gunfire.com/en/products/crazy-jet-6-04mm-gbb-precision-barrel-260mm-1152217823.html",
+      "competitor_title": "Crazy Jet 6.04mm GBB Precision Barrel 260mm",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:58:43Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "maple-leaf-260mm-inner-barrel-crazy-jet",
+      "product_sku": "SP-MAPL-153",
+      "product_title": "260mm 6.04 Crazy Jet Inner Barrel GBB",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-external-parts/54784-cowcow-technology-fiber-optic-front-sight-for-tm-g-series.html",
+      "competitor_title": "COWCOW Technology Fiber Optic Front Sight for TM G series",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:51:49Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7273,
+      "match_method": "brand_model",
+      "product_id": "tm-g-series-fiber-optic-front-sight",
+      "product_sku": null,
+      "product_title": "TM G Series Fiber Optic Front Sight",
+      "review_reason": "jaccard_0.73_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-nozzle/54806-cowcow-technology-enhanced-loading-nozzle-for-tm-g19.html",
+      "competitor_title": "COWCOW Technology Enhanced Loading Nozzle for TM G19",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:52:28Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.6667,
+      "match_method": "brand_model",
+      "product_id": "tm-g19-enhanced-loading-nozzle",
+      "product_sku": null,
+      "product_title": "TM G19 Enhanced Loading Nozzle",
+      "review_reason": "jaccard_0.67_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    },
+    {
+      "competitor_domain": "powair6.com",
+      "competitor_product_id": "competitor:powair6.com:https://www.powair6.com/en/gbb-piston-head/67474-cowcow-technology-enhanced-tm-g17-gen5-piston-head.html",
+      "competitor_title": "COWCOW Technology Enhanced TM G17 gen5 Piston Head",
+      "decision": "review",
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:47:45Z",
+        "method": "llm"
+      },
+      "human_verdict": null,
+      "match_confidence": 0.7778,
+      "match_method": "brand_model",
+      "product_id": "enhanced-tm-g17-gen5-piston-head",
+      "product_sku": null,
+      "product_title": "Enhanced TM G17 Gen5 Piston Head",
+      "review_reason": "jaccard_0.78_below_auto_link_threshold",
+      "signals_evaluated": [
+        "sku",
+        "brand_model"
+      ]
+    }
+  ],
+  "source": "live_readonly_existing_PRODUCT_MATCH_edges_pairwise",
+  "summary": {
+    "auto_link": 49,
+    "blocked_ean": 453,
+    "edge_pairs_evaluated": 453,
+    "embedding_skipped_or_reject": 331,
+    "human_review_status": "pending",
+    "no_candidate": 331,
+    "review": 73
+  }
+}

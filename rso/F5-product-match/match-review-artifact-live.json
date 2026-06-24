@@ -1,0 +1,1742 @@
+{
+  "apply_performed": false,
+  "dry_run": true,
+  "falkordb_target_sanitized": "skirmshop_v2 via redis://10.43.157.14:6379 (ClusterIP aiops-falkordb, sanitized, read-only)",
+  "generated_at": "2026-06-24T15:38:44+00:00",
+  "human_review_status": "pending",
+  "items": [
+    {
+      "competitor_product": {
+        "brand": "ACETech",
+        "domain": "aa-store.at",
+        "id": "competitor:aa-store.at:https://www.aa-store.at/acetech-ac5000-chronograph",
+        "price": 57.95,
+        "title": "ACETech AC5000 Chronograph",
+        "url": "https://www.aa-store.at/acetech-ac5000-chronograph"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:32:06Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "acetech-ac5000-chronograph",
+        "price": 59.95,
+        "sku": "SP-ACET-01",
+        "title": "AC5000 Chronograph",
+        "url": "https://skirmshop-spain.myshopify.com/products/acetech-ac5000-chronograph",
+        "vendor": "Acetech"
+      },
+      "review_id": "F5-LIVE-001",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Action Army",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/34136-az.html",
+        "price": 25.9,
+        "title": "Extended Mag Release for AAP01 GBB - Red - Action Army",
+        "url": "https://evike-europe.com/34136-az.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:04Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-aap01-external-parts-mag-release-red",
+        "price": 25.95,
+        "sku": "SP-AAC-93",
+        "title": "Extended Mag Release for AAP01 - Red",
+        "url": "https://skirmshop.es/products/action-army-aap01-external-parts-mag-release-red",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-002",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "ACTION ARMY",
+        "domain": "bunker501.nl",
+        "id": "competitor:bunker501.nl:https://bunker501.nl/ACTION-ARMY-ADAPTER-FN-SPR-A5M-/-DT-M40",
+        "price": 8.99,
+        "title": "ACTION ARMY ADAPTER FN SPR A5M / DT M40 ",
+        "url": "https://bunker501.nl/ACTION-ARMY-ADAPTER-FN-SPR-A5M-/-DT-M40"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:04Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-fn-spr-adapter-vsr-10",
+        "price": 11.95,
+        "sku": "SP-AAC-144",
+        "title": "FN SPR A5M/DT M40 Adapter",
+        "url": "https://skirmshop.es/products/action-army-fn-spr-adapter-vsr-10",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-003",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Action Army",
+        "domain": "aa-store.at",
+        "id": "competitor:aa-store.at:https://www.aa-store.at/action-army-vsr-10-spring-guide",
+        "price": 22.95,
+        "title": "Action Army VSR-10 Spring Guide",
+        "url": "https://www.aa-store.at/action-army-vsr-10-spring-guide"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:49Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-vsr-10-spring-guide",
+        "price": 23.95,
+        "sku": "SP-AAC-97",
+        "title": "VSR-10 Spring Guide",
+        "url": "https://skirmshop.es/products/action-army-vsr-10-spring-guide",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-004",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "AIM-O",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/mounting-support/15351-aim-o-f1-mount-for-t1-t2.html",
+        "price": 14.78,
+        "title": "AIM-O F1 Mount for T1/T2",
+        "url": "https://www.powair6.com/en/mounting-support/15351-aim-o-f1-mount-for-t1-t2.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:34:28Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "aim-o-f1-mount-t1-t2",
+        "price": 18.95,
+        "sku": "SP-K5, 11-AO1780-BK",
+        "title": "F1 Mount for T1/T2",
+        "url": "https://skirmshop.es/products/aim-o-f1-mount-t1-t2",
+        "vendor": "Aim-O"
+      },
+      "review_id": "F5-LIVE-005",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "AIM-O",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/mounting-support/40974-aim-o-killflash-for-g33-3x-magnifier.html",
+        "price": 8.83,
+        "title": "AIM-O Killflash for G33 3X magnifier",
+        "url": "https://www.powair6.com/en/mounting-support/40974-aim-o-killflash-for-g33-3x-magnifier.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:34:36Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "aim-o-killflash-g33-3x-magnifier",
+        "price": 10.85,
+        "sku": "SP-AIM-35",
+        "title": "KillFlash for G33 3X Magnifier",
+        "url": "https://skirmshop.es/products/aim-o-killflash-g33-3x-magnifier",
+        "vendor": "Aim-O"
+      },
+      "review_id": "F5-LIVE-006",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "AIM-O",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/mounting-support/40920-aim-o-killflash-for-rmr-red-dot-sight.html",
+        "price": 10.81,
+        "title": "AIM-O Killflash for RMR Red Dot Sight",
+        "url": "https://www.powair6.com/en/mounting-support/40920-aim-o-killflash-for-rmr-red-dot-sight.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:34:36Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "aim-o-killflash-rmr-red-dot",
+        "price": 10.45,
+        "sku": "SP-I-4, 23A-AO 5027-BK",
+        "title": "KillFlash for RMR Red Dot Sight",
+        "url": "https://skirmshop.es/products/aim-o-killflash-rmr-red-dot",
+        "vendor": "Aim-O"
+      },
+      "review_id": "F5-LIVE-007",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "AIM-O",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/mounting-support/15359-aim-o-low-drag-mount-for-t1-t2.html",
+        "price": 20.73,
+        "title": "AIM-O Low Drag Mount for T1/T2",
+        "url": "https://www.powair6.com/en/mounting-support/15359-aim-o-low-drag-mount-for-t1-t2.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:34:45Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "aim-o-low-drag-mount-t1-t2",
+        "price": 21.95,
+        "sku": "SP-K5, 11-AO1701-BK",
+        "title": "Low Drag Mount for T1 and T2",
+        "url": "https://skirmshop-spain.myshopify.com/products/aim-o-low-drag-mount-t1-t2",
+        "vendor": "Aim-O"
+      },
+      "review_id": "F5-LIVE-008",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "ASG",
+        "domain": "aa-store.at",
+        "id": "competitor:aa-store.at:https://www.aa-store.at/asg-scorpion-evo-3-a1-hpa",
+        "price": 699.95,
+        "title": "ASG Scorpion Evo 3 A1 HPA",
+        "url": "https://www.aa-store.at/asg-scorpion-evo-3-a1-hpa"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:31:50Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "asg-scorpion-evo-3-a1-hpa-black",
+        "price": 629.99,
+        "sku": "SP-ASG-18671A",
+        "title": "Scorpion Evo 3 A1 - HPA - Black",
+        "url": "https://skirmshop-spain.myshopify.com/products/asg-scorpion-evo-3-a1-hpa-black",
+        "vendor": "ASG"
+      },
+      "review_id": "F5-LIVE-009",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "HydraPak",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/31697-az.html",
+        "price": 19.9,
+        "title": "Stow Bottle 1000ml - Mammoth - Hydrapak",
+        "url": "https://evike-europe.com/31697-az.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:56:43Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "hydrapak-stow-bottle-hydration-mammoth",
+        "price": 20.95,
+        "sku": "SP-HYDR-12",
+        "title": "Stow Bottle 1000ml Mammoth",
+        "url": "https://skirmshop.es/products/hydrapak-stow-bottle-hydration-mammoth",
+        "vendor": "Hydrapak"
+      },
+      "review_id": "F5-LIVE-010",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Maple Leaf",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/24787-az.html",
+        "price": 79.9,
+        "title": "Stainless Steel VSR-10 Cylinder - Maple Leaf",
+        "url": "https://evike-europe.com/24787-az.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:06:08Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "maple-leaf-vsr-cylinder-stainless-steel",
+        "price": 59.95,
+        "sku": "SP-MAPL-211",
+        "title": "VSR Stainless Steel Cylinder",
+        "url": "https://skirmshop.es/products/maple-leaf-vsr-cylinder-stainless-steel",
+        "vendor": "Maple Leaf"
+      },
+      "review_id": "F5-LIVE-011",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Maple Leaf",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/sniper-hop-up-chamber/11115-maple-leaf-vsr-10-hop-up-chamber-block.html",
+        "price": 13.78,
+        "title": "Maple Leaf VSR-10 Hop Up Chamber Block",
+        "url": "https://www.powair6.com/en/sniper-hop-up-chamber/11115-maple-leaf-vsr-10-hop-up-chamber-block.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:05:49Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "maple-leaf-vsr-hop-up-chamber-block",
+        "price": 19.95,
+        "sku": "SP-MAPL-215",
+        "title": "VSR Hop-Up Chamber Block",
+        "url": "https://skirmshop.es/products/maple-leaf-vsr-hop-up-chamber-block",
+        "vendor": "Maple Leaf"
+      },
+      "review_id": "F5-LIVE-012",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "modify",
+        "domain": "bunker501.nl",
+        "id": "competitor:bunker501.nl:https://bunker501.nl/MODIFY-Sora-R-hop-Mound-Rubber-for-VSR-10/-GBB-(60-DEG)",
+        "price": 5.95,
+        "title": "MODIFY Sora R-hop Mound Rubber for VSR-10/ GBB (60 DEG)",
+        "url": "https://bunker501.nl/MODIFY-Sora-R-hop-Mound-Rubber-for-VSR-10/-GBB-(60-DEG)"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:14:13Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "modify-sora-rhop-bucking-60deg",
+        "price": 9.94,
+        "sku": "SP-MODI-MOD533001",
+        "title": "Sora R-Hop Mound Rubber for VSR-10/ GBB (60 deG)",
+        "url": "https://skirmshop.es/products/modify-sora-rhop-bucking-60deg",
+        "vendor": "Modify"
+      },
+      "review_id": "F5-LIVE-013",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Modify",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/gb-05-12.html",
+        "price": 9.9,
+        "title": "Tappet Plate for Gearbox V2 AEG - Modify",
+        "url": "https://evike-europe.com/gb-05-12.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:14:13Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "modify-tappet-plate-v2-gearbox",
+        "price": 9.95,
+        "sku": "SP-MODI-12",
+        "title": "Modify Tappet Plate for V2 Gearbox",
+        "url": "https://skirmshop.es/products/modify-tappet-plate-v2-gearbox",
+        "vendor": "Modify"
+      },
+      "review_id": "F5-LIVE-014",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Prometheus",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/aeg-spring/1308-prometheus-ms100-non-linear-spring.html",
+        "price": 13.78,
+        "title": "Prometheus MS100 non-linear spring",
+        "url": "https://www.powair6.com/en/aeg-spring/1308-prometheus-ms100-non-linear-spring.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:17:17Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "prometheus-non-linear-spring-ms100",
+        "price": 14.95,
+        "sku": "SP-PROM-05",
+        "title": "Non-Linear Spring MS100",
+        "url": "https://skirmshop.es/products/prometheus-non-linear-spring-ms100",
+        "vendor": "Prometheus"
+      },
+      "review_id": "F5-LIVE-015",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Prometheus",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/aeg-spring/1821-prometheus-ms135-non-linear-spring.html",
+        "price": 14.78,
+        "title": "Prometheus MS135 non-linear spring",
+        "url": "https://www.powair6.com/en/aeg-spring/1821-prometheus-ms135-non-linear-spring.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:17:17Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "prometheus-non-linear-spring-ms135-aeg",
+        "price": 18.95,
+        "sku": "SP-PROM-12",
+        "title": "Non-Linear Spring MS135",
+        "url": "https://skirmshop.es/products/prometheus-non-linear-spring-ms135-aeg",
+        "vendor": "Prometheus"
+      },
+      "review_id": "F5-LIVE-016",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Silverback",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/sniper-upper/12622-silverback-carbon-bolt-knob.html",
+        "price": 19.73,
+        "title": "Silverback Carbon Bolt Knob",
+        "url": "https://www.powair6.com/en/sniper-upper/12622-silverback-carbon-bolt-knob.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:29:20Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "silverback-carbon-bolt-knob-tac-41",
+        "price": 22.95,
+        "sku": "SP-SBA-BKB-06",
+        "title": "Carbon Bolt Knob",
+        "url": "https://skirmshop.es/products/silverback-carbon-bolt-knob-tac-41",
+        "vendor": "Silverback"
+      },
+      "review_id": "F5-LIVE-017",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Silverback",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/stock/75039-silverback-reversible-dual-picatinny-hinge.html",
+        "price": 59.4,
+        "title": "Silverback Reversible Dual Picatinny Hinge",
+        "url": "https://www.powair6.com/en/stock/75039-silverback-reversible-dual-picatinny-hinge.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:30:40Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "silverback-dual-picatinny-hinge",
+        "price": 64.95,
+        "sku": "SP-SILV-SBA-STK-48",
+        "title": "Reversible Dual Picatinny Hinge",
+        "url": "https://skirmshop.es/products/silverback-dual-picatinny-hinge",
+        "vendor": "Silverback"
+      },
+      "review_id": "F5-LIVE-018",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Silverback",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/gbb-hop-up-rubber/26985-silverback-gbb-type-flat-hop-up-rubber-4-pack-60.html",
+        "price": 15.77,
+        "title": "Silverback GBB type Flat Hop Up rubber (4 pack) - 60°",
+        "url": "https://www.powair6.com/en/gbb-hop-up-rubber/26985-silverback-gbb-type-flat-hop-up-rubber-4-pack-60.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:29:33Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "silverback-gbb-flat-hop-up-rubber-60-degree-4-pack",
+        "price": 15.15,
+        "sku": "SP-SILV-172",
+        "title": "GBB Flat Hop-Up Rubber 60° (4 Pack)",
+        "url": "https://skirmshop.es/products/silverback-gbb-flat-hop-up-rubber-60-degree-4-pack",
+        "vendor": "Silverback"
+      },
+      "review_id": "F5-LIVE-019",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Silverback",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/gbb-hop-up-rubber/26986-silverback-gbb-type-flat-hop-up-rubber-4-pack-70.html",
+        "price": 15.77,
+        "title": "Silverback GBB type Flat Hop Up rubber (4 pack) - 70°",
+        "url": "https://www.powair6.com/en/gbb-hop-up-rubber/26986-silverback-gbb-type-flat-hop-up-rubber-4-pack-70.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T15:29:33Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.88,
+      "f5_pairwise_decision": "auto_link",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "silverback-gbb-flat-hop-up-rubber-70-degree-4-pack",
+        "price": 15.15,
+        "sku": "SP-SILV-173",
+        "title": "GBB Flat Hop-Up Rubber 70° (4 Pack)",
+        "url": "https://skirmshop.es/products/silverback-gbb-flat-hop-up-rubber-70-degree-4-pack",
+        "vendor": "Silverback"
+      },
+      "review_id": "F5-LIVE-020",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "5KU",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/aeg-outer-barrel/14390-5ku-115-inch-aluminum-outer-barrel-for-m4.html",
+        "price": 21.72,
+        "title": "5KU 11.5 inch aluminum outer barrel for M4",
+        "url": "https://www.powair6.com/en/aeg-outer-barrel/14390-5ku-115-inch-aluminum-outer-barrel-for-m4.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:29:12Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.7778,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "5ku-11-5-inch-m4-outer-barrel-aluminum",
+        "price": 31.95,
+        "sku": "SP-5KU-5KU-125",
+        "title": "11.5\" Outer Barrel for M4",
+        "url": "https://skirmshop.es/products/5ku-11-5-inch-m4-outer-barrel-aluminum",
+        "vendor": "5KU"
+      },
+      "review_id": "F5-LIVE-021",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "5KU",
+        "domain": "aa-store.at",
+        "id": "competitor:aa-store.at:https://www.aa-store.at/5ku-rp-1-ak-extended-charging-handle-knob-black",
+        "price": 14.95,
+        "title": "5KU RP-1 AK Extended Charging Handle Knob - Black",
+        "url": "https://www.aa-store.at/5ku-rp-1-ak-extended-charging-handle-knob-black"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:29:12Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.7778,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "5ku-ak-rp-1-extended-charging-handle",
+        "price": 15.95,
+        "sku": "SP-5KU-5KU-300-BLK",
+        "title": "AK RP-1 Extended Charging Handle",
+        "url": "https://skirmshop.es/products/5ku-ak-rp-1-extended-charging-handle",
+        "vendor": "5KU"
+      },
+      "review_id": "F5-LIVE-022",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Abbey",
+        "domain": "patrolbase.co.uk",
+        "id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/abbey-gas-brass-nozzle-extension",
+        "price": 2.49,
+        "title": "Abbey Gas Nozzle Extension",
+        "url": "https://www.patrolbase.co.uk/eu/abbey-gas-brass-nozzle-extension"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:31:59Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.75,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "abbey-extension-nozzle-valve",
+        "price": 3.5,
+        "sku": "SP-ABBEY-08",
+        "title": "Abbey Extension Nozzle",
+        "url": "https://skirmshop.es/products/abbey-extension-nozzle-valve",
+        "vendor": "Abbey"
+      },
+      "review_id": "F5-LIVE-023",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "AAC",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/sniper-inner-barrel/8460-action-army-aac-603-precision-barrel-for-vsr-10-500mm.html",
+        "price": 29.65,
+        "title": "Action Army AAC 6.03 precision Barrel for VSR-10 500mm",
+        "url": "https://www.powair6.com/en/sniper-inner-barrel/8460-action-army-aac-603-precision-barrel-for-vsr-10-500mm.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:32:13Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.6667,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-500mm-inner-barrel-vsr-10",
+        "price": 39.95,
+        "sku": "SP-AAC-142",
+        "title": "500mm 6.03 VSR-10 Inner Barrel",
+        "url": "https://skirmshop.es/products/action-army-500mm-inner-barrel-vsr-10",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-024",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Action Army",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/30888-az.html",
+        "price": 11.9,
+        "title": "Nozzle for AAP01 GBB - Black - Action Army",
+        "url": "https://evike-europe.com/30888-az.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:17Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.7143,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-aap-01-nozzle",
+        "price": 9.95,
+        "sku": "SP-AAC-59",
+        "title": "Nozzle for AAP01",
+        "url": "https://skirmshop.es/products/action-army-aap-01-nozzle",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-025",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "AAC",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/gbb-lips-gas-route/13220-aac-gas-route-seal-for-aap-01.html",
+        "price": 9.82,
+        "title": "AAC gas route seal for AAP-01",
+        "url": "https://www.powair6.com/en/gbb-lips-gas-route/13220-aac-gas-route-seal-for-aap-01.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:04Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.6667,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-aap01-valve-gas-route-seal",
+        "price": 7.95,
+        "sku": "SP-AAC-54",
+        "title": "Gas Route Seal for AAP-01",
+        "url": "https://skirmshop.es/products/action-army-aap01-valve-gas-route-seal",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-026",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Action Army",
+        "domain": "aa-store.at",
+        "id": "competitor:aa-store.at:https://www.aa-store.at/action-army-34-hole-teflon-coated-cylinder",
+        "price": 14.95,
+        "title": "Action Army 3/4 Hole Teflon Coated Cylinder",
+        "url": "https://www.aa-store.at/action-army-34-hole-teflon-coated-cylinder"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:33:29Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.7,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-cylinder-v2-v3-teflon",
+        "price": 11.99,
+        "sku": "SP-AAC-14",
+        "title": "Teflon-Coated V2+V3 Cylinder (3/4)",
+        "url": "https://skirmshop.es/products/action-army-cylinder-v2-v3-teflon",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-027",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "AAC",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/adapter/9240-action-army-aac-t10-sound-suppressor-connector-type-a.html",
+        "price": 14.78,
+        "title": "Action Army AAC T10 Sound Suppressor Connector type A",
+        "url": "https://www.powair6.com/en/adapter/9240-action-army-aac-t10-sound-suppressor-connector-type-a.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:29Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.8,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-t10-sound-suppressor-connector-type-a",
+        "price": 13.95,
+        "sku": "SP-AAC-46",
+        "title": "T10/SSG10 Sound Suppressor Connector Type A",
+        "url": "https://skirmshop.es/products/action-army-t10-sound-suppressor-connector-type-a",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-028",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "ACTION ARMY",
+        "domain": "bunker501.nl",
+        "id": "competitor:bunker501.nl:https://bunker501.nl/action-army-vsr-10-hop-up-chamber-stopper",
+        "price": 2.95,
+        "title": "ACTION ARMY Vsr-10 Hop Up Chamber Stopper",
+        "url": "https://bunker501.nl/action-army-vsr-10-hop-up-chamber-stopper"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:04Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.7778,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-vsr-10-hop-up-chamber",
+        "price": 4.95,
+        "sku": "SP-AAC-04",
+        "title": "Cámara Stopper VSR-10 Hop-Up",
+        "url": "https://skirmshop.es/products/action-army-vsr-10-hop-up-chamber",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-029",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "ACTION ARMY",
+        "domain": "bunker501.nl",
+        "id": "competitor:bunker501.nl:https://bunker501.nl/ACTION-ARMY-VSR-10-M170-Spring",
+        "price": 11.5,
+        "title": "ACTION ARMY VSR-10 M170 Spring",
+        "url": "https://bunker501.nl/ACTION-ARMY-VSR-10-M170-Spring"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:38Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.8333,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-vsr-m170-spring",
+        "price": 12.95,
+        "sku": "SP-AAC-133",
+        "title": "VSR M170 Spring",
+        "url": "https://skirmshop.es/products/action-army-vsr-m170-spring",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-030",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "AAC",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/sniper-barrel-spacer/7613-action-army-vsr-10-g-spec-inner-barrel-spacer-set.html",
+        "price": 16.76,
+        "title": "Action Army VSR-10 G-Spec Inner Barrel Spacer Set",
+        "url": "https://www.powair6.com/en/sniper-barrel-spacer/7613-action-army-vsr-10-g-spec-inner-barrel-spacer-set.html"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:33:38Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.6667,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-vsr10-barrel-spacers",
+        "price": 16.95,
+        "sku": "SP-AAC-103",
+        "title": "VSR-10 G-Spec Inner Barrel Spacers",
+        "url": "https://skirmshop.es/products/action-army-vsr10-barrel-spacers",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-031",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "AIM-O",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/rifle-scope/56761-aim-o-3-9x40e-sf-tactical-scope-black.html",
+        "price": 29.7,
+        "title": "AIM-O 3-9x40E-SF Tactical Scope Black",
+        "url": "https://www.powair6.com/en/rifle-scope/56761-aim-o-3-9x40e-sf-tactical-scope-black.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:35:18Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.7273,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "aim-o-3-9x40e-sf-tactical-scope-black",
+        "price": 69.95,
+        "sku": "SP-AIM-AO3062-BK",
+        "title": "Tactical Scope 3-9X40E-SF (Red/Green Reticle) - Black",
+        "url": "https://skirmshop-spain.myshopify.com/products/aim-o-3-9x40e-sf-tactical-scope-black",
+        "vendor": "Aim-O"
+      },
+      "review_id": "F5-LIVE-032",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "AIM-O",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/red-dot/40922-aim-o-adjustable-led-rmr-red-dot-black.html",
+        "price": 54.44,
+        "title": "AIM-O Adjustable LED RMR Red Dot - Black",
+        "url": "https://www.powair6.com/en/red-dot/40922-aim-o-adjustable-led-rmr-red-dot-black.html"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:34:14Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.7778,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "aim-o-adjustable-rmr-red-dot-de",
+        "price": 60.95,
+        "sku": "SP-AIM-19",
+        "title": "Adjustable Led RMR Red Dot - de",
+        "url": "https://skirmshop.es/products/aim-o-adjustable-rmr-red-dot-de",
+        "vendor": "Aim-O"
+      },
+      "review_id": "F5-LIVE-033",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "AIM-O",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/magnifier/3361-aim-o-g33-3x-magnifier-de.html",
+        "price": 84.19,
+        "title": "AIM-O G33 3X Magnifier - DE",
+        "url": "https://www.powair6.com/en/magnifier/3361-aim-o-g33-3x-magnifier-de.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:34:22Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.75,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "aim-o-et-style-g33-3x-magnifier-de",
+        "price": 79.99,
+        "sku": "SP-AIM-27",
+        "title": "ET Style G33 3X Magnifier - de",
+        "url": "https://skirmshop.es/products/aim-o-et-style-g33-3x-magnifier-de",
+        "vendor": "Aim-O"
+      },
+      "review_id": "F5-LIVE-034",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "AIM-O",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/magnifier/11563-aim-o-fxd-4x-magnifier-black.html",
+        "price": 62.38,
+        "title": "AIM-O FXD 4X Magnifier Black",
+        "url": "https://www.powair6.com/en/magnifier/11563-aim-o-fxd-4x-magnifier-black.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:34:04Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.75,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "aim-o-magnifier-4x-et-fxd-black",
+        "price": 59.95,
+        "sku": "SP-AIM-16",
+        "title": "4X Magnifier ET FXD Style - Black",
+        "url": "https://skirmshop.es/products/aim-o-magnifier-4x-et-fxd-black",
+        "vendor": "Aim-O"
+      },
+      "review_id": "F5-LIVE-035",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "AIM-O",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/mounting-support/15353-aim-o-qd-mount-for-t1-t2.html",
+        "price": 15.77,
+        "title": "AIM-O QD Mount for T1/T2",
+        "url": "https://www.powair6.com/en/mounting-support/15353-aim-o-qd-mount-for-t1-t2.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:34:45Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.7778,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "aim-o-qd-riser-mount-t1-t2",
+        "price": 17.95,
+        "sku": "SP-AO1711-BK",
+        "title": "QD Riser Mount for T1 and T2",
+        "url": "https://skirmshop.es/products/aim-o-qd-riser-mount-t1-t2",
+        "vendor": "Aim-O"
+      },
+      "review_id": "F5-LIVE-036",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Aim-O",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/28371-az.html",
+        "price": 23.9,
+        "title": "Monoblock Scope Mount 25.4 / 30mm - Black - Aim-O",
+        "url": "https://evike-europe.com/28371-az.html"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:33:57Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.7273,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "aim-o-qd-scope-mount-25-4-30mm-black",
+        "price": 29.95,
+        "sku": "SP-AIM-42",
+        "title": "25.4-30mm Scope Mount with QD - Black",
+        "url": "https://skirmshop-spain.myshopify.com/products/aim-o-qd-scope-mount-25-4-30mm-black",
+        "vendor": "Aim-O"
+      },
+      "review_id": "F5-LIVE-037",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Amomax",
+        "domain": "aa-store.at",
+        "id": "competitor:aa-store.at:https://www.aa-store.at/amomax-drop-leg-molle-platform-black",
+        "price": 25.95,
+        "title": "Amomax Drop Leg MOLLE Platform - Black",
+        "url": "https://www.aa-store.at/amomax-drop-leg-molle-platform-black"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:35:36Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.8333,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "amomax-drop-leg-platform-holster-universal",
+        "price": 28.95,
+        "sku": "SP-AMO-AM-DLP",
+        "title": "Drop Leg Platform - Black",
+        "url": "https://skirmshop.es/products/amomax-drop-leg-platform-holster-universal",
+        "vendor": "Amomax"
+      },
+      "review_id": "F5-LIVE-038",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "ASG",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/gas/38497-asg-ultrair-power-gas-with-silicone-570ml-135-psi.html",
+        "price": 8.83,
+        "title": "ASG Ultrair Power gas with silicone 570ml - 135 psi",
+        "url": "https://www.powair6.com/en/gas/38497-asg-ultrair-power-gas-with-silicone-570ml-135-psi.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:31:59Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.7,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "asg-gas-ultrair-green-green-gas-135-psi",
+        "price": 10.99,
+        "sku": "SP-ASG-GAS00010",
+        "title": "Ultrair Green Gas (135 PSI) with Silicone",
+        "url": "https://skirmshop-spain.myshopify.com/products/asg-gas-ultrair-green-green-gas-135-psi",
+        "vendor": "ASG"
+      },
+      "review_id": "F5-LIVE-039",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "BLS",
+        "domain": "patrolbase.co.uk",
+        "id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/bls-0-23g-6mm-perfect-bio-bbs-1kg-bag",
+        "price": 15.49,
+        "title": "BLS 0.23g 6mm Perfect BIO BBs; 1KG Bag",
+        "url": "https://www.patrolbase.co.uk/eu/bls-0-23g-6mm-perfect-bio-bbs-1kg-bag"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:41:15Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": 0.7778,
+      "f5_pairwise_decision": "review",
+      "f5_pairwise_method": "brand_model",
+      "human_verdict": null,
+      "product": {
+        "id": "bls-0-23g-bio-perfect-bb-ammo",
+        "price": 15.95,
+        "sku": "SP-BLS-24",
+        "title": "0.23g Bio Perfect BBs 1Kg",
+        "url": "https://skirmshop.es/products/bls-0-23g-bio-perfect-bb-ammo",
+        "vendor": "BLS"
+      },
+      "review_id": "F5-LIVE-040",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "AIM-O",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/rifle-scope/10753-aim-o-1-4x24-tactical-scope-black.html",
+        "price": 79.23,
+        "title": "AIM-O 1-4x24 Tactical Scope Black",
+        "url": "https://www.powair6.com/en/rifle-scope/10753-aim-o-1-4x24-tactical-scope-black.html"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:33:57Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "1-4x24se-tactical-scope",
+        "price": 94.95,
+        "sku": "SP-AIM-AO3044-BK",
+        "title": "1-4x24SE Tactical Scope",
+        "url": "https://skirmshop.es/products/1-4x24se-tactical-scope",
+        "vendor": "Aim-O"
+      },
+      "review_id": "F5-LIVE-041",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "CowCow Technology",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/gbb-hammer/54864-cowcow-technology-120-hammer-spring-for-g17-gen5.html",
+        "price": 3.87,
+        "title": "COWCOW Technology 120% Hammer Spring for G17 gen5",
+        "url": "https://www.powair6.com/en/gbb-hammer/54864-cowcow-technology-120-hammer-spring-for-g17-gen5.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:46:31Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "120-hammer-springfor-tokyo-marui-g17-gen-5-gbb-series",
+        "price": 3.91,
+        "title": "120% Hammer Spring[For Tokyo Marui G17 GEN.5 GBB Series]",
+        "url": "https://skirmshop.es/products/120-hammer-springfor-tokyo-marui-g17-gen-5-gbb-series",
+        "vendor": "Cow Cow Technology"
+      },
+      "review_id": "F5-LIVE-042",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "CowCow Technology",
+        "domain": "powair6.com",
+        "id": "competitor:powair6.com:https://www.powair6.com/en/gbb-spring/57727-cowcow-technology-nozzle-spring-145-for-tm-mp9.html",
+        "price": 4.86,
+        "title": "COWCOW Technology Nozzle Spring 145% for TM M&amp;P9",
+        "url": "https://www.powair6.com/en/gbb-spring/57727-cowcow-technology-nozzle-spring-145-for-tm-mp9.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:46:31Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "145-nozzle-spring",
+        "price": 3.11,
+        "title": "145% Nozzle Spring",
+        "url": "https://skirmshop.es/products/145-nozzle-spring",
+        "vendor": "Cow Cow Technology"
+      },
+      "review_id": "F5-LIVE-043",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "5KU",
+        "domain": "patrolbase.co.uk",
+        "id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/5ku-10-3-aluminium-outer-barrel-for-m4-ar-15-aeg",
+        "price": 28.99,
+        "title": "5KU 10.3\" Aluminium Outer Barrel for M4/AR-15 AEGs",
+        "url": "https://www.patrolbase.co.uk/eu/5ku-10-3-aluminium-outer-barrel-for-m4-ar-15-aeg"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:29:12Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "5ku-10-3-inch-m4-outer-barrel-aluminum",
+        "price": 29.95,
+        "sku": "SP-5KU-5KU-123",
+        "title": "10.3\" Outer Barrel for M4",
+        "url": "https://skirmshop.es/products/5ku-10-3-inch-m4-outer-barrel-aluminum",
+        "vendor": "5KU"
+      },
+      "review_id": "F5-LIVE-044",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "5KU",
+        "domain": "patrolbase.co.uk",
+        "id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/5ku-14-5-aluminium-outer-barrel-for-m4-ar15-aeg",
+        "price": 28.99,
+        "title": "5KU 14.5\" Aluminium Outer Barrel for M4/AR-15 AEGs",
+        "url": "https://www.patrolbase.co.uk/eu/5ku-14-5-aluminium-outer-barrel-for-m4-ar15-aeg"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:29:12Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "5ku-14-5-outer-barrel-aluminum-m4",
+        "price": 32.95,
+        "sku": "SP-5KU-5KU-126",
+        "title": "14.5\" Outer Barrel for M4",
+        "url": "https://skirmshop.es/products/5ku-14-5-outer-barrel-aluminum-m4",
+        "vendor": "5KU"
+      },
+      "review_id": "F5-LIVE-045",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "5KU",
+        "domain": "patrolbase.co.uk",
+        "id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/5ku-kp-9-spitfire-tracer-unit-14mm-ccw",
+        "price": 86.99,
+        "title": "5KU KP-9 Spitfire Tracer Unit; 14mm CCW",
+        "url": "https://www.patrolbase.co.uk/eu/5ku-kp-9-spitfire-tracer-unit-14mm-ccw"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:29:31Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "5ku-sf-mpi-kp-9-tracer-suppressor-14mm-ccw",
+        "price": 99.95,
+        "sku": "SP-5KU-BBP-334",
+        "title": "SF MPI KP-9 9x19 Tracer Muzzle Device (14mm CCW)",
+        "url": "https://skirmshop-spain.myshopify.com/products/5ku-sf-mpi-kp-9-tracer-suppressor-14mm-ccw",
+        "vendor": "5KU"
+      },
+      "review_id": "F5-LIVE-046",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Cow Cow Technology",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/27447.html",
+        "price": 9.9,
+        "title": "CowCow Technology 150% Recoil Spring for Action Army AAP-01 Gas Blowback Airsoft Pistols",
+        "url": "https://evike-europe.com/27447.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:46:43Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "aap-01-150-recoil-spring",
+        "price": 9.86,
+        "title": "AAP-01 150% Recoil Spring",
+        "url": "https://skirmshop.es/products/aap-01-150-recoil-spring",
+        "vendor": "Cow Cow Technology"
+      },
+      "review_id": "F5-LIVE-047",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Cow Cow Technology",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/27446.html",
+        "price": 9.9,
+        "title": "CowCow Technology 200% Nozzle Spring for Action Army AAP-01 Gas Blowback Airsoft Pistols",
+        "url": "https://evike-europe.com/27446.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:46:43Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "aap-01-200-nozzle-spring",
+        "price": 8.88,
+        "title": "AAP-01 200% Nozzle Spring",
+        "url": "https://skirmshop.es/products/aap-01-200-nozzle-spring",
+        "vendor": "Cow Cow Technology"
+      },
+      "review_id": "F5-LIVE-048",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Cow Cow Technology",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/113291.html",
+        "price": 10.9,
+        "title": "CowCow Technology Enhanced V2 Piston Head for Action Army AAP-01 Gas Blowback Airsoft Pistols",
+        "url": "https://evike-europe.com/113291.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:46:43Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "aap-01-enhanced-piston-head-v2",
+        "price": 11.86,
+        "title": "AAP-01 Enhanced Piston Head V2",
+        "url": "https://skirmshop.es/products/aap-01-enhanced-piston-head-v2",
+        "vendor": "Cow Cow Technology"
+      },
+      "review_id": "F5-LIVE-049",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Cow Cow Technology",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/35833.html",
+        "price": 23.9,
+        "title": "CowCow Technology Enhanced Complete Nozzle Set For Action Army AAP-01 Gas Blowback Airsoft Pistols",
+        "url": "https://evike-europe.com/35833.html"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:46:43Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "aap-01-enhanced-plastic-nozzle-set",
+        "price": 22.76,
+        "title": "AAP-01 Enhanced Plastic Nozzle Set",
+        "url": "https://skirmshop.es/products/aap-01-enhanced-plastic-nozzle-set",
+        "vendor": "Cow Cow Technology"
+      },
+      "review_id": "F5-LIVE-050",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Cow Cow Technology",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/102751.html",
+        "price": 95.9,
+        "title": "CowCow Technology Stainless Steel Hammer Housing for Action Army AAP-01 Gas Blowback Airsoft Pistols",
+        "url": "https://evike-europe.com/102751.html"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:46:53Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "aap-01-stainless-steel-hammer",
+        "price": 24.74,
+        "title": "AAP-01 Stainless Steel Hammer",
+        "url": "https://skirmshop.es/products/aap-01-stainless-steel-hammer",
+        "vendor": "Cow Cow Technology"
+      },
+      "review_id": "F5-LIVE-051",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Cow Cow Technology",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/102751.html",
+        "price": 95.9,
+        "title": "CowCow Technology Stainless Steel Hammer Housing for Action Army AAP-01 Gas Blowback Airsoft Pistols",
+        "url": "https://evike-europe.com/102751.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:46:53Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "aap-01-stainless-steel-hammer-housing",
+        "price": 67.39,
+        "title": "AAP-01 Stainless Steel Hammer Housing",
+        "url": "https://skirmshop.es/products/aap-01-stainless-steel-hammer-housing",
+        "vendor": "Cow Cow Technology"
+      },
+      "review_id": "F5-LIVE-052",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Cow Cow Technology",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/113291.html",
+        "price": 10.9,
+        "title": "CowCow Technology Enhanced V2 Piston Head for Action Army AAP-01 Gas Blowback Airsoft Pistols",
+        "url": "https://evike-europe.com/113291.html"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:47:00Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "aap01-enhance-piston-head",
+        "price": 3.95,
+        "title": "AAP01 Enhance Piston Head",
+        "url": "https://skirmshop.es/products/aap01-enhance-piston-head",
+        "vendor": "Cow Cow Technology"
+      },
+      "review_id": "F5-LIVE-053",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Cow Cow Technology",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/pu18333.html",
+        "price": 16.9,
+        "title": "Enhanced Nozzle for AAP01 GBB - Polymer - CowCow Technology",
+        "url": "https://evike-europe.com/pu18333.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:47:06Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "aap01-enhance-plastic-nozzle",
+        "price": 7.77,
+        "title": "AAP01 Enhance Plastic Nozzle",
+        "url": "https://skirmshop.es/products/aap01-enhance-plastic-nozzle",
+        "vendor": "Cow Cow Technology"
+      },
+      "review_id": "F5-LIVE-054",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Abbey",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/abdegrease.html",
+        "price": 6.9,
+        "title": "Degreasing Spray Aerosol Spray 150ml - Abbey ",
+        "url": "https://evike-europe.com/abdegrease.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:31:59Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "abbey-150ml-degreaser-spray",
+        "price": 5.95,
+        "sku": "SP-ABBEY-03",
+        "title": "150ml Degreaser Spray",
+        "url": "https://skirmshop-spain.myshopify.com/products/abbey-150ml-degreaser-spray",
+        "vendor": "Abbey"
+      },
+      "review_id": "F5-LIVE-055",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Abbey",
+        "domain": "patrolbase.co.uk",
+        "id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/abbey-silicone-gun-grease-20ml-pot",
+        "price": 4.99,
+        "title": "Abbey Silicone Gun Grease 20ml Pot",
+        "url": "https://www.patrolbase.co.uk/eu/abbey-silicone-gun-grease-20ml-pot"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:32:06Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "abbey-silicone-gun-grease",
+        "price": 5.95,
+        "sku": "SP-ABBEY-01",
+        "title": "Silicone Gun Grease for Airsoft Pistol (Valve Seal) 20 ml",
+        "url": "https://skirmshop-spain.myshopify.com/products/abbey-silicone-gun-grease",
+        "vendor": "Abbey"
+      },
+      "review_id": "F5-LIVE-056",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Action Army",
+        "domain": "evike-europe.com",
+        "id": "competitor:evike-europe.com:https://evike-europe.com/34135-az.html",
+        "price": 25.9,
+        "title": "Extended Mag Release for AAP01 GBB - Black - Action Army",
+        "url": "https://evike-europe.com/34135-az.html"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:33:04Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-aap01-extended-mag-release",
+        "price": 25.95,
+        "sku": "SP-AAC-84",
+        "title": "Extended Mag Release for AAP-01 - Black",
+        "url": "https://skirmshop.es/products/action-army-aap01-extended-mag-release",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-057",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Action Army",
+        "domain": "aa-store.at",
+        "id": "competitor:aa-store.at:https://www.aa-store.at/action-army-aap-01-wheel-adjusted-hop-up-chamber",
+        "price": 51.95,
+        "title": "Action Army AAP-01 Wheel Adjusted Hop-Up Chamber",
+        "url": "https://www.aa-store.at/action-army-aap-01-wheel-adjusted-hop-up-chamber"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:32:26Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-aap01-hop-up-chamber-adjustable",
+        "price": 54.95,
+        "sku": "SP-AAC-77",
+        "title": "AAP01 Adjustable Hop-Up Chamber",
+        "url": "https://skirmshop.es/products/action-army-aap01-hop-up-chamber-adjustable",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-058",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Action Army",
+        "domain": "aa-store.at",
+        "id": "competitor:aa-store.at:https://www.aa-store.at/action-army-aap-01-50rds-gas-blow-back-pistol-magazine-black",
+        "price": 51.95,
+        "title": "Action Army AAP-01 50rds Gas Blow Back Pistol Magazine - Black",
+        "url": "https://www.aa-store.at/action-army-aap-01-50rds-gas-blow-back-pistol-magazine-black"
+      },
+      "existing_edge": {
+        "confidence": 0.95,
+        "matched_at": "2026-06-24T14:33:04Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-aap01-magazine-50rds",
+        "price": 44.95,
+        "sku": "SP-AAC-83",
+        "title": "Extended Magazine for AAP-01 and G Series - 50 Rounds",
+        "url": "https://skirmshop-spain.myshopify.com/products/action-army-aap01-magazine-50rds",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-059",
+      "reviewer_notes": null
+    },
+    {
+      "competitor_product": {
+        "brand": "Action Army",
+        "domain": "patrolbase.co.uk",
+        "id": "competitor:patrolbase.co.uk:https://www.patrolbase.co.uk/eu/action-army-black-mamba-type-a-upper-receiver-for-aap-01-cnc-alu",
+        "price": 150.49,
+        "title": "Action Army Black Mamba Type A Upper Receiver for AAP-01; CNC Alu",
+        "url": "https://www.patrolbase.co.uk/eu/action-army-black-mamba-type-a-upper-receiver-for-aap-01-cnc-alu"
+      },
+      "existing_edge": {
+        "confidence": 1.0,
+        "matched_at": "2026-06-24T14:32:33Z",
+        "method": "llm"
+      },
+      "f5_pairwise_confidence": null,
+      "f5_pairwise_decision": "no_candidate",
+      "f5_pairwise_method": null,
+      "human_verdict": null,
+      "product": {
+        "id": "action-army-aap01-receiver-black-mamba-cnc-a",
+        "price": 129.95,
+        "sku": "SP-AAC-63",
+        "title": "AAP01 Black Mamba CNC Upper Receiver Kit A",
+        "url": "https://skirmshop.es/products/action-army-aap01-receiver-black-mamba-cnc-a",
+        "vendor": "Action Army"
+      },
+      "review_id": "F5-LIVE-060",
+      "reviewer_notes": null
+    }
+  ],
+  "sample_size": 60,
+  "sample_strategy": "stable stratified sample: up to 20 f5 auto_link, 20 f5 review, 20 f5 no_candidate, then fill to 60 from existing live PRODUCT_MATCH edges",
+  "source": "existing_PRODUCT_MATCH_edges_live_readonly_stratified_sample"
+}
