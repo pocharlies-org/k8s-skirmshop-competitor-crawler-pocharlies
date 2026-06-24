@@ -1,0 +1,72 @@
+[
+  {
+    "url": "https://www.leopard.es/cuchillos-supervivencia/6403-cuchillo-aitor-jungle-king-i-hoja-acero.html",
+    "evidence_snippet": "microdata <link itemprop=\"availability\" href=\"http://schema.org/InStock\">",
+    "expected_stock_status": "in_stock",
+    "extracted_stock_status": "in_stock",
+    "match": true
+  },
+  {
+    "url": "https://www.leopard.es/navajas-caza/28093-fallkniven-gp-gentlemans-pocket-micarta-negra.html",
+    "evidence_snippet": "microdata <link itemprop=\"availability\" href=\"http://schema.org/InStock\">",
+    "expected_stock_status": "in_stock",
+    "extracted_stock_status": "in_stock",
+    "match": true
+  },
+  {
+    "url": "https://www.leopard.es/cuchillos-tacticos-militares/3664-cuchillo-ka-bar-short-usa-plain-edge.html",
+    "evidence_snippet": "microdata <link itemprop=\"availability\" href=\"http://schema.org/InStock\">",
+    "expected_stock_status": "in_stock",
+    "extracted_stock_status": "in_stock",
+    "match": true
+  },
+  {
+    "url": "https://www.leopard.es/navajas-caza/6269-buck-110-folding-hunter.html",
+    "evidence_snippet": "microdata <link itemprop=\"availability\" href=\"http://schema.org/InStock\">",
+    "expected_stock_status": "in_stock",
+    "extracted_stock_status": "in_stock",
+    "match": true
+  },
+  {
+    "url": "https://www.leopard.es/navajas-tacticas-militares/17182-navaja-spyderco-manix-2-azul-cpm-s110v.html",
+    "evidence_snippet": "microdata <link itemprop=\"availability\" href=\"http://schema.org/InStock\">",
+    "expected_stock_status": "in_stock",
+    "extracted_stock_status": "in_stock",
+    "match": true
+  },
+  {
+    "url": "https://www.leopard.es/cuchillos-supervivencia/17737-cuchillo-aitor-oso-negro-funda-negra.html",
+    "evidence_snippet": "microdata <link itemprop=\"availability\" href=\"http://schema.org/InStock\">",
+    "expected_stock_status": "in_stock",
+    "extracted_stock_status": "in_stock",
+    "match": true
+  },
+  {
+    "url": "https://www.leopard.es/navajas-tacticas-militares/29565-cold-steel-recon-1-de-spear-point-cpm-s35vn.html",
+    "evidence_snippet": "microdata <link itemprop=\"availability\" href=\"http://schema.org/InStock\">",
+    "expected_stock_status": "in_stock",
+    "extracted_stock_status": "in_stock",
+    "match": true
+  },
+  {
+    "url": "https://www.leopard.es/cuchillos-tacticos-militares/16749-cuchillo-gerber-strongarm-negro-liso.html",
+    "evidence_snippet": "microdata <link itemprop=\"availability\" href=\"http://schema.org/InStock\">",
+    "expected_stock_status": "in_stock",
+    "extracted_stock_status": "in_stock",
+    "match": true
+  },
+  {
+    "url": "https://www.leopard.es/cuchillos-para-lanzar/13434-cuchillo-lanzador-muela.html",
+    "evidence_snippet": "microdata <link itemprop=\"availability\" href=\"http://schema.org/InStock\">",
+    "expected_stock_status": "in_stock",
+    "extracted_stock_status": "in_stock",
+    "match": true
+  },
+  {
+    "url": "https://www.leopard.es/cuchillos-caza/30630-tops-spirit-hunter-x3.html",
+    "evidence_snippet": "microdata <link itemprop=\"availability\" href=\"http://schema.org/InStock\">",
+    "expected_stock_status": "in_stock",
+    "extracted_stock_status": "in_stock",
+    "match": true
+  }
+]

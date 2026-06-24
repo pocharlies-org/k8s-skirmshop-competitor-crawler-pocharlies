@@ -5,6 +5,8 @@ import abc
 import dataclasses
 from typing import Optional
 
+from src.stock import normalize_availability
+
 
 @dataclasses.dataclass
 class AdapterResult:
@@ -40,22 +42,52 @@ class BaseSiteAdapter(abc.ABC):
     def extract_products(self, html: str, url: str) -> list[dict]:
         """Return list of raw product dicts from a page."""
 
-    # F1 = catalog + price only. Stock/availability is F2 scope.
-    _F1_STOCK_FIELDS: frozenset = frozenset({
-        "availability", "stock", "stock_status", "quantity", "qty",
-        "in_stock", "out_of_stock",
+    # Raw fields that must never appear in the normalized output.
+    # availability is consumed here and replaced with stock_status/stock_method.
+    # F2 contract forbids exposing any raw quantity or stock signal.
+    _RAW_STRIP_FIELDS: frozenset = frozenset({
+        # availability signals
+        "availability",
+        "in_stock",
+        "out_of_stock",
+        "stock_status",   # raw value — replaced by normalize_availability output
+        "stock_method",   # raw value — replaced by normalize_availability output
+        # numeric / quantity aliases
+        "stock",
+        "stock_qty",
+        "stock_count",
+        "quantity",
+        "qty",
+        "qty_available",
+        "units_left",
+        "units",
+        "count",
     })
 
     def _normalize(self, raw: dict, page_url: str) -> dict:
-        """Attach mandatory fields, compute source_id, and strip F2 stock fields."""
+        """Attach mandatory fields, compute source_id, and apply F2 stock normalization.
+
+        F2 contract:
+          stock_status : in_stock | out_of_stock | unknown
+          stock_method : visible  | unknown
+        Raw availability / quantity fields are stripped and replaced by these two.
+        """
         product_url = raw.get("url") or page_url
         source_id = f"competitor:{self.domain}:{product_url}"
-        filtered = {k: v for k, v in raw.items() if k not in self._F1_STOCK_FIELDS}
+
+        # F2: extract raw availability before stripping raw fields
+        raw_availability = raw.get("availability", "")
+        stock_status, stock_method = normalize_availability(raw_availability)
+
+        filtered = {k: v for k, v in raw.items() if k not in self._RAW_STRIP_FIELDS}
+
         return {
             **filtered,
             "domain": self.domain,
             "url": product_url,
             "source_id": source_id,
+            "stock_status": stock_status,
+            "stock_method": stock_method,
         }
 
     async def run(self, limit: int = 50) -> AdapterResult:

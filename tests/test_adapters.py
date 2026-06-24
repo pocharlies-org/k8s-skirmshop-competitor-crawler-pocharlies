@@ -105,8 +105,12 @@ def test_adapter_normalize_attaches_domain_and_source_id():
     assert p["source_id"] == "competitor:y.com:https://y.com/p/gun"
 
 
-def test_normalize_strips_f1_stock_fields():
-    """_normalize must remove stock/availability fields (F1 scope = catalog+price only)."""
+def test_normalize_strips_raw_stock_fields_and_exposes_f2_contract():
+    """_normalize must strip raw stock/availability fields and expose F2 contract fields.
+
+    Raw fields (availability, stock, quantity, qty, in_stock, out_of_stock) must be absent.
+    F2 fields (stock_status, stock_method) must be present with correct values.
+    """
     raw = [
         {
             "title": "Rifle X",
@@ -114,7 +118,7 @@ def test_normalize_strips_f1_stock_fields():
             "url": "https://x.com/rifle",
             "availability": "http://schema.org/InStock",
             "stock": 5,
-            "stock_status": "instock",
+            "stock_status": "instock",   # raw value — must be replaced by normalized
             "quantity": 10,
             "qty": 10,
             "in_stock": True,
@@ -125,13 +129,90 @@ def test_normalize_strips_f1_stock_fields():
     result: AdapterResult = _run(adapter.run(limit=50))
     assert result.success == 1
     p = result.products[0]
-    for field in ("availability", "stock", "stock_status", "quantity", "qty",
-                  "in_stock", "out_of_stock"):
-        assert field not in p, f"F1 must not expose '{field}'"
+    # Raw fields must not be present
+    for field in ("availability", "stock", "quantity", "qty", "in_stock", "out_of_stock"):
+        assert field not in p, f"Raw field '{field}' must not be in normalized output"
+    # F2 contract fields must be present and correct
+    assert p["stock_status"] == "in_stock", f"Expected in_stock, got {p['stock_status']!r}"
+    assert p["stock_method"] == "visible", f"Expected visible, got {p['stock_method']!r}"
     # Catalog fields still present
     assert p["title"] == "Rifle X"
     assert p["price"] == 199.0
     assert p["domain"] == "x.com"
+
+
+def test_normalize_unknown_when_no_availability():
+    """When availability is absent, stock_status/stock_method must be unknown."""
+    raw = [{"title": "Pistol", "price": 89.0, "url": "https://x.com/pistol"}]
+    adapter = _StubAdapter("x.com", "https://x.com/shop", raw)
+    result: AdapterResult = _run(adapter.run(limit=50))
+    assert result.success == 1
+    p = result.products[0]
+    assert p["stock_status"] == "unknown"
+    assert p["stock_method"] == "unknown"
+    # Must not expose numeric stock
+    assert "stock_qty" not in p
+    assert "quantity" not in p
+    assert "qty" not in p
+
+
+def test_normalize_out_of_stock_from_availability():
+    """OutOfStock availability must produce stock_status=out_of_stock."""
+    raw = [{
+        "title": "Sold Out Gun",
+        "price": 150.0,
+        "url": "https://x.com/sold",
+        "availability": "http://schema.org/OutOfStock",
+    }]
+    adapter = _StubAdapter("x.com", "https://x.com/shop", raw)
+    result: AdapterResult = _run(adapter.run(limit=50))
+    p = result.products[0]
+    assert p["stock_status"] == "out_of_stock"
+    assert p["stock_method"] == "visible"
+
+
+def test_normalize_strips_extended_raw_stock_aliases():
+    """F2 patch: stock_qty, stock_method (raw), qty_available, units_left, units,
+    count, stock_count must not appear in output; F2 fields must be correct.
+    """
+    raw = [
+        {
+            "title": "Carbine Z",
+            "price": 299.0,
+            "url": "https://x.com/carbine",
+            "availability": "http://schema.org/InStock",
+            # raw aliases that must be stripped
+            "stock_qty": 3,
+            "stock_count": 3,
+            "stock_method": "numeric",  # raw — must be replaced
+            "qty_available": 3,
+            "units_left": 3,
+            "units": 3,
+            "count": 3,
+            # already-covered fields still included for regression
+            "stock": 3,
+            "quantity": 3,
+            "qty": 3,
+            "in_stock": True,
+            "out_of_stock": False,
+            "stock_status": "InStock",  # raw — must be replaced
+        }
+    ]
+    adapter = _StubAdapter("x.com", "https://x.com/shop", raw)
+    result: AdapterResult = _run(adapter.run(limit=50))
+    assert result.success == 1
+    p = result.products[0]
+    _FORBIDDEN = (
+        "availability", "stock", "stock_qty", "stock_count",
+        "quantity", "qty", "qty_available", "units_left", "units", "count",
+        "in_stock", "out_of_stock",
+    )
+    for field in _FORBIDDEN:
+        assert field not in p, f"Forbidden raw field '{field}' leaked into normalized output"
+    # stock_method must be the F2-computed value, not the raw "numeric"
+    assert p["stock_status"] == "in_stock", f"Got {p['stock_status']!r}"
+    assert p["stock_method"] == "visible", f"Got {p['stock_method']!r}"
+    assert p["title"] == "Carbine Z"
 
 
 def test_adapter_fetch_failure_increments_failures():

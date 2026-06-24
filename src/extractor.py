@@ -109,18 +109,40 @@ def extract_products(html: str, url: str, domain: str) -> list[dict]:
             u = item.find(itemprop="url")
             img = item.find(itemprop="image")
             desc = item.find(itemprop="description")
+            avail = item.find(itemprop="availability")
             if t and p:
+                # Prefer content/href attributes (used by <meta>/<link> tags);
+                # fall back to visible text content for <span>/<div> patterns.
+                title_val = t.get("content") or t.get_text(strip=True)
+                if not title_val:
+                    continue
+                price_val = parse_price(p.get("content") or p.get_text())
+                if price_val is None:
+                    continue
                 product_url = url
                 if u:
-                    product_url = u.get("href") or u.get("content") or u.get_text(strip=True) or url
+                    product_url = (
+                        u.get("href") or u.get("content") or u.get_text(strip=True) or url
+                    )
+                # availability: prefer href (link tag) then content (meta tag) then text
+                availability_val = ""
+                if avail:
+                    availability_val = (
+                        avail.get("href") or avail.get("content") or avail.get_text(strip=True) or ""
+                    )
+                # brand: prefer content attribute over text (handles <meta itemprop="brand">)
+                brand_val = ""
+                if b:
+                    brand_val = b.get("content") or b.get_text(strip=True) or ""
                 products.append({
-                    "title": t.get_text(strip=True),
-                    "price": parse_price(p.get("content") or p.get_text()),
-                    "brand": b.get_text(strip=True) if b else "",
+                    "title": title_val,
+                    "price": price_val,
+                    "brand": brand_val,
                     "url": product_url,
                     "domain": domain,
                     "image": (img.get("src") or img.get("content") or "") if img else "",
-                    "description": (desc.get_text(strip=True)[:200]) if desc else "",
+                    "description": (desc.get("content") or desc.get_text(strip=True)[:200]) if desc else "",
+                    "availability": availability_val,
                 })
 
     return [p for p in products if p.get("title")]
