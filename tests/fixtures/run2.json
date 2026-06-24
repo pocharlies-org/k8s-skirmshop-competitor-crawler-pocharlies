@@ -1,0 +1,45 @@
+{
+  "domain": "leopard.es",
+  "source_url": "https://www.leopard.es/",
+  "adapter": "generic_html",
+  "note": "F3 synthetic fixture WITH stock_qty. Run 2 at t0 + 24h (within 36h gap).",
+  "products": [
+    {
+      "title": "Product A (sold 3)",
+      "price": 100.0,
+      "domain": "leopard.es",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/p/A",
+      "stock_status": "in_stock",
+      "stock_method": "visible",
+      "stock_qty": 7
+    },
+    {
+      "title": "Product B (replenished +3)",
+      "price": 50.0,
+      "domain": "leopard.es",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/p/B",
+      "stock_status": "in_stock",
+      "stock_method": "visible",
+      "stock_qty": 8
+    },
+    {
+      "title": "Product C (crawl failed, no qty)",
+      "price": null,
+      "domain": "leopard.es",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/p/C",
+      "stock_status": "unknown",
+      "stock_method": "unknown",
+      "crawl_success": false,
+      "error_code": "http_503"
+    },
+    {
+      "title": "Product E (delta 0)",
+      "price": 25.0,
+      "domain": "leopard.es",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/p/E",
+      "stock_status": "in_stock",
+      "stock_method": "visible",
+      "stock_qty": 7
+    }
+  ]
+}

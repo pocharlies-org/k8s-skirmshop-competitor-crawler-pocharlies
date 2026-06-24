@@ -1,0 +1,17 @@
+{
+  "domain": "leopard.es",
+  "source_url": "https://www.leopard.es/",
+  "adapter": "generic_html",
+  "note": "F3 synthetic fixture. Run 3 at t0 + 48h. Only Product D -> 48h gap > 36h => indeterminate even though qty dropped.",
+  "products": [
+    {
+      "title": "Product D (qty dropped but gap > 36h)",
+      "price": 80.0,
+      "domain": "leopard.es",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/p/D",
+      "stock_status": "in_stock",
+      "stock_method": "visible",
+      "stock_qty": 15
+    }
+  ]
+}

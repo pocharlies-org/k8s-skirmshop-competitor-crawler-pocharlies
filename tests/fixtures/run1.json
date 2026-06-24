@@ -1,0 +1,53 @@
+{
+  "domain": "leopard.es",
+  "source_url": "https://www.leopard.es/",
+  "adapter": "generic_html",
+  "note": "F3 synthetic fixture WITH stock_qty (DECISION-F3-005). Run 1 baseline at t0.",
+  "products": [
+    {
+      "title": "Product A (will sell)",
+      "price": 100.0,
+      "domain": "leopard.es",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/p/A",
+      "stock_status": "in_stock",
+      "stock_method": "visible",
+      "stock_qty": 10
+    },
+    {
+      "title": "Product B (will be replenished)",
+      "price": 50.0,
+      "domain": "leopard.es",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/p/B",
+      "stock_status": "in_stock",
+      "stock_method": "visible",
+      "stock_qty": 5
+    },
+    {
+      "title": "Product C (will fail next crawl)",
+      "price": 30.0,
+      "domain": "leopard.es",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/p/C",
+      "stock_status": "in_stock",
+      "stock_method": "visible",
+      "stock_qty": 4
+    },
+    {
+      "title": "Product D (gap > 36h)",
+      "price": 80.0,
+      "domain": "leopard.es",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/p/D",
+      "stock_status": "in_stock",
+      "stock_method": "visible",
+      "stock_qty": 20
+    },
+    {
+      "title": "Product E (delta 0)",
+      "price": 25.0,
+      "domain": "leopard.es",
+      "source_id": "competitor:leopard.es:https://www.leopard.es/p/E",
+      "stock_status": "in_stock",
+      "stock_method": "visible",
+      "stock_qty": 7
+    }
+  ]
+}
