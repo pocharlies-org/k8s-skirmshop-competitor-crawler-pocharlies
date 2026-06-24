@@ -1,0 +1,18 @@
+services:
+  crawler:
+    build: .
+    container_name: skirmshop-competitor-crawler
+    environment:
+      BRAIN_URL: ${BRAIN_URL:-http://skirmshop-brain-v2:5001}
+      BRAIN_INSTANCE: ${BRAIN_INSTANCE:-skirmshop}
+      FIRECRAWL_URL: ${FIRECRAWL_URL:-http://172.18.0.1:3003}
+      FIRECRAWL_KEY: ${FIRECRAWL_KEY:-fc-skirmshop-local}
+      PUSH_BATCH_SIZE: "20"
+      LOG_LEVEL: INFO
+    networks:
+      - skirmshop-network
+    restart: unless-stopped
+
+networks:
+  skirmshop-network:
+    external: true

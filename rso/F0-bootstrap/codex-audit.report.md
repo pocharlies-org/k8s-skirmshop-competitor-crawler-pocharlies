@@ -1,0 +1,61 @@
+# Codex Audit Report - F0 Bootstrap
+
+## Scope
+
+Codex/RSO audit of the F0 execution performed by Claude CLI implementers. This is
+not a global F0 PASS. It records verified partial progress and the blockers that
+prevent opening F1.
+
+## Claude CLI Roles Run
+
+- `rho-researcher`: produced `rso/F0-bootstrap/researcher.report.md`.
+- `rho-backend`: imported the existing crawler source from `sauvage` and produced
+  `rso/F0-bootstrap/backend.report.md`.
+- `rho-security`: produced `rso/F0-bootstrap/security.report.md`.
+- `rho-architect`: first free-form invocation timed out; second invocation wrote
+  `rso/F0-bootstrap/architect.report.md` from closed PMO evidence.
+- `rho-verifier`: blocked by Claude session limit: `You've hit your session limit`
+  with reset at `5:20am (Europe/Madrid)`.
+
+## PMO Evidence Re-run
+
+- `git diff --check` returned clean before staging.
+- Imported source md5 matched `sauvage` for:
+  `.gitignore`, `Dockerfile`, `config.yaml`, `docker-compose.yml`,
+  `requirements.txt`, `src/*.py`, and `tests/*.py`.
+- `python3 -m py_compile src/*.py tests/*.py` succeeded.
+- `python3 -m pytest tests/ -q` failed in the base interpreter because `bs4` was
+  not installed, then the fallback venv installed `requirements.txt` and
+  `pytest`; tests passed: `11 passed in 0.08s`.
+- Security report verified no F0 cart/write requests to competitors; deployment
+  remains dormant with `replicas: 0`.
+
+## Result
+
+Partial progress is valid to commit:
+
+- Source imported into the local clone.
+- Reports created for researcher/backend/security/architect.
+- Unit tests pass in an isolated dependency environment.
+
+F0 remains blocked and F1 must not open:
+
+- SimilarWeb MCP is not exposed to Claude CLI, so top10 ES/top20 EU cannot be
+  traffic-derived or user-curated.
+- `fingerprint.json` was not generated and cannot cover 100% of target domains.
+- `silverback-airsoft.com = red` is not verified in a fingerprint artifact.
+- Brain indexes for `CompetitorProduct`/`CompetitorStore` are not implemented;
+  `skirmshop-brain-v2` is currently on another `codex/*` branch.
+- The imported crawler does not yet honor `robots.txt`/`Crawl-delay` and still
+  uses the legacy hardcoded 14-domain config instead of `CompetitorSource`.
+
+## Checklist
+
+- [x] Source import verified. Evidence: md5 local vs `sauvage` matched.
+- [x] Tests verified. Evidence: venv pytest `11 passed`.
+- [x] Zero F0 cart/write requests verified. Evidence: `security.report.md`.
+- [x] F0 marked PARTIAL/BLOCKED, not PASS. Evidence: `CHECKLIST.md`.
+- [blocked: Claude session limit] Independent `rho-verifier` report could not run.
+- [blocked: SimilarWeb unavailable] Target competitor list not derived.
+- [blocked: no fingerprint] Fingerprint gate not met.
+- [blocked: brain branch/indexes] Competitor graph indexes not implemented.

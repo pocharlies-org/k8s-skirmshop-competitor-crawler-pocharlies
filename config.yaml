@@ -1,0 +1,86 @@
+# 14 competitor airsoft stores in 3 tiers, ported verbatim from the
+# brain repo's instances/skirmshop/sources.yaml `competitor:` block.
+# Schedules are evaluated in UTC against the container clock.
+
+tiers:
+  tier1:
+    schedule: "0 2 */2 * *"
+    stores:
+      - domain: gunfire.com
+        url: "https://gunfire.com/"
+        country: Poland
+        platform: custom
+        depth: 2
+      - domain: taiwangun.com
+        url: "https://www.taiwangun.com/en"
+        country: Poland
+        platform: custom
+        depth: 2
+      - domain: bunker501.nl
+        url: "https://www.bunker501.nl/"
+        country: Netherlands
+        platform: custom
+        depth: 2
+      - domain: evike-europe.com
+        url: "https://evike-europe.com/"
+        country: EU
+        platform: shopify
+        depth: 2
+      - domain: redwolfairsoft.com
+        url: "https://www.redwolfairsoft.com/"
+        country: "Hong Kong"
+        platform: custom
+        depth: 2
+
+  tier2:
+    schedule: "0 3 * * 1"
+    stores:
+      - domain: begadi.com
+        url: "https://www.begadi.com/"
+        country: Germany
+        platform: custom
+        depth: 2
+      - domain: powair6.com
+        url: "https://www.powair6.com/en/"
+        country: France
+        platform: custom
+        depth: 2
+      - domain: patrolbase.co.uk
+        url: "https://www.patrolbase.co.uk/"
+        country: UK
+        platform: custom
+        depth: 2
+      - domain: kyairsoft.com
+        url: "https://www.kyairsoft.com/"
+        country: "Hong Kong"
+        platform: custom
+        depth: 2
+      - domain: unit13shop.eu
+        url: "https://www.unit13shop.eu/"
+        country: Netherlands
+        platform: custom
+        depth: 2
+      - domain: aa-store.at
+        url: "https://www.aa-store.at/"
+        country: Austria
+        platform: custom
+        depth: 2
+
+  tier3:
+    schedule: "0 4 * * 3"
+    stores:
+      - domain: mundoreplicas.com
+        url: "https://www.mundoreplicas.com/"
+        country: Spain
+        platform: custom
+        depth: 2
+      - domain: fullmetal.es
+        url: "https://fullmetal.es/"
+        country: Spain
+        platform: custom
+        depth: 2
+      - domain: cazatacticas.com
+        url: "https://www.cazatacticas.com/"
+        country: Spain
+        platform: custom
+        depth: 2
