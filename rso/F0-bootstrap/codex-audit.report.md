@@ -14,8 +14,9 @@ prevent opening F1.
 - `rho-security`: produced `rso/F0-bootstrap/security.report.md`.
 - `rho-architect`: first free-form invocation timed out; second invocation wrote
   `rso/F0-bootstrap/architect.report.md` from closed PMO evidence.
-- `rho-verifier`: blocked by Claude session limit: `You've hit your session limit`
-  with reset at `5:20am (Europe/Madrid)`.
+- `rho-verifier`: initially blocked by Claude session limit, then rerun
+  successfully in the continuation; produced
+  `rso/F0-bootstrap/verifier.report.md`.
 
 ## PMO Evidence Re-run
 
@@ -55,7 +56,8 @@ F0 remains blocked and F1 must not open:
 - [x] Tests verified. Evidence: venv pytest `11 passed`.
 - [x] Zero F0 cart/write requests verified. Evidence: `security.report.md`.
 - [x] F0 marked PARTIAL/BLOCKED, not PASS. Evidence: `CHECKLIST.md`.
-- [blocked: Claude session limit] Independent `rho-verifier` report could not run.
+- [x] Independent `rho-verifier` report completed. Evidence:
+  `rso/F0-bootstrap/verifier.report.md`.
 - [blocked: SimilarWeb unavailable] Target competitor list not derived.
 - [blocked: no fingerprint] Fingerprint gate not met.
 - [blocked: brain branch/indexes] Competitor graph indexes not implemented.
