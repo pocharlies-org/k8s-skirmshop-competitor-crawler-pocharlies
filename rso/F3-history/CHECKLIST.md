@@ -8,7 +8,7 @@
 - [ ] Crear y validar histórico temporal append-only de competidores en Postgres: DB/schema `competitor_intel`, tabla mensual particionada `price_stock_observation`, vista `estimated_sales_daily`, y prueba con 2 corridas que produzcan >=2 observaciones por producto, delta correcto, y gaps `indeterminate`. Evidence:
 
 ## Directives
-- [ ] Claude CLI = EJECUTOR; Codex = RSO/PMO/auditor. Claude implementa/prueba; Codex re-ejecuta evidencia antes de cerrar F3. Evidence:
+- [blocked] Claude CLI = EJECUTOR; Codex = RSO/PMO/auditor. Claude implementa/prueba; Codex re-ejecuta evidencia antes de cerrar F3. Evidence: `rho-researcher` CLI invocation timed out `124` with no report; Codex PMO created `researcher.report.md` as read-only process exception. Further implementation must still be delegated to Claude CLI where possible.
 - [ ] F3 es **histórico append-only**. Prohibido cart-probe/cantidad exacta/carrito (F4), fixes de comparación viva `prices.py`/`intel.py` (F6), scheduling nocturno/CronJob activo (F7) y cambios no relacionados. Evidence:
 - [ ] Histórico vive solo en Postgres append-only. El grafo Brain/FalkorDB queda solo para precio/stock vigente; F3 no debe sobrescribir nodos/edges de grafo para simular histórico. Evidence:
 - [ ] No inferir ventas ni agotados por ausencia de dato. Gaps, reposición o datos incompletos deben quedar `indeterminate`, nunca ventas estimadas inventadas. Evidence:
@@ -16,11 +16,11 @@
 - [ ] Idempotencia por `(domain, product_key, run_id)`: repetir la misma corrida no duplica observaciones ni modifica rows append-only salvo conflicto no-op documentado. Evidence:
 - [ ] Snapshots crudos, si se implementan, deben apuntar a MinIO/S3 por URI/key sin exponer credenciales ni volcar HTML sensible en logs/RSO. Evidence:
 - [ ] Hacia competidores, F3 no añade nuevas acciones HTTP respecto a F1/F2 para el piloto; solo usa datos públicos de catalogo/precio/stock visible. Evidence:
-- [ ] Git: rama `codex/competitor-crawler-F3-history`; `fetch`+rebase antes de commit; push inmediato; nunca force-push ni tocar `deploy/prod` directamente. Evidence:
+- [x] Git: rama `codex/competitor-crawler-F3-history`; `fetch`+rebase antes de commit; push inmediato; nunca force-push ni tocar `deploy/prod` directamente. Evidence: branch created from F5 PASS and pushed; commit `6faaa4f Open F3 history gate` pushed; no `deploy/prod` touched.
 
 ## Acceptance Criteria
-- [ ] **Gates previos verificados.** F0/F1/F2/F5 tienen Objective `[x]` y F5 baseline viva actual `PRODUCT_MATCH=437` queda registrada como contexto, aunque F3 no depende de modificarla. Evidence:
-- [ ] **Topology research completo.** Repos/servicios afectados identificados: crawler, Postgres/CNPG o DB compartida, secretos por nombre (no valor), jobs/migrations existentes, y flujo desde dry-run/crawl a observaciones. Evidence:
+- [x] **Gates previos verificados.** F0/F1/F2/F5 tienen Objective `[x]` y F5 baseline viva actual `PRODUCT_MATCH=437` queda registrada como contexto, aunque F3 no depende de modificarla. Evidence: `researcher.report.md`; `RSO-MASTER-PLAN.md` order verified; F5 checklist objective `[x]` and final graph baseline `437` from `controlled-apply-execution.report.md`.
+- [x] **Topology research completo.** Repos/servicios afectados identificados: crawler, Postgres/CNPG o DB compartida, secretos por nombre (no valor), jobs/migrations existentes, y flujo desde dry-run/crawl a observaciones. Evidence: `researcher.report.md`; live `postgres-shared` healthy; no `competitor_intel` DB/table/view exists; `shared-postgres-app` and `skirmshop-drive-s3-app` available by name; crawler resources absent live and repo k8s disabled.
 - [ ] **Contrato SQL definido.** `price_stock_observation` incluye como mínimo: `domain`, `product_key` (= `source_id` del grafo), `run_id`, `observed_at`, `price`, `currency`, `vat_incl`, `stock_qty`, `stock_status`, `stock_method`, `is_promotion`, `raw_snapshot_s3`; cualquier columna extra necesaria para `last_success`/errores queda justificada por architect. Evidence:
 - [ ] **Particionado mensual.** Tabla particionada por `observed_at` con partición del mes actual y mecanismo documentado para crear siguientes meses. Evidence:
 - [ ] **Constraints e índices.** Checks/enums para `stock_status in ('in_stock','out_of_stock','unknown')`, `stock_method in ('visible','cart_probe','unknown')` o contrato equivalente; unique/idempotency `(domain, product_key, run_id)`; índice `(domain, product_key, observed_at DESC)`. Evidence:
@@ -33,7 +33,8 @@
 - [ ] **DevOps PASS.** Manifiestos/migraciones validados con dry-run/lint; no `deploy/prod` directo; si hay apply live, debe ser vía GitOps o comando aprobado y con verificación post-apply. Evidence:
 
 ## Specialist Checks
-- [ ] **rho-researcher** - topologia, DB actual, migraciones existentes, rutas de datos, riesgos/bloqueos. Evidence:
+- [blocked] **rho-researcher** - topologia, DB actual, migraciones existentes, rutas de datos, riesgos/bloqueos. Evidence: Claude CLI exited `124` with no output.
+- [x] **Codex/RSO research exception** - topologia, DB actual, migraciones existentes, rutas de datos, riesgos/bloqueos. Evidence: `researcher.report.md` created from read-only local/live commands; no mutations.
 - [ ] **rho-architect** - contrato SQL, particionado, vista, idempotencia, frontera F3 vs F4/F6. Evidence:
 - [ ] **rho-backend** - writer/ingest append-only, tests, fixtures de dos corridas. Evidence:
 - [ ] **rho-devops** - CNPG/Postgres/migraciones/GitOps/dry-run/apply seguro. Evidence:
@@ -43,3 +44,4 @@
 
 ## Status (log datado, append-only)
 - 2026-06-24T21:59:34+02:00 - OPEN: F3 abierta tras F5 PASS (`f0fbdf9`). Rama `codex/competitor-crawler-F3-history` creada y publicada. Pendiente research Claude CLI antes de cualquier DDL/write.
+- 2026-06-24T22:15:00+02:00 - RESEARCH PARTIAL/PASS WITH EXCEPTION: `rho-researcher` CLI timeout `124`; Codex PMO hizo research read-only. Hallazgos: CNPG `postgres-shared` sano 2/2; DB `competitor_intel` no existe; no hay `price_stock_observation`/`estimated_sales_daily` en ninguna DB; crawler k8s no esta live y repo esta desactivado; `shared-postgres-app` y `skirmshop-drive-s3-app` existen por nombre. Bloqueos: definir DB/schema+role y usar worktree/branch limpia para infra porque `k8s-infra-pocharlies` tiene dirty work ajeno en `deploy/prod`.
