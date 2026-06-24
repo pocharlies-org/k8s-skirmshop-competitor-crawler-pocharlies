@@ -27,7 +27,7 @@
 - [ ] **Sin regresión de bootstrap.** `python -m py_compile src/*.py tests/*.py` y `pytest` pasan; `git diff --check` limpio. Evidence:
 
 ## Specialist Checks
-- [ ] **rho-researcher** - preflight read-only de dominios `green`, selección de piloto, riesgos anti-bot y rutas públicas.
+- [x] **rho-researcher** - preflight read-only de dominios `green`, selección de piloto, riesgos anti-bot y rutas públicas. Evidence: `rso/F1-catalog-price/researcher.report.md`; PMO exception because Claude researcher invocations hung without output.
 - [ ] **rho-architect** - diseño adapter/data contract, source_id estable, frontera F1/F2/F4.
 - [ ] **rho-backend** - implementación, tests, dry-run, smoke artefacto.
 - [ ] **rho-security** - confirma cero cart/checkout/login/write y solo GET público.
@@ -36,3 +36,4 @@
 
 ## Status (log datado, append-only)
 - 2026-06-24T14:30:00+02:00 - OPEN: F1 abierta tras F0 PASS. Pendiente ejecución Claude CLI.
+- 2026-06-24T14:48:00+02:00 - RESEARCH DONE: PMO read-only preflight selected `leopard.es` as pilot (`price_hits=357`, `product_hits=479`) after Claude researcher invocations hung without output. No product code touched. Backend implementation still pending Claude.
