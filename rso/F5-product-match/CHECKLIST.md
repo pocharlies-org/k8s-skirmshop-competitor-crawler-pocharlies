@@ -18,7 +18,7 @@
 - [ ] Git: ramas `codex/*` por repo tocado; `fetch`+rebase antes de commit; push inmediato; nunca force-push.
 
 ## Acceptance Criteria
-- [ ] **Topology research completo.** Repos/servicios afectados identificados (`skirmshop-brain-v2`, posible `skirmshopshopifyapp`, este repo RSO), schema `PRODUCT_MATCH`, APIs consumidoras (`prices.py`, `intel.py`), fuente Shopify barcode/SKU y fuente `CompetitorProduct` verificados. Evidence:
+- [x] **Topology research completo.** Repos/servicios afectados identificados (`skirmshop-brain-v2`, posible `skirmshopshopifyapp`, este repo RSO), schema `PRODUCT_MATCH`, APIs consumidoras (`prices.py`, `intel.py`), fuente Shopify barcode/SKU y fuente `CompetitorProduct` verificados. Evidence: `rso/F5-product-match/researcher.report.md`; Brain branch `codex/product-recommendations-20260616`, Shopifyapp branch `codex/competitor-crawler-F0-bootstrap`; `PRODUCT_MATCH` en `ontology.py`, consumidores no lo expanden todavia.
 - [ ] **Contrato `PRODUCT_MATCH` definido.** Direccion del edge, claves idempotentes, propiedades (`match_confidence`, `match_method`, timestamps/source), umbrales auto-link/review/reject y enum de metodos documentados. Evidence:
 - [ ] **Matcher implementado con dry-run.** Comando dry-run produce candidatos con senales usadas, score, decision (`auto_link|review|reject`) sin escribir edges. Evidence:
 - [ ] **Cascada multi-senal.** EAN/GTIN exacto usa `Variant.barcode`; SKU exacto; marca+modelo normalizado NFKD/ASCII/hyphen->space; fallback embedding/reranker implementado o bloqueado explicitamente si infraestructura no existe. Evidence:
@@ -30,7 +30,7 @@
 - [ ] **Tests locales pasan.** Unit/integration tests del matcher, schema/ontology y consumidores relevantes; `git diff --check` pasa. Evidence:
 
 ## Specialist Checks
-- [ ] **rho-researcher** - topologia, datos existentes, targets y riesgos de escritura. Evidence:
+- [x] **rho-researcher** - topologia, datos existentes, targets y riesgos de escritura. Evidence: `rso/F5-product-match/researcher.report.md`; safe write target `[blocked]` porque solo FalkorDB prod es visible; `MatchReview` no existe; `CompetitorProduct` no tiene barcode/ean.
 - [ ] **rho-architect** - contrato de edge, umbrales, idempotencia, frontera F5 vs F6. Evidence:
 - [ ] **rho-backend** - matcher, dry-run/apply controlado, tests, artefactos. Evidence:
 - [ ] **rho-security** - secretos, writes, datos, target, re-run seguro. Evidence:
@@ -39,3 +39,4 @@
 
 ## Status (log datado, append-only)
 - 2026-06-24T16:31:35+02:00 - OPEN: F5 abierta tras F2 PASS (`134036e`). Pendiente research Claude CLI antes de cualquier write.
+- 2026-06-24T16:36:00+02:00 - RESEARCH PASS/BLOCKED: topologia documentada; implementacion debe empezar por dry-run sin writes. Apply/live edges bloqueado hasta target seguro o aprobacion RSO explicita.
