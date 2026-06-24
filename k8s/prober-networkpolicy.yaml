@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: skirmshop-stock-prober-egress
+  labels:
+    app.kubernetes.io/name: skirmshop-stock-prober
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: skirmshop-stock-prober
+  policyTypes:
+    - Egress
+  # Default-deny all egress. F4 documents isolation only; a live allowlist
+  # (green domains, DNS, F3 writer endpoint) is a future RSO decision before
+  # any replicas:0 -> active transition.
+  egress: []

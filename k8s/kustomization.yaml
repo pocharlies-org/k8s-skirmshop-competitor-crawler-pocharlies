@@ -6,6 +6,8 @@ namespace: skirmshop
 resources:
   - externalsecret.yaml
   - manifest.yaml
+  - prober-deployment.yaml
+  - prober-networkpolicy.yaml
 
 labels:
   - includeSelectors: false

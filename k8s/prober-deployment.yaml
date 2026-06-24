@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skirmshop-stock-prober
+  labels:
+    app.kubernetes.io/name: skirmshop-stock-prober
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: skirmshop-stock-prober
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: skirmshop-stock-prober
+    spec:
+      automountServiceAccountToken: false
+      enableServiceLinks: false
+      imagePullSecrets:
+        - name: harbor-pull
+      nodeSelector:
+        role: edge
+        kubernetes.io/arch: amd64
+      tolerations:
+        - key: role
+          operator: Equal
+          value: edge
+          effect: NoSchedule
+      containers:
+        - name: prober
+          image: harbor.e-dani.com/homelab/skirmshop-stock-prober:pending
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: LOG_LEVEL
+              value: INFO
+          envFrom:
+            - secretRef:
+                name: competitor-crawler-secrets
+                optional: true
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              memory: 1Gi
