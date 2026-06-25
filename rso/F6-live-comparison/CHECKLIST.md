@@ -20,7 +20,7 @@
 - [x] `margin_pct` y `price comparison` conservan el contrato de ordenación (`sort=margin_*`) introducido en F0/F6 pre-existente. Evidence: `_SORTS` y `margin_pct` en `skirmshop-brain-v2/src/api/prices.py`.
 - [x] Verificación de sintaxis al menos de los archivos tocados (carga del módulo). Evidence: `python3 -m compileall src/api/prices.py tests/unit/test_prices.py tests/unit/test_http_feedback_surfaces.py` (resultado 0).
 - [x] Checks de pruebas por dependencias locales (limitado) ejecutados y reproducidos. Evidence: `pytest -q tests/unit/test_http_feedback_surfaces.py tests/unit/test_prices.py` devuelve FFFF/EEEE por dependencias faltantes (`llama_index`, `pytest-asyncio`) con bloqueo explícito; no ejecutable sin ese entorno.
-- [ ] Verificación F6 endpoint en vivo con `rag-app`/`/instances/skirmshop/prices/comparison?filter=has_comp` aún requiere test con entorno API completo de brain. Evidence pendiente: smoke de `prices/comparison` contra `RAG` service tras despliegue con código actualizado.
+- [x] Verificación F6 endpoint en vivo con código completo (`skirmshop-brain` production) realizada con filtros de competencia (`has_comp`, `comp_cheaper`, `comp_dearer`) y payload de `competitor_*` en tiempo real. Evidence: comando ejecutado contra `http://127.0.0.1:5001` desde pod `skirmshop-brain-848846cd6d-qqqbj` con `X-API-Key`; respuesta `total=435`, `competitor_count=1` en muestra, y campos `competitors` poblados.
 
 ## Specialist Checks
 - [x] **rho-researcher** — state of inputs and schema (`PRODUCT_MATCH`, consumers, ontology). Evidence: `rso/F5-product-match/researcher.report.md` + comandos de inspección ejecutados por Codex.
@@ -28,10 +28,11 @@
 - [x] **rho-backend** — implementación de consulta y payloads en `prices.py` + tests de unidad. Evidence: cambios en `skirmshop-brain-v2/src/api/prices.py` y tests.
 - [x] **rho-security** — no se introducen secretos ni requests extraños a competidores; comparación es `read-only`. Evidence: diff auditado; no secrets.
 - [x] **rho-verifier** — re-ejecución de checks objetivos localmente. Evidence: compile + pytest invocación reproducida y limitada por entorno.
-- [ ] **Codex/RSO auditor** — re-ejecución F6 endpoint live (`prices/comparison` + `prices/position`) pendiente hasta pod service smoke estable.
+- [x] **Codex/RSO auditor** — re-ejecución F6 endpoint live completada: `prices/comparison?status=active&filter=has_comp&limit=3` con `competitor_min/max/count` + `competitors[]`, `prices/comparison?filter=comp_cheaper` y `filter=comp_dearer` con resultados no vacíos, y `prices/position/5ku-10-3-inch-m4-outer-barrel-aluminum` con `position` + `competitors_count/avg`. Evidence: ejecución directa in-cluster desde `kubectl exec` y respuestas JSON verificadas.
 
 ## Status (log datado, append-only)
 - 2026-06-25T11:08:16+02:00 — OPEN: tras cierre de blockers F4/F5, F6 en curso en branch `codex/competitor-crawler-F6-live-comparison`.
 - 2026-06-25T11:08:16+02:00 — PRICE FILE UPDATED: `skirmshop-brain-v2/src/api/prices.py` y tests actualizados con filtros de competencia, payload y posición competitiva.
 - 2026-06-25T11:08:16+02:00 — VERIFICATION: `python3 -m compileall src/api/prices.py tests/unit/test_prices.py tests/unit/test_http_feedback_surfaces.py` completado OK.
 - 2026-06-25T11:08:16+02:00 — REMAINING: `pytest -q tests/unit/test_http_feedback_surfaces.py tests/unit/test_prices.py` bloqueado por dependencias env (`llama_index`, `pytest-asyncio`).
+- 2026-06-25T15:10:00+02:00 — LIVE VERIFICATION PASS: se validó en `skirmshop-brain-prod` vía `kubectl exec` contra `http://127.0.0.1:5001/instances/skirmshop/prices/comparison` con `filter=has_comp` (`total=435`, `count=3`, campos `competitors` presentes), `comp_cheaper`, `comp_dearer` (`total=239`, `total=194`), y `prices/position/5ku-10-3-inch-m4-outer-barrel-aluminum` (`min/max/avg/competitors_count=1`, `position=most_expensive`).
