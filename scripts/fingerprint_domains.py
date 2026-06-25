@@ -21,6 +21,9 @@ REQUIRED_FIELDS = {
 UA = "skirmshop-competitor-crawler-fingerprint/0.1 (+research; read-only)"
 TIMEOUT = 6
 CTX = ssl.create_default_context()
+# Antibot signals that force a `red` tier. A data endpoint reporting any of these is
+# never ignored (fail-closed), even when the root page looks clean.
+ANTIBOT_BLOCKING = frozenset({"captcha", "cloudflare", "http_429", "http_403"})
 
 
 def _origin(url: str, domain: str) -> str:
@@ -80,21 +83,69 @@ def _detect_antibot(status: int | None, body: str) -> str:
     return "none"
 
 
-def _detect_platform(root: dict[str, Any], shopify: dict[str, Any], woo: dict[str, Any]) -> str:
-    sj = _json_ok(shopify.get("body", ""))
-    if shopify.get("status") == 200 and isinstance(sj, dict) and "products" in sj:
-        return "shopify"
-    wj = _json_ok(woo.get("body", ""))
-    if woo.get("status") == 200 and isinstance(wj, list):
-        return "woocommerce"
+def _shape_ok_shopify(body: str) -> bool:
+    parsed = _json_ok(body)
+    return isinstance(parsed, dict) and "products" in parsed
+
+
+def _shape_ok_woocommerce(body: str) -> bool:
+    parsed = _json_ok(body)
+    return isinstance(parsed, list)
+
+
+def _endpoint_clean(status: int | None, body: str, shape_ok: Any) -> bool:
+    """A data endpoint is clean only if HTTP 200, correct JSON shape, and no antibot
+    markers in the body (fail-closed against 200 challenge bodies / captcha JSON)."""
+    return status == 200 and shape_ok(body) and _detect_antibot(status, body) == "none"
+
+
+def _classify_platform(
+    root: dict[str, Any], shopify: dict[str, Any], woo: dict[str, Any]
+) -> tuple[str, str, str | None]:
+    """Return (platform, platform_source, platform_endpoint).
+
+    platform_source is "endpoint" only when a data endpoint returns HTTP 200 with the
+    correct JSON shape AND no antibot markers. Otherwise the platform is inferred from
+    root HTML ("html") or defaults ("none"). A blocked endpoint never yields "endpoint".
+    """
+    if _endpoint_clean(shopify.get("status"), shopify.get("body", ""), _shape_ok_shopify):
+        return "shopify", "endpoint", "shopify"
+    if _endpoint_clean(woo.get("status"), woo.get("body", ""), _shape_ok_woocommerce):
+        return "woocommerce", "endpoint", "woocommerce"
     b = (root.get("body") or "").lower()
     if "cdn.shopify.com" in b or "shopify.theme" in b or "myshopify" in b:
-        return "shopify"
+        return "shopify", "html", None
     if "woocommerce" in b or "wp-content/plugins/woocommerce" in b:
-        return "woocommerce"
+        return "woocommerce", "html", None
     if root.get("status") == 200:
-        return "generic_html"
-    return "unknown"
+        return "generic_html", "none", None
+    return "unknown", "none", None
+
+
+def _effective_antibot(
+    platform: str, platform_source: str, antibot_by_source: dict[str, str]
+) -> str:
+    """Endpoint-scoped antibot policy.
+
+    - Shopify/Woo: a blocked data endpoint always wins (fail-closed). A clean data
+      endpoint ("endpoint" source) scopes antibot away from the root page. Otherwise
+      (HTML-inferred, inconclusive endpoint) the root governs.
+    - generic_html / unknown / HTML-inferred: the root governs.
+    """
+    root_antibot = antibot_by_source["root"]
+    if platform == "shopify":
+        endpoint_antibot: str | None = antibot_by_source["shopify"]
+    elif platform == "woocommerce":
+        endpoint_antibot = antibot_by_source["woocommerce"]
+    else:
+        endpoint_antibot = None
+    if platform in {"shopify", "woocommerce"}:
+        if endpoint_antibot in ANTIBOT_BLOCKING:
+            return endpoint_antibot  # fail-closed: blocked data endpoint => red
+        if platform_source == "endpoint":
+            return endpoint_antibot  # clean data endpoint relief (== "none")
+        return root_antibot  # HTML-inferred platform, inconclusive endpoint
+    return root_antibot
 
 
 def _has_structured(body: str) -> bool:
@@ -115,14 +166,17 @@ def fingerprint_one(entry: dict[str, Any]) -> dict[str, Any]:
     root = _get(origin.rstrip("/") + "/")
     shopify = _get(origin.rstrip("/") + "/products.json?limit=1")
     woo = _get(origin.rstrip("/") + "/wp-json/wc/store/v1/products?per_page=1")
-    platform = _detect_platform(root, shopify, woo)
+    platform, platform_source, platform_endpoint = _classify_platform(root, shopify, woo)
     body = root.get("body") or ""
     statuses = {"root": root.get("status"), "robots": robots.get("status"), "shopify": shopify.get("status"), "woocommerce": woo.get("status")}
-    antibots = [_detect_antibot(item.get("status"), item.get("body", "")) for item in (root, shopify, woo)]
-    antibot = next((x for x in antibots if x in {"captcha", "cloudflare", "http_429", "http_403"}), "none" if root.get("status") else "unknown")
+    root_antibot = _detect_antibot(root.get("status"), root.get("body", ""))
+    shopify_antibot = _detect_antibot(shopify.get("status"), shopify.get("body", ""))
+    woo_antibot = _detect_antibot(woo.get("status"), woo.get("body", ""))
+    antibot_by_source = {"root": root_antibot, "shopify": shopify_antibot, "woocommerce": woo_antibot}
+    effective_antibot = _effective_antibot(platform, platform_source, antibot_by_source)
     structured = _has_structured(body) or platform in {"shopify", "woocommerce"}
     visible_stock = _has_stock(body) or platform in {"shopify", "woocommerce"}
-    if antibot in {"captcha", "cloudflare", "http_429", "http_403"}:
+    if effective_antibot in ANTIBOT_BLOCKING:
         tier = "red"
     elif platform in {"shopify", "woocommerce"} or structured:
         tier = "green"
@@ -136,9 +190,18 @@ def fingerprint_one(entry: dict[str, Any]) -> dict[str, Any]:
         "has_structured_data": bool(structured),
         "has_visible_stock": bool(visible_stock),
         "robots_crawl_delay": _crawl_delay(robots.get("body") or ""),
-        "antibot": antibot,
+        "antibot": effective_antibot,
         "http_status": root.get("status"),
-        "evidence": {"probe_method": "stdlib_urllib_get_only", "statuses": statuses, "errors": {"root": root.get("error"), "robots": robots.get("error"), "shopify": shopify.get("error"), "woocommerce": woo.get("error")}},
+        "evidence": {
+            "probe_method": "stdlib_urllib_get_only",
+            "statuses": statuses,
+            "errors": {"root": root.get("error"), "robots": robots.get("error"), "shopify": shopify.get("error"), "woocommerce": woo.get("error")},
+            "platform_source": platform_source,
+            "platform_endpoint": platform_endpoint,
+            "root_antibot": root_antibot,
+            "effective_antibot": effective_antibot,
+            "antibot_by_source": antibot_by_source,
+        },
         "observed_at": dt.datetime.now(dt.UTC).isoformat(),
     }
 
