@@ -433,3 +433,164 @@ def test_get_helper_uses_get_method(monkeypatch):
     assert captured["method"] == "GET"
     assert captured["has_data"] is False
     assert out["status"] == 200
+
+
+# ---------------------------------------------------------------------------
+# Crawl-delay parsing: must resolve to the wildcard ``User-agent: *`` group and
+# never adopt a delay scoped to a named bot (Ahrefs/MJ12/Pinterest/...).
+# All cases are pure-string and fully offline (no network, no monkeypatch).
+# ---------------------------------------------------------------------------
+
+def test_crawl_delay_star_group_is_used():
+    body = "User-agent: *\nDisallow:\nCrawl-delay: 5\n"
+    assert fp._crawl_delay(body) == 5.0
+
+
+def test_crawl_delay_named_bot_only_is_ignored():
+    # A delay scoped solely to a named crawler must not leak into the result.
+    body = "User-agent: AhrefsBot\nCrawl-delay: 10\n"
+    assert fp._crawl_delay(body) is None
+
+
+def test_crawl_delay_multiple_named_bots_then_star():
+    # Named bots (each its own group) declare delays; only the wildcard wins.
+    body = (
+        "User-agent: AhrefsBot\n"
+        "Crawl-delay: 10\n"
+        "\n"
+        "User-agent: MJ12bot\n"
+        "Crawl-delay: 20\n"
+        "\n"
+        "User-agent: PinterestBot\n"
+        "Crawl-delay: 30\n"
+        "\n"
+        "User-agent: *\n"
+        "Disallow: /private\n"
+        "Crawl-delay: 3\n"
+    )
+    assert fp._crawl_delay(body) == 3.0
+
+
+def test_crawl_delay_no_star_delay_returns_none():
+    # Wildcard group exists but declares no Crawl-delay -> None (do not borrow
+    # the named bot's delay that appears earlier in the file).
+    body = (
+        "User-agent: AhrefsBot\n"
+        "Crawl-delay: 10\n"
+        "\n"
+        "User-agent: *\n"
+        "Disallow: /private\n"
+    )
+    assert fp._crawl_delay(body) is None
+
+
+def test_crawl_delay_malformed_value_is_ignored():
+    body = "User-agent: *\nCrawl-delay: soon\n"
+    assert fp._crawl_delay(body) is None
+
+
+def test_crawl_delay_shared_group_with_star_applies():
+    # A single group naming several agents, the wildcard among them: the delay
+    # that follows the run of User-agent lines applies to all of them.
+    body = (
+        "User-agent: Googlebot\n"
+        "User-agent: *\n"
+        "Crawl-delay: 7\n"
+    )
+    assert fp._crawl_delay(body) == 7.0
+
+
+def test_crawl_delay_star_survives_surrounding_named_delays():
+    # Named-bot delays before and after the wildcard group are both ignored.
+    body = (
+        "User-agent: SemrushBot\n"
+        "Crawl-delay: 99\n"
+        "\n"
+        "User-agent: *\n"
+        "Crawl-delay: 2\n"
+        "\n"
+        "User-agent: MJ12bot\n"
+        "Crawl-delay: 50\n"
+    )
+    assert fp._crawl_delay(body) == 2.0
+
+
+def test_crawl_delay_malformed_star_does_not_borrow_named_delay():
+    # A malformed wildcard delay must not fall through to a later named delay.
+    body = (
+        "User-agent: *\n"
+        "Crawl-delay: later\n"
+        "\n"
+        "User-agent: AhrefsBot\n"
+        "Crawl-delay: 10\n"
+    )
+    assert fp._crawl_delay(body) is None
+
+
+def test_crawl_delay_absent_returns_none():
+    # The ROBOTS_OK fixture used across the suite has no Crawl-delay.
+    assert fp._crawl_delay(ROBOTS_OK["body"]) is None
+    assert fp._crawl_delay("") is None
+
+
+# ---------------------------------------------------------------------------
+# Numeric validity guard (rho-backend follow-up requested by Codex/verifier:
+# close the residual risk for invalid wildcard delays). A wildcard delay that
+# is negative or non-finite (inf/-inf/nan) fails the `isfinite(...) and >= 0`
+# guard, is rejected, and MUST NOT fall through to a delay scoped to a named
+# bot. All cases are pure-string and fully offline (no network, no monkeypatch).
+# ---------------------------------------------------------------------------
+
+
+def test_crawl_delay_negative_star_returns_none():
+    # A negative wildcard delay is invalid (>= 0 guard) and yields None.
+    body = "User-agent: *\nCrawl-delay: -5\n"
+    assert fp._crawl_delay(body) is None
+
+
+def test_crawl_delay_negative_star_does_not_borrow_named_delay():
+    # The rejected negative wildcard delay must not fall through to a later
+    # named-bot delay declared further down the file.
+    body = (
+        "User-agent: *\n"
+        "Crawl-delay: -5\n"
+        "\n"
+        "User-agent: AhrefsBot\n"
+        "Crawl-delay: 10\n"
+    )
+    assert fp._crawl_delay(body) is None
+
+
+@pytest.mark.parametrize("token", ["inf", "-inf", "nan", "infinity", "-infinity"])
+def test_crawl_delay_non_finite_star_returns_none(token):
+    # inf/-inf/nan parse as a float but fail the math.isfinite guard -> None.
+    body = f"User-agent: *\nCrawl-delay: {token}\n"
+    assert fp._crawl_delay(body) is None
+
+
+@pytest.mark.parametrize("token", ["inf", "-inf", "nan", "infinity"])
+def test_crawl_delay_non_finite_star_does_not_borrow_named_delay(token):
+    # A non-finite wildcard delay must not fall through to a later named-bot
+    # delay; the named group resets the agent set so `*` is no longer in scope.
+    body = (
+        "User-agent: *\n"
+        f"Crawl-delay: {token}\n"
+        "\n"
+        "User-agent: MJ12bot\n"
+        "Crawl-delay: 20\n"
+    )
+    assert fp._crawl_delay(body) is None
+
+
+def test_crawl_delay_valid_star_after_invalid_in_same_group_is_accepted():
+    # Documents the EXISTING behavior (no code change): once the wildcard group
+    # is in scope, an invalid delay line (negative/non-finite) is skipped but a
+    # later VALID Crawl-delay in the same group (no intervening User-agent) is
+    # still honored, because current_agents keeps `*` in scope.
+    body = (
+        "User-agent: *\n"
+        "Crawl-delay: -5\n"
+        "Crawl-delay: nan\n"
+        "Crawl-delay: 7\n"
+    )
+    assert fp._crawl_delay(body) == 7.0

@@ -5,6 +5,7 @@ import argparse
 import concurrent.futures
 import datetime as dt
 import json
+import math
 import re
 import ssl
 import urllib.error
@@ -51,13 +52,48 @@ def _get(url: str) -> dict[str, Any]:
 
 
 def _crawl_delay(robots_body: str) -> float | None:
-    for line in robots_body.splitlines():
-        if line.lower().strip().startswith("crawl-delay"):
-            _, _, value = line.partition(":")
+    """Return the ``Crawl-delay`` (seconds) that applies to ``User-agent: *``.
+
+    robots.txt is organized into groups. A group opens with one or more
+    consecutive ``User-agent`` lines and is followed by its directives
+    (``Disallow``, ``Allow``, ``Crawl-delay`` ...). The first directive line
+    closes the run of agent declarations, so the next ``User-agent`` starts a
+    fresh group. A ``Crawl-delay`` therefore belongs to the group whose agent
+    set is currently in scope.
+
+    Only a delay declared inside a group whose agents include the wildcard
+    ``*`` is honored. Delays scoped to named crawlers (Ahrefs, MJ12, Pinterest
+    and similar) are ignored so a competitor's aggressive throttling of SEO
+    bots never leaks into our generic-agent crawl budget. Returns the first
+    valid wildcard delay, or ``None`` when no wildcard group declares one.
+    """
+    current_agents: set[str] = set()
+    collecting_agents = False  # True while consuming a run of User-agent lines
+    for raw in robots_body.splitlines():
+        line = raw.split("#", 1)[0].strip()  # drop inline comments + whitespace
+        if not line:
+            continue
+        field, sep, value = line.partition(":")
+        if not sep:
+            continue
+        field = field.strip().lower()
+        value = value.strip().lower()
+        if field == "user-agent":
+            if not collecting_agents:
+                # A directive closed the previous group: this opens a new one.
+                current_agents = set()
+                collecting_agents = True
+            current_agents.add(value)
+            continue
+        # Any non-agent directive ends the current run of User-agent lines.
+        collecting_agents = False
+        if field == "crawl-delay" and "*" in current_agents:
             try:
-                return float(value.strip())
+                delay = float(value)
             except ValueError:
-                return None
+                continue
+            if math.isfinite(delay) and delay >= 0:
+                return delay
     return None
 
 
