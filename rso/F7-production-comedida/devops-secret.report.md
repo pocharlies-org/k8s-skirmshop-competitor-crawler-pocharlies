@@ -21,6 +21,7 @@ Unblock F7 Gate 4 by making `ExternalSecret/competitor-crawler-secrets` sync the
 - [x] Remote source matches the existing Brain auth source used by other Skirmshop services. Evidence: `remoteRef.key: skirmshop-brain/prod/app`; `remoteRef.property: dashboard_api_key`.
 - [x] Server dry-run accepts the changed manifest. Evidence: `kubectl apply --dry-run=server -k k8s` -> `externalsecret.external-secrets.io/competitor-crawler-secrets configured (server dry run)`.
 - [ ] Live ExternalSecret syncs and Secret exists by key name only. Evidence pending: `kubectl -n skirmshop get externalsecret competitor-crawler-secrets`; `kubectl -n skirmshop get secret competitor-crawler-secrets -o json | jq -r '.data | keys[]'`.
+- [x] ExternalSecret CRD defaults are declared explicitly to reduce Argo drift. Evidence: `remoteRef` entries include `conversionStrategy`, `decodingStrategy`, `metadataPolicy`, and `nullBytePolicy`; DB target template includes `engineVersion: v2` and `mergePolicy: Replace`.
 
 ## Files Touched
 
@@ -32,3 +33,4 @@ Unblock F7 Gate 4 by making `ExternalSecret/competitor-crawler-secrets` sync the
 
 - Live sync still depends on Vault path `skirmshop-brain/prod/app` and property `dashboard_api_key` being readable by `vault-backend`.
 - Argo will remain Degraded until the branch change is pushed and reconciled into the live Application target revision.
+- Argo may still report OutOfSync if the operator mutates additional fields; verify with `.status.resources[]` after sync.
