@@ -11,26 +11,36 @@ tiers:
         country: Poland
         platform: custom
         depth: 2
+        max_pages: 25
+        delay_seconds: 0.5
       - domain: taiwangun.com
         url: "https://www.taiwangun.com/en"
         country: Poland
         platform: custom
         depth: 2
+        max_pages: 25
+        delay_seconds: 0.5
       - domain: bunker501.nl
         url: "https://www.bunker501.nl/"
         country: Netherlands
         platform: custom
         depth: 2
+        max_pages: 25
+        delay_seconds: 0.5
       - domain: evike-europe.com
         url: "https://evike-europe.com/"
         country: EU
         platform: shopify
         depth: 2
+        max_pages: 25
+        delay_seconds: 0.5
       - domain: redwolfairsoft.com
         url: "https://www.redwolfairsoft.com/"
         country: "Hong Kong"
         platform: custom
         depth: 2
+        max_pages: 25
+        delay_seconds: 0.5
 
   tier2:
     schedule: "0 3 * * 1"
@@ -40,31 +50,43 @@ tiers:
         country: Germany
         platform: custom
         depth: 2
+        max_pages: 25
+        delay_seconds: 0.5
       - domain: powair6.com
         url: "https://www.powair6.com/en/"
         country: France
         platform: custom
         depth: 2
+        max_pages: 25
+        delay_seconds: 0.5
       - domain: patrolbase.co.uk
         url: "https://www.patrolbase.co.uk/"
         country: UK
         platform: custom
         depth: 2
+        max_pages: 25
+        delay_seconds: 0.5
       - domain: kyairsoft.com
         url: "https://www.kyairsoft.com/"
         country: "Hong Kong"
         platform: custom
         depth: 2
+        max_pages: 25
+        delay_seconds: 0.5
       - domain: unit13shop.eu
         url: "https://www.unit13shop.eu/"
         country: Netherlands
         platform: custom
         depth: 2
+        max_pages: 25
+        delay_seconds: 0.5
       - domain: aa-store.at
         url: "https://www.aa-store.at/"
         country: Austria
         platform: custom
         depth: 2
+        max_pages: 25
+        delay_seconds: 0.5
 
   tier3:
     schedule: "0 4 * * 3"
@@ -74,13 +96,19 @@ tiers:
         country: Spain
         platform: custom
         depth: 2
+        max_pages: 25
+        delay_seconds: 0.5
       - domain: fullmetal.es
         url: "https://fullmetal.es/"
         country: Spain
         platform: custom
         depth: 2
+        max_pages: 25
+        delay_seconds: 0.5
       - domain: cazatacticas.com
         url: "https://www.cazatacticas.com/"
         country: Spain
         platform: custom
         depth: 2
+        max_pages: 25
+        delay_seconds: 0.5

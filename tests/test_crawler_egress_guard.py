@@ -153,3 +153,58 @@ def test_crawl_store_bfs_rejects_evil_suffix_and_userinfo(monkeypatch):
         ("https://gunfire.com/", "gunfire.com"),
         ("https://www.gunfire.com/product/allowed", "gunfire.com"),
     ]
+
+
+def test_crawl_store_respects_max_pages_hard_limit(monkeypatch):
+    requested = []
+
+    async def fake_fetch_page(_client, url, domain=None):
+        requested.append((url, domain))
+        if url == "https://gunfire.com/":
+            return """
+                <html><body>
+                  <a href="/product/one">one</a>
+                  <a href="/product/two">two</a>
+                  <a href="/product/three">three</a>
+                </body></html>
+            """
+        return "<html><body>price</body></html>"
+
+    monkeypatch.setattr(crawler, "fetch_page", fake_fetch_page)
+    monkeypatch.setattr(crawler.asyncio, "sleep", _noop_sleep)
+
+    docs = asyncio.run(
+        crawler.crawl_store(
+            {
+                "domain": "gunfire.com",
+                "url": "https://gunfire.com/",
+                "depth": 2,
+                "max_pages": 2,
+                "delay_seconds": 0,
+            }
+        )
+    )
+
+    assert docs == []
+    assert requested == [
+        ("https://gunfire.com/", "gunfire.com"),
+        ("https://gunfire.com/product/one", "gunfire.com"),
+    ]
+
+
+def test_crawl_store_rejects_invalid_limits_before_fetch(monkeypatch):
+    monkeypatch.setattr(crawler.httpx, "AsyncClient", _NoNetworkAsyncClient)
+
+    for key, value in (("max_pages", 0), ("max_pages", "nope"), ("delay_seconds", -1)):
+        store = {
+            "domain": "gunfire.com",
+            "url": "https://gunfire.com/",
+            "depth": 1,
+            key: value,
+        }
+        try:
+            asyncio.run(crawler.crawl_store(store))
+        except ValueError as exc:
+            assert key in str(exc)
+        else:
+            raise AssertionError(f"{key}={value!r} should fail closed")

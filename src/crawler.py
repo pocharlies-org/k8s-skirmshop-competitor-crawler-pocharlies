@@ -21,14 +21,53 @@ from src.promotion_tracker import detect_promotion
 
 logger = logging.getLogger(__name__)
 
+DEFAULT_MAX_PAGES = 25
+DEFAULT_DELAY_SECONDS = 0.5
+
+
+def _positive_int(raw: object, *, default: int, name: str) -> int:
+    if raw is None:
+        return default
+    try:
+        value = int(raw)
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"{name} must be an integer > 0") from exc
+    if value <= 0:
+        raise ValueError(f"{name} must be an integer > 0")
+    return value
+
+
+def _nonnegative_float(raw: object, *, default: float, name: str) -> float:
+    if raw is None:
+        return default
+    try:
+        value = float(raw)
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"{name} must be a number >= 0") from exc
+    if value < 0:
+        raise ValueError(f"{name} must be a number >= 0")
+    return value
+
 
 async def crawl_store(store: dict) -> list[dict]:
     """Crawl one store config, return list of push-ingest documents.
 
-    Store config keys: domain, url, depth (default 2), platform (info)."""
+    Store config keys: domain, url, depth (default 2), platform (info),
+    max_pages (default 25), delay_seconds (default 0.5).
+    """
     domain = store["domain"]
     start_url = store["url"]
     max_depth = int(store.get("depth", 2))
+    max_pages = _positive_int(
+        store.get("max_pages"),
+        default=DEFAULT_MAX_PAGES,
+        name="max_pages",
+    )
+    delay_seconds = _nonnegative_float(
+        store.get("delay_seconds"),
+        default=DEFAULT_DELAY_SECONDS,
+        name="delay_seconds",
+    )
     platform = store.get("platform", "custom")
 
     visited: set[str] = set()
@@ -36,14 +75,17 @@ async def crawl_store(store: dict) -> list[dict]:
     product_urls: set[str] = set()
     docs: list[dict] = []
 
-    logger.info(f"[{domain}] crawl start (depth={max_depth}, platform={platform})")
+    logger.info(
+        f"[{domain}] crawl start (depth={max_depth}, max_pages={max_pages}, "
+        f"delay_seconds={delay_seconds}, platform={platform})"
+    )
 
     async with httpx.AsyncClient(
         timeout=30.0,
         follow_redirects=True,
         headers={"User-Agent": "skirmshop-competitor-crawler/1.0 (+research)"},
     ) as client:
-        while to_visit:
+        while to_visit and len(visited) < max_pages:
             url, depth = to_visit.pop(0)
             if url in visited or depth > max_depth:
                 continue
@@ -99,7 +141,16 @@ async def crawl_store(store: dict) -> list[dict]:
                         to_visit.append((clean, depth + 1))
 
             # Polite delay
-            await asyncio.sleep(0.5)
+            if delay_seconds > 0:
+                await asyncio.sleep(delay_seconds)
+
+        if to_visit:
+            logger.warning(
+                "[%s] max_pages=%d reached; queued URLs left=%d",
+                domain,
+                max_pages,
+                len(to_visit),
+            )
 
     logger.info(
         f"[{domain}] crawl done — visited={len(visited)} products={len(docs)}"
