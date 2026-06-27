@@ -16,19 +16,34 @@ and push-ingest behavior is identical to the scheduled path — only the trigger
 differs (one-shot vs cron). The cron ``schedule`` field in ``config.yaml`` is
 intentionally ignored here; selection is explicit via ``--tier`` / ``--all``.
 
+Observability is opt-in and off by default: ``--metrics-port`` (or env
+``METRICS_PORT``) starts a Prometheus ``/metrics`` endpoint for the run, and
+``--metrics-linger-seconds`` (env ``METRICS_LINGER_SECONDS``, default 0) keeps it
+serving briefly after completion so a CronJob run is still scrapeable at the end.
+The endpoint is pure observability — it never changes the job's exit code.
+
 Examples::
 
     python -m src.run_once --tier tier1
     python -m src.run_once --tier tier1 --tier tier2
     python -m src.run_once --all
     python -m src.run_once --all --config /app/config.yaml
+    python -m src.run_once --all --metrics-port 9090 --metrics-linger-seconds 15
 """
 import argparse
 import asyncio
 import logging
 import os
+import time
 from pathlib import Path
 
+from src.metrics_exporter import (
+    STATUS_ERROR,
+    STATUS_OK,
+    STATUS_SKIPPED,
+    CrawlerMetrics,
+    MetricsServer,
+)
 from src.scheduler import crawl_tier, load_config
 
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
@@ -81,7 +96,65 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         action="store_true",
         help="Exit non-zero if any document failed to push to brain.",
     )
+    parser.add_argument(
+        "--metrics-port",
+        type=int,
+        default=None,
+        metavar="PORT",
+        help="Expose a Prometheus /metrics endpoint on this TCP port "
+        "(0 = ephemeral). Disabled when unset; env METRICS_PORT is the "
+        "fallback. Observability only — never affects the job exit code.",
+    )
+    parser.add_argument(
+        "--metrics-linger-seconds",
+        type=int,
+        default=None,
+        metavar="SECONDS",
+        help="After the run completes, keep /metrics serving for this many "
+        "seconds so a final scrape can read terminal values before exit "
+        "(default 0; env METRICS_LINGER_SECONDS).",
+    )
     return parser.parse_args(argv)
+
+
+def _resolve_metrics_port(args: argparse.Namespace) -> int | None:
+    """Resolve the metrics port from CLI/env, or ``None`` when disabled.
+
+    A bad value disables metrics (logged) rather than failing the job — the
+    endpoint is observability, never a reason to abort a crawl window.
+    """
+    raw = args.metrics_port
+    if raw is None:
+        env = os.getenv("METRICS_PORT")
+        if not env or not env.strip():
+            return None
+        try:
+            raw = int(env)
+        except ValueError:
+            logger.error("invalid METRICS_PORT=%r; metrics disabled", env)
+            return None
+    if not 0 <= raw <= 65535:
+        logger.error("metrics port %d out of range 0-65535; metrics disabled", raw)
+        return None
+    return raw
+
+
+def _resolve_linger_seconds(args: argparse.Namespace) -> int:
+    """Resolve the post-run linger seconds from CLI/env (default 0)."""
+    raw = args.metrics_linger_seconds
+    if raw is None:
+        env = os.getenv("METRICS_LINGER_SECONDS")
+        if not env or not env.strip():
+            return 0
+        try:
+            raw = int(env)
+        except ValueError:
+            logger.error("invalid METRICS_LINGER_SECONDS=%r; using 0", env)
+            return 0
+    if raw < 0:
+        logger.warning("negative metrics linger %d; using 0", raw)
+        return 0
+    return raw
 
 
 def _load_tiers(config_path: Path) -> dict | None:
@@ -132,16 +205,40 @@ def _select(tiers: dict, args: argparse.Namespace) -> list[tuple[str, dict]] | N
     return selected
 
 
-async def run_selected(selected: list[tuple[str, dict]]) -> tuple[int, int]:
-    """Run each selected tier sequentially; aggregate ``(pushed, failed)``."""
+async def run_selected(
+    selected: list[tuple[str, dict]],
+    metrics: CrawlerMetrics | None = None,
+) -> tuple[int, int]:
+    """Run each selected tier sequentially; aggregate ``(pushed, failed)``.
+
+    When ``metrics`` is supplied, each tier's lifecycle is recorded:
+    ``run_active`` toggles 1→0 around the crawl and ``run_total`` /
+    ``push_*_total`` are incremented on completion. A tier that raises records a
+    terminal ``status="error"`` sample and re-raises, preserving the runner's
+    existing exit-code behavior (the error still aborts the run). Metrics never
+    change control flow.
+    """
     total_pushed = 0
     total_failed = 0
     for tier_name, tier in selected:
         stores = (tier or {}).get("stores") or []
         if not stores:
             logger.warning("[%s] no stores configured — skipping", tier_name)
+            if metrics is not None:
+                metrics.finish_run(tier_name, status=STATUS_SKIPPED)
             continue
-        pushed, failed = await crawl_tier(tier_name, stores)
+        if metrics is not None:
+            metrics.start_run(tier_name)
+        try:
+            pushed, failed = await crawl_tier(tier_name, stores)
+        except Exception:
+            if metrics is not None:
+                metrics.finish_run(tier_name, status=STATUS_ERROR)
+            raise
+        if metrics is not None:
+            metrics.finish_run(
+                tier_name, status=STATUS_OK, pushed=pushed, failed=failed
+            )
         total_pushed += pushed
         total_failed += failed
     return total_pushed, total_failed
@@ -163,8 +260,51 @@ def run(argv: list[str] | None = None) -> int:
     names = ", ".join(name for name, _ in selected)
     logger.info("run_once start: tiers=[%s] config=%s", names, args.config)
 
+    metrics, server = _maybe_start_metrics(args, selected)
+    linger = _resolve_linger_seconds(args) if server is not None else 0
     try:
-        total_pushed, total_failed = asyncio.run(run_selected(selected))
+        return _run_and_status(args, selected, metrics)
+    finally:
+        if server is not None:
+            if linger > 0:
+                logger.info(
+                    "metrics linger %ds before shutdown for a final scrape",
+                    linger,
+                )
+                time.sleep(linger)
+            server.stop()
+            logger.info("metrics endpoint stopped")
+
+
+def _maybe_start_metrics(
+    args: argparse.Namespace,
+    selected: list[tuple[str, dict]],
+) -> tuple[CrawlerMetrics | None, MetricsServer | None]:
+    """Start the optional /metrics endpoint; never fail the job over it."""
+    port = _resolve_metrics_port(args)
+    if port is None:
+        return None, None
+    metrics = CrawlerMetrics()
+    for name, _ in selected:
+        metrics.ensure_tier(name)
+    try:
+        server = MetricsServer(metrics, port=port)
+        server.start()
+    except OSError as e:  # bind/permission failure — degrade, don't abort
+        logger.error("failed to start metrics endpoint on port %s: %r", port, e)
+        return metrics, None
+    logger.info("metrics endpoint serving on :%d/metrics", server.port)
+    return metrics, server
+
+
+def _run_and_status(
+    args: argparse.Namespace,
+    selected: list[tuple[str, dict]],
+    metrics: CrawlerMetrics | None,
+) -> int:
+    """Run the selected tiers and map the outcome to a process exit code."""
+    try:
+        total_pushed, total_failed = asyncio.run(run_selected(selected, metrics))
     except Exception:  # noqa: BLE001 — convert to a non-zero job status
         logger.exception("run_once aborted by unhandled crawl error")
         return EXIT_RUNTIME_ERROR
