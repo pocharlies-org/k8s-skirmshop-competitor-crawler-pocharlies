@@ -26,8 +26,8 @@
 # escalation, read-only rootfs, drop ALL caps, /tmp emptyDir, edge node
 # selector/toleration, fail-closed Brain auth (REQUIRE_BRAIN_API_KEY=true,
 # secretRef optional:false). The crawler image is now pinned by immutable
-# DIGEST (harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:67ccb3...,
-# release tag f7-b19cfa8, GitHub Actions run 28297927525); this satisfies the
+# DIGEST (harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:83e8e...,
+# release tag f7-de69b1f, GitHub Actions run 28298910262); this satisfies the
 # F7 image gate only — activation still requires the remaining gates below.
 ---
 apiVersion: batch/v1
@@ -80,7 +80,7 @@ spec:
               effect: NoSchedule
           containers:
             - name: crawler
-              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:67ccb373aa36ca3822ab59b04b1a88bf113fe3b834d2e59824fdb65fe30f32e4
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:83e8e3997d270f2fcf2edcf1e360ff208b316040f41d5d8b1c8ab6cf2cd28da3
               imagePullPolicy: IfNotPresent
               command:
                 - python
@@ -214,7 +214,7 @@ spec:
               effect: NoSchedule
           containers:
             - name: crawler
-              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:67ccb373aa36ca3822ab59b04b1a88bf113fe3b834d2e59824fdb65fe30f32e4
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:83e8e3997d270f2fcf2edcf1e360ff208b316040f41d5d8b1c8ab6cf2cd28da3
               imagePullPolicy: IfNotPresent
               command:
                 - python
@@ -348,7 +348,7 @@ spec:
               effect: NoSchedule
           containers:
             - name: crawler
-              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:67ccb373aa36ca3822ab59b04b1a88bf113fe3b834d2e59824fdb65fe30f32e4
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:83e8e3997d270f2fcf2edcf1e360ff208b316040f41d5d8b1c8ab6cf2cd28da3
               imagePullPolicy: IfNotPresent
               command:
                 - python
