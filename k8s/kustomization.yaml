@@ -5,6 +5,7 @@ namespace: skirmshop
 
 resources:
   - externalsecret.yaml
+  - crawler-networkpolicy.yaml
   - manifest.yaml
   - prober-deployment.yaml
   - prober-networkpolicy.yaml

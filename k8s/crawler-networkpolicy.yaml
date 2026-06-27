@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: skirmshop-competitor-crawler-egress
+  labels:
+    app.kubernetes.io/name: skirmshop-competitor-crawler
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: skirmshop-competitor-crawler
+  policyTypes:
+    - Egress
+  # Default-deny all egress. F7 must replace this with an explicit allowlist
+  # for DNS, Brain, Firecrawl, Postgres/history, and approved competitor domains
+  # before changing replicas/CronJob from disabled to active.
+  egress: []
