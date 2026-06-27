@@ -54,10 +54,11 @@ Remaining blocker for activation: DB live, egress allowlist, Argo enable, prober
 
 Required evidence:
 
-- CNPG `Database` resource `competitor-intel` exists live in namespace `databases`.
-- Migration `db/migrations/001_f3_history.sql` is applied to `competitor_intel`.
-- Read-only SQL verifies tables/partitions/view used by F3/F7.
-- Credentials are least-privilege and delivered through secrets without value disclosure.
+- [x] CNPG `Database` resource `competitor-intel` exists live in namespace `databases`. Evidence: `kubectl -n databases get database competitor-intel -o wide` -> `APPLIED true`.
+- [x] Migration `db/migrations/001_f3_history.sql` is applied to `competitor_intel`. Evidence: `db-live.report.md`; migration applied with role `skirmshop`.
+- [x] SQL verifies tables/partitions/view used by F3/F7. Evidence: schema/table/view/owner query in `db-live.report.md`; smoke transaction produced `3|estimated`, rolled back, and left `0` smoke rows.
+- [x] Credentials are delivered through Kubernetes Secret without value disclosure. Evidence: psql used `PGPASSWORD` populated from `secret/skirmshop-db-credentials` without printing the value.
+- [blocked] GitOps reconciliation is not merged yet. Evidence: live CR was applied directly; branch `codex/competitor-crawler-F7-db-gitops` commit `9140897` and PR `https://github.com/pocharlies-org/k8s-infra-pocharlies/pull/15` prepare the `deploy/prod` reconciliation without direct `deploy/prod` push.
 
 ## Gate 4 - secrets
 
