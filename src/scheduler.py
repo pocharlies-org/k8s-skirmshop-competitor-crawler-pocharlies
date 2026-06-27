@@ -17,8 +17,15 @@ def load_config(path: Path = Path("/app/config.yaml")) -> dict:
     return yaml.safe_load(path.read_text()) or {}
 
 
-async def crawl_tier(tier_name: str, stores: list[dict]):
-    """Run every store in a tier sequentially, push results in batches."""
+async def crawl_tier(tier_name: str, stores: list[dict]) -> tuple[int, int]:
+    """Run every store in a tier sequentially, push results in batches.
+
+    Returns ``(total_pushed, total_failed)`` aggregated across stores. A failure
+    crawling/pushing one store is logged and skipped, never aborting the tier,
+    so a single bad store cannot starve the rest of the window. The return value
+    lets a one-shot runner (``src.run_once``) derive a process exit status;
+    APScheduler (``build_scheduler``) ignores it.
+    """
     logger.info(f"[{tier_name}] start ({len(stores)} stores)")
     total_pushed = 0
     total_failed = 0
@@ -33,6 +40,7 @@ async def crawl_tier(tier_name: str, stores: list[dict]):
     logger.info(
         f"[{tier_name}] done — pushed={total_pushed} failed={total_failed}"
     )
+    return total_pushed, total_failed
 
 
 def build_scheduler(config: dict) -> AsyncIOScheduler:
