@@ -24,3 +24,4 @@
 ## Status
 - 2026-06-27T22:31:00+02:00 - Prepared as PMO exception after Claude timeout.
 - 2026-06-27T22:36:00+02:00 - PMO validation PASS: robots tests plus egress tests `12 passed`; full suite `211 passed`; compileall PASS; server dry-run PASS. Pending release/pin because live image digest does not contain this code yet.
+- 2026-06-27T22:28:24Z - Release PASS: GitHub Actions run `28300857935` published tag `f7-6199575`; both Harbor endpoints returned digest `sha256:ccab2c1508c38cb133a01594c11b5a926673dab660e4e6ca9a9c1b0822cc6193`. Manifests prepared to pin that digest.

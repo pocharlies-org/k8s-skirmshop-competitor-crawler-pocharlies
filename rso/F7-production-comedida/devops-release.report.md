@@ -6,9 +6,9 @@
 - Production activation: none. No real `kubectl apply`, no Argo app move, no replica increase, no CronJob unsuspend.
 
 ## Evidence
-- Current release run: GitHub Actions `28299718270` completed `success` for tag `f7-74dcb51`, commit `74dcb510206c57ba67e318e419f27d2e2823571b`.
-- Registry digest: `crane digest harbor.e-dani.com/homelab/skirmshop-competitor-crawler:f7-74dcb51` and `crane digest harbor.lan.e-dani.com/homelab/skirmshop-competitor-crawler:f7-74dcb51` both returned `sha256:b4481879aecc9b82fe822d0f9de0abddb9dfb60e1c8488d811a479f35fed77f1`.
-- Manifest pin: crawler Deployment and all three crawler CronJobs use `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:b4481879aecc9b82fe822d0f9de0abddb9dfb60e1c8488d811a479f35fed77f1`.
+- Current release run: GitHub Actions `28300857935` completed `success` for tag `f7-6199575`, commit `61995756d9c8f254635e3c90a84cfb562f43539e`.
+- Registry digest: `crane digest harbor.e-dani.com/homelab/skirmshop-competitor-crawler:f7-6199575` and `crane digest harbor.lan.e-dani.com/homelab/skirmshop-competitor-crawler:f7-6199575` both returned `sha256:ccab2c1508c38cb133a01594c11b5a926673dab660e4e6ca9a9c1b0822cc6193`.
+- Manifest pin: crawler Deployment and all three crawler CronJobs use `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:ccab2c1508c38cb133a01594c11b5a926673dab660e4e6ca9a9c1b0822cc6193`.
 - Safe disabled state preserved: crawler Deployment remains `replicas: 0`; crawler CronJobs remain `suspend: true`; prober image remains `harbor.e-dani.com/homelab/skirmshop-stock-prober:pending`.
 
 ## Checklist

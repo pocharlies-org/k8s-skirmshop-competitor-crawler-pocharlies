@@ -5,7 +5,7 @@ This runbook records the remaining activation sequence. It is not approval to ap
 ## Current safe state
 
 - Branch: `codex/competitor-crawler-F7-production-comedida`
-- Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:b4481879aecc9b82fe822d0f9de0abddb9dfb60e1c8488d811a479f35fed77f1`.
+- Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:ccab2c1508c38cb133a01594c11b5a926673dab660e4e6ca9a9c1b0822cc6193`.
 - Prober Deployment: prepared, `replicas: 0`, image `:pending`.
 - Crawler CronJobs: prepared in manifests for tier1/tier2/tier3, all `suspend: true`, image pinned by the same crawler digest.
 - NetworkPolicy: crawler and prober default-deny egress.
@@ -29,12 +29,12 @@ Required evidence:
 - [x] Release run publishes a crawler image tag and digest. Evidence: GitHub
   Actions release run `28299718270` completed success on commit
   `74dcb510206c57ba67e318e419f27d2e2823571b`; `crane digest` on both
-  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler:f7-74dcb51` and
-  `harbor.lan.e-dani.com/homelab/skirmshop-competitor-crawler:f7-74dcb51`
-  returns `sha256:b4481879aecc9b82fe822d0f9de0abddb9dfb60e1c8488d811a479f35fed77f1`.
+  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler:f7-6199575` and
+  `harbor.lan.e-dani.com/homelab/skirmshop-competitor-crawler:f7-6199575`
+  returns `sha256:ccab2c1508c38cb133a01594c11b5a926673dab660e4e6ca9a9c1b0822cc6193`.
 - [x] Manifest pins the published digest, not `:pending`. Evidence:
   `k8s/manifest.yaml` and `k8s/crawler-cronjobs.yaml` use
-  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:b4481879aecc9b82fe822d0f9de0abddb9dfb60e1c8488d811a479f35fed77f1`.
+  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:ccab2c1508c38cb133a01594c11b5a926673dab660e4e6ca9a9c1b0822cc6193`.
 - [x] CI confirms image build smoke before release. Evidence: GitHub Actions CI
   run `28297898411` PASS on commit `b19cfa8`.
 
