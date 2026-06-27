@@ -5,9 +5,9 @@ This runbook records the remaining activation sequence. It is not approval to ap
 ## Current safe state
 
 - Branch: `codex/competitor-crawler-F7-production-comedida`
-- Crawler Deployment: prepared, `replicas: 0`, image `:pending`.
+- Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:67ccb373aa36ca3822ab59b04b1a88bf113fe3b834d2e59824fdb65fe30f32e4`.
 - Prober Deployment: prepared, `replicas: 0`, image `:pending`.
-- Crawler CronJobs: prepared in manifests for tier1/tier2/tier3, all `suspend: true`, image `:pending`.
+- Crawler CronJobs: prepared in manifests for tier1/tier2/tier3, all `suspend: true`, image pinned by the same crawler digest.
 - NetworkPolicy: crawler and prober default-deny egress.
 - Brain push auth: implemented with `BRAIN_API_KEY` and `REQUIRE_BRAIN_API_KEY=true`.
 - Observability: one-shot runner exposes opt-in `/metrics`; CronJobs set `METRICS_PORT=9090` and `METRICS_LINGER_SECONDS=45`; `VMPodScrape` is prepared for VictoriaMetrics.
@@ -21,26 +21,23 @@ This runbook records the remaining activation sequence. It is not approval to ap
 Required evidence:
 
 - [x] Release workflow available. Evidence: `.github/workflows/release.yml`.
-- [blocked] Release workflow runnable from branch dispatch. Evidence:
-  `gh workflow run release.yml --ref codex/competitor-crawler-F7-production-comedida -f version=f7-1be57d3`
-  returned HTTP 404 because GitHub requires the workflow file on the default
-  branch for `workflow_dispatch`.
-- [blocked] Release run publishes
-  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler:<tag>` or digest.
-  Evidence: tag `f7-5af2296` was pushed after CI green on commit `5af2296`,
-  old release `28295195599` was force-cancelled, and release run `28295788199`
-  reached job `release / Build and publish tagged images` but remains `queued`
-  waiting for runner label `docker-build`. Root-cause evidence: CI uses
-  `runner: arc-k8s`, live ARC exposes `AutoscalingRunnerSet/arc-k8s`, and no
-  `docker-build` runner is assigned. `.github/workflows/release.yml` now uses
-  `runner: arc-k8s`; next step is a new tag release after CI.
-- [ ] Manifest pins the published tag/digest, not `:pending`. Blocker: image has
-  not been published/verified.
+- [x] Release path verified by tag trigger. Evidence: branch
+  `workflow_dispatch` returned HTTP 404 because the workflow is not on the
+  default branch, so the approved path was tag trigger. Tag `f7-b19cfa8`
+  created release run `28297927525`.
+- [x] Release run publishes a crawler image tag and digest. Evidence: GitHub
+  Actions release run `28297927525` completed success on commit
+  `b19cfa8fb38480cf668e6ed61bbe72b683be67c7`; `crane digest` on both
+  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler:f7-b19cfa8` and
+  `harbor.lan.e-dani.com/homelab/skirmshop-competitor-crawler:f7-b19cfa8`
+  returns `sha256:67ccb373aa36ca3822ab59b04b1a88bf113fe3b834d2e59824fdb65fe30f32e4`.
+- [x] Manifest pins the published digest, not `:pending`. Evidence:
+  `k8s/manifest.yaml` and `k8s/crawler-cronjobs.yaml` use
+  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:67ccb373aa36ca3822ab59b04b1a88bf113fe3b834d2e59824fdb65fe30f32e4`.
 - [x] CI confirms image build smoke before release. Evidence: GitHub Actions CI
-  run `28295749334` PASS (`Build images` 52s, `Lint and validate manifests`
-  31s).
+  run `28297898411` PASS on commit `b19cfa8`.
 
-Blocked until either the release workflow is merged to the branch/default path where GitHub can run it, or an explicitly approved manual image publish path is used.
+Gate 1 is PASS for the crawler image. This does not activate production and does not cover the prober image.
 
 ## Gate 2 - one-shot runner
 
@@ -51,7 +48,7 @@ Required evidence:
 - [x] CronJob command uses the one-shot runner, not `python -m src.main`. Evidence: `k8s/crawler-cronjobs.yaml` command `python -m src.run_once --tier <tier> --config /app/config.yaml`.
 - [x] `concurrencyPolicy: Forbid`, low resources, history limits and backoff are configured. Evidence: `k8s/crawler-cronjobs.yaml`; `kubectl apply --dry-run=server -k k8s` PASS.
 
-Remaining blocker for activation: image tag/digest, DB live, egress allowlist, Argo enable and live night evidence.
+Remaining blocker for activation: DB live, egress allowlist, Argo enable, prober live transport/image and live night evidence.
 
 ## Gate 3 - DB and migration
 

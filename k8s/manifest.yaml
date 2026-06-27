@@ -35,7 +35,7 @@ spec:
           effect: NoSchedule
       containers:
         - name: crawler
-          image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler:pending
+          image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:67ccb373aa36ca3822ab59b04b1a88bf113fe3b834d2e59824fdb65fe30f32e4
           imagePullPolicy: IfNotPresent
           env:
             - name: BRAIN_URL

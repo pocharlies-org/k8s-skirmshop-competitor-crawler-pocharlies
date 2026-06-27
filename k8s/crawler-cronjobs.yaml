@@ -25,7 +25,10 @@
 # non-root uid/gid/fsGroup 10001, RuntimeDefault seccomp, no privilege
 # escalation, read-only rootfs, drop ALL caps, /tmp emptyDir, edge node
 # selector/toleration, fail-closed Brain auth (REQUIRE_BRAIN_API_KEY=true,
-# secretRef optional:false), image pinned to `:pending` until published.
+# secretRef optional:false). The crawler image is now pinned by immutable
+# DIGEST (harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:67ccb3...,
+# release tag f7-b19cfa8, GitHub Actions run 28297927525); this satisfies the
+# F7 image gate only — activation still requires the remaining gates below.
 ---
 apiVersion: batch/v1
 kind: CronJob
@@ -77,7 +80,7 @@ spec:
               effect: NoSchedule
           containers:
             - name: crawler
-              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler:pending
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:67ccb373aa36ca3822ab59b04b1a88bf113fe3b834d2e59824fdb65fe30f32e4
               imagePullPolicy: IfNotPresent
               command:
                 - python
@@ -190,7 +193,7 @@ spec:
               effect: NoSchedule
           containers:
             - name: crawler
-              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler:pending
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:67ccb373aa36ca3822ab59b04b1a88bf113fe3b834d2e59824fdb65fe30f32e4
               imagePullPolicy: IfNotPresent
               command:
                 - python
@@ -303,7 +306,7 @@ spec:
               effect: NoSchedule
           containers:
             - name: crawler
-              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler:pending
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:67ccb373aa36ca3822ab59b04b1a88bf113fe3b834d2e59824fdb65fe30f32e4
               imagePullPolicy: IfNotPresent
               command:
                 - python
