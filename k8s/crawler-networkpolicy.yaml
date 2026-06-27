@@ -28,7 +28,7 @@ spec:
           port: 53
         - protocol: TCP
           port: 53
-    # Brain push-ingest API.
+    # Brain push-ingest service targets ingest pods on endpoint port 5001.
     - to:
         - namespaceSelector:
             matchLabels:
@@ -36,10 +36,10 @@ spec:
           podSelector:
             matchLabels:
               app.kubernetes.io/name: skirmshop-brain
-              app.kubernetes.io/component: api
+              app.kubernetes.io/component: ingest
       ports:
         - protocol: TCP
-          port: 80
+          port: 5001
     # Firecrawl fallback API.
     - to:
         - podSelector:

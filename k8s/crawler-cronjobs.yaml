@@ -99,7 +99,7 @@ spec:
                   protocol: TCP
               env:
                 - name: BRAIN_URL
-                  value: http://skirmshop-brain.skirmshop-brain-prod.svc.cluster.local
+                  value: http://skirmshop-brain-ingest.skirmshop-brain-prod.svc.cluster.local
                 - name: BRAIN_INSTANCE
                   value: skirmshop
                 - name: FIRECRAWL_URL
@@ -233,7 +233,7 @@ spec:
                   protocol: TCP
               env:
                 - name: BRAIN_URL
-                  value: http://skirmshop-brain.skirmshop-brain-prod.svc.cluster.local
+                  value: http://skirmshop-brain-ingest.skirmshop-brain-prod.svc.cluster.local
                 - name: BRAIN_INSTANCE
                   value: skirmshop
                 - name: FIRECRAWL_URL
@@ -367,7 +367,7 @@ spec:
                   protocol: TCP
               env:
                 - name: BRAIN_URL
-                  value: http://skirmshop-brain.skirmshop-brain-prod.svc.cluster.local
+                  value: http://skirmshop-brain-ingest.skirmshop-brain-prod.svc.cluster.local
                 - name: BRAIN_INSTANCE
                   value: skirmshop
                 - name: FIRECRAWL_URL
