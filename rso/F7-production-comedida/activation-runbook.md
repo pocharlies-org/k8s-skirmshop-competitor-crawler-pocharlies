@@ -12,9 +12,10 @@ This runbook records the remaining activation sequence. It is not approval to ap
 - Brain push auth: implemented with `BRAIN_API_KEY` and `REQUIRE_BRAIN_API_KEY=true`.
 - Observability: one-shot runner exposes opt-in `/metrics`; CronJobs set `METRICS_PORT=9090` and `METRICS_LINGER_SECONDS=45`; `VMPodScrape` is prepared for VictoriaMetrics.
 - CI: smoke build and manifest validation passing.
-- Live DB: not present.
-- Live crawler/prober resources: not present in namespace `skirmshop`.
-- Production activation: blocked.
+- Live DB: `competitor_intel` exists and migration `001_f3_history.sql` is applied.
+- Live crawler/prober resources: present through Argo Application, but still safe-disabled (`skirmshop-competitor-crawler` and `skirmshop-stock-prober` Deployments are `0/0`; crawler CronJobs tier1/tier2/tier3 are `suspend: true`).
+- Argo status: Application exists and targets this branch; current blocker is `OutOfSync/Degraded` until `ExternalSecret/competitor-crawler-secrets` syncs after the Brain secret source-path fix is pushed and reconciled.
+- Production activation: blocked until Gate 4, prober gate, GitOps reconciliation and live run evidence pass.
 
 ## Gate 1 - publish image
 
@@ -67,6 +68,16 @@ Required evidence:
 - `ExternalSecret/competitor-crawler-secrets` is synced.
 - Resulting Secret exists and includes required keys by name only.
 - No secret value appears in repo, logs, reports or shell output.
+
+> Source-path fix (2026-06-27, rho-devops): `competitor-crawler-secrets` previously
+> used `dataFrom.extract key=secret/skirmshop/competitor-crawler`, which does not
+> exist in Vault, so the ExternalSecret could not sync. It now maps the single
+> required key explicitly:
+> `data[0].secretKey=BRAIN_API_KEY` <- `remoteRef.key=skirmshop-brain/prod/app`,
+> `property=dashboard_api_key` (the Brain's own KV mount, same source other
+> Skirmshop services use for Brain auth). `competitor-crawler-db-credentials`
+> is unchanged. See `devops-secret.report.md`. Live sync (`SecretSynced=True`)
+> still has to be confirmed against the cluster during activation.
 
 ## Gate 5 - egress allowlists
 

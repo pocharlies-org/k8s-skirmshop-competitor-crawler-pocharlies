@@ -3,13 +3,14 @@
 **Owner:** `rho-verifier` independent read-only pass, reconciled by Codex RSO/PMO.
 **Date:** 2026-06-27T16:56:37+02:00.
 **Branch/commit audited:** `codex/competitor-crawler-F7-production-comedida` at `18f869f`.
+**PMO update:** 2026-06-27T21:20:16+02:00 after image pin, DB migration, Argo live Application, history runtime, compensating egress, observability wiring and Brain secret source-path fix.
 
 ## Verdict
 
 - Prepared-but-inactive F7 state: **PASS**.
 - F7 phase completion: **NOT PASS / BLOCKED**.
 
-The repository now contains a safe, inactive production-prep shape: Deployments stay at `replicas: 0`, CronJobs are `suspend: true`, images are still `:pending`, egress is default-deny, and no Argo/prod activation was performed.
+The repository now contains a safe, inactive production-prep shape: Deployments stay at `replicas: 0`, CronJobs are `suspend: true`, crawler image is pinned by digest, prober image remains `:pending`, crawler egress is constrained by compensating controls, and no `deploy/prod` push was performed.
 
 F7 cannot close because the master gate requires a real nocturnal run with logs, metrics, Brain/API evidence and SQL history. That evidence does not exist yet.
 
@@ -25,7 +26,7 @@ F7 cannot close because the master gate requires a real nocturnal run with logs,
 - `src/run_once.py` is bounded and exits with `0/1/2`; it reuses `crawl_tier`.
 - Pod hardening is present on Deployments and CronJobs.
 - Crawler and prober NetworkPolicies remain `egress: []`.
-- Observability is not ready: `competitor_crawl_block_total` exists only as an in-memory metric name in `src/prober/metrics.py`; no `/metrics` or `start_http_server` scrape endpoint exists.
+- At the 2026-06-27T16:56 audit, observability was not ready. PMO update: `src/metrics_exporter.py`, CronJob `METRICS_PORT=9090` and `VMPodScrape` are now wired for crawler run metrics; real scrape/dashboard evidence still requires a CronJob pod.
 
 ## PMO re-executed evidence
 
@@ -40,18 +41,19 @@ F7 cannot close because the master gate requires a real nocturnal run with logs,
 
 ## Blockers to F7 PASS
 
-- [blocked] Published image tag/digest is missing; manifests still use `:pending`.
-- [blocked] `competitor_intel` is not live and SQL migration is not applied live.
-- [blocked] Argo app is still disabled in GitOps.
+- [x] Published crawler image tag/digest exists and manifests pin the digest. Evidence: release run `28298910262` PASS; digest `sha256:83e8e3997d270f2fcf2edcf1e360ff208b316040f41d5d8b1c8ab6cf2cd28da3`.
+- [x] `competitor_intel` is live and SQL migration is applied. Evidence: `db-live.report.md`.
+- [blocked] Argo app exists live but is `OutOfSync/Degraded` until `ExternalSecret/competitor-crawler-secrets` syncs after the secret source-path fix.
 - [blocked] CronJobs are intentionally suspended; no live nocturnal run has occurred.
-- [blocked] Egress allowlist is missing; current NetworkPolicies are default-deny.
+- [blocked] Native FQDN egress allowlist is unavailable; activation relies on app-level domain guard plus restricted network egress.
 - [blocked] Prober live transport and domain allowlist are absent.
-- [blocked] Observability endpoint/dashboard is absent.
+- [blocked] Prober image remains `:pending`.
+- [blocked] Observability endpoint is wired but dashboard/scrape evidence requires a real CronJob pod.
 - [blocked] No real-night logs/metrics/API/SQL evidence exists.
 
 ## Checklist
 
 - [x] Prepared state matches repository claims. Evidence: independent file inspection + PMO commands above.
-- [x] No production activation found. Evidence: `replicas: 0`, `suspend: true`, `:pending`, default-deny egress.
-- [x] Current code/manifests pass local and CI validation. Evidence: PMO commands + CI `28292526816`.
+- [x] No production activation found. Evidence: `replicas: 0`, crawler CronJobs `suspend: true`, prober `:pending`.
+- [x] Current code/manifests pass local and CI validation. Evidence: PMO commands + CI `28292526816`; later PMO gates also passed with `205 passed` and server dry-run.
 - [blocked] Full F7 verifier PASS. Blocker: live activation/night evidence does not exist and should not be produced until image, DB, egress, secrets, observability and Argo gates pass.
