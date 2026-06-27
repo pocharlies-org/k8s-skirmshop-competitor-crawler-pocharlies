@@ -1,0 +1,30 @@
+name: Release Production
+
+on:
+  push:
+    tags: ["*"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Optional explicit image tag, for example v1.2.3
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-prod-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    uses: pocharlies-org/k8s-gitops-pocharlies/.github/workflows/reusable-release.yml@main
+    with:
+      runner: docker-build
+      version: ${{ github.event.inputs.version || github.ref_name }}
+      images: |
+        [
+          {"name":"skirmshop-competitor-crawler","context":".","dockerfile":"Dockerfile"}
+        ]
+    secrets: inherit
