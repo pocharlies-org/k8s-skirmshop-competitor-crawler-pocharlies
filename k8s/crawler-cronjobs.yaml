@@ -1,0 +1,316 @@
+# F7 produccion comedida — per-tier one-shot crawler CronJobs.
+#
+# SUSPENDED BY DEFAULT (`suspend: true`). These are prepared, not activated.
+# Activation = flip `suspend` to false (or `kubectl -n skirmshop patch cronjob ...
+# -p '{"spec":{"suspend":false}}'`) ONLY after the F7 activation gates pass:
+# published image tag/digest (not `:pending`), live CNPG `competitor_intel`,
+# synced `competitor-crawler-secrets`, explicit egress allowlists, and Codex
+# verification. See rso/F7-production-comedida/activation-runbook.md.
+#
+# Each CronJob runs ONE tier to completion via the bounded one-shot runner
+# (`python -m src.run_once`), which exits 0/1/2 so the Job gets clean
+# success/failure history. `config.yaml`'s per-tier `schedule:` field is
+# informational only — `src.run_once` ignores it; the CronJob `schedule` below
+# is the authoritative trigger.
+#
+# Schedules are STAGGERED and NOCTURNAL in Europe/Madrid (`timeZone`):
+#   tier1 -> 02:00, every 2 days (5 stores: gunfire/taiwangun/bunker501/evike/redwolf)
+#   tier2 -> 03:00, Mondays      (6 stores)
+#   tier3 -> 04:00, Wednesdays   (3 stores: ES competitors)
+# Different tiers hit DISJOINT competitor domains and never share a start time,
+# so there is no per-domain or node-resource overlap. `concurrencyPolicy: Forbid`
+# additionally prevents a single tier from overlapping a previous slow run.
+#
+# Pod hardening mirrors k8s/manifest.yaml (the disabled Deployment) verbatim:
+# non-root uid/gid/fsGroup 10001, RuntimeDefault seccomp, no privilege
+# escalation, read-only rootfs, drop ALL caps, /tmp emptyDir, edge node
+# selector/toleration, fail-closed Brain auth (REQUIRE_BRAIN_API_KEY=true,
+# secretRef optional:false), image pinned to `:pending` until published.
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: skirmshop-competitor-crawler-tier1
+  labels:
+    app.kubernetes.io/name: skirmshop-competitor-crawler
+    app.kubernetes.io/component: crawler-cronjob
+    crawler.e-dani.com/tier: tier1
+spec:
+  schedule: "0 2 */2 * *"
+  timeZone: Europe/Madrid
+  suspend: true
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 300
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 3600
+      ttlSecondsAfterFinished: 86400
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: skirmshop-competitor-crawler
+            app.kubernetes.io/component: crawler-cronjob
+            crawler.e-dani.com/tier: tier1
+        spec:
+          restartPolicy: Never
+          automountServiceAccountToken: false
+          enableServiceLinks: false
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            fsGroup: 10001
+            seccompProfile:
+              type: RuntimeDefault
+          imagePullSecrets:
+            - name: harbor-pull
+          nodeSelector:
+            role: edge
+            kubernetes.io/arch: amd64
+          tolerations:
+            - key: role
+              operator: Equal
+              value: edge
+              effect: NoSchedule
+          containers:
+            - name: crawler
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler:pending
+              imagePullPolicy: IfNotPresent
+              command:
+                - python
+                - -m
+                - src.run_once
+                - --tier
+                - tier1
+                - --config
+                - /app/config.yaml
+              env:
+                - name: BRAIN_URL
+                  value: http://skirmshop-brain.skirmshop-brain-prod.svc.cluster.local
+                - name: BRAIN_INSTANCE
+                  value: skirmshop
+                - name: FIRECRAWL_URL
+                  value: http://firecrawl-api.skirmshop.svc.cluster.local:3002
+                - name: PUSH_BATCH_SIZE
+                  value: "20"
+                - name: LOG_LEVEL
+                  value: INFO
+                - name: REQUIRE_BRAIN_API_KEY
+                  value: "true"
+              envFrom:
+                - secretRef:
+                    name: competitor-crawler-secrets
+                    optional: false
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities:
+                  drop:
+                    - ALL
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 256Mi
+                limits:
+                  memory: 1Gi
+              volumeMounts:
+                - name: tmp
+                  mountPath: /tmp
+          volumes:
+            - name: tmp
+              emptyDir: {}
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: skirmshop-competitor-crawler-tier2
+  labels:
+    app.kubernetes.io/name: skirmshop-competitor-crawler
+    app.kubernetes.io/component: crawler-cronjob
+    crawler.e-dani.com/tier: tier2
+spec:
+  schedule: "0 3 * * 1"
+  timeZone: Europe/Madrid
+  suspend: true
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 300
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 3600
+      ttlSecondsAfterFinished: 86400
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: skirmshop-competitor-crawler
+            app.kubernetes.io/component: crawler-cronjob
+            crawler.e-dani.com/tier: tier2
+        spec:
+          restartPolicy: Never
+          automountServiceAccountToken: false
+          enableServiceLinks: false
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            fsGroup: 10001
+            seccompProfile:
+              type: RuntimeDefault
+          imagePullSecrets:
+            - name: harbor-pull
+          nodeSelector:
+            role: edge
+            kubernetes.io/arch: amd64
+          tolerations:
+            - key: role
+              operator: Equal
+              value: edge
+              effect: NoSchedule
+          containers:
+            - name: crawler
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler:pending
+              imagePullPolicy: IfNotPresent
+              command:
+                - python
+                - -m
+                - src.run_once
+                - --tier
+                - tier2
+                - --config
+                - /app/config.yaml
+              env:
+                - name: BRAIN_URL
+                  value: http://skirmshop-brain.skirmshop-brain-prod.svc.cluster.local
+                - name: BRAIN_INSTANCE
+                  value: skirmshop
+                - name: FIRECRAWL_URL
+                  value: http://firecrawl-api.skirmshop.svc.cluster.local:3002
+                - name: PUSH_BATCH_SIZE
+                  value: "20"
+                - name: LOG_LEVEL
+                  value: INFO
+                - name: REQUIRE_BRAIN_API_KEY
+                  value: "true"
+              envFrom:
+                - secretRef:
+                    name: competitor-crawler-secrets
+                    optional: false
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities:
+                  drop:
+                    - ALL
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 256Mi
+                limits:
+                  memory: 1Gi
+              volumeMounts:
+                - name: tmp
+                  mountPath: /tmp
+          volumes:
+            - name: tmp
+              emptyDir: {}
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: skirmshop-competitor-crawler-tier3
+  labels:
+    app.kubernetes.io/name: skirmshop-competitor-crawler
+    app.kubernetes.io/component: crawler-cronjob
+    crawler.e-dani.com/tier: tier3
+spec:
+  schedule: "0 4 * * 3"
+  timeZone: Europe/Madrid
+  suspend: true
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 300
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 3600
+      ttlSecondsAfterFinished: 86400
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: skirmshop-competitor-crawler
+            app.kubernetes.io/component: crawler-cronjob
+            crawler.e-dani.com/tier: tier3
+        spec:
+          restartPolicy: Never
+          automountServiceAccountToken: false
+          enableServiceLinks: false
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            fsGroup: 10001
+            seccompProfile:
+              type: RuntimeDefault
+          imagePullSecrets:
+            - name: harbor-pull
+          nodeSelector:
+            role: edge
+            kubernetes.io/arch: amd64
+          tolerations:
+            - key: role
+              operator: Equal
+              value: edge
+              effect: NoSchedule
+          containers:
+            - name: crawler
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler:pending
+              imagePullPolicy: IfNotPresent
+              command:
+                - python
+                - -m
+                - src.run_once
+                - --tier
+                - tier3
+                - --config
+                - /app/config.yaml
+              env:
+                - name: BRAIN_URL
+                  value: http://skirmshop-brain.skirmshop-brain-prod.svc.cluster.local
+                - name: BRAIN_INSTANCE
+                  value: skirmshop
+                - name: FIRECRAWL_URL
+                  value: http://firecrawl-api.skirmshop.svc.cluster.local:3002
+                - name: PUSH_BATCH_SIZE
+                  value: "20"
+                - name: LOG_LEVEL
+                  value: INFO
+                - name: REQUIRE_BRAIN_API_KEY
+                  value: "true"
+              envFrom:
+                - secretRef:
+                    name: competitor-crawler-secrets
+                    optional: false
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities:
+                  drop:
+                    - ALL
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 256Mi
+                limits:
+                  memory: 1Gi
+              volumeMounts:
+                - name: tmp
+                  mountPath: /tmp
+          volumes:
+            - name: tmp
+              emptyDir: {}

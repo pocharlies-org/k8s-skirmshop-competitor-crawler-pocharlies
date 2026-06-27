@@ -7,6 +7,7 @@ resources:
   - externalsecret.yaml
   - crawler-networkpolicy.yaml
   - manifest.yaml
+  - crawler-cronjobs.yaml
   - prober-deployment.yaml
   - prober-networkpolicy.yaml
 
