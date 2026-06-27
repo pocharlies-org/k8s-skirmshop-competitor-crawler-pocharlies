@@ -1,0 +1,155 @@
+"""Network-free tests for the crawler egress domain guard."""
+import asyncio
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from src import crawler, fetcher
+from src.egress_guard import is_allowed_url
+
+
+def test_is_allowed_url_accepts_exact_domain_and_subdomain():
+    assert is_allowed_url("https://gunfire.com/product/a", "gunfire.com")
+    assert is_allowed_url("https://www.gunfire.com/product/a", "gunfire.com")
+    assert is_allowed_url("http://shop.gunfire.com:8080/p/a", "gunfire.com")
+    assert is_allowed_url("https://GUNFIRE.com./p/a", " gunfire.com. ")
+
+
+def test_is_allowed_url_rejects_suffix_prefix_userinfo_and_non_http():
+    blocked = [
+        "https://evilgunfire.com/product/a",
+        "https://gunfire.com.evil.com/product/a",
+        "https://not-gunfire.com/product/a",
+        "https://gunfire.com@evil.com/product/a",
+        "javascript:alert(1)",
+        "mailto:sales@gunfire.com",
+        "ftp://gunfire.com/product/a",
+        "//evil.com/product/a",
+        "/relative/product/a",
+        "",
+    ]
+    for url in blocked:
+        assert not is_allowed_url(url, "gunfire.com"), url
+
+
+class _ExplodingClient:
+    async def get(self, url, **kwargs):
+        raise AssertionError(f"client.get must not be called for {url}")
+
+
+class _ExplodingAsyncClient:
+    def __init__(self, *args, **kwargs):
+        raise AssertionError("Firecrawl fallback must not be constructed")
+
+
+def test_fetch_page_blocks_forbidden_url_before_direct_or_firecrawl(monkeypatch):
+    monkeypatch.setattr(fetcher.httpx, "AsyncClient", _ExplodingAsyncClient)
+
+    html = asyncio.run(
+        fetcher.fetch_page(
+            _ExplodingClient(),
+            "https://gunfire.com@evil.com/product/a",
+            "gunfire.com",
+        )
+    )
+
+    assert html is None
+
+
+class _RedirectResponse:
+    status_code = 200
+    url = "https://evil.com/product/a"
+    text = "<html>" + ("price " * 1000) + "</html>"
+
+    def json(self):
+        raise AssertionError("not a Firecrawl response")
+
+
+class _RedirectClient:
+    def __init__(self):
+        self.calls = []
+
+    async def get(self, url, **kwargs):
+        self.calls.append((url, kwargs))
+        return _RedirectResponse()
+
+
+def test_fetch_page_discards_off_domain_redirect_without_firecrawl(monkeypatch):
+    monkeypatch.setattr(fetcher.httpx, "AsyncClient", _ExplodingAsyncClient)
+    client = _RedirectClient()
+
+    html = asyncio.run(
+        fetcher.fetch_page(client, "https://gunfire.com/product/a", "gunfire.com")
+    )
+
+    assert html is None
+    assert client.calls == [
+        ("https://gunfire.com/product/a", {"follow_redirects": True})
+    ]
+
+
+class _NoNetworkAsyncClient:
+    """Context manager accepted by crawl_store; get must never be called."""
+
+    def __init__(self, *args, **kwargs):
+        pass
+
+    async def __aenter__(self):
+        return _ExplodingClient()
+
+    async def __aexit__(self, exc_type, exc, tb):
+        return False
+
+
+async def _noop_sleep(*_args, **_kwargs):
+    return None
+
+
+def test_crawl_store_off_domain_start_url_does_not_fetch(monkeypatch):
+    monkeypatch.setattr(crawler.httpx, "AsyncClient", _NoNetworkAsyncClient)
+    monkeypatch.setattr(crawler.asyncio, "sleep", _noop_sleep)
+
+    docs = asyncio.run(
+        crawler.crawl_store(
+            {
+                "domain": "gunfire.com",
+                "url": "https://gunfire.com@evil.com/product/a",
+                "depth": 1,
+            }
+        )
+    )
+
+    assert docs == []
+
+
+def test_crawl_store_bfs_rejects_evil_suffix_and_userinfo(monkeypatch):
+    requested = []
+
+    async def fake_fetch_page(_client, url, domain=None):
+        requested.append((url, domain))
+        if url == "https://gunfire.com/":
+            return """
+                <html><body>
+                  <a href="https://www.gunfire.com/product/allowed">ok</a>
+                  <a href="https://evilgunfire.com/product/blocked">bad</a>
+                  <a href="https://gunfire.com@evil.com/product/blocked">bad</a>
+                  <a href="https://gunfire.com.evil.com/product/blocked">bad</a>
+                </body></html>
+            """
+        return ""
+
+    monkeypatch.setattr(crawler, "fetch_page", fake_fetch_page)
+    monkeypatch.setattr(crawler.asyncio, "sleep", _noop_sleep)
+
+    docs = asyncio.run(
+        crawler.crawl_store(
+            {"domain": "gunfire.com", "url": "https://gunfire.com/", "depth": 1}
+        )
+    )
+
+    assert docs == []
+    assert requested == [
+        ("https://gunfire.com/", "gunfire.com"),
+        ("https://www.gunfire.com/product/allowed", "gunfire.com"),
+    ]

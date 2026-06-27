@@ -14,6 +14,7 @@ from urllib.parse import urljoin, urlparse
 
 import httpx
 
+from src.egress_guard import is_allowed_url
 from src.extractor import extract_page_title, extract_products, is_product_url
 from src.fetcher import fetch_page
 from src.promotion_tracker import detect_promotion
@@ -48,7 +49,7 @@ async def crawl_store(store: dict) -> list[dict]:
                 continue
             visited.add(url)
 
-            html = await fetch_page(client, url)
+            html = await fetch_page(client, url, domain)
             if not html:
                 continue
 
@@ -86,11 +87,16 @@ async def crawl_store(store: dict) -> list[dict]:
                 soup = BeautifulSoup(html, "html.parser")
                 for link in soup.find_all("a", href=True):
                     full = urljoin(url, link["href"])
+                    # Egress guard: exact host or subdomain of the store domain,
+                    # http(s) only. Replaces the exploitable ``domain in netloc``
+                    # substring check (which let ``evilgunfire.com`` and
+                    # ``gunfire.com@evil.com`` through).
+                    if not is_allowed_url(full, domain):
+                        continue
                     parsed = urlparse(full)
-                    if parsed.netloc and domain in parsed.netloc:
-                        clean = f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
-                        if clean not in visited and is_product_url(clean):
-                            to_visit.append((clean, depth + 1))
+                    clean = f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
+                    if clean not in visited and is_product_url(clean):
+                        to_visit.append((clean, depth + 1))
 
             # Polite delay
             await asyncio.sleep(0.5)

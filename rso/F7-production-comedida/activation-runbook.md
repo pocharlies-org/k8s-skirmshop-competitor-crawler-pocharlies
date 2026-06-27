@@ -59,9 +59,19 @@ Required evidence:
 
 Required evidence:
 
-- Crawler can reach only required internal services plus approved competitor egress.
-- Prober remains disabled unless a domain-specific allowlist is approved.
-- If Kubernetes NetworkPolicy cannot express domain/FQDN egress in this cluster, the alternative control must be documented before activation.
+- [x] Crawler application guard blocks off-domain fetches. Evidence:
+  `backend-egress.report.md`; `src/egress_guard.py`; `src/fetcher.py` blocks
+  forbidden URL before direct fetch/Firecrawl and discards off-domain redirects;
+  `src/crawler.py` no longer uses `domain in netloc`; `/tmp/crawler-f7-venv/bin/python -m pytest -q` -> 198 passed.
+- [ ] Crawler can reach only required internal services plus approved competitor
+  egress at network layer. Blocker: live cluster exposes only standard
+  Kubernetes `NetworkPolicy`; no Cilium/FQDN policy was found. Standard
+  `NetworkPolicy` cannot express domain allowlists for competitor FQDNs. Before
+  activation choose and verify an egress proxy, Cilium/FQDN-capable policy, or
+  another approved network control.
+- [ ] Prober remains disabled unless a domain-specific allowlist is approved.
+  Evidence: `src/prober/transport.py` is still protocol-only and
+  `k8s/prober-networkpolicy.yaml` has `egress: []`.
 
 ## Gate 6 - observability
 
