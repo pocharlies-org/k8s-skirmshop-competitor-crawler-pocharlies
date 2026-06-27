@@ -20,10 +20,22 @@ This runbook records the remaining activation sequence. It is not approval to ap
 
 Required evidence:
 
-- Release workflow available and runnable.
-- Release run publishes `harbor.e-dani.com/homelab/skirmshop-competitor-crawler:<tag>` or digest.
-- Manifest pins the published tag/digest, not `:pending`.
-- CI or release log confirms image push.
+- [x] Release workflow available. Evidence: `.github/workflows/release.yml`.
+- [blocked] Release workflow runnable from branch dispatch. Evidence:
+  `gh workflow run release.yml --ref codex/competitor-crawler-F7-production-comedida -f version=f7-1be57d3`
+  returned HTTP 404 because GitHub requires the workflow file on the default
+  branch for `workflow_dispatch`.
+- [blocked] Release run publishes
+  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler:<tag>` or digest.
+  Evidence: tag `f7-5af2296` was pushed after CI green on commit `5af2296`,
+  release run `28295788199` exists but remains `pending` behind/coupled to the
+  canceled old release `28295195599` whose OpenClaw failure notification job is
+  still queued.
+- [ ] Manifest pins the published tag/digest, not `:pending`. Blocker: image has
+  not been published/verified.
+- [x] CI confirms image build smoke before release. Evidence: GitHub Actions CI
+  run `28295749334` PASS (`Build images` 52s, `Lint and validate manifests`
+  31s).
 
 Blocked until either the release workflow is merged to the branch/default path where GitHub can run it, or an explicitly approved manual image publish path is used.
 
