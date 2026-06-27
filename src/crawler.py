@@ -18,6 +18,7 @@ from src.egress_guard import is_allowed_url
 from src.extractor import extract_page_title, extract_products, is_product_url
 from src.fetcher import fetch_page
 from src.promotion_tracker import detect_promotion
+from src.robots import CRAWLER_USER_AGENT_HEADER, load_robots_policy
 
 logger = logging.getLogger(__name__)
 
@@ -83,13 +84,22 @@ async def crawl_store(store: dict) -> list[dict]:
     async with httpx.AsyncClient(
         timeout=30.0,
         follow_redirects=True,
-        headers={"User-Agent": "skirmshop-competitor-crawler/1.0 (+research)"},
+        headers={"User-Agent": CRAWLER_USER_AGENT_HEADER},
     ) as client:
+        robots_policy = await load_robots_policy(client, start_url, domain)
+        effective_delay_seconds = max(
+            delay_seconds,
+            robots_policy.crawl_delay_seconds or 0.0,
+        )
         while to_visit and len(visited) < max_pages:
             url, depth = to_visit.pop(0)
             if url in visited or depth > max_depth:
                 continue
             visited.add(url)
+
+            if not robots_policy.can_fetch(url):
+                logger.warning("[%s] robots disallow: %s", domain, url)
+                continue
 
             html = await fetch_page(client, url, domain)
             if not html:
@@ -137,12 +147,15 @@ async def crawl_store(store: dict) -> list[dict]:
                         continue
                     parsed = urlparse(full)
                     clean = f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
+                    if not robots_policy.can_fetch(clean):
+                        logger.warning("[%s] robots disallow: %s", domain, clean)
+                        continue
                     if clean not in visited and is_product_url(clean):
                         to_visit.append((clean, depth + 1))
 
             # Polite delay
-            if delay_seconds > 0:
-                await asyncio.sleep(delay_seconds)
+            if effective_delay_seconds > 0:
+                await asyncio.sleep(effective_delay_seconds)
 
         if to_visit:
             logger.warning(
