@@ -16,6 +16,7 @@
 - [x] Robots fetch failure is fail-open and still bounded by configured delay. Evidence: `tests/test_crawler_robots.py::test_crawl_store_robots_fetch_failure_fails_open`.
 - [x] Full test and compile gates pass. Evidence: `/tmp/crawler-f7-venv/bin/python -m pytest -q` -> `211 passed in 2.37s`; `/tmp/crawler-f7-venv/bin/python -m compileall src tests` PASS.
 - [x] Kubernetes manifests still validate and remain inactive. Evidence: `kubectl apply --dry-run=server -k k8s` PASS; no k8s manifests changed in this code commit.
+- [x] Released image validates live robots behavior. Evidence: `live-smoke-airsoftquimera-robots.report.md`; Job logs show `GET /robots.txt 200` before product fetch; Brain push `sent=1 failed=0`; SQL row written.
 
 ## Specialist Checks
 - [blocked] `rho-backend` delegated implementer. Evidence: Claude CLI timed out with code `124` and no stdout/diff.
@@ -25,3 +26,4 @@
 - 2026-06-27T22:31:00+02:00 - Prepared as PMO exception after Claude timeout.
 - 2026-06-27T22:36:00+02:00 - PMO validation PASS: robots tests plus egress tests `12 passed`; full suite `211 passed`; compileall PASS; server dry-run PASS. Pending release/pin because live image digest does not contain this code yet.
 - 2026-06-27T22:28:24Z - Release PASS: GitHub Actions run `28300857935` published tag `f7-6199575`; both Harbor endpoints returned digest `sha256:ccab2c1508c38cb133a01594c11b5a926673dab660e4e6ca9a9c1b0822cc6193`. Manifests prepared to pin that digest.
+- 2026-06-27T22:36:00+02:00 - Live smoke PASS on digest `sha256:ccab2c1508c38cb133a01594c11b5a926673dab660e4e6ca9a9c1b0822cc6193`: robots.txt fetched before product, history inserted, Brain push sent, metrics green and Job exit 0.
