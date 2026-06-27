@@ -41,7 +41,7 @@ F7 cannot close because the master gate requires a real nocturnal run with logs,
 
 ## Blockers to F7 PASS
 
-- [x] Published crawler image tag/digest exists and manifests pin the digest. Evidence: release run `28298910262` PASS; digest `sha256:83e8e3997d270f2fcf2edcf1e360ff208b316040f41d5d8b1c8ab6cf2cd28da3`.
+- [x] Published crawler image tag/digest exists and manifests pin the digest. Evidence: release run `28299718270` PASS; digest `sha256:b4481879aecc9b82fe822d0f9de0abddb9dfb60e1c8488d811a479f35fed77f1`.
 - [x] `competitor_intel` is live and SQL migration is applied. Evidence: `db-live.report.md`.
 - [blocked] Argo app exists live but is `OutOfSync/Degraded` until `ExternalSecret/competitor-crawler-secrets` syncs after the secret source-path fix.
 - [blocked] CronJobs are intentionally suspended; no live nocturnal run has occurred.

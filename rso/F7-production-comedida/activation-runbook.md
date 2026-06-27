@@ -5,7 +5,7 @@ This runbook records the remaining activation sequence. It is not approval to ap
 ## Current safe state
 
 - Branch: `codex/competitor-crawler-F7-production-comedida`
-- Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:83e8e3997d270f2fcf2edcf1e360ff208b316040f41d5d8b1c8ab6cf2cd28da3`.
+- Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:b4481879aecc9b82fe822d0f9de0abddb9dfb60e1c8488d811a479f35fed77f1`.
 - Prober Deployment: prepared, `replicas: 0`, image `:pending`.
 - Crawler CronJobs: prepared in manifests for tier1/tier2/tier3, all `suspend: true`, image pinned by the same crawler digest.
 - NetworkPolicy: crawler and prober default-deny egress.
@@ -27,14 +27,14 @@ Required evidence:
   default branch, so the approved path was tag trigger. Tag `f7-b19cfa8`
   created release run `28297927525`.
 - [x] Release run publishes a crawler image tag and digest. Evidence: GitHub
-  Actions release run `28298910262` completed success on commit
-  `de69b1f301f48014c22b9cc211cbe8e09446487e`; `crane digest` on both
-  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler:f7-de69b1f` and
-  `harbor.lan.e-dani.com/homelab/skirmshop-competitor-crawler:f7-de69b1f`
-  returns `sha256:83e8e3997d270f2fcf2edcf1e360ff208b316040f41d5d8b1c8ab6cf2cd28da3`.
+  Actions release run `28299718270` completed success on commit
+  `74dcb510206c57ba67e318e419f27d2e2823571b`; `crane digest` on both
+  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler:f7-74dcb51` and
+  `harbor.lan.e-dani.com/homelab/skirmshop-competitor-crawler:f7-74dcb51`
+  returns `sha256:b4481879aecc9b82fe822d0f9de0abddb9dfb60e1c8488d811a479f35fed77f1`.
 - [x] Manifest pins the published digest, not `:pending`. Evidence:
   `k8s/manifest.yaml` and `k8s/crawler-cronjobs.yaml` use
-  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:83e8e3997d270f2fcf2edcf1e360ff208b316040f41d5d8b1c8ab6cf2cd28da3`.
+  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:b4481879aecc9b82fe822d0f9de0abddb9dfb60e1c8488d811a479f35fed77f1`.
 - [x] CI confirms image build smoke before release. Evidence: GitHub Actions CI
   run `28297898411` PASS on commit `b19cfa8`.
 
