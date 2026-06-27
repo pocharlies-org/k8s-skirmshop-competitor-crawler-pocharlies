@@ -21,6 +21,7 @@ jobs:
     with:
       runner: arc-k8s
       run_node: false
-      run_docker_build: false
+      run_docker_build: true
+      images: '[{"name":"skirmshop-competitor-crawler","context":".","dockerfile":"Dockerfile"}]'
       kustomize_paths: ". k8s"
     secrets: inherit
