@@ -90,6 +90,7 @@ spec:
                 - tier1
                 - --config
                 - /app/config.yaml
+                - --fail-on-push-errors
               ports:
                 # Named port scraped by the VMPodScrape (crawler-vmpodscrape.yaml).
                 # The one-shot runner only opens this when METRICS_PORT is set.
@@ -109,6 +110,26 @@ spec:
                   value: INFO
                 - name: REQUIRE_BRAIN_API_KEY
                   value: "true"
+                - name: HISTORY_ENABLED
+                  value: "true"
+                - name: PGHOST
+                  value: postgres-shared-rw.databases.svc.cluster.local
+                - name: PGPORT
+                  value: "5432"
+                - name: PGDATABASE
+                  value: competitor_intel
+                - name: PGCONNECT_TIMEOUT
+                  value: "10"
+                - name: PGUSER
+                  valueFrom:
+                    secretKeyRef:
+                      name: competitor-crawler-db-credentials
+                      key: username
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: competitor-crawler-db-credentials
+                      key: password
                 # F7 observability (opt-in, handled by src/run_once.py):
                 # METRICS_PORT starts the stdlib Prometheus /metrics endpoint on
                 # the named `metrics` port above; METRICS_LINGER_SECONDS keeps it
@@ -203,6 +224,7 @@ spec:
                 - tier2
                 - --config
                 - /app/config.yaml
+                - --fail-on-push-errors
               ports:
                 # Named port scraped by the VMPodScrape (crawler-vmpodscrape.yaml).
                 # The one-shot runner only opens this when METRICS_PORT is set.
@@ -222,6 +244,26 @@ spec:
                   value: INFO
                 - name: REQUIRE_BRAIN_API_KEY
                   value: "true"
+                - name: HISTORY_ENABLED
+                  value: "true"
+                - name: PGHOST
+                  value: postgres-shared-rw.databases.svc.cluster.local
+                - name: PGPORT
+                  value: "5432"
+                - name: PGDATABASE
+                  value: competitor_intel
+                - name: PGCONNECT_TIMEOUT
+                  value: "10"
+                - name: PGUSER
+                  valueFrom:
+                    secretKeyRef:
+                      name: competitor-crawler-db-credentials
+                      key: username
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: competitor-crawler-db-credentials
+                      key: password
                 # F7 observability (opt-in, handled by src/run_once.py):
                 # METRICS_PORT starts the stdlib Prometheus /metrics endpoint on
                 # the named `metrics` port above; METRICS_LINGER_SECONDS keeps it
@@ -316,6 +358,7 @@ spec:
                 - tier3
                 - --config
                 - /app/config.yaml
+                - --fail-on-push-errors
               ports:
                 # Named port scraped by the VMPodScrape (crawler-vmpodscrape.yaml).
                 # The one-shot runner only opens this when METRICS_PORT is set.
@@ -335,6 +378,26 @@ spec:
                   value: INFO
                 - name: REQUIRE_BRAIN_API_KEY
                   value: "true"
+                - name: HISTORY_ENABLED
+                  value: "true"
+                - name: PGHOST
+                  value: postgres-shared-rw.databases.svc.cluster.local
+                - name: PGPORT
+                  value: "5432"
+                - name: PGDATABASE
+                  value: competitor_intel
+                - name: PGCONNECT_TIMEOUT
+                  value: "10"
+                - name: PGUSER
+                  valueFrom:
+                    secretKeyRef:
+                      name: competitor-crawler-db-credentials
+                      key: username
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: competitor-crawler-db-credentials
+                      key: password
                 # F7 observability (opt-in, handled by src/run_once.py):
                 # METRICS_PORT starts the stdlib Prometheus /metrics endpoint on
                 # the named `metrics` port above; METRICS_LINGER_SECONDS keeps it

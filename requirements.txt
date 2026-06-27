@@ -3,3 +3,4 @@ beautifulsoup4>=4.12
 trafilatura>=1.12
 apscheduler>=3.10
 pyyaml>=6.0
+psycopg[binary]>=3.2

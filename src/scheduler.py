@@ -1,6 +1,7 @@
 """APScheduler-driven tier crawls."""
 import asyncio
 import logging
+from datetime import UTC, datetime
 from pathlib import Path
 
 import yaml
@@ -8,6 +9,11 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 
 from src.crawler import crawl_store
+from src.history_runtime import (
+    history_enabled,
+    validate_history_config,
+    write_docs_history,
+)
 from src.push_client import push_documents
 
 logger = logging.getLogger(__name__)
@@ -26,17 +32,37 @@ async def crawl_tier(tier_name: str, stores: list[dict]) -> tuple[int, int]:
     lets a one-shot runner (``src.run_once``) derive a process exit status;
     APScheduler (``build_scheduler``) ignores it.
     """
-    logger.info(f"[{tier_name}] start ({len(stores)} stores)")
+    run_started_at = datetime.now(UTC)
+    run_id = f"{tier_name}:{run_started_at.strftime('%Y%m%dT%H%M%S%fZ')}"
+    if history_enabled():
+        validate_history_config()
+
+    logger.info(f"[{tier_name}] start ({len(stores)} stores, run_id={run_id})")
     total_pushed = 0
     total_failed = 0
     for store in stores:
         try:
             docs = await crawl_store(store)
+            history_result = write_docs_history(
+                docs,
+                domain=store["domain"],
+                run_id=run_id,
+                observed_at=run_started_at,
+            )
+            if history_result.enabled:
+                logger.info(
+                    "[%s] %s history inserted=%d skipped=%d",
+                    tier_name,
+                    store["domain"],
+                    history_result.inserted,
+                    history_result.skipped,
+                )
             sent, failed = await push_documents(docs)
             total_pushed += sent
             total_failed += failed
         except Exception as e:
             logger.exception(f"[{tier_name}] {store.get('domain')} failed: {e}")
+            total_failed += 1
     logger.info(
         f"[{tier_name}] done — pushed={total_pushed} failed={total_failed}"
     )

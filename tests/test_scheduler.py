@@ -28,6 +28,9 @@ def test_crawl_tier_returns_aggregated_totals(monkeypatch):
 
     monkeypatch.setattr(scheduler, "crawl_store", fake_crawl_store)
     monkeypatch.setattr(scheduler, "push_documents", fake_push_documents)
+    monkeypatch.setattr(scheduler, "write_docs_history", lambda *a, **k: type(
+        "R", (), {"enabled": False, "inserted": 0, "skipped": 0}
+    )())
 
     stores = [{"domain": "a.com"}, {"domain": "b.com"}, {"domain": "c.com"}]
     pushed, failed = asyncio.run(scheduler.crawl_tier("tier1", stores))
@@ -46,6 +49,9 @@ def test_crawl_tier_aggregates_push_failures(monkeypatch):
 
     monkeypatch.setattr(scheduler, "crawl_store", fake_crawl_store)
     monkeypatch.setattr(scheduler, "push_documents", fake_push_documents)
+    monkeypatch.setattr(scheduler, "write_docs_history", lambda *a, **k: type(
+        "R", (), {"enabled": False, "inserted": 0, "skipped": 0}
+    )())
 
     pushed, failed = asyncio.run(
         scheduler.crawl_tier("tier1", [{"domain": "a.com"}, {"domain": "b.com"}])
@@ -73,5 +79,59 @@ def test_crawl_tier_skips_failing_store_without_aborting(monkeypatch):
     pushed, failed = asyncio.run(scheduler.crawl_tier("tier1", stores))
 
     # the failing store is skipped; the other two still pushed
-    assert (pushed, failed) == (2, 0)
+    assert (pushed, failed) == (2, 1)
     assert seen == ["ok1.com", "boom.com", "ok2.com"]
+
+
+def test_crawl_tier_writes_history_before_push(monkeypatch):
+    calls = []
+    pushed_docs = []
+
+    async def fake_crawl_store(store):
+        return [{"source_id": f"competitor:{store['domain']}:p1"}]
+
+    def fake_history(docs, *, domain, run_id, observed_at):
+        calls.append((list(docs), domain, run_id, observed_at))
+        return type("R", (), {"enabled": True, "inserted": len(docs), "skipped": 0})()
+
+    async def fake_push_documents(docs):
+        pushed_docs.extend(docs)
+        return len(list(docs)), 0
+
+    monkeypatch.setattr(scheduler, "history_enabled", lambda: True)
+    monkeypatch.setattr(scheduler, "validate_history_config", lambda: None)
+    monkeypatch.setattr(scheduler, "crawl_store", fake_crawl_store)
+    monkeypatch.setattr(scheduler, "write_docs_history", fake_history)
+    monkeypatch.setattr(scheduler, "push_documents", fake_push_documents)
+
+    pushed, failed = asyncio.run(scheduler.crawl_tier("tier1", [{"domain": "a.com"}]))
+
+    assert (pushed, failed) == (1, 0)
+    assert calls[0][1] == "a.com"
+    assert calls[0][2].startswith("tier1:")
+    assert pushed_docs == [{"source_id": "competitor:a.com:p1"}]
+
+
+def test_crawl_tier_history_failure_counts_failed_and_skips_push(monkeypatch):
+    pushed_docs = []
+
+    async def fake_crawl_store(store):
+        return [{"source_id": f"competitor:{store['domain']}:p1"}]
+
+    def boom(*args, **kwargs):
+        raise RuntimeError("db unavailable")
+
+    async def fake_push_documents(docs):
+        pushed_docs.extend(docs)
+        return len(list(docs)), 0
+
+    monkeypatch.setattr(scheduler, "history_enabled", lambda: True)
+    monkeypatch.setattr(scheduler, "validate_history_config", lambda: None)
+    monkeypatch.setattr(scheduler, "crawl_store", fake_crawl_store)
+    monkeypatch.setattr(scheduler, "write_docs_history", boom)
+    monkeypatch.setattr(scheduler, "push_documents", fake_push_documents)
+
+    pushed, failed = asyncio.run(scheduler.crawl_tier("tier1", [{"domain": "a.com"}]))
+
+    assert (pushed, failed) == (0, 1)
+    assert pushed_docs == []

@@ -10,7 +10,69 @@ spec:
       app.kubernetes.io/name: skirmshop-competitor-crawler
   policyTypes:
     - Egress
-  # Default-deny all egress. F7 must replace this with an explicit allowlist
-  # for DNS, Brain, Firecrawl, Postgres/history, and approved competitor domains
-  # before changing replicas/CronJob from disabled to active.
-  egress: []
+  # Kubernetes NetworkPolicy cannot express FQDN allowlists in this cluster.
+  # This is therefore a compensating two-layer control:
+  #   1) network allows only required internal services plus public 80/443;
+  #   2) src.egress_guard enforces exact approved competitor domains in-app.
+  egress:
+    # DNS for service discovery and competitor FQDN resolution.
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # Brain push-ingest API.
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: skirmshop-brain-prod
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: skirmshop-brain
+              app.kubernetes.io/component: api
+      ports:
+        - protocol: TCP
+          port: 80
+    # Firecrawl fallback API.
+    - to:
+        - podSelector:
+            matchLabels:
+              app: firecrawl-api
+      ports:
+        - protocol: TCP
+          port: 3002
+    # CNPG Postgres history database.
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: databases
+          podSelector:
+            matchLabels:
+              cnpg.io/cluster: postgres-shared
+      ports:
+        - protocol: TCP
+          port: 5432
+    # Approved competitor domains resolve to public addresses; private ranges
+    # stay blocked so this rule cannot reach cluster/internal networks.
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+            except:
+              - 10.0.0.0/8
+              - 172.16.0.0/12
+              - 192.168.0.0/16
+              - 100.64.0.0/10
+              - 127.0.0.0/8
+              - 169.254.0.0/16
+      ports:
+        - protocol: TCP
+          port: 80
+        - protocol: TCP
+          port: 443
