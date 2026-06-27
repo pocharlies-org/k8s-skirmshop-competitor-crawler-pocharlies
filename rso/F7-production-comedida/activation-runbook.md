@@ -28,9 +28,9 @@ Required evidence:
 - [blocked] Release run publishes
   `harbor.e-dani.com/homelab/skirmshop-competitor-crawler:<tag>` or digest.
   Evidence: tag `f7-5af2296` was pushed after CI green on commit `5af2296`,
-  release run `28295788199` exists but remains `pending` behind/coupled to the
-  canceled old release `28295195599` whose OpenClaw failure notification job is
-  still queued.
+  old release `28295195599` was force-cancelled, and release run `28295788199`
+  reached job `release / Build and publish tagged images` but remains `queued`
+  waiting for runner label `docker-build`.
 - [ ] Manifest pins the published tag/digest, not `:pending`. Blocker: image has
   not been published/verified.
 - [x] CI confirms image build smoke before release. Evidence: GitHub Actions CI
