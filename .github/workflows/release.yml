@@ -21,7 +21,7 @@ jobs:
   release:
     uses: pocharlies-org/k8s-gitops-pocharlies/.github/workflows/reusable-release.yml@main
     with:
-      runner: docker-build
+      runner: arc-k8s
       version: ${{ github.event.inputs.version || github.ref_name }}
       images: |
         [

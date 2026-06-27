@@ -30,7 +30,10 @@ Required evidence:
   Evidence: tag `f7-5af2296` was pushed after CI green on commit `5af2296`,
   old release `28295195599` was force-cancelled, and release run `28295788199`
   reached job `release / Build and publish tagged images` but remains `queued`
-  waiting for runner label `docker-build`.
+  waiting for runner label `docker-build`. Root-cause evidence: CI uses
+  `runner: arc-k8s`, live ARC exposes `AutoscalingRunnerSet/arc-k8s`, and no
+  `docker-build` runner is assigned. `.github/workflows/release.yml` now uses
+  `runner: arc-k8s`; next step is a new tag release after CI.
 - [ ] Manifest pins the published tag/digest, not `:pending`. Blocker: image has
   not been published/verified.
 - [x] CI confirms image build smoke before release. Evidence: GitHub Actions CI
