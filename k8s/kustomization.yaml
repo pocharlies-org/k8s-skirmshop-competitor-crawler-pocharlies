@@ -8,6 +8,7 @@ resources:
   - crawler-networkpolicy.yaml
   - manifest.yaml
   - crawler-cronjobs.yaml
+  - crawler-vmpodscrape.yaml
   - prober-deployment.yaml
   - prober-networkpolicy.yaml
 

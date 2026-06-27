@@ -7,11 +7,13 @@ This runbook records the remaining activation sequence. It is not approval to ap
 - Branch: `codex/competitor-crawler-F7-production-comedida`
 - Crawler Deployment: prepared, `replicas: 0`, image `:pending`.
 - Prober Deployment: prepared, `replicas: 0`, image `:pending`.
+- Crawler CronJobs: prepared in manifests for tier1/tier2/tier3, all `suspend: true`, image `:pending`.
 - NetworkPolicy: crawler and prober default-deny egress.
 - Brain push auth: implemented with `BRAIN_API_KEY` and `REQUIRE_BRAIN_API_KEY=true`.
+- Observability: one-shot runner exposes opt-in `/metrics`; CronJobs set `METRICS_PORT=9090` and `METRICS_LINGER_SECONDS=45`; `VMPodScrape` is prepared for VictoriaMetrics.
 - CI: smoke build and manifest validation passing.
 - Live DB: not present.
-- CronJob: not present.
+- Live crawler/prober resources: not present in namespace `skirmshop`.
 - Production activation: blocked.
 
 ## Gate 1 - publish image
@@ -29,10 +31,12 @@ Blocked until either the release workflow is merged to the branch/default path w
 
 Required evidence:
 
-- A bounded crawler command exists and exits 0/1 after one tier/window.
-- Tests cover success, failure and no-doc/no-push behavior.
-- CronJob command uses the one-shot runner, not `python -m src.main`.
-- `concurrencyPolicy: Forbid`, low resources, history limits and backoff are configured.
+- [x] A bounded crawler command exists and exits 0/1 after one tier/window. Evidence: `src/run_once.py`; `/tmp/crawler-f7-venv/bin/python -m pytest -q` -> 192 passed.
+- [x] Tests cover success, failure and no-doc/no-push behavior. Evidence: `tests/test_run_once.py`; `tests/test_scheduler.py`.
+- [x] CronJob command uses the one-shot runner, not `python -m src.main`. Evidence: `k8s/crawler-cronjobs.yaml` command `python -m src.run_once --tier <tier> --config /app/config.yaml`.
+- [x] `concurrencyPolicy: Forbid`, low resources, history limits and backoff are configured. Evidence: `k8s/crawler-cronjobs.yaml`; `kubectl apply --dry-run=server -k k8s` PASS.
+
+Remaining blocker for activation: image tag/digest, DB live, egress allowlist, Argo enable and live night evidence.
 
 ## Gate 3 - DB and migration
 
@@ -63,8 +67,10 @@ Required evidence:
 
 Required evidence:
 
-- Metrics/logs expose job success, push sent/failed counts, blocked-domain count, retry/failure reasons and history writes.
-- Prometheus/dashboard or equivalent read-only query is captured in F7 evidence.
+- [x] Runner metrics expose job success and push sent/failed counts. Evidence: `src/metrics_exporter.py` exports `competitor_crawler_run_total{tier,status}`, `competitor_crawler_push_sent_total{tier}`, `competitor_crawler_push_failed_total{tier}`, `competitor_crawler_run_active{tier}`; `/tmp/crawler-f7-venv/bin/python -m pytest -q` -> 192 passed.
+- [x] CronJobs are scrapeable when unsuspended. Evidence: `k8s/crawler-cronjobs.yaml` exposes named port `metrics`, `METRICS_PORT=9090`, `METRICS_LINGER_SECONDS=45`; `k8s/crawler-vmpodscrape.yaml`; `kubectl apply --dry-run=server -k k8s` PASS including `vmpodscrape.operator.victoriametrics.com/skirmshop-competitor-crawler created (server dry run)`.
+- [ ] Dashboard or equivalent read-only query captured in F7 evidence. Blocker: no pod target exists while CronJobs are `suspend: true`; verify vmagent target and dashboard during the first approved unsuspended run.
+- [ ] Blocked-domain count, retry/failure reasons and history writes captured from real run evidence. Blocker: requires live night run and DB/historical writes.
 
 ## Gate 7 - live night
 

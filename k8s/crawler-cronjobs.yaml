@@ -87,6 +87,12 @@ spec:
                 - tier1
                 - --config
                 - /app/config.yaml
+              ports:
+                # Named port scraped by the VMPodScrape (crawler-vmpodscrape.yaml).
+                # The one-shot runner only opens this when METRICS_PORT is set.
+                - name: metrics
+                  containerPort: 9090
+                  protocol: TCP
               env:
                 - name: BRAIN_URL
                   value: http://skirmshop-brain.skirmshop-brain-prod.svc.cluster.local
@@ -100,6 +106,17 @@ spec:
                   value: INFO
                 - name: REQUIRE_BRAIN_API_KEY
                   value: "true"
+                # F7 observability (opt-in, handled by src/run_once.py):
+                # METRICS_PORT starts the stdlib Prometheus /metrics endpoint on
+                # the named `metrics` port above; METRICS_LINGER_SECONDS keeps it
+                # serving briefly AFTER the tier finishes so the vmagent scrape
+                # (30s interval) can read the terminal run_total/push counters
+                # before this short-lived CronJob pod exits. Must stay > the
+                # VMPodScrape interval; pure observability, never alters exit code.
+                - name: METRICS_PORT
+                  value: "9090"
+                - name: METRICS_LINGER_SECONDS
+                  value: "45"
               envFrom:
                 - secretRef:
                     name: competitor-crawler-secrets
@@ -183,6 +200,12 @@ spec:
                 - tier2
                 - --config
                 - /app/config.yaml
+              ports:
+                # Named port scraped by the VMPodScrape (crawler-vmpodscrape.yaml).
+                # The one-shot runner only opens this when METRICS_PORT is set.
+                - name: metrics
+                  containerPort: 9090
+                  protocol: TCP
               env:
                 - name: BRAIN_URL
                   value: http://skirmshop-brain.skirmshop-brain-prod.svc.cluster.local
@@ -196,6 +219,17 @@ spec:
                   value: INFO
                 - name: REQUIRE_BRAIN_API_KEY
                   value: "true"
+                # F7 observability (opt-in, handled by src/run_once.py):
+                # METRICS_PORT starts the stdlib Prometheus /metrics endpoint on
+                # the named `metrics` port above; METRICS_LINGER_SECONDS keeps it
+                # serving briefly AFTER the tier finishes so the vmagent scrape
+                # (30s interval) can read the terminal run_total/push counters
+                # before this short-lived CronJob pod exits. Must stay > the
+                # VMPodScrape interval; pure observability, never alters exit code.
+                - name: METRICS_PORT
+                  value: "9090"
+                - name: METRICS_LINGER_SECONDS
+                  value: "45"
               envFrom:
                 - secretRef:
                     name: competitor-crawler-secrets
@@ -279,6 +313,12 @@ spec:
                 - tier3
                 - --config
                 - /app/config.yaml
+              ports:
+                # Named port scraped by the VMPodScrape (crawler-vmpodscrape.yaml).
+                # The one-shot runner only opens this when METRICS_PORT is set.
+                - name: metrics
+                  containerPort: 9090
+                  protocol: TCP
               env:
                 - name: BRAIN_URL
                   value: http://skirmshop-brain.skirmshop-brain-prod.svc.cluster.local
@@ -292,6 +332,17 @@ spec:
                   value: INFO
                 - name: REQUIRE_BRAIN_API_KEY
                   value: "true"
+                # F7 observability (opt-in, handled by src/run_once.py):
+                # METRICS_PORT starts the stdlib Prometheus /metrics endpoint on
+                # the named `metrics` port above; METRICS_LINGER_SECONDS keeps it
+                # serving briefly AFTER the tier finishes so the vmagent scrape
+                # (30s interval) can read the terminal run_total/push counters
+                # before this short-lived CronJob pod exits. Must stay > the
+                # VMPodScrape interval; pure observability, never alters exit code.
+                - name: METRICS_PORT
+                  value: "9090"
+                - name: METRICS_LINGER_SECONDS
+                  value: "45"
               envFrom:
                 - secretRef:
                     name: competitor-crawler-secrets

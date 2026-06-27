@@ -1,0 +1,54 @@
+# F7 observability — VictoriaMetrics pod scrape for the suspended crawler CronJobs.
+#
+# This wires the operator-native scrape (CRD operator.victoriametrics.com/v1beta1,
+# the same family used cluster-wide) to the named `metrics` port the one-shot
+# runner (`src.run_once`) exposes when `METRICS_PORT` is set on the CronJob pods.
+# It is INERT until activation: the CronJobs stay `suspend: true`, so no pod is
+# ever created and the vmagent simply has no target. Declaring the scrape now
+# means that the moment a tier is unsuspended its short-lived pod is discovered
+# and scraped — no second manual step, no drift.
+#
+# Why a VMPodScrape (not VMServiceScrape): the targets are CronJob pods, not a
+# Service. They appear/disappear per run; pod service-discovery is the correct
+# mechanism and there is no stable Service/ClusterIP to point at.
+#
+# Selector targets ONLY crawler-cronjob pods:
+#   - the disabled Deployment pods carry only `name=skirmshop-competitor-crawler`
+#     (no component label) -> excluded,
+#   - the stock-prober carries `name=skirmshop-stock-prober` -> excluded,
+#   - only the three tier CronJob pod templates carry BOTH labels below.
+#
+# Scrape cadence vs linger: interval 30s; the CronJob sets
+# METRICS_LINGER_SECONDS=45 (> interval) so at least one scrape lands AFTER the
+# tier writes its terminal `competitor_crawler_run_total{status}` / push counters
+# before the pod exits.
+#
+# GOTCHA (activation-time, out of scope here): the cluster vmagent must actually
+# select this object. If the vmagent is not `selectAllByDefault: true`, it needs
+# a matching podScrapeNamespaceSelector/podScrapeSelector for ns `skirmshop` and
+# these labels. Verify with `kubectl -n skirmshop get vmpodscrape` and the
+# vmagent `/targets` page during the first real (unsuspended) night.
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMPodScrape
+metadata:
+  name: skirmshop-competitor-crawler
+  labels:
+    app.kubernetes.io/name: skirmshop-competitor-crawler
+    app.kubernetes.io/component: crawler-cronjob
+spec:
+  # Restrict discovery to this app's namespace (kustomize sets it to skirmshop).
+  namespaceSelector:
+    matchNames:
+      - skirmshop
+  # Match ONLY crawler-cronjob pods (both labels are present only on the tier
+  # CronJob pod templates).
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: skirmshop-competitor-crawler
+      app.kubernetes.io/component: crawler-cronjob
+  podMetricsEndpoints:
+    - port: metrics
+      path: /metrics
+      scheme: http
+      interval: 30s
+      scrapeTimeout: 10s
