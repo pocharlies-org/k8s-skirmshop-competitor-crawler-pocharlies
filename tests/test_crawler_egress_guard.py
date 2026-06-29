@@ -119,6 +119,27 @@ def test_fetch_page_blocks_challenge_before_firecrawl(monkeypatch):
         raise AssertionError("expected FetchBlockedError")
 
 
+class _CloudflareMentionResponse:
+    status_code = 200
+    url = "https://gunfire.com/"
+    text = "<html>" + ("cloudflare price " * 400) + "</html>"
+
+
+class _CloudflareMentionClient:
+    async def get(self, url, **kwargs):
+        return _CloudflareMentionResponse()
+
+
+def test_fetch_page_allows_plain_cloudflare_mention_without_challenge(monkeypatch):
+    monkeypatch.setattr(fetcher.httpx, "AsyncClient", _ExplodingAsyncClient)
+
+    html = asyncio.run(
+        fetcher.fetch_page(_CloudflareMentionClient(), "https://gunfire.com/", "gunfire.com")
+    )
+
+    assert html == _CloudflareMentionResponse.text
+
+
 class _NoNetworkAsyncClient:
     """Context manager accepted by crawl_store; get must never be called."""
 

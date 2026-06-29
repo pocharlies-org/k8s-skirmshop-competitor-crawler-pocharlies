@@ -27,7 +27,9 @@ _CHALLENGE_MARKERS = (
     "g-recaptcha",
     "hcaptcha",
     "cf-chl",
-    "cloudflare",
+    "cloudflare ray id",
+    "attention required! | cloudflare",
+    "cf-browser-verification",
     "just a moment",
     "checking your browser",
 )
