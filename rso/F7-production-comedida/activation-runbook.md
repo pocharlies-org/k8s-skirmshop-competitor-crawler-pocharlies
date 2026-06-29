@@ -14,8 +14,9 @@ This runbook records the remaining activation sequence. It is not approval to ap
 - CI: smoke build and manifest validation passing.
 - Live DB: `competitor_intel` exists and migration `001_f3_history.sql` is applied.
 - Live crawler/prober resources: present through Argo Application, but still safe-disabled (`skirmshop-competitor-crawler` and `skirmshop-stock-prober` Deployments are `0/0`; crawler CronJobs tier1/tier2/tier3 are `suspend: true`).
-- Argo status: Application exists and targets this branch; current blocker is `OutOfSync/Degraded` until `ExternalSecret/competitor-crawler-secrets` syncs after the Brain secret source-path fix is pushed and reconciled.
-- Production activation: blocked until Gate 4, prober gate, GitOps reconciliation and live run evidence pass.
+- Argo status: Application exists, targets this branch, and is `Synced/Healthy`.
+- GitOps reconciliation: infra PR #15 and gitops PR #11 are merged.
+- Production activation: blocked until prober gate and a clean live run evidence pass.
 
 ## Gate 1 - publish image
 
@@ -59,15 +60,15 @@ Required evidence:
 - [x] Migration `db/migrations/001_f3_history.sql` is applied to `competitor_intel`. Evidence: `db-live.report.md`; migration applied with role `skirmshop`.
 - [x] SQL verifies tables/partitions/view used by F3/F7. Evidence: schema/table/view/owner query in `db-live.report.md`; smoke transaction produced `3|estimated`, rolled back, and left `0` smoke rows.
 - [x] Credentials are delivered through Kubernetes Secret without value disclosure. Evidence: psql used `PGPASSWORD` populated from `secret/skirmshop-db-credentials` without printing the value.
-- [blocked] GitOps reconciliation is not merged yet. Evidence: live CR was applied directly; branch `codex/competitor-crawler-F7-db-gitops` commit `9140897` and PR `https://github.com/pocharlies-org/k8s-infra-pocharlies/pull/15` prepare the `deploy/prod` reconciliation without direct `deploy/prod` push.
+- [x] GitOps reconciliation is merged. Evidence: PR `https://github.com/pocharlies-org/k8s-infra-pocharlies/pull/15` merged at `2026-06-29T22:52:55Z`, merge commit `6cf28b818b7baf7c6dd1c9c63e8446e72396860b`; live DB remains `APPLIED true`.
 
 ## Gate 4 - secrets
 
 Required evidence:
 
-- `ExternalSecret/competitor-crawler-secrets` is synced.
-- Resulting Secret exists and includes required keys by name only.
-- No secret value appears in repo, logs, reports or shell output.
+- [x] `ExternalSecret/competitor-crawler-secrets` is synced. Evidence: `kubectl -n skirmshop get externalsecret competitor-crawler-secrets` Ready `True`, reason `SecretSynced`.
+- [x] Resulting Secret exists and includes required keys by name only. Evidence: `kubectl -n skirmshop get secret competitor-crawler-secrets competitor-crawler-db-credentials -o json | jq ...` -> `competitor-crawler-secrets BRAIN_API_KEY`; `competitor-crawler-db-credentials password,username`.
+- [x] No secret value appears in repo, logs, reports or shell output. Evidence: only key names were printed.
 
 > Source-path fix (2026-06-27, rho-devops): `competitor-crawler-secrets` previously
 > used `dataFrom.extract key=secret/skirmshop/competitor-crawler`, which does not
@@ -76,8 +77,8 @@ Required evidence:
 > `data[0].secretKey=BRAIN_API_KEY` <- `remoteRef.key=skirmshop-brain/prod/app`,
 > `property=dashboard_api_key` (the Brain's own KV mount, same source other
 > Skirmshop services use for Brain auth). `competitor-crawler-db-credentials`
-> is unchanged. See `devops-secret.report.md`. Live sync (`SecretSynced=True`)
-> still has to be confirmed against the cluster during activation.
+> is unchanged. See `devops-secret.report.md`. Live sync was confirmed on
+> 2026-06-30.
 
 ## Gate 5 - egress allowlists
 
@@ -123,10 +124,16 @@ Required evidence:
 
 Required evidence:
 
-- One real nocturnal run completes.
-- `competitor_crawl_block_total` has no sustained increase.
-- Logs show no ban/challenge/CAPTCHA escalation.
-- Brain `/prices/comparison` remains populated.
-- Postgres history has new observations for the run.
+- [blocked] One real nocturnal run completes. Evidence: manual tier1 job `skirmshop-competitor-crawler-tier1-rso-20260629225442` was aborted after anti-bot/cart-path evidence; see `live-night-aborted-anti-bot.report.md`.
+- [blocked] `competitor_crawl_block_total` has no sustained increase. Blocker: the run encountered `captcha.php` 503 before clean completion.
+- [blocked] Logs show no ban/challenge/CAPTCHA escalation. Blocker: logs showed `https://www.taiwangun.com/captcha.php?from=%2Fen` HTTP 503.
+- [ ] Brain `/prices/comparison` remains populated.
+- [ ] Postgres history has new observations for the run.
+
+Remediation prepared after the aborted run:
+
+- `src/extractor.py` skips basket/cart/compare/return/search/captcha/challenge paths before BFS.
+- `src/fetcher.py` fails closed on 403/429/503/challenge/captcha and does not invoke Firecrawl for blocked pages.
+- `src/crawler.py` aborts the affected store via `FetchBlockedError` so `--fail-on-push-errors` can fail the job.
 
 F7 PASS requires all gates above.

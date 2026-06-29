@@ -7,6 +7,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src import crawler, fetcher
 from src.egress_guard import is_allowed_url
+from src.fetcher import FetchBlockedError
 
 
 def test_is_allowed_url_accepts_exact_domain_and_subdomain():
@@ -89,6 +90,35 @@ def test_fetch_page_discards_off_domain_redirect_without_firecrawl(monkeypatch):
     ]
 
 
+class _BlockedResponse:
+    status_code = 503
+    url = "https://www.taiwangun.com/captcha.php?from=%2Fen"
+    text = "<html>captcha required</html>"
+
+
+class _BlockedClient:
+    async def get(self, url, **kwargs):
+        return _BlockedResponse()
+
+
+def test_fetch_page_blocks_challenge_before_firecrawl(monkeypatch):
+    monkeypatch.setattr(fetcher.httpx, "AsyncClient", _ExplodingAsyncClient)
+
+    try:
+        asyncio.run(
+            fetcher.fetch_page(
+                _BlockedClient(),
+                "https://www.taiwangun.com/en",
+                "taiwangun.com",
+            )
+        )
+    except FetchBlockedError as exc:
+        assert exc.reason == "challenge_path"
+        assert "captcha.php" in exc.url
+    else:  # pragma: no cover - defensive
+        raise AssertionError("expected FetchBlockedError")
+
+
 class _NoNetworkAsyncClient:
     """Context manager accepted by crawl_store; get must never be called."""
 
@@ -153,6 +183,63 @@ def test_crawl_store_bfs_rejects_evil_suffix_and_userinfo(monkeypatch):
         ("https://gunfire.com/", "gunfire.com"),
         ("https://www.gunfire.com/product/allowed", "gunfire.com"),
     ]
+
+
+def test_crawl_store_bfs_skips_cart_compare_return_and_search_paths(monkeypatch):
+    requested = []
+
+    async def fake_fetch_page(_client, url, domain=None):
+        requested.append((url, domain))
+        if url == "https://gunfire.com/":
+            return """
+                <html><body>
+                  <a href="/product/allowed">ok</a>
+                  <a href="/basketedit.php">basket</a>
+                  <a href="/en/product-compare.html">compare</a>
+                  <a href="/en/return.html">return</a>
+                  <a href="/en/searching.html">search</a>
+                  <a href="/captcha.php">captcha</a>
+                </body></html>
+            """
+        return ""
+
+    monkeypatch.setattr(crawler, "fetch_page", fake_fetch_page)
+    monkeypatch.setattr(crawler.asyncio, "sleep", _noop_sleep)
+
+    docs = asyncio.run(
+        crawler.crawl_store(
+            {"domain": "gunfire.com", "url": "https://gunfire.com/", "depth": 1}
+        )
+    )
+
+    assert docs == []
+    assert requested == [
+        ("https://gunfire.com/", "gunfire.com"),
+        ("https://gunfire.com/product/allowed", "gunfire.com"),
+    ]
+
+
+def test_crawl_store_raises_on_blocked_fetch(monkeypatch):
+    async def fake_fetch_page(_client, url, domain=None):
+        raise FetchBlockedError(url, "http_429")
+
+    monkeypatch.setattr(crawler, "fetch_page", fake_fetch_page)
+    monkeypatch.setattr(crawler.asyncio, "sleep", _noop_sleep)
+
+    try:
+        asyncio.run(
+            crawler.crawl_store(
+                {
+                    "domain": "gunfire.com",
+                    "url": "https://gunfire.com/",
+                    "depth": 0,
+                }
+            )
+        )
+    except FetchBlockedError as exc:
+        assert exc.reason == "http_429"
+    else:  # pragma: no cover - defensive
+        raise AssertionError("expected FetchBlockedError")
 
 
 def test_crawl_store_respects_max_pages_hard_limit(monkeypatch):

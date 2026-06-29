@@ -161,7 +161,10 @@ PRODUCT_PATH_HINTS = [
     "/airsoft-", "/replica-",
 ]
 SKIP_PATH_HINTS = [
-    "/cart", "/checkout", "/account", "/login", "/register",
+    "/cart", "/basket", "basketedit", "/checkout", "/order",
+    "/account", "/login", "/register", "/wishlist", "/compare",
+    "product-compare", "/return", "/search", "searching.",
+    "captcha", "challenge",
     "/blog", "/news", "/contact", "/about", "/faq",
     "/privacy", "/terms", "/shipping", "/returns",
     ".pdf", ".jpg", ".png", ".css", ".js",

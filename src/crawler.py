@@ -16,7 +16,7 @@ import httpx
 
 from src.egress_guard import is_allowed_url
 from src.extractor import extract_page_title, extract_products, is_product_url
-from src.fetcher import fetch_page
+from src.fetcher import FetchBlockedError, fetch_page
 from src.promotion_tracker import detect_promotion
 from src.robots import CRAWLER_USER_AGENT_HEADER, load_robots_policy
 
@@ -101,7 +101,17 @@ async def crawl_store(store: dict) -> list[dict]:
                 logger.warning("[%s] robots disallow: %s", domain, url)
                 continue
 
-            html = await fetch_page(client, url, domain)
+            try:
+                html = await fetch_page(client, url, domain)
+            except FetchBlockedError as e:
+                logger.error(
+                    "[%s] blocked by anti-bot/challenge at %s reason=%s; "
+                    "aborting store",
+                    domain,
+                    e.url,
+                    e.reason,
+                )
+                raise
             if not html:
                 continue
 
