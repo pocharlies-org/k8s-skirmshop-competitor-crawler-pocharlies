@@ -7,7 +7,7 @@ This runbook records the remaining activation sequence. It is not approval to ap
 - Branch: `codex/competitor-crawler-F7-production-comedida`
 - Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:ee04c7db4a785cc56fb259e7fb5a9db5e6bd28e75994a954e163992d1f042fd0`.
 - Prober Deployment: prepared, `replicas: 0`, image `:pending`.
-- Crawler CronJobs: prepared in manifests for tier1/tier2/tier3, all `suspend: true`, image pinned by the same crawler digest.
+- Crawler CronJobs: prepared in manifests for tier1/tier2/tier3, all `suspend: true`, image pinned by the same crawler digest, with `backoffLimit: 0` to avoid repeated live traffic after an anti-bot/challenge failure.
 - NetworkPolicy: crawler and prober default-deny egress.
 - Brain push auth: implemented with `BRAIN_API_KEY` and `REQUIRE_BRAIN_API_KEY=true`.
 - Observability: one-shot runner exposes opt-in `/metrics`; CronJobs set `METRICS_PORT=9090` and `METRICS_LINGER_SECONDS=45`; `VMPodScrape` is prepared for VictoriaMetrics.
@@ -48,9 +48,9 @@ Required evidence:
 - [x] A bounded crawler command exists and exits 0/1 after one tier/window. Evidence: `src/run_once.py`; `/tmp/crawler-f7-venv/bin/python -m pytest -q` -> 192 passed.
 - [x] Tests cover success, failure and no-doc/no-push behavior. Evidence: `tests/test_run_once.py`; `tests/test_scheduler.py`.
 - [x] CronJob command uses the one-shot runner, not `python -m src.main`. Evidence: `k8s/crawler-cronjobs.yaml` command `python -m src.run_once --tier <tier> --config /app/config.yaml`.
-- [x] `concurrencyPolicy: Forbid`, low resources, history limits and backoff are configured. Evidence: `k8s/crawler-cronjobs.yaml`; `kubectl apply --dry-run=server -k k8s` PASS.
+- [x] `concurrencyPolicy: Forbid`, low resources, history limits and no automatic retry are configured. Evidence: `k8s/crawler-cronjobs.yaml` sets `backoffLimit: 0`; `kubectl apply --dry-run=server -k k8s` PASS.
 
-Remaining blocker for activation: DB live, egress allowlist, Argo enable, prober live transport/image and live night evidence.
+Remaining blockers for activation: prober live transport/image and clean live night evidence.
 
 ## Gate 3 - DB and migration
 
@@ -118,15 +118,15 @@ Required evidence:
 - [x] Runner metrics expose job success and push sent/failed counts. Evidence: `src/metrics_exporter.py` exports `competitor_crawler_run_total{tier,status}`, `competitor_crawler_push_sent_total{tier}`, `competitor_crawler_push_failed_total{tier}`, `competitor_crawler_run_active{tier}`; `/tmp/crawler-f7-venv/bin/python -m pytest -q` -> 192 passed.
 - [x] CronJobs are scrapeable when unsuspended. Evidence: `k8s/crawler-cronjobs.yaml` exposes named port `metrics`, `METRICS_PORT=9090`, `METRICS_LINGER_SECONDS=45`; `k8s/crawler-vmpodscrape.yaml`; `kubectl apply --dry-run=server -k k8s` PASS including `vmpodscrape.operator.victoriametrics.com/skirmshop-competitor-crawler created (server dry run)`.
 - [ ] Dashboard or equivalent read-only query captured in F7 evidence. Blocker: no pod target exists while CronJobs are `suspend: true`; verify vmagent target and dashboard during the first approved unsuspended run.
-- [ ] Blocked-domain count, retry/failure reasons and history writes captured from real run evidence. Blocker: requires live night run and DB/historical writes.
+- [blocked] Blocked-domain count, retry/failure reasons and history writes captured from real run evidence. Evidence: `live-night-tier1-failclosed.report.md` captures Gunfire/Taiwangun/Evike/Redwolf anti-bot blocks and Bunker501 `history inserted=0`; blocker remains because no clean successful live night exists.
 
 ## Gate 7 - live night
 
 Required evidence:
 
-- [blocked] One real nocturnal run completes. Evidence: manual tier1 job `skirmshop-competitor-crawler-tier1-rso-20260629225442` was aborted after anti-bot/cart-path evidence; see `live-night-aborted-anti-bot.report.md`.
-- [blocked] `competitor_crawl_block_total` has no sustained increase. Blocker: the run encountered `captcha.php` 503 before clean completion.
-- [blocked] Logs show no ban/challenge/CAPTCHA escalation. Blocker: logs showed `https://www.taiwangun.com/captcha.php?from=%2Fen` HTTP 503.
+- [blocked] One real nocturnal run completes. Evidence: manual tier1 job `skirmshop-competitor-crawler-tier1-rso-20260629225442` was aborted after anti-bot/cart-path evidence; remediated manual tier1 job `skirmshop-competitor-crawler-tier1-rso3-20260629231925` failed closed with `pushed=0 failed=4`; see `live-night-aborted-anti-bot.report.md` and `live-night-tier1-failclosed.report.md`.
+- [blocked] `competitor_crawl_block_total` has no sustained increase. Blocker: the remediated run blocked 4/5 tier1 stores on challenge/captcha signals.
+- [blocked] Logs show no ban/challenge/CAPTCHA escalation. Blocker: logs showed Gunfire/Evike/Redwolf `challenge_body` and Taiwangun `captcha.php?from=%2Fen` HTTP 503.
 - [ ] Brain `/prices/comparison` remains populated.
 - [ ] Postgres history has new observations for the run.
 
@@ -135,5 +135,6 @@ Remediation prepared after the aborted run:
 - `src/extractor.py` skips basket/cart/compare/return/search/captcha/challenge paths before BFS.
 - `src/fetcher.py` fails closed on 403/429/503/challenge/captcha and does not invoke Firecrawl for blocked pages.
 - `src/crawler.py` aborts the affected store via `FetchBlockedError` so `--fail-on-push-errors` can fail the job.
+- `k8s/crawler-cronjobs.yaml` sets `backoffLimit: 0` so a failed live window does not repeat competitor traffic automatically.
 
 F7 PASS requires all gates above.
