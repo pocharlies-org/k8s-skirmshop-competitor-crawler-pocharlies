@@ -7,7 +7,7 @@ This runbook records the remaining activation sequence. It is not approval to ap
 - Branch: `codex/competitor-crawler-F7-production-comedida`
 - Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:ee04c7db4a785cc56fb259e7fb5a9db5e6bd28e75994a954e163992d1f042fd0`.
 - Prober Deployment: prepared, `replicas: 0`, image `:pending`.
-- Crawler CronJobs: prepared in manifests for tier1/tier2/tier3, all `suspend: true`, image pinned by the same crawler digest, with `backoffLimit: 0` to avoid repeated live traffic after an anti-bot/challenge failure.
+- Crawler CronJobs: prepared and live-synced for tier1/tier2/tier3, all `suspend: true`, image pinned by the same crawler digest, with `backoffLimit: 0` to avoid repeated live traffic after an anti-bot/challenge failure.
 - NetworkPolicy: crawler and prober default-deny egress.
 - Brain push auth: implemented with `BRAIN_API_KEY` and `REQUIRE_BRAIN_API_KEY=true`.
 - Observability: one-shot runner exposes opt-in `/metrics`; CronJobs set `METRICS_PORT=9090` and `METRICS_LINGER_SECONDS=45`; `VMPodScrape` is prepared for VictoriaMetrics.
@@ -48,7 +48,7 @@ Required evidence:
 - [x] A bounded crawler command exists and exits 0/1 after one tier/window. Evidence: `src/run_once.py`; `/tmp/crawler-f7-venv/bin/python -m pytest -q` -> 192 passed.
 - [x] Tests cover success, failure and no-doc/no-push behavior. Evidence: `tests/test_run_once.py`; `tests/test_scheduler.py`.
 - [x] CronJob command uses the one-shot runner, not `python -m src.main`. Evidence: `k8s/crawler-cronjobs.yaml` command `python -m src.run_once --tier <tier> --config /app/config.yaml`.
-- [x] `concurrencyPolicy: Forbid`, low resources, history limits and no automatic retry are configured. Evidence: `k8s/crawler-cronjobs.yaml` sets `backoffLimit: 0`; `kubectl apply --dry-run=server -k k8s` PASS.
+- [x] `concurrencyPolicy: Forbid`, low resources, history limits and no automatic retry are configured. Evidence: `k8s/crawler-cronjobs.yaml` sets `backoffLimit: 0`; `kubectl apply --dry-run=server -k k8s` PASS; CI run `28409410223` PASS; Argo revision `5f4635e20948ace566e94589ccd95494aafdaa77` `Synced Healthy`; live CronJobs tier1/tier2/tier3 show `suspend=true`, `backoffLimit=0`.
 
 Remaining blockers for activation: prober live transport/image and clean live night evidence.
 
