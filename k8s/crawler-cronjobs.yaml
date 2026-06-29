@@ -26,7 +26,7 @@
 # escalation, read-only rootfs, drop ALL caps, /tmp emptyDir, edge node
 # selector/toleration, fail-closed Brain auth (REQUIRE_BRAIN_API_KEY=true,
 # secretRef optional:false). The crawler image is now pinned by immutable
-# DIGEST (harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:ccab...,
+# DIGEST (harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:dbcf...,
 # release tag f7-6199575, GitHub Actions run 28300857935); this satisfies the
 # F7 image gate only — activation still requires the remaining gates below.
 ---
@@ -80,7 +80,7 @@ spec:
               effect: NoSchedule
           containers:
             - name: crawler
-              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:ccab2c1508c38cb133a01594c11b5a926673dab660e4e6ca9a9c1b0822cc6193
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:dbcf0f207e85e3c8fab185e6a318c644bcbc3ec0d2a3f1ee97cde883cfbcb4b6
               imagePullPolicy: IfNotPresent
               command:
                 - python
@@ -214,7 +214,7 @@ spec:
               effect: NoSchedule
           containers:
             - name: crawler
-              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:ccab2c1508c38cb133a01594c11b5a926673dab660e4e6ca9a9c1b0822cc6193
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:dbcf0f207e85e3c8fab185e6a318c644bcbc3ec0d2a3f1ee97cde883cfbcb4b6
               imagePullPolicy: IfNotPresent
               command:
                 - python
@@ -348,7 +348,7 @@ spec:
               effect: NoSchedule
           containers:
             - name: crawler
-              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:ccab2c1508c38cb133a01594c11b5a926673dab660e4e6ca9a9c1b0822cc6193
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:dbcf0f207e85e3c8fab185e6a318c644bcbc3ec0d2a3f1ee97cde883cfbcb4b6
               imagePullPolicy: IfNotPresent
               command:
                 - python
