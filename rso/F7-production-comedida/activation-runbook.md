@@ -16,7 +16,7 @@ This runbook records the remaining activation sequence. It is not approval to ap
 - Live crawler/prober resources: present through Argo Application, but still safe-disabled (`skirmshop-competitor-crawler` and `skirmshop-stock-prober` Deployments are `0/0`; crawler CronJobs tier1/tier2/tier3 are `suspend: true`).
 - Argo status: Application exists, targets this branch, and is `Synced/Healthy`.
 - GitOps reconciliation: infra PR #15 and gitops PR #11 are merged.
-- Production activation: blocked until prober gate and a clean live run evidence pass.
+- Production activation: blocked until the prober live sub-gates and a clean live run evidence pass.
 
 ## Gate 1 - publish image
 
@@ -50,7 +50,7 @@ Required evidence:
 - [x] CronJob command uses the one-shot runner, not `python -m src.main`. Evidence: `k8s/crawler-cronjobs.yaml` command `python -m src.run_once --tier <tier> --config /app/config.yaml`.
 - [x] `concurrencyPolicy: Forbid`, low resources, history limits and no automatic retry are configured. Evidence: `k8s/crawler-cronjobs.yaml` sets `backoffLimit: 0`; `kubectl apply --dry-run=server -k k8s` PASS; CI run `28409410223` PASS; Argo revision `5f4635e20948ace566e94589ccd95494aafdaa77` `Synced Healthy`; live CronJobs tier1/tier2/tier3 show `suspend=true`, `backoffLimit=0`.
 
-Remaining blockers for activation: prober live transport/image and clean live night evidence.
+Remaining blockers for activation: prober live transport/image/egress/runner and clean live night evidence.
 
 ## Gate 3 - DB and migration
 
@@ -95,9 +95,11 @@ Required evidence:
   NetworkPolicy gate only under the accepted compensating model: standard
   Kubernetes `NetworkPolicy` cannot express competitor FQDNs, so FQDN allowlist
   enforcement remains in `src.egress_guard.py`.
-- [ ] Prober remains disabled unless a domain-specific allowlist is approved.
-  Evidence: `src/prober/transport.py` is still protocol-only and
-  `k8s/prober-networkpolicy.yaml` has `egress: []`.
+- [blocked] Prober remains disabled unless a domain-specific allowlist and live transport are approved.
+  Evidence: `src/prober/transport.py` is still protocol-only/mock-only,
+  no prober runner exists, `k8s/prober-networkpolicy.yaml` has `egress: []`,
+  the prober image remains `:pending`, and `prober-live-gap.report.md` lists
+  the required sub-gates.
 
 ## Gate 5b - history runtime
 
