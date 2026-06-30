@@ -39,9 +39,15 @@ Timestamp: 2026-06-30T04:02:00+02:00
   change for tier3; Deployments remain 0; tier1/tier2 remain suspended.
 - [x] **Security** - no expansion to anti-bot tiers. Evidence: tier1/tier2 not
   activated; tier3 rso6 logs had no challenge/CAPTCHA/forbidden GETs.
-- [x] **Verifier/Auditor** - pending post-commit live verification. Evidence:
-  PMO must verify CI, Argo sync and live CronJob `suspend=false` before closing.
+- [x] **Verifier/Auditor** - post-commit live verification. Evidence:
+  CI `28414840927` PASS; Argo `Synced Healthy 7a7cf47`; live tier3
+  `suspend=false`, tier1/tier2 `suspend=true`, all `backoffLimit=0`,
+  Deployments `replicas=0`.
 
 ## Status
 - 2026-06-30T04:02:00+02:00 - PREPARED: tier3-only production activation is
   staged in manifests. Pending commit/push, CI, Argo sync and live verification.
+- 2026-06-30T04:10:00+02:00 - PASS: commit `7a7cf47` pushed; CI
+  `28414840927` PASS; Argo `Synced Healthy 7a7cf47`; live tier3 is
+  `suspend=false` on schedule `0 4 * * 3` Europe/Madrid, tier1/tier2 remain
+  `suspend=true`, and no Deployments were scaled.

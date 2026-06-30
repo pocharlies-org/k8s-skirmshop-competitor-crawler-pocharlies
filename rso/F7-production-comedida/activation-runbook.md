@@ -7,16 +7,16 @@ This runbook records the remaining activation sequence. It is not approval to ap
 - Branch: `codex/competitor-crawler-F7-production-comedida`
 - Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:6332c7ff14a2c7ec3c8323240edb10bfcdb24600effc513421d8516e8388f4a1`.
 - Prober Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:b5ceac612a5a71f614756efe4be99438b403491efc5b624ce14ae528cd9bc697`.
-- Crawler CronJobs: prepared and live-synced for tier1/tier2/tier3, all `suspend: true`, image pinned by the same crawler digest, with `backoffLimit: 0` to avoid repeated live traffic after an anti-bot/challenge failure.
+- Crawler CronJobs: prepared and live-synced for tier1/tier2/tier3; tier1/tier2 remain `suspend: true`; tier3 is active with `suspend: false`, schedule `0 4 * * 3`, `timeZone: Europe/Madrid`; all use the same pinned crawler digest and `backoffLimit: 0` to avoid repeated live traffic after an anti-bot/challenge failure.
 - NetworkPolicy: crawler and prober default-deny egress.
 - Brain push auth: implemented with `BRAIN_API_KEY` and `REQUIRE_BRAIN_API_KEY=true`.
 - Observability: one-shot runner exposes opt-in `/metrics`; CronJobs set `METRICS_PORT=9090` and `METRICS_LINGER_SECONDS=45`; `VMPodScrape` is prepared for VictoriaMetrics.
 - CI: smoke build and manifest validation passing.
 - Live DB: `competitor_intel` exists and migration `001_f3_history.sql` is applied.
-- Live crawler/prober resources: present through Argo Application, but still safe-disabled (`skirmshop-competitor-crawler` and `skirmshop-stock-prober` Deployments are `0/0`; crawler CronJobs tier1/tier2/tier3 are `suspend: true`).
+- Live crawler/prober resources: present through Argo Application with Deployments still safe-disabled (`skirmshop-competitor-crawler` and `skirmshop-stock-prober` Deployments are `0/0`); crawler CronJobs tier1/tier2 are `suspend: true`; crawler CronJob tier3 is `suspend: false`.
 - Argo status: Application exists, targets this branch, and is `Synced/Healthy`.
 - GitOps reconciliation: infra PR #15 and gitops PR #11 are merged.
-- Production activation: blocked until the prober live sub-gates and a clean live run evidence pass.
+- Production activation: PASS for tier3-only production comedida after rso6 and post-sync verification. Tier1/tier2 activation remains blocked/unproven until each tier has its own clean live data gate.
 
 ## Gate 1 - publish image
 
@@ -151,6 +151,12 @@ Required evidence:
 - [x] Postgres history has new observations for the run. Evidence: SQL readback
   for `run_id='tier3:20260630T013825797218Z'` returned 67 rows / 67 distinct
   products for `fullmetal.es`.
+- [x] Tier3-only activation was committed, synced and verified live. Evidence:
+  commit `7a7cf47`; CI `28414840927` PASS; Argo revision
+  `7a7cf47b6654d5f9a8d3540a068bdadfa79b638f` `Synced Healthy`; live tier3
+  `suspend=false`; tier1/tier2 `suspend=true`; all CronJobs `backoffLimit=0`;
+  crawler/prober Deployments `replicas=0`; no immediate automatic Job appeared
+  after sync.
 
 Remediation prepared after the aborted run:
 
@@ -159,7 +165,7 @@ Remediation prepared after the aborted run:
 - `src/crawler.py` aborts the affected store via `FetchBlockedError` so `--fail-on-push-errors` can fail the job.
 - `k8s/crawler-cronjobs.yaml` sets `backoffLimit: 0` so a failed live window does not repeat competitor traffic automatically.
 
-F7 activation caveat: gates above are PASS for a tier3-only production candidate.
-Tier1/tier2 are not cleared by this evidence; tier1 previously failed closed on
-anti-bot/challenge signals and tier2 still needs its own live data gate before
-being unsuspended.
+F7 activation caveat: gates above are PASS for tier3-only production comedida,
+and tier3 is now live. Tier1/tier2 are not cleared by this evidence; tier1
+previously failed closed on anti-bot/challenge signals and tier2 still needs
+its own live data gate before being unsuspended.
