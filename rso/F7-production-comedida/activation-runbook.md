@@ -5,8 +5,8 @@ This runbook records the remaining activation sequence. It is not approval to ap
 ## Current safe state
 
 - Branch: `codex/competitor-crawler-F7-production-comedida`
-- Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:ee04c7db4a785cc56fb259e7fb5a9db5e6bd28e75994a954e163992d1f042fd0`.
-- Prober Deployment: prepared, `replicas: 0`, image `:pending`.
+- Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:6332c7ff14a2c7ec3c8323240edb10bfcdb24600effc513421d8516e8388f4a1`.
+- Prober Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:b5ceac612a5a71f614756efe4be99438b403491efc5b624ce14ae528cd9bc697`.
 - Crawler CronJobs: prepared and live-synced for tier1/tier2/tier3, all `suspend: true`, image pinned by the same crawler digest, with `backoffLimit: 0` to avoid repeated live traffic after an anti-bot/challenge failure.
 - NetworkPolicy: crawler and prober default-deny egress.
 - Brain push auth: implemented with `BRAIN_API_KEY` and `REQUIRE_BRAIN_API_KEY=true`.
@@ -28,16 +28,16 @@ Required evidence:
   default branch, so the approved path was tag trigger. Tag `f7-b19cfa8`
   created release run `28297927525`.
 - [x] Release run publishes a crawler image tag and digest. Evidence: GitHub
-  Actions release run `28408944903` completed success on commit
-  `4bf9ecf16ca5130187ffb2e2d009ce7b46a61ca6`; `crane digest` on both
-  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler:f7-4bf9ecf` and
-  `harbor.lan.e-dani.com/homelab/skirmshop-competitor-crawler:f7-4bf9ecf`
-  returns `sha256:ee04c7db4a785cc56fb259e7fb5a9db5e6bd28e75994a954e163992d1f042fd0`.
+  Actions release run `28414167044` completed success on commit
+  `ccf85a3b8c487723cac975a29a2204031c593bef`; `crane digest` on both
+  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler:f7-ccf85a3` and
+  `harbor.lan.e-dani.com/homelab/skirmshop-competitor-crawler:f7-ccf85a3`
+  returns `sha256:6332c7ff14a2c7ec3c8323240edb10bfcdb24600effc513421d8516e8388f4a1`.
 - [x] Manifest pins the published digest, not `:pending`. Evidence:
   `k8s/manifest.yaml` and `k8s/crawler-cronjobs.yaml` use
-  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:ee04c7db4a785cc56fb259e7fb5a9db5e6bd28e75994a954e163992d1f042fd0`.
+  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:6332c7ff14a2c7ec3c8323240edb10bfcdb24600effc513421d8516e8388f4a1`.
 - [x] CI confirms image build smoke before release. Evidence: GitHub Actions CI
-  run `28297898411` PASS on commit `b19cfa8`.
+  run `28414122080` PASS on commit `ccf85a3`.
 
 Gate 1 is PASS for the crawler image. This does not activate production and does not cover the prober image.
 

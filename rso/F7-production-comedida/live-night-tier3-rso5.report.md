@@ -83,3 +83,9 @@ Timestamp: 2026-06-30T03:29:29+02:00
 - 2026-06-30T03:29:29+02:00 - BLOCKED: rso5 is operationally safe but not a
   F7 PASS. Next gate is release/pin the listing-card + priority-frontier image,
   Argo sync it while remaining safe-disabled, then repeat tier3 data gate.
+- 2026-06-30T03:36:00+02:00 - RELEASE/PIN PREPARED: commit `ccf85a3`
+  passed CI `28414122080`; release `28414167044` published tag `f7-ccf85a3`;
+  Harbor public/LAN digest both returned
+  `sha256:6332c7ff14a2c7ec3c8323240edb10bfcdb24600effc513421d8516e8388f4a1`.
+  Manifests are repinned to that digest with `replicas=0`, `suspend=true`,
+  `backoffLimit=0`; prober remains excluded on digest `sha256:b5ceac...`.
