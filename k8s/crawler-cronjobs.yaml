@@ -80,7 +80,7 @@ spec:
               effect: NoSchedule
           containers:
             - name: crawler
-              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:ee04c7db4a785cc56fb259e7fb5a9db5e6bd28e75994a954e163992d1f042fd0
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:caddac10af5a8120654715eafb9e5dcf10d19bd47fef497b800aa2a9c1ca4db0
               imagePullPolicy: IfNotPresent
               command:
                 - python
@@ -214,7 +214,7 @@ spec:
               effect: NoSchedule
           containers:
             - name: crawler
-              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:ee04c7db4a785cc56fb259e7fb5a9db5e6bd28e75994a954e163992d1f042fd0
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:caddac10af5a8120654715eafb9e5dcf10d19bd47fef497b800aa2a9c1ca4db0
               imagePullPolicy: IfNotPresent
               command:
                 - python
@@ -348,7 +348,7 @@ spec:
               effect: NoSchedule
           containers:
             - name: crawler
-              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:ee04c7db4a785cc56fb259e7fb5a9db5e6bd28e75994a954e163992d1f042fd0
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:caddac10af5a8120654715eafb9e5dcf10d19bd47fef497b800aa2a9c1ca4db0
               imagePullPolicy: IfNotPresent
               command:
                 - python

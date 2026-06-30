@@ -94,5 +94,11 @@ Timestamp: 2026-06-30T03:10:00+02:00
   quality/product-discovery remediation before another data-gate attempt.
 - 2026-06-30T03:18:00+02:00 - REMEDIATION PREPARED: FullMetal product path
   discovery and PrestaShop extraction fallback implemented and verified locally.
-  Pending: commit/push, CI, release/pin new crawler image, Argo sync and repeat
-  tier3 data-gate attempt.
+- 2026-06-30T03:20:00+02:00 - RELEASE/PIN PREPARED: commit `52c2840`
+  pushed; CI `28413539361` PASS; release `28413585559` PASS for tag
+  `f7-52c2840`; Harbor public/LAN digest both
+  `sha256:caddac10af5a8120654715eafb9e5dcf10d19bd47fef497b800aa2a9c1ca4db0`.
+  `k8s/manifest.yaml` and tier1/tier2/tier3 CronJobs are repinned to that
+  digest with `replicas=0`, `suspend=true`, `backoffLimit=0`; server dry-run
+  PASS. Pending: commit/push pin, CI, Argo sync and repeat tier3 data-gate
+  attempt.
