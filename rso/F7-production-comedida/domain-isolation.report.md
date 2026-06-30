@@ -5,7 +5,8 @@ Timestamp: 2026-06-30T10:25:00+02:00
 ## Objective
 - [x] Prepare a safe path to run clean domains without activating a full tier
   that contains known anti-bot blockers. Evidence: `src.run_once` domain filter,
-  live `tier2-powair6` gate PASS, and dedicated CronJob prepared.
+  live `tier2-powair6` gate PASS, dedicated CronJob synced active, CI
+  `28448373752` PASS, and Argo `Synced/Healthy b104ac0`.
 
 ## Directives
 - [x] Do not activate tier1 or full tier2. Evidence: live tier1 and full tier2
@@ -45,11 +46,14 @@ Timestamp: 2026-06-30T10:25:00+02:00
   `competitor_crawler_push_sent_total{tier="tier2-powair6"} 497`,
   `competitor_crawler_push_failed_total{tier="tier2-powair6"} 0`, and
   `competitor_crawler_run_active{tier="tier2-powair6"} 0`.
-- [x] Dedicated production CronJob is prepared without activating blocked
-  domains. Evidence: `k8s/crawler-cronjobs.yaml` adds
+- [x] Dedicated production CronJob is synced active without activating blocked
+  domains. Evidence: commit `b104ac0`; CI `28448373752` PASS; Argo
+  `skirmshop-competitor-crawler` `Synced/Healthy` at
+  `b104ac002611eea98f66a94fdd300d06a2c6bff4`; live
   `skirmshop-competitor-crawler-tier2-powair6`, schedule `15 3 * * 1`,
   command `--tier tier2 --domain powair6.com --run-label tier2-powair6`,
-  `backoffLimit=0`; full `tier2` remains separate and suspended.
+  `suspend=false`, `backoffLimit=0`; full `tier2` remains separate and
+  suspended.
 
 ## Specialist Checks
 - [x] **Backend** - scoped CLI filtering only. Evidence:
@@ -77,3 +81,10 @@ Timestamp: 2026-06-30T10:25:00+02:00
 - 2026-06-30T15:35:00+02:00 - PRODUCTION ISOLATION PREPARED: dedicated
   `tier2-powair6` CronJob added for weekly Monday 03:15 Europe/Madrid. Full
   tier2 remains suspended.
+- 2026-06-30T15:43:00+02:00 - PRODUCTION ISOLATION ACTIVE: commit `b104ac0`
+  pushed, CI `28448373752` PASS, and Argo
+  `skirmshop-competitor-crawler` `Synced/Healthy` at
+  `b104ac002611eea98f66a94fdd300d06a2c6bff4`. Live state:
+  `tier1 suspend=true`, full `tier2 suspend=true`, `tier2-powair6
+  suspend=false` Monday 03:15 Europe/Madrid, `tier3 suspend=false` Wednesday
+  04:00 Europe/Madrid, crawler/prober Deployments `replicas=0`.

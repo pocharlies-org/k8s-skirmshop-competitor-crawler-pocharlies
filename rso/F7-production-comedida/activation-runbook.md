@@ -7,13 +7,13 @@ This runbook records the remaining activation sequence. It is not approval to ap
 - Branch: `codex/competitor-crawler-F7-production-comedida`
 - Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:2315e965b6129e26c2aeaa948cba9d470d8801c6ca5a645629b95d231f040f88`.
 - Prober Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:b5ceac612a5a71f614756efe4be99438b403491efc5b624ce14ae528cd9bc697`.
-- Crawler CronJobs: prepared and live-synced; tier1 and full tier2 remain `suspend: true`; tier3 is active with `suspend: false`, schedule `0 4 * * 3`; dedicated `tier2-powair6` is prepared after an isolated clean live gate with schedule `15 3 * * 1`; all use pinned crawler digest and `backoffLimit: 0` to avoid repeated live traffic after an anti-bot/challenge failure.
+- Crawler CronJobs: live-synced; tier1 and full tier2 remain `suspend: true`; tier3 is active with `suspend: false`, schedule `0 4 * * 3`; dedicated `tier2-powair6` is active after an isolated clean live gate with schedule `15 3 * * 1`; all use pinned crawler digest and `backoffLimit: 0` to avoid repeated live traffic after an anti-bot/challenge failure.
 - NetworkPolicy: crawler and prober default-deny egress.
 - Brain push auth: implemented with `BRAIN_API_KEY` and `REQUIRE_BRAIN_API_KEY=true`.
 - Observability: one-shot runner exposes opt-in `/metrics`; CronJobs set `METRICS_PORT=9090` and `METRICS_LINGER_SECONDS=45`; `VMPodScrape` is prepared for VictoriaMetrics.
 - CI: smoke build and manifest validation passing.
 - Live DB: `competitor_intel` exists and migration `001_f3_history.sql` is applied.
-- Live crawler/prober resources: present through Argo Application with Deployments still safe-disabled (`skirmshop-competitor-crawler` and `skirmshop-stock-prober` Deployments are `0/0`); crawler CronJobs tier1/tier2 are `suspend: true`; crawler CronJob tier3 is `suspend: false`.
+- Live crawler/prober resources: present through Argo Application with Deployments still safe-disabled (`skirmshop-competitor-crawler` and `skirmshop-stock-prober` Deployments are `0/0`); crawler CronJobs tier1/full-tier2 are `suspend: true`; crawler CronJobs tier3 and `tier2-powair6` are `suspend: false`.
 - Argo status: Application exists, targets this branch, and is `Synced/Healthy`.
 - GitOps reconciliation: infra PR #15 and gitops PR #11 are merged.
 - Production activation: PASS for tier3 plus domain-isolated `tier2-powair6`. Tier1 remains blocked by anti-bot/challenge evidence. Full tier2 was tested in rso2: `powair6.com` passed the data path with 497 rows and Brain push `sent=497 failed=0`, but full tier2 activation remains blocked by `challenge_body` on `begadi.com` and `aa-store.at`.
@@ -182,6 +182,14 @@ Required evidence:
   `powair6.com`; Brain push `sent=497 failed=0`; VictoriaMetrics
   `run_total ok=1`, `push_sent=497`, `push_failed=0`; no blocked-domain or
   auth/challenge terms in logs.
+- [x] Domain-isolated Powair6 production CronJob active. Evidence: commit
+  `b104ac0`; CI `28448373752` PASS; Argo `skirmshop-competitor-crawler`
+  `Synced/Healthy` at `b104ac002611eea98f66a94fdd300d06a2c6bff4`; live
+  CronJob `skirmshop-competitor-crawler-tier2-powair6` has `suspend=false`,
+  schedule `15 3 * * 1`, `timeZone=Europe/Madrid`, `backoffLimit=0`, command
+  `--tier tier2 --domain powair6.com --run-label tier2-powair6`; tier1 and
+  full tier2 remain `suspend=true`; crawler/prober Deployments remain
+  `replicas=0`.
 
 Remediation prepared after the aborted run:
 
