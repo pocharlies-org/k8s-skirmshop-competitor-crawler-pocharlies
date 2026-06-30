@@ -12,7 +12,7 @@ import json
 import logging
 import re
 from typing import Optional
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 from bs4 import BeautifulSoup
 
@@ -181,6 +181,12 @@ def extract_products(html: str, url: str, domain: str) -> list[dict]:
                 ),
             })
 
+    # Method 5: PrestaShop category/listing cards. FullMetal exposes prices in
+    # product miniatures, so capture those before a small crawl budget is spent
+    # walking the category tree.
+    if not products:
+        products.extend(_from_prestashop_listing_cards(soup, url, domain))
+
     return [p for p in products if p.get("title")]
 
 
@@ -195,6 +201,10 @@ PRODUCT_PATH_HINTS = [
     "/product/", "/products/", "/p/", "/item/",
     "/shop/", "/catalog/", "/tienda/",
     "/airsoft-", "/armas-de-airsoft/", "/replica-",
+]
+PRIORITY_PRODUCT_PATH_HINTS = [
+    "/product/", "/products/", "/p/", "/item/",
+    "/airsoft-", "/replica-",
 ]
 SKIP_PATH_HINTS = [
     "/cart", "/basket", "basketedit", "/checkout", "/order",
@@ -218,9 +228,110 @@ def is_product_url(url: str) -> bool:
     return path.count("/") <= 3
 
 
+def is_priority_product_url(url: str) -> bool:
+    """Return True for URLs that are likely detail pages, not categories."""
+    path = urlparse(url).path.lower()
+    if any(p in path for p in SKIP_PATH_HINTS):
+        return False
+    if any(p in path for p in PRIORITY_PRODUCT_PATH_HINTS):
+        return True
+    if "/armas-de-airsoft/" in path and path.count("/") >= 4:
+        return True
+    return False
+
+
 def _looks_like_prestashop_product_page(soup: BeautifulSoup) -> bool:
     body_classes = soup.body.get("class", []) if soup.body else []
     return (
         "page-product" in body_classes
         or any(str(cls).startswith("product-id-") for cls in body_classes)
     ) and bool(soup.select_one(".product-prices .current-price"))
+
+
+def _same_domain_url(candidate: str, domain: str) -> bool:
+    parsed = urlparse(candidate)
+    host = parsed.netloc.lower().strip(".")
+    clean_domain = domain.lower().strip().strip(".")
+    return not host or host == clean_domain or host.endswith(f".{clean_domain}")
+
+
+def _from_prestashop_listing_cards(
+    soup: BeautifulSoup, url: str, domain: str
+) -> list[dict]:
+    products: list[dict] = []
+    cards = soup.select(
+        "article.product-miniature, .js-product-miniature, .product-miniature"
+    )
+    seen: set[str] = set()
+    for card in cards:
+        link = (
+            card.select_one(".product-title a[href]")
+            or card.select_one("h2 a[href], h3 a[href]")
+            or card.select_one("a.product-thumbnail[href], a.thumbnail[href]")
+            or card.select_one("a[href]")
+        )
+        if not link:
+            continue
+        product_url = urljoin(url, link.get("href", ""))
+        if not _same_domain_url(product_url, domain):
+            continue
+
+        title_el = (
+            card.select_one(".product-title a")
+            or card.select_one(".product-title")
+            or card.select_one("h2, h3")
+            or link
+        )
+        title = (
+            title_el.get_text(" ", strip=True)
+            or link.get("title", "")
+            or link.get("aria-label", "")
+        ).strip()
+
+        price_el = (
+            card.select_one("[itemprop='price'][content]")
+            or card.select_one(".current-price [content]")
+            or card.select_one(".price")
+            or card.select_one(".product-price")
+            or card.select_one(".current-price")
+        )
+        price = parse_price(
+            price_el.get("content") if price_el and price_el.has_attr("content")
+            else price_el.get_text(" ", strip=True) if price_el
+            else None
+        )
+        if not title or price is None or product_url in seen:
+            continue
+
+        regular_price = card.select_one(".regular-price")
+        brand = card.select_one(".product-brand, [data-brand]")
+        image = card.select_one("img[data-src], img[src]")
+        availability = card.select_one(
+            ".product-availability, .availability, [itemprop='availability']"
+        )
+        seen.add(product_url)
+        products.append({
+            "title": title,
+            "price": price,
+            "compare_at_price": parse_price(
+                regular_price.get_text(" ", strip=True) if regular_price else None
+            ),
+            "brand": (
+                brand.get("data-brand")
+                or brand.get_text(" ", strip=True)
+                if brand else ""
+            ),
+            "url": product_url,
+            "domain": domain,
+            "image": (
+                image.get("data-src") or image.get("src") or ""
+                if image else ""
+            ),
+            "availability": (
+                availability.get("href")
+                or availability.get("content")
+                or availability.get_text(" ", strip=True)
+                if availability else ""
+            ),
+        })
+    return products

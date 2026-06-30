@@ -102,3 +102,8 @@ Timestamp: 2026-06-30T03:10:00+02:00
   digest with `replicas=0`, `suspend=true`, `backoffLimit=0`; server dry-run
   PASS. Pending: commit/push pin, CI, Argo sync and repeat tier3 data-gate
   attempt.
+- 2026-06-30T03:29:29+02:00 - REPEAT ATTEMPT BLOCKED: rso5 with digest
+  `sha256:caddac10...` also completed safely but produced no documents/history
+  or Brain pushes. See `live-night-tier3-rso5.report.md`. Next remediation is
+  listing-card extraction plus priority frontier before another release/pin and
+  repeat data gate.

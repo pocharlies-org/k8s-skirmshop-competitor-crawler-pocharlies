@@ -4,7 +4,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.extractor import extract_products, is_product_url, parse_price
+from src.extractor import (
+    extract_products,
+    is_priority_product_url,
+    is_product_url,
+    parse_price,
+)
 
 
 def test_parse_price_eur():
@@ -86,6 +91,40 @@ def test_prestashop_category_page_is_not_product_without_product_body_class():
     assert extract_products(html, "https://fullmetal.es/armas-electricas", "fullmetal.es") == []
 
 
+def test_extract_products_prestashop_listing_cards():
+    html = """<html><body class="page-category">
+      <article class="product-miniature js-product-miniature">
+        <h2 class="product-title">
+          <a href="/armas-de-airsoft/armas-electricas/fusiles-de-asalto-aeg/ec-mcx-aeg">
+            EC MCX AEG SPEAR-LT FDE
+          </a>
+        </h2>
+        <span class="price">359,00 EUR</span>
+        <span class="regular-price">399,00 EUR</span>
+        <img data-src="/img/ec-mcx.jpg">
+      </article>
+      <article class="product-miniature">
+        <h2 class="product-title"><a href="https://evil.example/product">Off domain</a></h2>
+        <span class="price">1,00 EUR</span>
+      </article>
+    </body></html>"""
+
+    products = extract_products(
+        html,
+        "https://fullmetal.es/fusiles-de-asalto-aeg",
+        "fullmetal.es",
+    )
+
+    assert len(products) == 1
+    assert products[0]["title"] == "EC MCX AEG SPEAR-LT FDE"
+    assert products[0]["price"] == 359.0
+    assert products[0]["compare_at_price"] == 399.0
+    assert products[0]["url"] == (
+        "https://fullmetal.es/armas-de-airsoft/armas-electricas/"
+        "fusiles-de-asalto-aeg/ec-mcx-aeg"
+    )
+
+
 def test_is_product_url_positive():
     assert is_product_url("https://gunfire.com/products/srs-a2-16-covert")
     assert is_product_url("https://taiwangun.com/p/replica")
@@ -99,3 +138,12 @@ def test_is_product_url_negative():
     assert not is_product_url("https://gunfire.com/cart")
     assert not is_product_url("https://gunfire.com/account/login")
     assert not is_product_url("https://gunfire.com/img/banner.png")
+
+
+def test_is_priority_product_url_distinguishes_fullmetal_detail_from_category():
+    assert is_priority_product_url(
+        "https://fullmetal.es/armas-de-airsoft/armas-electricas/"
+        "fusiles-de-asalto-aeg/ec-mcx-aeg"
+    )
+    assert not is_priority_product_url("https://fullmetal.es/armas-de-airsoft")
+    assert not is_priority_product_url("https://fullmetal.es/fusiles-de-asalto-aeg")

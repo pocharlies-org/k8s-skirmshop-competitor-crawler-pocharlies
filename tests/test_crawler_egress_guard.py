@@ -157,6 +157,17 @@ async def _noop_sleep(*_args, **_kwargs):
     return None
 
 
+class _AllowAllRobots:
+    crawl_delay_seconds = None
+
+    def can_fetch(self, _url):
+        return True
+
+
+async def _allow_all_robots(*_args, **_kwargs):
+    return _AllowAllRobots()
+
+
 def test_crawl_store_off_domain_start_url_does_not_fetch(monkeypatch):
     monkeypatch.setattr(crawler.httpx, "AsyncClient", _NoNetworkAsyncClient)
     monkeypatch.setattr(crawler.asyncio, "sleep", _noop_sleep)
@@ -204,6 +215,64 @@ def test_crawl_store_bfs_rejects_evil_suffix_and_userinfo(monkeypatch):
         ("https://gunfire.com/", "gunfire.com"),
         ("https://www.gunfire.com/product/allowed", "gunfire.com"),
     ]
+
+
+def test_crawl_store_prioritizes_detail_links_over_shallow_categories(monkeypatch):
+    requested = []
+    detail_url = (
+        "https://fullmetal.es/armas-de-airsoft/armas-electricas/"
+        "fusiles-de-asalto-aeg/ec-mcx-aeg"
+    )
+
+    async def fake_fetch_page(_client, url, domain=None):
+        requested.append((url, domain))
+        if url == "https://fullmetal.es/":
+            return """
+                <html><body>
+                  <a href="/armas-de-airsoft">root category</a>
+                  <a href="/armas-electricas">second category</a>
+                </body></html>
+            """
+        if url == "https://fullmetal.es/armas-de-airsoft":
+            return f"""
+                <html><body>
+                  <a href="{detail_url}">EC MCX AEG</a>
+                </body></html>
+            """
+        if url == detail_url:
+            return """<html><body>
+              <script type="application/ld+json">{
+                "@type": "Product",
+                "name": "EC MCX AEG",
+                "offers": {"price": "359.00"}
+              }</script>
+            </body></html>"""
+        return "<html><body>category</body></html>"
+
+    monkeypatch.setattr(crawler, "load_robots_policy", _allow_all_robots)
+    monkeypatch.setattr(crawler, "fetch_page", fake_fetch_page)
+    monkeypatch.setattr(crawler.asyncio, "sleep", _noop_sleep)
+
+    docs = asyncio.run(
+        crawler.crawl_store(
+            {
+                "domain": "fullmetal.es",
+                "url": "https://fullmetal.es/",
+                "depth": 2,
+                "max_pages": 3,
+                "delay_seconds": 0,
+            }
+        )
+    )
+
+    assert [call[0] for call in requested] == [
+        "https://fullmetal.es/",
+        "https://fullmetal.es/armas-de-airsoft",
+        detail_url,
+    ]
+    assert len(docs) == 1
+    assert docs[0]["metadata"]["title"] == "EC MCX AEG"
+    assert docs[0]["metadata"]["price"] == 359.0
 
 
 def test_crawl_store_bfs_skips_cart_compare_return_and_search_paths(monkeypatch):

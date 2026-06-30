@@ -15,7 +15,12 @@ from urllib.parse import urljoin, urlparse
 import httpx
 
 from src.egress_guard import is_allowed_url
-from src.extractor import extract_page_title, extract_products, is_product_url
+from src.extractor import (
+    extract_page_title,
+    extract_products,
+    is_priority_product_url,
+    is_product_url,
+)
 from src.fetcher import FetchBlockedError, fetch_page
 from src.promotion_tracker import detect_promotion
 from src.robots import CRAWLER_USER_AGENT_HEADER, load_robots_policy
@@ -147,6 +152,9 @@ async def crawl_store(store: dict) -> list[dict]:
             if depth < max_depth:
                 from bs4 import BeautifulSoup
                 soup = BeautifulSoup(html, "html.parser")
+                queued = {queued_url for queued_url, _ in to_visit}
+                priority_links: list[tuple[str, int]] = []
+                browse_links: list[tuple[str, int]] = []
                 for link in soup.find_all("a", href=True):
                     full = urljoin(url, link["href"])
                     # Egress guard: exact host or subdomain of the store domain,
@@ -160,8 +168,17 @@ async def crawl_store(store: dict) -> list[dict]:
                     if not robots_policy.can_fetch(clean):
                         logger.warning("[%s] robots disallow: %s", domain, clean)
                         continue
-                    if clean not in visited and is_product_url(clean):
-                        to_visit.append((clean, depth + 1))
+                    if clean in visited or clean in queued or not is_product_url(clean):
+                        continue
+                    queued.add(clean)
+                    target = (clean, depth + 1)
+                    if is_priority_product_url(clean):
+                        priority_links.append(target)
+                    else:
+                        browse_links.append(target)
+                if priority_links:
+                    to_visit = priority_links + to_visit
+                to_visit.extend(browse_links)
 
             # Polite delay
             if effective_delay_seconds > 0:
