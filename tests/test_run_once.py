@@ -262,6 +262,7 @@ def test_metrics_records_push_totals(
     assert rc == run_once.EXIT_OK
     server = fake_metrics_server.instances[0]
     # tier2 has 2 stores -> pushed == 2, failed == 2
+    assert server.metrics.value(mx.RUN_TOTAL, tier="tier2", status="error") == 1
     assert server.metrics.value(mx.PUSH_SENT_TOTAL, tier="tier2") == 2
     assert server.metrics.value(mx.PUSH_FAILED_TOTAL, tier="tier2") == 2
 
@@ -352,7 +353,7 @@ def test_metrics_does_not_change_exit_code_on_push_errors(
 
 # --- run_selected metric recording (no server) ----------------------------
 
-def test_run_selected_records_ok_status_and_totals():
+def test_run_selected_records_error_status_when_tier_returns_failures():
     m = mx.CrawlerMetrics()
 
     async def fake(tier_name, stores):
@@ -368,7 +369,7 @@ def test_run_selected_records_ok_status_and_totals():
         ro.crawl_tier = orig
 
     assert (pushed, failed) == (2, 1)
-    assert m.value(mx.RUN_TOTAL, tier="tier1", status="ok") == 1
+    assert m.value(mx.RUN_TOTAL, tier="tier1", status="error") == 1
     assert m.value(mx.PUSH_SENT_TOTAL, tier="tier1") == 2
     assert m.value(mx.PUSH_FAILED_TOTAL, tier="tier1") == 1
     assert m.value(mx.RUN_ACTIVE, tier="tier1") == 0

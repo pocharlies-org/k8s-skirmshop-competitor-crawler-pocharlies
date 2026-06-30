@@ -236,8 +236,9 @@ async def run_selected(
                 metrics.finish_run(tier_name, status=STATUS_ERROR)
             raise
         if metrics is not None:
+            status = STATUS_ERROR if failed else STATUS_OK
             metrics.finish_run(
-                tier_name, status=STATUS_OK, pushed=pushed, failed=failed
+                tier_name, status=status, pushed=pushed, failed=failed
             )
         total_pushed += pushed
         total_failed += failed
