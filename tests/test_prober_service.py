@@ -147,6 +147,38 @@ def test_generic_html_target_dispatches_generic_zero_network():
     ) == 1
 
 
+def test_airsoftquimera_target_dispatches_to_approved_adapter():
+    def responder(method, url, json):
+        assert method == "GET"
+        assert url.endswith("/cacc_4_50_1_15229_10_0/"), url
+        return ProbeResponse(
+            status_code=200,
+            text="Actualmente tenemos en stock 6",
+        )
+
+    transport = RecordingTransport(responder)
+    metrics, guard = _setup()
+    target = ProbeTarget(
+        domain="airsoftquimera.com",
+        product_key="competitor:airsoftquimera.com:15229",
+        url=(
+            "https://www.airsoftquimera.com/"
+            "cargador-midcap-para-m4-200bbs-tornado-p-4-50-15229/"
+        ),
+        platform="airsoftquimera",
+    )
+
+    result = probe_stock(target, transport, guard, metrics, OBSERVED_AT)
+
+    assert result.probe_status is ProbeStatus.PROBED
+    assert result.stock_qty == 6
+    assert metrics.probe_value(
+        domain="airsoftquimera.com",
+        platform="airsoftquimera",
+        status=ProbeStatus.PROBED.value,
+    ) == 1
+
+
 def test_unknown_platform_default_deny_zero_network():
     transport = RecordingTransport()  # no responder: any call raises
     metrics, guard = _setup()

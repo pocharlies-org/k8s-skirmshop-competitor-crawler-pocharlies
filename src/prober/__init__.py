@@ -25,7 +25,14 @@ from .contract import (
     StockStatus,
     probe_result_to_observation,
 )
+from .airsoftquimera import (
+    APPROVED_DOMAIN as AIRSOFTQUIMERA_APPROVED_DOMAIN,
+    DEFAULT_MAX_QTY as AIRSOFTQUIMERA_DEFAULT_MAX_QTY,
+    PLATFORM as AIRSOFTQUIMERA_PLATFORM,
+    AirsoftQuimeraProber,
+)
 from .generic import NO_SAFE_PATTERN, GenericProber
+from .http_transport import DEFAULT_TIMEOUT, DEFAULT_USER_AGENT, HttpProbeTransport
 from .killswitch import DEFAULT_COOLDOWN, DomainBlocked, DomainGuard, DomainStatus
 from .metrics import CRAWL_BLOCK_TOTAL, PROBE_TOTAL, Metrics
 from .service import probe_stock
@@ -45,6 +52,10 @@ __all__ = [
     "ProbeTarget",
     "StockStatus",
     "probe_result_to_observation",
+    "AirsoftQuimeraProber",
+    "AIRSOFTQUIMERA_APPROVED_DOMAIN",
+    "AIRSOFTQUIMERA_DEFAULT_MAX_QTY",
+    "AIRSOFTQUIMERA_PLATFORM",
     "DEFAULT_COOLDOWN",
     "DomainBlocked",
     "DomainGuard",
@@ -55,6 +66,9 @@ __all__ = [
     "ProbeResponse",
     "ProbeTransport",
     "TransportError",
+    "HttpProbeTransport",
+    "DEFAULT_USER_AGENT",
+    "DEFAULT_TIMEOUT",
     "GenericProber",
     "NO_SAFE_PATTERN",
     "ShopifyProber",

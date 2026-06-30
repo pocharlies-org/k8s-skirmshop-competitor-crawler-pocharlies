@@ -26,6 +26,7 @@ class ProbeResponse:
     status_code: int
     json_body: Optional[Dict[str, Any]] = None
     is_challenge: bool = False
+    text: str = ""
 
     def json(self) -> Dict[str, Any]:
         """Return the decoded JSON body, or an empty dict when there is none."""

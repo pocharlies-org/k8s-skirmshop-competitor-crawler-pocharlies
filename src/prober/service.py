@@ -13,6 +13,7 @@ from __future__ import annotations
 from datetime import datetime
 
 from .contract import ProbeResult, ProbeTarget
+from .airsoftquimera import DEFAULT_MAX_QTY, AirsoftQuimeraProber
 from .generic import GenericProber
 from .killswitch import DomainGuard
 from .metrics import Metrics
@@ -23,6 +24,7 @@ from .woo import WooProber
 # Platform aliases -> canonical prober selector.
 _SHOPIFY = frozenset({"shopify"})
 _WOO = frozenset({"woocommerce", "woo"})
+_AIRSOFTQUIMERA = frozenset({"airsoftquimera", "airsoftquimera.com"})
 _GENERIC = frozenset({"generic_html", "generic"})
 
 
@@ -32,6 +34,8 @@ def probe_stock(
     guard: DomainGuard,
     metrics: Metrics,
     observed_at: datetime,
+    *,
+    airsoftquimera_max_qty: int = DEFAULT_MAX_QTY,
 ) -> ProbeResult:
     """Dispatch ``target`` to its platform prober and return the result.
 
@@ -47,6 +51,13 @@ def probe_stock(
         prober = ShopifyProber(transport, guard, metrics)
     elif platform in _WOO:
         prober = WooProber(transport, guard, metrics)
+    elif platform in _AIRSOFTQUIMERA:
+        prober = AirsoftQuimeraProber(
+            transport,
+            guard,
+            metrics,
+            max_qty=airsoftquimera_max_qty,
+        )
     else:
         # generic_html / generic and every unknown platform: default-deny.
         prober = GenericProber(transport, metrics)

@@ -23,7 +23,7 @@ STOCK_METHOD_CART_PROBE = "cart_probe"
 VALID_STOCK_STATUS = frozenset({"in_stock", "out_of_stock", "unknown"})
 
 # Anti-bot / challenge reasons that trip the per-domain kill-switch.
-ANTIBOT_REASONS = frozenset({"403", "429", "challenge"})
+ANTIBOT_REASONS = frozenset({"403", "429", "503", "challenge"})
 # Block reason recorded when a probe is refused because the domain is in
 # cooldown after a previous trip.
 COOLDOWN_REASON = "cooldown_active"
