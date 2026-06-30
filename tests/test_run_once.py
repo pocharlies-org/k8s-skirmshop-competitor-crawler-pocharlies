@@ -74,6 +74,91 @@ def test_run_all_runs_every_tier_in_declaration_order(monkeypatch, tmp_path):
     assert [name for name, _ in calls] == ["tier1", "tier2", "tier3"]
 
 
+def test_domain_filter_runs_only_matching_store(monkeypatch, tmp_path):
+    cfg = _write_config(tmp_path, SAMPLE_TIERS)
+    calls = _install_fake_crawl_tier(monkeypatch)
+
+    rc = run_once.run(["--tier", "tier2", "--domain", "b.com",
+                       "--config", str(cfg)])
+
+    assert rc == run_once.EXIT_OK
+    assert calls == [("tier2", [{"domain": "b.com"}])]
+
+
+def test_domain_filter_accepts_url_or_www_alias(monkeypatch, tmp_path):
+    tiers = {
+        "tier2": {
+            "stores": [
+                {"domain": "powair6.com",
+                 "url": "https://www.powair6.com/en/"},
+                {"domain": "begadi.com", "url": "https://www.begadi.com/"},
+            ],
+        }
+    }
+    cfg = _write_config(tmp_path, tiers)
+    calls = _install_fake_crawl_tier(monkeypatch)
+
+    rc = run_once.run(["--tier", "tier2", "--domain",
+                       "https://www.powair6.com/en/", "--config", str(cfg)])
+
+    assert rc == run_once.EXIT_OK
+    assert calls == [("tier2", [tiers["tier2"]["stores"][0]])]
+
+
+def test_domain_filter_all_runs_configured_tier_only(monkeypatch, tmp_path):
+    cfg = _write_config(tmp_path, SAMPLE_TIERS)
+    calls = _install_fake_crawl_tier(monkeypatch)
+
+    rc = run_once.run(["--all", "--domain", "c.com", "--config", str(cfg)])
+
+    assert rc == run_once.EXIT_OK
+    assert calls == [("tier2", [{"domain": "c.com"}])]
+
+
+def test_unknown_domain_exits_usage_error(monkeypatch, tmp_path):
+    cfg = _write_config(tmp_path, SAMPLE_TIERS)
+    calls = _install_fake_crawl_tier(monkeypatch)
+
+    rc = run_once.run(["--tier", "tier2", "--domain", "missing.example",
+                       "--config", str(cfg)])
+
+    assert rc == run_once.EXIT_USAGE_ERROR
+    assert calls == []
+
+
+def test_run_label_overrides_single_filtered_window(monkeypatch, tmp_path):
+    cfg = _write_config(tmp_path, SAMPLE_TIERS)
+    calls = _install_fake_crawl_tier(monkeypatch)
+
+    rc = run_once.run(["--tier", "tier2", "--domain", "b.com",
+                       "--run-label", "tier2-b", "--config", str(cfg)])
+
+    assert rc == run_once.EXIT_OK
+    assert calls == [("tier2-b", [{"domain": "b.com"}])]
+
+
+def test_run_label_requires_one_selected_window(monkeypatch, tmp_path):
+    cfg = _write_config(tmp_path, SAMPLE_TIERS)
+    calls = _install_fake_crawl_tier(monkeypatch)
+
+    rc = run_once.run(["--all", "--run-label", "everything",
+                       "--config", str(cfg)])
+
+    assert rc == run_once.EXIT_USAGE_ERROR
+    assert calls == []
+
+
+def test_run_label_rejects_shell_unsafe_characters(monkeypatch, tmp_path):
+    cfg = _write_config(tmp_path, SAMPLE_TIERS)
+    calls = _install_fake_crawl_tier(monkeypatch)
+
+    rc = run_once.run(["--tier", "tier1", "--run-label", "tier1/../../x",
+                       "--config", str(cfg)])
+
+    assert rc == run_once.EXIT_USAGE_ERROR
+    assert calls == []
+
+
 def test_unknown_tier_exits_nonzero_and_does_not_crawl(monkeypatch, tmp_path):
     cfg = _write_config(tmp_path, SAMPLE_TIERS)
     calls = _install_fake_crawl_tier(monkeypatch)

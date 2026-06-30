@@ -26,6 +26,7 @@ Examples::
 
     python -m src.run_once --tier tier1
     python -m src.run_once --tier tier1 --tier tier2
+    python -m src.run_once --tier tier2 --domain powair6.com --run-label tier2-powair6
     python -m src.run_once --all
     python -m src.run_once --all --config /app/config.yaml
     python -m src.run_once --all --metrics-port 9090 --metrics-linger-seconds 15
@@ -34,8 +35,10 @@ import argparse
 import asyncio
 import logging
 import os
+import re
 import time
 from pathlib import Path
+from urllib.parse import urlparse
 
 from src.metrics_exporter import (
     STATUS_ERROR,
@@ -54,6 +57,7 @@ DEFAULT_CONFIG_PATH = Path(os.getenv("CONFIG_PATH", "/app/config.yaml"))
 EXIT_OK = 0
 EXIT_RUNTIME_ERROR = 1
 EXIT_USAGE_ERROR = 2
+RUN_LABEL_RE = re.compile(r"^[A-Za-z0-9_.:-]+$")
 
 logger = logging.getLogger("crawler.run_once")
 
@@ -86,6 +90,20 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Run every tier defined in the config, in declaration order.",
     )
     parser.add_argument(
+        "--domain",
+        action="append",
+        dest="domains",
+        metavar="DOMAIN",
+        help="Limit the selected tier(s) to configured domain(s). Repeatable. "
+        "Only domains already present in config.yaml are allowed.",
+    )
+    parser.add_argument(
+        "--run-label",
+        metavar="LABEL",
+        help="Override the run/metrics label for a single selected domain/tier "
+        "window, e.g. tier2-powair6. Does not change config lookup.",
+    )
+    parser.add_argument(
         "--config",
         type=Path,
         default=DEFAULT_CONFIG_PATH,
@@ -115,6 +133,28 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "(default 0; env METRICS_LINGER_SECONDS).",
     )
     return parser.parse_args(argv)
+
+
+def _normalize_domain(value: str) -> str:
+    """Return a comparable bare hostname for config/CLI domain matching."""
+    raw = (value or "").strip().lower()
+    if not raw:
+        return ""
+    parsed = urlparse(raw if "://" in raw else f"//{raw}")
+    host = parsed.netloc or parsed.path
+    host = host.split("@")[-1].split(":")[0].strip(".")
+    if host.startswith("www."):
+        host = host[4:]
+    return host
+
+
+def _store_domain_keys(store: dict) -> set[str]:
+    """Comparable domain aliases for a configured store."""
+    keys = {_normalize_domain(str(store.get("domain") or ""))}
+    url = store.get("url")
+    if url:
+        keys.add(_normalize_domain(str(url)))
+    return {key for key in keys if key}
 
 
 def _resolve_metrics_port(args: argparse.Namespace) -> int | None:
@@ -205,6 +245,65 @@ def _select(tiers: dict, args: argparse.Namespace) -> list[tuple[str, dict]] | N
     return selected
 
 
+def _filter_selected_domains(
+    selected: list[tuple[str, dict]],
+    domains: list[str] | None,
+) -> list[tuple[str, dict]] | None:
+    """Restrict selected tiers to configured domains, or return a usage error."""
+    if not domains:
+        return selected
+
+    wanted = {_normalize_domain(domain) for domain in domains}
+    wanted.discard("")
+    if not wanted:
+        logger.error("no valid domains selected")
+        return None
+
+    filtered: list[tuple[str, dict]] = []
+    matched: set[str] = set()
+    for tier_name, tier in selected:
+        stores = []
+        for store in (tier or {}).get("stores") or []:
+            aliases = _store_domain_keys(store)
+            if aliases & wanted:
+                stores.append(store)
+                matched.update(aliases & wanted)
+        if stores:
+            narrowed = dict(tier or {})
+            narrowed["stores"] = stores
+            filtered.append((tier_name, narrowed))
+
+    missing = wanted - matched
+    if missing:
+        logger.error(
+            "domain(s) not configured in selected tier(s): %s",
+            ", ".join(sorted(missing)),
+        )
+        return None
+    if not filtered:
+        logger.error("domain filter matched no stores")
+        return None
+    return filtered
+
+
+def _apply_run_label(
+    selected: list[tuple[str, dict]],
+    label: str | None,
+) -> list[tuple[str, dict]] | None:
+    """Optionally replace the tier/run label for an isolated one-tier window."""
+    if label is None:
+        return selected
+    label = label.strip()
+    if not RUN_LABEL_RE.fullmatch(label):
+        logger.error("invalid run label %r", label)
+        return None
+    if len(selected) != 1:
+        logger.error("--run-label requires exactly one selected tier after filters")
+        return None
+    _, tier = selected[0]
+    return [(label, tier)]
+
+
 async def run_selected(
     selected: list[tuple[str, dict]],
     metrics: CrawlerMetrics | None = None,
@@ -255,6 +354,12 @@ def run(argv: list[str] | None = None) -> int:
         return EXIT_USAGE_ERROR
 
     selected = _select(tiers, args)
+    if selected is None:
+        return EXIT_USAGE_ERROR
+    selected = _filter_selected_domains(selected, args.domains)
+    if selected is None:
+        return EXIT_USAGE_ERROR
+    selected = _apply_run_label(selected, args.run_label)
     if selected is None:
         return EXIT_USAGE_ERROR
 
