@@ -1,4 +1,4 @@
-# RHO DevOps Report - F7 Prober Live B2 Prepared
+# RHO DevOps Report - F7 Prober Live B2
 
 Timestamp: 2026-06-30T02:38:25+02:00
 
@@ -23,12 +23,13 @@ Timestamp: 2026-06-30T02:38:25+02:00
 - Server dry-run: `kubectl apply --dry-run=server -k k8s` -> PASS.
 - Diff whitespace: `git diff --check` -> PASS.
 
-## Pending Post-Commit Verification
-- [ ] Commit/push the manifest pin.
-- [ ] Wait for CI on the manifest pin commit.
-- [ ] Verify Argo `skirmshop-competitor-crawler` `Synced Healthy` on the pin commit.
-- [ ] Verify live Deployment remains `replicas=0` and uses the pinned digest/command.
-- [ ] Verify live CronJobs remain `suspend=true`, `backoffLimit=0`.
+## Post-Commit Verification
+- [x] Commit/push the manifest pin. Evidence: commit `87b69bbb85d51a43424051a0d8920954d544c02c` pushed to `codex/competitor-crawler-F7-production-comedida`.
+- [x] Wait for CI on the manifest pin commit. Evidence: CI `28412232953` success; jobs `Build images` and `Lint and validate manifests` succeeded.
+- [x] Verify Argo `skirmshop-competitor-crawler` `Synced Healthy` on the pin commit. Evidence: `kubectl -n argocd get app skirmshop-competitor-crawler` -> `Synced Healthy 87b69bbb85d51a43424051a0d8920954d544c02c`.
+- [x] Verify live Deployment remains `replicas=0` and uses the pinned digest/command. Evidence: live `skirmshop-stock-prober` -> replicas `0`, image `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:b5ceac612a5a71f614756efe4be99438b403491efc5b624ce14ae528cd9bc697`, command `["python","-m","src.prober.run_once"]`, args `["--targets","/app/prober-targets/targets.json"]`.
+- [x] Verify live CronJobs remain `suspend=true`, `backoffLimit=0`. Evidence: live tier1/tier2/tier3 query returned all `true 0`.
+- [x] Verify prober egress remains default-deny. Evidence: live NetworkPolicy YAML has `policyTypes: [Egress]` and no `egress` rules.
 
 ## Residual Risks
 - [blocked] B3 live smoke remains blocked by default-deny prober egress and absence of approved live smoke Job/target ConfigMap in this subcycle.
