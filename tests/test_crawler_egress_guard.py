@@ -275,7 +275,7 @@ def test_crawl_store_prioritizes_detail_links_over_shallow_categories(monkeypatc
     assert docs[0]["metadata"]["price"] == 359.0
 
 
-def test_crawl_store_bfs_skips_cart_compare_return_and_search_paths(monkeypatch):
+def test_crawl_store_bfs_skips_cart_compare_return_search_and_auth_paths(monkeypatch):
     requested = []
 
     async def fake_fetch_page(_client, url, domain=None):
@@ -288,6 +288,9 @@ def test_crawl_store_bfs_skips_cart_compare_return_and_search_paths(monkeypatch)
                   <a href="/en/product-compare.html">compare</a>
                   <a href="/en/return.html">return</a>
                   <a href="/en/searching.html">search</a>
+                  <a href="/en/authentication">auth</a>
+                  <a href="/customer/account">customer</a>
+                  <a href="/sign-in">sign in</a>
                   <a href="/captcha.php">captcha</a>
                 </body></html>
             """

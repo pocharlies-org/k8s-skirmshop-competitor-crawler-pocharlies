@@ -137,6 +137,10 @@ def test_is_product_url_positive():
 def test_is_product_url_negative():
     assert not is_product_url("https://gunfire.com/cart")
     assert not is_product_url("https://gunfire.com/account/login")
+    assert not is_product_url("https://www.powair6.com/en/authentication")
+    assert not is_product_url("https://example.com/customer/account")
+    assert not is_product_url("https://example.com/sign-in")
+    assert not is_product_url("https://example.com/password-recovery")
     assert not is_product_url("https://gunfire.com/img/banner.png")
 
 

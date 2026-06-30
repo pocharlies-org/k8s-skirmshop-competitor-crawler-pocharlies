@@ -208,7 +208,9 @@ PRIORITY_PRODUCT_PATH_HINTS = [
 ]
 SKIP_PATH_HINTS = [
     "/cart", "/basket", "basketedit", "/checkout", "/order",
-    "/account", "/login", "/register", "/wishlist", "/compare",
+    "/account", "/authentication", "/auth", "/login", "/register",
+    "/signin", "/sign-in", "/my-account", "/customer", "/user",
+    "/password", "/session", "/wishlist", "/compare",
     "product-compare", "/return", "/search", "searching.",
     "captcha", "challenge",
     "/blog", "/news", "/contact", "/about", "/faq",
