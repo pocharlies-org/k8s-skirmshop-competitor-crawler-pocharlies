@@ -5,7 +5,7 @@ This runbook records the remaining activation sequence. It is not approval to ap
 ## Current safe state
 
 - Branch: `codex/competitor-crawler-F7-production-comedida`
-- Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:6332c7ff14a2c7ec3c8323240edb10bfcdb24600effc513421d8516e8388f4a1`.
+- Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:4a8d993694dd95007cb6f7f2229b232c0e6764b9fc9bc6fe517e683a3663afeb`.
 - Prober Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:b5ceac612a5a71f614756efe4be99438b403491efc5b624ce14ae528cd9bc697`.
 - Crawler CronJobs: prepared and live-synced for tier1/tier2/tier3; tier1/tier2 remain `suspend: true`; tier3 is active with `suspend: false`, schedule `0 4 * * 3`, `timeZone: Europe/Madrid`; all use the same pinned crawler digest and `backoffLimit: 0` to avoid repeated live traffic after an anti-bot/challenge failure.
 - NetworkPolicy: crawler and prober default-deny egress.
@@ -16,7 +16,7 @@ This runbook records the remaining activation sequence. It is not approval to ap
 - Live crawler/prober resources: present through Argo Application with Deployments still safe-disabled (`skirmshop-competitor-crawler` and `skirmshop-stock-prober` Deployments are `0/0`); crawler CronJobs tier1/tier2 are `suspend: true`; crawler CronJob tier3 is `suspend: false`.
 - Argo status: Application exists, targets this branch, and is `Synced/Healthy`.
 - GitOps reconciliation: infra PR #15 and gitops PR #11 are merged.
-- Production activation: PASS for tier3-only production comedida after rso6 and post-sync verification. Tier1/tier2 activation remains blocked/unproven until each tier has its own clean live data gate.
+- Production activation: PASS for tier3-only production comedida after rso6 and post-sync verification. Tier1 remains blocked by anti-bot/challenge evidence. Tier2 was tested in rso2: `powair6.com` passed the data path with 497 rows and Brain push `sent=497 failed=0`, but full tier2 activation remains blocked by `challenge_body` on `begadi.com` and `aa-store.at`.
 
 ## Gate 1 - publish image
 
@@ -38,6 +38,12 @@ Required evidence:
   `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:6332c7ff14a2c7ec3c8323240edb10bfcdb24600effc513421d8516e8388f4a1`.
 - [x] CI confirms image build smoke before release. Evidence: GitHub Actions CI
   run `28414122080` PASS on commit `ccf85a3`.
+- [x] Superseding image with auth-route and metrics-status hardening is pinned
+  live. Evidence: commit `fbd03f9` pins crawler Deployment and tier1/tier2/tier3
+  CronJobs to
+  `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:4a8d993694dd95007cb6f7f2229b232c0e6764b9fc9bc6fe517e683a3663afeb`;
+  release `28429187546` PASS for tag `f7-de04ea5`; CI `28429333532` PASS;
+  Argo `Synced Healthy fbd03f9`.
 
 Gate 1 is PASS for the crawler image. This does not activate production and does not cover the prober image.
 
@@ -123,6 +129,12 @@ Required evidence:
 Required evidence:
 
 - [x] Runner metrics expose job success and push sent/failed counts. Evidence: `src/metrics_exporter.py` exports `competitor_crawler_run_total{tier,status}`, `competitor_crawler_push_sent_total{tier}`, `competitor_crawler_push_failed_total{tier}`, `competitor_crawler_run_active{tier}`; `/tmp/crawler-f7-venv/bin/python -m pytest -q` -> 192 passed.
+- [x] Partial tier failures are reported as error status, not a green run.
+  Evidence: commit `de04ea5` makes `src/run_once.py` call
+  `metrics.finish_run(..., status=error)` when a tier returns `failed > 0`;
+  focused metrics/run_once tests passed and full suite returned `239 passed`;
+  image digest `sha256:4a8d993694dd95007cb6f7f2229b232c0e6764b9fc9bc6fe517e683a3663afeb`
+  is live.
 - [x] CronJobs are scrapeable when unsuspended. Evidence: `k8s/crawler-cronjobs.yaml` exposes named port `metrics`, `METRICS_PORT=9090`, `METRICS_LINGER_SECONDS=45`; `k8s/crawler-vmpodscrape.yaml`; `kubectl apply --dry-run=server -k k8s` PASS including `vmpodscrape.operator.victoriametrics.com/skirmshop-competitor-crawler created (server dry run)`.
 - [x] Dashboard or equivalent read-only query captured in F7 evidence. Evidence:
   rso6 authenticated Brain/RAG Service query
@@ -157,6 +169,12 @@ Required evidence:
   `suspend=false`; tier1/tier2 `suspend=true`; all CronJobs `backoffLimit=0`;
   crawler/prober Deployments `replicas=0`; no immediate automatic Job appeared
   after sync.
+- [blocked: challenge_body] Tier2 live data gate was attempted and remains
+  blocked. Evidence: `live-night-tier2-rso2.report.md`; Job
+  `skirmshop-competitor-crawler-tier2-rso2-20260630074224` collected 497
+  `powair6.com` rows and Brain push `sent=497 failed=0`, but
+  `begadi.com` and `aa-store.at` returned `challenge_body`; summary
+  `pushed=497 failed=2`; pod `Failed exit=1`; tier2 remains `suspend=true`.
 
 Remediation prepared after the aborted run:
 
@@ -167,5 +185,6 @@ Remediation prepared after the aborted run:
 
 F7 activation caveat: gates above are PASS for tier3-only production comedida,
 and tier3 is now live. Tier1/tier2 are not cleared by this evidence; tier1
-previously failed closed on anti-bot/challenge signals and tier2 still needs
-its own live data gate before being unsuspended.
+previously failed closed on anti-bot/challenge signals, and tier2 rso2 remains
+blocked by `challenge_body` on `begadi.com` and `aa-store.at` despite a clean
+`powair6.com` data path.
