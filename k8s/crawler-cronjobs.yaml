@@ -16,6 +16,7 @@
 # Schedules are STAGGERED and NOCTURNAL in Europe/Madrid (`timeZone`):
 #   tier1 -> 02:00, every 2 days (5 stores: gunfire/taiwangun/bunker501/evike/redwolf)
 #   tier2 -> 03:00, Mondays      (6 stores)
+#   tier2-powair6 -> 03:15, Mondays (1 isolated clean tier2 store)
 #   tier3 -> 04:00, Wednesdays   (3 stores: ES competitors)
 # Different tiers hit DISJOINT competitor domains and never share a start time,
 # so there is no per-domain or node-resource overlap. `concurrencyPolicy: Forbid`
@@ -271,6 +272,137 @@ spec:
                 # (30s interval) can read the terminal run_total/push counters
                 # before this short-lived CronJob pod exits. Must stay > the
                 # VMPodScrape interval; pure observability, never alters exit code.
+                - name: METRICS_PORT
+                  value: "9090"
+                - name: METRICS_LINGER_SECONDS
+                  value: "45"
+              envFrom:
+                - secretRef:
+                    name: competitor-crawler-secrets
+                    optional: false
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities:
+                  drop:
+                    - ALL
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 256Mi
+                limits:
+                  memory: 1Gi
+              volumeMounts:
+                - name: tmp
+                  mountPath: /tmp
+          volumes:
+            - name: tmp
+              emptyDir: {}
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: skirmshop-competitor-crawler-tier2-powair6
+  labels:
+    app.kubernetes.io/name: skirmshop-competitor-crawler
+    app.kubernetes.io/component: crawler-cronjob
+    crawler.e-dani.com/tier: tier2-powair6
+    crawler.e-dani.com/domain: powair6.com
+spec:
+  schedule: "15 3 * * 1"
+  timeZone: Europe/Madrid
+  suspend: false
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 300
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      activeDeadlineSeconds: 3600
+      ttlSecondsAfterFinished: 86400
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: skirmshop-competitor-crawler
+            app.kubernetes.io/component: crawler-cronjob
+            crawler.e-dani.com/tier: tier2-powair6
+            crawler.e-dani.com/domain: powair6.com
+        spec:
+          restartPolicy: Never
+          automountServiceAccountToken: false
+          enableServiceLinks: false
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            fsGroup: 10001
+            seccompProfile:
+              type: RuntimeDefault
+          imagePullSecrets:
+            - name: harbor-pull
+          nodeSelector:
+            role: edge
+            kubernetes.io/arch: amd64
+          tolerations:
+            - key: role
+              operator: Equal
+              value: edge
+              effect: NoSchedule
+          containers:
+            - name: crawler
+              image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:2315e965b6129e26c2aeaa948cba9d470d8801c6ca5a645629b95d231f040f88
+              imagePullPolicy: IfNotPresent
+              command:
+                - python
+                - -m
+                - src.run_once
+                - --tier
+                - tier2
+                - --domain
+                - powair6.com
+                - --run-label
+                - tier2-powair6
+                - --config
+                - /app/config.yaml
+                - --fail-on-push-errors
+              ports:
+                - name: metrics
+                  containerPort: 9090
+                  protocol: TCP
+              env:
+                - name: BRAIN_URL
+                  value: http://skirmshop-brain-ingest.skirmshop-brain-prod.svc.cluster.local
+                - name: BRAIN_INSTANCE
+                  value: skirmshop
+                - name: FIRECRAWL_URL
+                  value: http://firecrawl-api.skirmshop.svc.cluster.local:3002
+                - name: PUSH_BATCH_SIZE
+                  value: "20"
+                - name: LOG_LEVEL
+                  value: INFO
+                - name: REQUIRE_BRAIN_API_KEY
+                  value: "true"
+                - name: HISTORY_ENABLED
+                  value: "true"
+                - name: PGHOST
+                  value: postgres-shared-rw.databases.svc.cluster.local
+                - name: PGPORT
+                  value: "5432"
+                - name: PGDATABASE
+                  value: competitor_intel
+                - name: PGCONNECT_TIMEOUT
+                  value: "10"
+                - name: PGUSER
+                  valueFrom:
+                    secretKeyRef:
+                      name: competitor-crawler-db-credentials
+                      key: username
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: competitor-crawler-db-credentials
+                      key: password
                 - name: METRICS_PORT
                   value: "9090"
                 - name: METRICS_LINGER_SECONDS

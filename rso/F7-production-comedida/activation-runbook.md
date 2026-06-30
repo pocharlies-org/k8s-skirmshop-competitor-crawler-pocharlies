@@ -5,9 +5,9 @@ This runbook records the remaining activation sequence. It is not approval to ap
 ## Current safe state
 
 - Branch: `codex/competitor-crawler-F7-production-comedida`
-- Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:4a8d993694dd95007cb6f7f2229b232c0e6764b9fc9bc6fe517e683a3663afeb`.
+- Crawler Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:2315e965b6129e26c2aeaa948cba9d470d8801c6ca5a645629b95d231f040f88`.
 - Prober Deployment: prepared, `replicas: 0`, image pinned by immutable digest `harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:b5ceac612a5a71f614756efe4be99438b403491efc5b624ce14ae528cd9bc697`.
-- Crawler CronJobs: prepared and live-synced for tier1/tier2/tier3; tier1/tier2 remain `suspend: true`; tier3 is active with `suspend: false`, schedule `0 4 * * 3`, `timeZone: Europe/Madrid`; all use the same pinned crawler digest and `backoffLimit: 0` to avoid repeated live traffic after an anti-bot/challenge failure.
+- Crawler CronJobs: prepared and live-synced; tier1 and full tier2 remain `suspend: true`; tier3 is active with `suspend: false`, schedule `0 4 * * 3`; dedicated `tier2-powair6` is prepared after an isolated clean live gate with schedule `15 3 * * 1`; all use pinned crawler digest and `backoffLimit: 0` to avoid repeated live traffic after an anti-bot/challenge failure.
 - NetworkPolicy: crawler and prober default-deny egress.
 - Brain push auth: implemented with `BRAIN_API_KEY` and `REQUIRE_BRAIN_API_KEY=true`.
 - Observability: one-shot runner exposes opt-in `/metrics`; CronJobs set `METRICS_PORT=9090` and `METRICS_LINGER_SECONDS=45`; `VMPodScrape` is prepared for VictoriaMetrics.
@@ -16,7 +16,7 @@ This runbook records the remaining activation sequence. It is not approval to ap
 - Live crawler/prober resources: present through Argo Application with Deployments still safe-disabled (`skirmshop-competitor-crawler` and `skirmshop-stock-prober` Deployments are `0/0`); crawler CronJobs tier1/tier2 are `suspend: true`; crawler CronJob tier3 is `suspend: false`.
 - Argo status: Application exists, targets this branch, and is `Synced/Healthy`.
 - GitOps reconciliation: infra PR #15 and gitops PR #11 are merged.
-- Production activation: PASS for tier3-only production comedida after rso6 and post-sync verification. Tier1 remains blocked by anti-bot/challenge evidence. Tier2 was tested in rso2: `powair6.com` passed the data path with 497 rows and Brain push `sent=497 failed=0`, but full tier2 activation remains blocked by `challenge_body` on `begadi.com` and `aa-store.at`.
+- Production activation: PASS for tier3 plus domain-isolated `tier2-powair6`. Tier1 remains blocked by anti-bot/challenge evidence. Full tier2 was tested in rso2: `powair6.com` passed the data path with 497 rows and Brain push `sent=497 failed=0`, but full tier2 activation remains blocked by `challenge_body` on `begadi.com` and `aa-store.at`.
 
 ## Gate 1 - publish image
 
@@ -175,6 +175,13 @@ Required evidence:
   `powair6.com` rows and Brain push `sent=497 failed=0`, but
   `begadi.com` and `aa-store.at` returned `challenge_body`; summary
   `pushed=497 failed=2`; pod `Failed exit=1`; tier2 remains `suspend=true`.
+- [x] Domain-isolated Powair6 live gate passed. Evidence:
+  `domain-isolation.report.md`; Job
+  `skirmshop-competitor-crawler-tier2-powair6-rso1-20260630132013`
+  completed `Succeeded exit=0`; history/SQL `497` rows / `497` products for
+  `powair6.com`; Brain push `sent=497 failed=0`; VictoriaMetrics
+  `run_total ok=1`, `push_sent=497`, `push_failed=0`; no blocked-domain or
+  auth/challenge terms in logs.
 
 Remediation prepared after the aborted run:
 
@@ -183,8 +190,8 @@ Remediation prepared after the aborted run:
 - `src/crawler.py` aborts the affected store via `FetchBlockedError` so `--fail-on-push-errors` can fail the job.
 - `k8s/crawler-cronjobs.yaml` sets `backoffLimit: 0` so a failed live window does not repeat competitor traffic automatically.
 
-F7 activation caveat: gates above are PASS for tier3-only production comedida,
-and tier3 is now live. Tier1/tier2 are not cleared by this evidence; tier1
-previously failed closed on anti-bot/challenge signals, and tier2 rso2 remains
-blocked by `challenge_body` on `begadi.com` and `aa-store.at` despite a clean
-`powair6.com` data path.
+F7 activation caveat: gates above are PASS for tier3 and domain-isolated
+`tier2-powair6` production comedida. Tier1/full tier2 are not cleared by this
+evidence; tier1 previously failed closed on anti-bot/challenge signals, and
+full tier2 rso2 remains blocked by `challenge_body` on `begadi.com` and
+`aa-store.at` despite a clean `powair6.com` data path.
