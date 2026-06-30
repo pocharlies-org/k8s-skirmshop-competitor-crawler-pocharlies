@@ -35,8 +35,15 @@ spec:
           effect: NoSchedule
       containers:
         - name: prober
-          image: harbor.e-dani.com/homelab/skirmshop-stock-prober:pending
+          image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler@sha256:b5ceac612a5a71f614756efe4be99438b403491efc5b624ce14ae528cd9bc697
           imagePullPolicy: IfNotPresent
+          command:
+            - python
+            - -m
+            - src.prober.run_once
+          args:
+            - --targets
+            - /app/prober-targets/targets.json
           env:
             - name: LOG_LEVEL
               value: INFO
