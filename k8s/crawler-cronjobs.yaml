@@ -309,7 +309,7 @@ metadata:
 spec:
   schedule: "0 4 * * 3"
   timeZone: Europe/Madrid
-  suspend: true
+  suspend: false
   concurrencyPolicy: Forbid
   startingDeadlineSeconds: 300
   successfulJobsHistoryLimit: 3

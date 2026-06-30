@@ -124,18 +124,33 @@ Required evidence:
 
 - [x] Runner metrics expose job success and push sent/failed counts. Evidence: `src/metrics_exporter.py` exports `competitor_crawler_run_total{tier,status}`, `competitor_crawler_push_sent_total{tier}`, `competitor_crawler_push_failed_total{tier}`, `competitor_crawler_run_active{tier}`; `/tmp/crawler-f7-venv/bin/python -m pytest -q` -> 192 passed.
 - [x] CronJobs are scrapeable when unsuspended. Evidence: `k8s/crawler-cronjobs.yaml` exposes named port `metrics`, `METRICS_PORT=9090`, `METRICS_LINGER_SECONDS=45`; `k8s/crawler-vmpodscrape.yaml`; `kubectl apply --dry-run=server -k k8s` PASS including `vmpodscrape.operator.victoriametrics.com/skirmshop-competitor-crawler created (server dry run)`.
-- [ ] Dashboard or equivalent read-only query captured in F7 evidence. Blocker: no pod target exists while CronJobs are `suspend: true`; verify vmagent target and dashboard during the first approved unsuspended run.
-- [blocked] Blocked-domain count, retry/failure reasons and history writes captured from real run evidence. Evidence: `live-night-tier1-failclosed.report.md` captures Gunfire/Taiwangun/Evike/Redwolf anti-bot blocks and Bunker501 `history inserted=0`; blocker remains because no clean successful live night exists.
+- [x] Dashboard or equivalent read-only query captured in F7 evidence. Evidence:
+  rso6 authenticated Brain/RAG Service query
+  `/instances/skirmshop/prices/comparison?status=active&filter=has_comp&limit=1`
+  returned HTTP 200 with `total=435`, `count=1`.
+- [x] Blocked-domain count, retry/failure reasons and history writes captured
+  from real run evidence. Evidence: `live-night-tier1-failclosed.report.md`
+  captures the blocked tier1 failure mode; `live-night-tier3-rso6.report.md`
+  captures clean tier3 metrics/history/push evidence with no challenge/CAPTCHA
+  and `push_failed=0`.
 
 ## Gate 7 - live night
 
 Required evidence:
 
-- [blocked] One real nocturnal run completes. Evidence: manual tier1 job `skirmshop-competitor-crawler-tier1-rso-20260629225442` was aborted after anti-bot/cart-path evidence; remediated manual tier1 job `skirmshop-competitor-crawler-tier1-rso3-20260629231925` failed closed with `pushed=0 failed=4`; see `live-night-aborted-anti-bot.report.md` and `live-night-tier1-failclosed.report.md`.
-- [blocked] `competitor_crawl_block_total` has no sustained increase. Blocker: the remediated run blocked 4/5 tier1 stores on challenge/captcha signals.
-- [blocked] Logs show no ban/challenge/CAPTCHA escalation. Blocker: logs showed Gunfire/Evike/Redwolf `challenge_body` and Taiwangun `captcha.php?from=%2Fen` HTTP 503.
-- [ ] Brain `/prices/comparison` remains populated.
-- [ ] Postgres history has new observations for the run.
+- [x] One real nocturnal run completes. Evidence: manual tier3 Job
+  `skirmshop-competitor-crawler-tier3-rso6-20260630013804`, created from the
+  live CronJob template, completed `Succeeded exit=0`.
+- [x] `competitor_crawl_block_total` has no sustained increase for the cleared
+  tier3 candidate. Evidence: rso6 logs have no challenge/CAPTCHA/403/429/503 or
+  fetch-blocked lines; push failures are 0.
+- [x] Logs show no ban/challenge/CAPTCHA escalation for tier3. Evidence:
+  negative log grep in `live-night-tier3-rso6.report.md`.
+- [x] Brain `/prices/comparison` remains populated. Evidence: service query
+  returned `total=435`, `count=1`.
+- [x] Postgres history has new observations for the run. Evidence: SQL readback
+  for `run_id='tier3:20260630T013825797218Z'` returned 67 rows / 67 distinct
+  products for `fullmetal.es`.
 
 Remediation prepared after the aborted run:
 
@@ -144,4 +159,7 @@ Remediation prepared after the aborted run:
 - `src/crawler.py` aborts the affected store via `FetchBlockedError` so `--fail-on-push-errors` can fail the job.
 - `k8s/crawler-cronjobs.yaml` sets `backoffLimit: 0` so a failed live window does not repeat competitor traffic automatically.
 
-F7 PASS requires all gates above.
+F7 activation caveat: gates above are PASS for a tier3-only production candidate.
+Tier1/tier2 are not cleared by this evidence; tier1 previously failed closed on
+anti-bot/challenge signals and tier2 still needs its own live data gate before
+being unsuspended.
