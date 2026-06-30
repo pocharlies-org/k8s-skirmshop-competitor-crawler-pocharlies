@@ -14,7 +14,7 @@ Timestamp: 2026-06-30T01:35:00+02:00
 - [x] One approved custom-domain calibration exists. Evidence: `rso/F4-cart-probe/live-calibration-airsoftquimera-evidence.md` records approved `airsoftquimera.com` sample-10 behavior: add path `/cacc_4_50_1_<product_id>_<qty>_0/`, remove path `/cacc_4_50_2_<product_id>_0_0/`, LIMIT(N) response text, cleanup HTTP 200, no 403/429/challenge observed.
 
 ## Required Next Sub-Gates
-- [ ] **Architecture gate.** Decide whether F7 includes prober activation or explicitly defers it. If included, define a one-shot prober runner, target input format, history write path, metrics, rollback, and per-domain approval model.
+- [x] **Architecture gate scoped for B1+B2.** F7 keeps the prober as required but splits it into non-destructive B1+B2 preparation and a later B3 live smoke. Evidence: `rso/F7-production-comedida/prober-live-B1B2-checklist.md` and `rso/F7-production-comedida/HANDOFF-PROBER-LIVE-B1B2.md`.
 - [ ] **Backend gate.** Implement only an approved-domain adapter first: `airsoftquimera.com` path-based pattern from F4 evidence, sample <= 10, concurrency 1, low quantity ceiling, honest UA, timeouts, no checkout/login/account/CAPTCHA bypass, and guaranteed cleanup.
 - [ ] **HTTP transport gate.** Add a bounded `ProbeTransport` implementation with challenge/403/429 detection, no raw HTML logging, no cookie persistence beyond the single product/session, and deterministic tests.
 - [ ] **History gate.** Map `ProbeResult` to F3 `Observation` via `probe_result_to_observation`, write append-only rows only, and fail closed if PG env is missing.
@@ -25,8 +25,10 @@ Timestamp: 2026-06-30T01:35:00+02:00
 
 ## PMO Decision
 - [blocked] F7 cannot be marked PASS while the prober gate is required and remains in the state above.
+- [x] B1+B2 may proceed without production activation. Evidence: B1/B2 checklist explicitly excludes B3 live smoke and keeps prober `replicas=0` / CronJobs `suspend=true`.
 - [x] No autonomous broad live cart-probe is approved from current evidence.
 - [x] Safe current state is preserved: prober Deployment is live-present but disabled (`replicas=0`), image remains `:pending`, and egress is default-deny.
 
 ## Status
 - 2026-06-30T01:35:00+02:00 - BLOCKED: prober needs a dedicated implementation/security/devops subcycle before any F7 prober live pass.
+- 2026-06-30T02:05:03+02:00 - B1+B2 OPENED: RSO defined the next non-destructive prober subcycle. B3 live smoke and production activation remain blocked until B1+B2 evidence is implemented and audited.
