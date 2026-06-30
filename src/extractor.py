@@ -145,6 +145,42 @@ def extract_products(html: str, url: str, domain: str) -> list[dict]:
                     "availability": availability_val,
                 })
 
+    # Method 4: common PrestaShop product pages without structured metadata.
+    if not products and _looks_like_prestashop_product_page(soup):
+        title = soup.select_one("h1.h1") or soup.find("h1")
+        price = (
+            soup.select_one(".product-prices .current-price [content]")
+            or soup.select_one(".product-prices .current-price .price")
+            or soup.select_one(".current-price .price")
+        )
+        parsed_price = parse_price(
+            price.get("content") if price and price.has_attr("content")
+            else price.get_text(" ", strip=True) if price
+            else None
+        )
+        if title and parsed_price is not None:
+            brand = soup.select_one('a[href*="/brand/"]')
+            image = (
+                soup.select_one(".product-cover img")
+                or soup.select_one(".product-images img")
+                or soup.find("img", attrs={"data-src": True})
+            )
+            availability = soup.select_one("#product-availability")
+            products.append({
+                "title": title.get_text(" ", strip=True),
+                "price": parsed_price,
+                "brand": brand.get_text(" ", strip=True) if brand else "",
+                "url": url,
+                "domain": domain,
+                "image": (
+                    image.get("src") or image.get("data-src") or ""
+                    if image else ""
+                ),
+                "availability": (
+                    availability.get_text(" ", strip=True) if availability else ""
+                ),
+            })
+
     return [p for p in products if p.get("title")]
 
 
@@ -158,7 +194,7 @@ def extract_page_title(html: str, url: str) -> str:
 PRODUCT_PATH_HINTS = [
     "/product/", "/products/", "/p/", "/item/",
     "/shop/", "/catalog/", "/tienda/",
-    "/airsoft-", "/replica-",
+    "/airsoft-", "/armas-de-airsoft/", "/replica-",
 ]
 SKIP_PATH_HINTS = [
     "/cart", "/basket", "basketedit", "/checkout", "/order",
@@ -180,3 +216,11 @@ def is_product_url(url: str) -> bool:
         return True
     # Default: visit if not too deep
     return path.count("/") <= 3
+
+
+def _looks_like_prestashop_product_page(soup: BeautifulSoup) -> bool:
+    body_classes = soup.body.get("class", []) if soup.body else []
+    return (
+        "page-product" in body_classes
+        or any(str(cls).startswith("product-id-") for cls in body_classes)
+    ) and bool(soup.select_one(".product-prices .current-price"))

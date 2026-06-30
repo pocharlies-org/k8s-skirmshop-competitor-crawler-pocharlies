@@ -49,10 +49,50 @@ def test_extract_products_open_graph_fallback():
     assert products[0]["brand"] == "ACME"
 
 
+def test_extract_products_prestashop_product_fallback():
+    html = """<html><body class="page-product product-id-25061">
+      <h1 class="h1">EC MCX AEG SPEAR-LT</h1>
+      <div class="product-prices">
+        <div class="current-price">
+          <div class="current-price-display price">359<span>,00 EUR</span></div>
+        </div>
+      </div>
+      <a href="https://fullmetal.es/brand/ec">E&amp;C</a>
+      <span id="product-availability">En stock</span>
+      <img data-src="https://fullmetal.es/product.jpg">
+    </body></html>"""
+
+    products = extract_products(
+        html,
+        "https://fullmetal.es/armas-de-airsoft/armas-electricas/ec-mcx",
+        "fullmetal.es",
+    )
+
+    assert len(products) == 1
+    assert products[0]["title"] == "EC MCX AEG SPEAR-LT"
+    assert products[0]["price"] == 359.0
+    assert products[0]["brand"] == "E&C"
+    assert products[0]["availability"] == "En stock"
+
+
+def test_prestashop_category_page_is_not_product_without_product_body_class():
+    html = """<html><body class="page-category">
+      <h1 class="h1">Armas Electricas</h1>
+      <div class="product-prices"><div class="current-price">
+        <div class="price">359,00 EUR</div>
+      </div></div>
+    </body></html>"""
+
+    assert extract_products(html, "https://fullmetal.es/armas-electricas", "fullmetal.es") == []
+
+
 def test_is_product_url_positive():
     assert is_product_url("https://gunfire.com/products/srs-a2-16-covert")
     assert is_product_url("https://taiwangun.com/p/replica")
     assert is_product_url("https://example.com/airsoft-rifle-12")
+    assert is_product_url(
+        "https://fullmetal.es/armas-de-airsoft/armas-electricas/fusiles/ec-mcx"
+    )
 
 
 def test_is_product_url_negative():
