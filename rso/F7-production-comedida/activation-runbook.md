@@ -95,11 +95,16 @@ Required evidence:
   NetworkPolicy gate only under the accepted compensating model: standard
   Kubernetes `NetworkPolicy` cannot express competitor FQDNs, so FQDN allowlist
   enforcement remains in `src.egress_guard.py`.
-- [blocked] Prober remains disabled unless a domain-specific allowlist and live transport are approved.
-  Evidence: `src/prober/transport.py` is still protocol-only/mock-only,
-  no prober runner exists, `k8s/prober-networkpolicy.yaml` has `egress: []`,
-  the prober image remains `:pending`, and `prober-live-gap.report.md` lists
-  the required sub-gates.
+- [x] Prober live gate is passed for the approved AirsoftQuimera path while
+  steady-state remains disabled. Evidence: B1+B2 implemented `src/prober/http_transport.py`,
+  `src/prober/airsoftquimera.py` and `src/prober/run_once.py`, release
+  `28412115494` published digest
+  `sha256:b5ceac612a5a71f614756efe4be99438b403491efc5b624ce14ae528cd9bc697`,
+  live prober remains `replicas=0`, permanent `k8s/prober-networkpolicy.yaml`
+  remains `egress: []`, and B3 used a deleted temporary one-job NetworkPolicy
+  for DNS/Postgres/public-443. B3 evidence: Job `prober-b3-aq-20260630-005056`
+  logged add/remove `200 OK`, `cleanup=clean`, `inserted=1 skipped=0`, and
+  independent SQL `count=1 stock_method=cart_probe`.
 
 ## Gate 5b - history runtime
 
