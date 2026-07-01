@@ -441,7 +441,7 @@ metadata:
 spec:
   schedule: "0 4 * * 3"
   timeZone: Europe/Madrid
-  suspend: false
+  suspend: true
   concurrencyPolicy: Forbid
   startingDeadlineSeconds: 300
   successfulJobsHistoryLimit: 3
