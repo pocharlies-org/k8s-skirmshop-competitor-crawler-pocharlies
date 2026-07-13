@@ -1,5 +1,23 @@
 # Claude Implementation Report — AgentGateway Competitor API
 
+## RSO Live Closure Addendum - 2026-07-13
+
+The pre-deploy report below is retained as implementation history. Codex re-ran the operational gate after merge and GitOps reconciliation.
+
+| Gate | Result | Direct evidence |
+|---|---|---|
+| App and gateway delivery | PASS | App PR #94 and AgentGateway PRs #4, #6, #7 and #8 merged. PR #8 made the authorization harness deterministic; both CI attempts passed. |
+| Public MCP inventory | PASS | Authenticated live `tools/list` exposed exactly 12 tools. The public list contains the five typed competitor reads and no generic Catalog RAG proxy, crawler claim, write, private or Cypher tool. |
+| Typed competitor reads | PASS | `catalog_rag_competitor_source` with legacy live id `airsoft-autopilot-17` returned Powair6 coverage `10804/10596/208/98.07`. `catalog_rag_competitor_products` with `matched_auto` returned real Shopify SKU/competitor-price/URL rows. |
+| Client consumption | PASS | Codex executed the source tool; Claude executed the products tool; OpenClaw `skirmshop` probed 12 tools and delivered the read-only result to Skirmshop ES OP General. |
+| Normal-plane separation | PASS | `/skirmshop-plugins-admin` is a separate backend. Direct unauthenticated initialization returned `401`; the normal discovery plane contains only the 12 read-only public tools. |
+
+### Important corrections and remaining risk
+
+- `source_id` supports both Prisma CUIDs and legacy opaque ids matching `[a-z0-9][a-z0-9-]{0,62}[a-z0-9]`; the historical CUID-only description below was replaced by AgentGateway PR #6 so existing configured sources remain queryable.
+- The OpenClaw talk helper now uses its configured Telegram account `default` and Skirmshop ES OP General thread `1`. A former account id and retired thread `584` were operationally invalid; neither required exposing a token.
+- This is an API/access gate, not a crawler-completeness gate. Powair6 is currently 98.07% covered with 208 missing URLs, so F7/decommission remains open.
+
 - **Rol**: Claude CLI = EJECUTOR. Codex = RSO/PMO/auditor. **No declaro el gate final.**
 - **Fecha**: 2026-07-13
 - **Resumen**: Publicadas las lecturas del crawling de competidores como 5 herramientas MCP tipadas read-only, y cerrada la brecha del proxy GET genérico que podía reclamar jobs de crawl. Dos PRs abiertos, sin merge ni deploy.

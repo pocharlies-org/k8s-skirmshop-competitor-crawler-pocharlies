@@ -1,8 +1,17 @@
 # RHO Checklist - AgentGateway Competitor API
 
+## Current RSO Status - 2026-07-13 (supersedes the historic pre-deploy notes below)
+
+- [x] The Catalog RAG competitor read API is published on the normal AgentGateway plane as typed, read-only MCP tools. Evidence: app PR #94 and AgentGateway PRs #4, #6, #7 and #8 are merged; Argo Application `agentgateway-mcp` was `Synced/Healthy` at revision `c895895d` during the live audit, with the public bridge ready.
+- [x] The public `/skirmshop-plugins` tool inventory contains exactly 12 tools, including the five `catalog_rag_competitor_*` reads. Evidence: live `tools/list` through the authenticated local client route, 2026-07-13; no generic Catalog RAG proxy, crawler claim, write, private, or Cypher tool is present.
+- [x] Live typed calls return real data. Evidence: `catalog_rag_competitor_source({source_id:"airsoft-autopilot-17"})` returned Powair6 `coverageTarget=10804`, `coverageSeen=10596`, `coverageMissing=208`, `coveragePct=98.07`; `catalog_rag_competitor_products(..., status:"matched_auto", take:5)` returned matched Shopify SKU/competitor-price rows.
+- [x] Codex, Claude and the OpenClaw `skirmshop` agent can consume the same public tools. Evidence: Codex executed the source tool live; Claude executed the products tool live; OpenClaw probe lists all 12 tools and the final agent reply was delivered to Skirmshop ES OP General (Telegram account `default`, thread `1`) with three Powair6 matches and current coverage.
+- [x] The normal plane is least-privilege. Evidence: `/skirmshop-plugins-admin` is a separate route and direct unauthenticated initialization returned `401`; normal tool inventory does not expose private/admin/Cypher or mutation tools. Gateway authz harness PR #8 was merged after two green CI runs.
+- [ ] Competitor data coverage is not declared complete. Evidence: Powair6 remains at 98.07% with 208 discovered-but-missing URLs and `lastSyncStatus=queued`; this API gate does not close crawler F7 or authorize retiring the standalone runtime.
+
 ## Objective
 
-- [ ] Publicar las lecturas auditables de Catalog RAG Competitors como herramientas MCP tipadas en AgentGateway `/skirmshop-plugins`, sin exponer operaciones que reclaman, mutan o sincronizan crawling. Evidence: implementación y CI auditados; pendiente merge, GitOps y smoke live.
+- [x] Publicar las lecturas auditables de Catalog RAG Competitors como herramientas MCP tipadas en AgentGateway `/skirmshop-plugins`, sin exponer operaciones que reclaman, mutan o sincronizan crawling. Evidence: live tools/list and typed calls, GitOps `agentgateway-mcp` Synced/Healthy, 2026-07-13.
 
 ## Directives
 
