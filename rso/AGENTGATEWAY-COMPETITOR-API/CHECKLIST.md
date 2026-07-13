@@ -2,7 +2,7 @@
 
 ## Objective
 
-- [ ] Publicar las lecturas auditables de Catalog RAG Competitors como herramientas MCP tipadas en AgentGateway `/skirmshop-plugins`, sin exponer operaciones que reclaman, mutan o sincronizan crawling. Evidence: pendiente.
+- [ ] Publicar las lecturas auditables de Catalog RAG Competitors como herramientas MCP tipadas en AgentGateway `/skirmshop-plugins`, sin exponer operaciones que reclaman, mutan o sincronizan crawling. Evidence: implementación y CI auditados; pendiente merge, GitOps y smoke live.
 
 ## Directives
 
@@ -10,30 +10,30 @@
 - [x] Mantener `GET /api/competitors` compatible: continúa devolviendo sólo el allowlist enabled existente. Evidence: contrato actual en `skirmshopshopifyapp/app/routes/api.competitors.ts`.
 - [x] Las herramientas MCP deben ser tipadas y de mínimo privilegio; `skirmshop_plugins_get` o un proxy HTTP genérico no cuentan como publicación de la capability. Evidence: regla persistida en `/home/dibanez/.codex/AGENTS.md` y `/home/dibanez/.claude/CLAUDE.md`, 2026-07-13.
 - [x] No publicar `/api/competitors/due`, `POST /backfills`, `PATCH /:id`, `POST /sync-result`, `POST /rescue-result`, calibraciones ni resolución de matches como herramientas normales. Evidence: contrato de seguridad de este handoff.
-- [ ] Trabajar mediante PRs; nunca tocar `deploy/prod` directamente ni hacer force-push. Evidence: PR y checks pendientes.
+- [x] Trabajar mediante PRs; nunca tocar `deploy/prod` directamente ni hacer force-push. Evidence: PR #94 y #4 abiertos contra `main`; no hubo merge, deploy ni `kubectl apply`.
 
 ## Acceptance Criteria
 
-- [ ] Existe un índice read-only de fuentes que permite pasar de `domain` a `sourceId`, con campos de estado necesarios para auditoría y sin secretos. Evidence: nuevo `GET /api/competitors/sources` y tests de contrato.
-- [ ] Existen herramientas MCP directas, con schemas estrictos y sólo GET: `catalog_rag_competitor_sources`, `catalog_rag_competitor_coverage`, `catalog_rag_competitor_source`, `catalog_rag_competitor_products`, `catalog_rag_competitor_rescue_candidates`. Evidence: `tools/list` de backend y pruebas de cada URL/método.
-- [ ] `catalog_rag_competitor_products` acepta sólo `source_id`, `status` enumerado, `q`, `page`, `take<=100`; nunca admite path, method, headers o body controlados por el agente. Evidence: test de validación/rechazo.
-- [ ] `catalog_rag_competitor_rescue_candidates` acepta sólo `source_id`, estado, página y `take` limitado. Evidence: test de validación/rechazo.
-- [ ] Las herramientas inyectan `CATALOG_SYNC_TOKEN` sólo dentro del backend y no lo reflejan en resultados, logs o mensajes de error. Evidence: test/redacción y revisión de código.
-- [ ] El plano normal de AgentGateway no expone `skirmshop_plugins_get`, `skirmshop_plugins_request`, `catalog_rag_api` ni ninguna herramienta competidora mutante. Evidence: `tools/list` con JWT normal y `check-mcp-coverage.py`.
-- [ ] La brecha GET-stateful queda cerrada: un cliente normal no puede invocar `/api/competitors/due` ni reclamar sources; un cliente con gate de escritura tampoco recibe una herramienta competidora tipada de mutación por accidente. Evidence: prueba de autorización negativa y logs/DB sin claims durante smoke.
-- [ ] Las nuevas herramientas read-only sí se listan y devuelven cobertura/listas reales con un JWT normal en staging y producción. Evidence: smokes MCP `initialize`, `tools/list`, `tools/call`, con redacción de tokens.
-- [ ] `GET /api/competitors` legacy, UI Shopify y llamadas Synapse existentes permanecen compatibles. Evidence: suite de app y smoke autorizado `/api/competitors/due` sólo desde el worker, sin cambio de contrato.
-- [ ] La documentación de ruta y el guardrail de cobertura MCP declaran las herramientas y su política. Evidence: `docs/route-index.md`, `MCP-TOPOLOGY.md`, `scripts/check-mcp-coverage.py` y tests verdes.
+- [x] Existe un índice y detalle read-only de fuentes que permiten pasar de `domain` a `sourceId` sin secretos. Evidence: `api.competitors.sources.ts` y `api.competitors.sources.$id.ts`; `listCompetitorSourceIndex` y `getCompetitorSourceIndexEntry` usan el mismo select explícito y mapper campo a campo. `recipeConfig`, `notes`, `syncClaimedAt` y `runs` no cruzan el boundary. RSO reejecutó 17 tests de rutas en PR #94, commits `e1af571` + `b95ed37`.
+- [x] Existen herramientas MCP directas, con schemas estrictos y sólo GET: las cinco `catalog_rag_competitor_*`. Evidence: cada handler fija plugin+method=GET+path; `catalog_rag_competitor_source` apunta exclusivamente a `/api/competitors/sources/:id`, no al endpoint legado con fila completa. `source_id` exige CUID Prisma `^c[a-z0-9]{24}$`; RSO reejecutó `node --test` 16/16 en PR #4, commits `b0baa7a` + `bf73457` + `54b1b3a`. NOTA: `tools/list` con JWT en staging/prod es PENDIENTE (necesita deploy).
+- [x] `catalog_rag_competitor_products` acepta sólo `source_id`, `status` enumerado, `q`, `page`, `take<=100`; nunca admite path/method/headers/body. Evidence: `COMPETITOR_PRODUCTS_SCHEMA` `additionalProperties:false`; tests "competitor tools take no agent-controlled path...", "an off-enum product status is refused", "undeclared keys are dropped", "take is clamped to 100".
+- [x] `catalog_rag_competitor_rescue_candidates` acepta sólo `source_id`, estado, página y `take` limitado. Evidence: `COMPETITOR_RESCUE_SCHEMA` + `normalizeCompetitorArgs` clamp a 100 en el handler (upstream rescue-candidates NO acota); test "take is clamped to 100 even though upstream rescue-candidates does not clamp".
+- [x] Las herramientas inyectan `CATALOG_SYNC_TOKEN` sólo dentro del backend y no lo reflejan en resultados/logs/errores. Evidence: `injectDefaultAuth` añade el header; `addHeaderIfMissing` empuja SOLO el NOMBRE a `injectedAuthHeaders`. Tests "the token value is never serialized into a tool result" y "fail closed ... leak nothing".
+- [x] El plano normal de AgentGateway no expone `skirmshop_plugins_get`, `skirmshop_plugins_request`, `catalog_rag_api` ni herramienta competidora mutante. Evidence: `agentgateway-config.yaml` los tres bajo `GATEWAY_WRITE`+rol; `check-mcp-coverage.py` PASS (17 rutas, 301 tools) y FALLA al reabrir plugins_get (probado revirtiendo). NOTA: confirmación por `tools/list` live = PENDIENTE (deploy).
+- [x] La brecha GET-stateful queda cerrada (defensa en 2 capas). Evidence: (config) plugins_get gateado; (backend) `assertReadOnlyPath` rechaza `/api/competitors/due` en cualquier proxy read-only. Tests "skirmshop_plugins_get cannot claim crawl jobs via /due", "a read-only proxy call cannot reach /api/competitors/due", denylist robusto a case/slash/encoding. NOTA: prueba negativa LIVE con JWT + DB sin claims = PENDIENTE (deploy).
+- [blocked: requiere deploy] Las nuevas herramientas read-only se listan y devuelven cobertura/listas reales con JWT normal en staging y producción. Blocker: smokes MCP live `initialize`/`tools/list`/`tools/call` no ejecutables sin merge+deploy; el ejecutor no despliega. Cubierto en local por `node --test` + módulo exporta 5 tools.
+- [x] `GET /api/competitors` legacy permanece compatible. Evidence: sin cambios en `app/routes/api.competitors.ts`; nuevo test `test/routes/api.competitors.legacy-contract.test.ts` bloquea el envelope `{ok,domains}` (enabled-only) y la query Prisma exacta. Compat Synapse `/due` (sólo worker) sin cambios de contrato. NOTA: smoke live `/due` desde worker = PENDIENTE (deploy).
+- [x] Documentación de ruta y guardrail declaran las herramientas y su política. Evidence: `docs/route-index.md` (fila + línea de decisión), `MCP-TOPOLOGY.md` (fila + sección "a GET tool is not automatically a read tool"), `scripts/check-mcp-coverage.py` (inventario + gate + guardrail anti claim/mutación). RSO reejecutó guardrail PASS (17 rutas, 301 tools) y `kubectl kustomize k8s/overlays/prod`.
 
 ## Specialist Checks
 
-- [ ] Backend/API: endpoint índice de fuentes y pruebas Remix. Owner: Claude. Evidence: rutas/tests.
-- [ ] MCP/Gateway: tools tipadas, allowlist y bloqueo del proxy GET genérico. Owner: Claude. Evidence: diff/tests/`tools/list`.
-- [ ] Security: no path injection, no token leak, no capability de claim/mutación en plano normal. Owner: Claude + RSO. Evidence: pruebas negativas.
-- [ ] Runtime: GitOps Synced/Healthy y ambos smokes de AgentGateway. Owner: Claude; re-ejecución RSO. Evidence: comandos live.
+- [x] Backend/API: índice y detalle seguro de fuentes, conservando el endpoint legado para Synapse. Owner: Claude, auditado por RSO. Evidence: 17/17 Vitest reejecutado; el RSO detectó que la primera versión MCP apuntaba al detalle legado y exigió `GET /api/competitors/sources/:id` en `b95ed37`.
+- [x] MCP/Gateway: tools tipadas, allowlist y bloqueo del proxy GET genérico. Owner: Claude, auditado por RSO. Evidence: `node --test` 16/16, `check-mcp-coverage.py` PASS y render prod OK. `skirmshop_plugins_get` sólo queda tras `GATEWAY_WRITE` + rol firmado.
+- [x] Security: no path injection, token leak ni capability de claim/mutación en plano normal. Owner: Claude, auditado por RSO. Evidence: `assertCompetitorSourceId` exige CUID real y codifica URI; `/due` se deniega en el proxy read-only; test de ruta confirma que el detalle MCP usa `/sources/:id`.
+- [blocked: requiere deploy] Runtime: GitOps Synced/Healthy y ambos smokes de AgentGateway. Owner: Claude; re-ejecución RSO. Blocker: no merge/deploy por el ejecutor.
 
 ## Status - 2026-07-13
 
 - [x] Diseño y hallazgo de seguridad auditados. Evidence: `skirmshop-plugins-mcp.js` permite `skirmshop_plugins_get` genérico y el perfil `catalog` inyecta `x-catalog-token`; `/api/competitors/due` reclama fuentes pese a ser GET.
-- [ ] Implementación/PR/merge/deploy. Blocker: pendiente de ejecución por Claude CLI.
-- [ ] Gate RSO final. Blocker: pendiente de evidencia reproducible de Claude y re-ejecución independiente.
+- [x] Implementación/PR y remediación P1. Evidence: skirmshopshopifyapp PR #94 (rama `claude/competitor-sources-api`, `e1af571`, `b95ed37`); agentgateway PR #4 (rama `claude/competitor-mcp-readonly`, `b0baa7a`, `bf73457`, `54b1b3a`). RSO reejecutó los tests y el render tras la remediación. CI gateway PASS; CI app está en curso para el último SHA. NO merge, NO deploy.
+- [blocked: requiere deploy] Merge/deploy + smokes live + gate RSO final. Blocker: pendiente de re-ejecución independiente por Codex/RSO tras merge y despliegue GitOps. Ver `claude-implementation.report.md`.
