@@ -4,7 +4,6 @@ kind: Kustomization
 namespace: skirmshop
 
 resources:
-  - externalsecret.yaml
   - manifest.yaml
 
 labels:
