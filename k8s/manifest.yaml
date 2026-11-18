@@ -31,10 +31,6 @@ spec:
           image: harbor.e-dani.com/homelab/skirmshop-competitor-crawler:pending
           imagePullPolicy: IfNotPresent
           env:
-            - name: BRAIN_URL
-              value: http://skirmshop-brain.skirmshop-brain-prod.svc.cluster.local
-            - name: BRAIN_INSTANCE
-              value: skirmshop
             - name: FIRECRAWL_URL
               value: http://firecrawl-api.skirmshop.svc.cluster.local:3002
             - name: PUSH_BATCH_SIZE
