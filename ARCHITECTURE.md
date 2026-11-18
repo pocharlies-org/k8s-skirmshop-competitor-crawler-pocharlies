@@ -9,15 +9,15 @@ Esqueleto GitOps **desactivado** del crawler de competencia de Skirmshop (`repli
 - Imagen: `…/skirmshop-competitor-crawler:pending` (tag placeholder: no existe imagen construida).
 
 ## Dependencias en ambos sentidos
-- Depende de (variables del manifiesto): cerebro (`BRAIN_URL=http://skirmshop-brain.skirmshop-brain-prod.svc.cluster.local`, `BRAIN_INSTANCE=skirmshop`), Firecrawl (`FIRECRAWL_URL=http://firecrawl-api.skirmshop.svc.cluster.local:3002`; ver `skirmshop-firecrawl`), Secret opcional `competitor-crawler-secrets`, Secret `harbor-pull`.
+- Depende de (variables del manifiesto): Firecrawl (`FIRECRAWL_URL=http://firecrawl-api.skirmshop.svc.cluster.local:3002`; ver `skirmshop-firecrawl`), Secret opcional `competitor-crawler-secrets`, Secret `harbor-pull`. (SC-5827: fuera `BRAIN_URL`/`BRAIN_INSTANCE`, el Brain se borra.)
 - De él dependen: nadie (está apagado). El panel lo describe como «motor headless, `replicas:0`, sin HTTP» y propone observarlo vía brain (`skirmshop-control-panel/00-ARQUITECTURA.md`).
-- El README declara que sigue desactivado «hasta confirmar límites de tasa, imagen de origen e instancia de brain destino»: ninguna de las tres cosas se ha confirmado en este repo.
+- El README declara que sigue desactivado «hasta confirmar límites de tasa e imagen de origen»: ninguna de las dos cosas se ha confirmado en este repo.
 
 ## Stack con versiones
 - Kustomize (`namespace: skirmshop`, un solo recurso). Sin imágenes pineadas por digest (`:pending`). Sin Helm.
 
 ## Componentes compartidos
-- Publica: nada activo. Consume: las URLs del cerebro y de Firecrawl.
+- Publica: nada activo. Consume: la URL de Firecrawl.
 - Antes de reactivarlo hay que decidir el repo de código y la imagen (hoy inexistentes) y comprobar que no duplica la lógica de competidores de `skirmshopshopifyapp` (`api.competitors.$id.sync-start|sync-result|sync-heartbeat`, que ya modelan un runner externo que sincroniza fuentes).
 
 ## Cómo se construye
